@@ -78,12 +78,22 @@
         {
           "code": "A1",
           "severity": "Minor",
-          "note": "بہت بوڑھا (\"very old\") drops the relational \"too old\" (too old for this world)."
+          "note": "بہت بوڑھا (\"very old\") drops the relational \"too old\" (too old for this world). It is more in the sense of اب کافی عمر ہو گئی ہے or بڑی زندگی گزر گئی "
         },
         {
           "code": "C3",
           "severity": "Minor",
           "note": "الجھا لیتی ہیں (\"entangle\") softens \"shackle\" and loses the image of fettering."
+        },
+        {
+          "code": "A4",
+          "severity": "Minor",
+          "note": "ایسی دنیا کے لیے نہیں بنا does not convey the tense as well as the mood"
+        },
+        {
+          "code": "A4",
+          "severity": "Minor",
+          "note": "کپڑے کے بنے ہوئے تک نہیں ہیں۔ is grammatically wrong"
         }
       ],
       "keeps": ""
