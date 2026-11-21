@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Report · Editorial Assessments</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%237a2e1f%22/%3E%3Cpath d=%22M23 10.5A5 5 0 0 0 16 3.5L10 9.5V17h7.5z M17 7 6 26 M19 13h-7%22 fill=%22none%22 stroke=%22%23fbf3e8%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 transform=%22translate(2 3)%22/%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 <header class="site"><div class="wrap">
-  <a class="brand" href="./">Editorial <span>Assessments</span></a>
-  <nav><a href="./">All reports</a><a href="about.html">Method</a></nav>
+  <a class="brand" href="./"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 12.2A6 6 0 0 0 11.8 3.8L5 10.6V19h8.4z"/><path d="M16 8 2 22"/><path d="M17.5 15H9"/></svg></span>Editorial <span>Assessments</span></a>
+  <nav><a href="./"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg>All reports</a><a href="about.html"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M5 21h14"/><path d="M3 7h18"/><path d="m6 7-3 7a3 3 0 0 0 6 0z"/><path d="m18 7-3 7a3 3 0 0 0 6 0z"/></svg>Method</a></nav>
 </div></header>
 
 <div class="toolbar"><div class="wrap">
@@ -42,7 +43,8 @@
 </dialog>
 
 <script type="module">
-import { CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH } from './assets/common.js';
+import { CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon } from './assets/common.js';
+const H2 = (ic, t) => `<h2>${icon(ic)}${t}</h2>`;
 
 const $ = (id) => document.getElementById(id);
 const id = new URLSearchParams(location.search).get('id');
@@ -105,18 +107,18 @@ function header() {
   return `
     <h1>${esc(r.title)}</h1>
     <p class="subtitle">${esc(r.subtitle)}</p>
-    <p class="byline">${esc(r.date)}</p>
+    <p class="byline"><span>${icon('calendar')}${esc(r.date)}</span>${r.submission?.translator ? `<span>${icon('user')}Translated by ${esc(r.submission.translator)}</span>` : ''}</p>
     <div class="meta-chips">
-      <span class="dec ${decisionClass(r.decision)}">${esc(r.decision)}</span>
-      <span class="chip">${esc(r.stakes)} stakes</span>
-      <span class="chip">${esc(r.source?.language)} → ${esc(r.submission?.language)}</span>
-      ${(r.tags || []).map((t) => `<a class="chip" href="./?q=${encodeURIComponent(t)}">${esc(t)}</a>`).join('')}
+      <span class="dec ${decisionClass(r.decision)}">${icon('gavel')}${esc(r.decision)}</span>
+      <span class="chip">${icon('layers')}${esc(r.stakes)} stakes</span>
+      <span class="chip">${icon('globe')}${esc(r.source?.language)} → ${esc(r.submission?.language)}</span>
+      ${(r.tags || []).map((t) => `<a class="chip tag" href="./?q=${encodeURIComponent(t)}">${esc(t)}</a>`).join('')}
     </div>`;
 }
 
 function passages() {
   const head = (k, name) => `<h3>${name} (${esc(R[k]?.language || '')})${R[k]?.label ? ' - ' + esc(R[k].label) : ''}</h3>`;
-  let h = `<h2>The passages</h2>`;
+  let h = `${H2('doc', 'The passages')}`;
   h += head('source', 'Source') + `<div class="passage">${editing ? T('source.text', { rows: 10 }) : `<p>${urduWrap(esc(R.source.text))}</p>`}</div>`;
   h += head('submission', 'Submission') + `<div class="passage ${editing ? '' : 'ur-block'}" ${editing ? '' : 'lang="ur" dir="rtl"'}>${editing ? T('submission.text', { rows: 12, ur: true }) : esc(R.submission.text)}</div>`;
   if (R.reference?.text) h += `<h3>Reference rendering</h3><div class="passage ur-block" lang="ur" dir="rtl">${esc(R.reference.text)}</div>`;
@@ -124,7 +126,7 @@ function passages() {
 }
 
 function scope() {
-  return `<h2>Scope</h2>${T('scope', { md: true, rows: 10 })}
+  return `${H2('info', 'Scope')}${T('scope', { md: true, rows: 10 })}
     <p><strong>Deviation codes</strong> (adapted for literary translation from Multidimensional Quality Metrics)</p>
     <table><thead><tr><th>Code</th><th>Name</th><th>Test</th></tr></thead><tbody>
     ${Object.entries(CODES).map(([c, [n, t]]) => `<tr><td class="fam-${c[0]}"><strong>${c}</strong></td><td>${n}</td><td>${t}</td></tr>`).join('')}
@@ -164,7 +166,7 @@ function sideBySide() {
       <td class="devs ${sevClass(w)}">${devCell(s, i)}</td>
     </tr>`;
   }).join('');
-  return `<h2>Side by side</h2>
+  return `${H2('columns', 'Side by side')}
     <table class="sbs"><colgroup><col class="c-n"><col class="c-src"><col class="c-sub"><col></colgroup>
     <thead><tr><th>#</th><th>Source</th><th>Submission</th><th>Deviations</th></tr></thead><tbody>${rows}</tbody></table>
     ${editing && !segs.length ? '<button class="small" data-act="add-seg" data-i="-1">+ Segment</button>' : ''}
@@ -176,7 +178,7 @@ function counts() {
   const codes = Object.keys(CODES).filter((c) => t.byCode[c]);
   const row = (c) => { const x = t.byCode[c]; const n = x.Critical + x.Major + x.Minor;
     return `<tr><td>${c} ${CODES[c][0]}</td><td class="num">${x.Critical}</td><td class="num">${x.Major}</td><td class="num">${x.Minor}</td><td class="num">${n}</td></tr>`; };
-  return `<h2>Deviation count and profile</h2>
+  return `${H2('chart', 'Deviation count and profile')}
     <p>${t.n} deviations across ${(R.segments || []).length} segments of a ${t.words}-word source: ${t.per100(t.n)} per 100 words, ${t.total.Critical + t.total.Major} of them major or critical.</p>
     <table><thead><tr><th>Code</th><th class="num">Critical</th><th class="num">Major</th><th class="num">Minor</th><th class="num">Total</th></tr></thead><tbody>
       ${codes.map(row).join('')}
@@ -193,18 +195,18 @@ function findings() {
       <td class="${sevClass(x.severity)}">${S(`findings.${i}.severity`, SEVERITIES)}</td>
       <td>${editing ? T(`findings.${i}.evidence`, { rows: 3 }) : urduWrap(esc(x.evidence))}
         ${editing ? `<div><button class="small danger" data-act="del-find" data-i="${i}">Remove</button></div>` : ''}</td></tr>`).join('');
-  return `<h2>Work-level findings</h2>${T('findingsLead', { md: true, rows: 2 })}
+  return `${H2('flag', 'Work-level findings')}${T('findingsLead', { md: true, rows: 2 })}
     <table><thead><tr><th>Finding</th><th>Severity</th><th>Evidence</th></tr></thead><tbody>${rows}</tbody></table>
     ${editing ? '<button class="small" data-act="add-find">+ Finding</button>' : ''}`;
 }
 
 function decision() {
-  return `<h2>Editorial decision</h2>
+  return `${H2('gavel', 'Editorial decision')}
     <table><thead><tr><th>Decision</th><th>Meaning</th></tr></thead><tbody>
     ${DECISIONS.map(([d, m]) => { const on = d === R.decision ? decisionClass(d) : '';
       return `<tr><td class="${on}">${on ? `<strong>${d}</strong>` : d}</td><td class="${on}">${m}</td></tr>`; }).join('')}
     </tbody></table>
-    <p><strong>Decision: ${editing ? S('decision', DECISIONS.map((d) => d[0])) : esc(R.decision) + '.'}</strong></p>
+    <p class="decision-line">${icon('gavel')}<strong>Decision: ${editing ? S('decision', DECISIONS.map((d) => d[0])) : esc(R.decision) + '.'}</strong></p>
     ${editing ? `<p><strong>Basis.</strong></p>${T('decisionBasis', { rows: 6 })}<p><strong>Note for the publisher.</strong></p>${T('publisherNote', { rows: 3 })}`
       : `<p><strong>Basis.</strong> ${md(R.decisionBasis).replace(/^<p>|<\/p>$/g, '')}</p><p><strong>Note for the publisher.</strong> ${md(R.publisherNote).replace(/^<p>|<\/p>$/g, '')}</p>`}
     <p class="ack">${ACK}</p>`;
@@ -216,14 +218,14 @@ function render() {
   $('root').className = 'wrap' + (editing ? ' editing' : '');
   $('root').innerHTML = [
     header(), passages(),
-    editing ? `<h2>Lead</h2>${T('lead', { rows: 3 })}` : `<div class="lead">${md(R.lead)}</div>`,
+    editing ? `${H2('pen', 'Lead')}${T('lead', { rows: 3 })}` : `<div class="lead">${icon('target', 'lead-ico')}<div>${md(R.lead)}</div></div>`,
     scope(), sideBySide(), counts(),
-    `<h2>Stylistic tendencies</h2>${T('tendencies', { md: true, rows: 14 })}`,
-    `<h2>Translator profile</h2>${T('translatorProfile', { md: true, rows: 10 })}`,
+    `${H2('wave', 'Stylistic tendencies')}${T('tendencies', { md: true, rows: 14 })}`,
+    `${H2('user', 'Translator profile')}${T('translatorProfile', { md: true, rows: 10 })}`,
     findings(), decision(),
   ].join('');
   if (editing) document.querySelectorAll('textarea').forEach(grow);
-  $('b-edit').textContent = editing ? 'Done' : 'Edit';
+  $('b-edit').innerHTML = editing ? icon('check') + 'Done' : icon('pen') + 'Edit';
   scrollTo(0, y);
   status();
 }
@@ -291,6 +293,11 @@ $('c-go').onclick = async (e) => {
     out.textContent = 'Committed. The published site updates once GitHub Pages rebuilds (usually within a minute).';
   } catch (err) { out.textContent = `Commit failed: ${err.message}`; }
 };
+
+// ---------- toolbar icons ----------
+for (const [b, ic] of [['b-commit', 'upload'], ['b-download', 'download'], ['b-discard', 'undo'], ['b-gh', 'code'], ['b-print', 'print']])
+  $(b).insertAdjacentHTML('afterbegin', icon(ic));
+$('b-edit').innerHTML = icon('pen') + 'Edit';
 
 // ---------- load ----------
 try {

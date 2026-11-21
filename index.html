@@ -4,19 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Editorial Assessments of Literary Translation</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%237a2e1f%22/%3E%3Cpath d=%22M23 10.5A5 5 0 0 0 16 3.5L10 9.5V17h7.5z M17 7 6 26 M19 13h-7%22 fill=%22none%22 stroke=%22%23fbf3e8%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 transform=%22translate(2 3)%22/%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 <header class="site"><div class="wrap">
-  <a class="brand" href="./">Editorial <span>Assessments</span></a>
-  <nav><a href="about.html">Method</a><a href="https://github.com/aasem/translation-criticism">Source</a></nav>
+  <a class="brand" href="./"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 12.2A6 6 0 0 0 11.8 3.8L5 10.6V19h8.4z"/><path d="M16 8 2 22"/><path d="M17.5 15H9"/></svg></span>Editorial <span>Assessments</span></a>
+  <nav><a href="about.html"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M5 21h14"/><path d="M3 7h18"/><path d="m6 7-3 7a3 3 0 0 0 6 0z"/><path d="m18 7-3 7a3 3 0 0 0 6 0z"/></svg>Method</a></nav>
 </div></header>
 
 <main class="wrap">
+  <p class="eyebrow">Literary translation into Urdu</p>
   <h1>Editorial assessment reports</h1>
   <p class="subtitle">Reader's assessments of literary translations into Urdu, for interested readers and publishers. Each submission is judged against its source, segment by segment, on a fixed deviation typology, and ends with an editorial decision.</p>
 
-  <input id="q" class="search" type="search" placeholder="Search author, work, translator, or any phrase in English or Urdu…" autocomplete="off">
+  <div class="search-wrap"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="q" class="search" type="search" placeholder="Search author, work, translator, or any phrase in English or Urdu…" autocomplete="off"></div>
   <div class="filters">
     <select id="f-decision"><option value="">All decisions</option></select>
     <select id="f-stakes"><option value="">All stakes</option></select>
@@ -29,7 +31,7 @@
 <footer class="site"><div class="wrap">© 2026 <a href="https://mechanomorph.substack.com" rel="noopener">Asim Bakhshi · Mechanomorph</a></div></footer>
 
 <script type="module">
-import { loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS } from './assets/common.js';
+import { loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon } from './assets/common.js';
 
 const $ = (id) => document.getElementById(id);
 let reports = [];
@@ -70,14 +72,23 @@ function render() {
       for (const f of fields) { const s = f && snippet(f, q); if (s) { ex = s; break; } }
     }
     return `<a class="card" href="report.html?id=${encodeURIComponent(r.id)}">
-      <h2>${esc(r.author)}: ${esc(r.passage || r.work)}</h2>
-      <div class="byline">${esc(r.work)} · ${esc(r.source?.language)} (${esc(r.source?.label || r.source?.translator || '')}) → ${esc(r.submission?.language)} · translated by ${esc(r.submission?.translator || 'unnamed')} · ${esc(r.date)}</div>
+      <div class="card-head"><div>
+        <div class="card-author">${esc(r.author)}</div>
+        <h2>${esc(r.passage || r.work)}</h2>
+        <div class="byline">
+          <span>${icon('book')}${esc(r.work)}</span>
+          <span>${icon('globe')}${esc(r.source?.language)}${r.source?.label ? ' (' + esc(r.source.label) + ')' : ''} → ${esc(r.submission?.language)}</span>
+          <span>${icon('user')}${esc(r.submission?.translator || 'Unnamed translator')}</span>
+          <span>${icon('calendar')}${esc(r.date)}</span>
+        </div></div>
+        <span class="card-go">${icon('arrow')}</span>
+      </div>
       <div class="meta-chips">
-        <span class="dec ${decisionClass(r.decision)}">${esc(r.decision)}</span>
-        <span class="chip">${esc(r.stakes)} stakes</span>
-        <span class="chip">${t.n} deviations · ${t.per100(t.n)} per 100 words</span>
+        <span class="dec ${decisionClass(r.decision)}">${icon('gavel')}${esc(r.decision)}</span>
+        <span class="chip">${icon('layers')}${esc(r.stakes)} stakes</span>
+        <span class="chip">${icon('chart')}${t.n} deviations · ${t.per100(t.n)} per 100 words</span>
         <span class="chip">${t.total.Critical} critical · ${t.total.Major} major</span>
-        ${(r.tags || []).map((x) => `<span class="chip">${esc(x)}</span>`).join('')}
+        ${(r.tags || []).map((x) => `<span class="chip tag">${esc(x)}</span>`).join('')}
       </div>
       ${ex ? (isUrdu(ex) ? `<div class="excerpt ur-block" lang="ur" dir="rtl">${ex}</div>` : `<div class="excerpt">${urduWrap(ex)}</div>`) : ''}
     </a>`;
