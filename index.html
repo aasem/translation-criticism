@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Editorial Assessments of Literary and Scientific Translation</title>
+<title>Editorial Assessments · Translation into Urdu</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%237a2e1f%22/%3E%3Cpath d=%22M23 10.5A5 5 0 0 0 16 3.5L10 9.5V17h7.5z M17 7 6 26 M19 13h-7%22 fill=%22none%22 stroke=%22%23fbf3e8%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 transform=%22translate(2 3)%22/%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -14,10 +14,26 @@
 </div></header>
 
 <main class="wrap">
-  <p class="eyebrow">Literary and scientific translation into Urdu</p>
-  <h1>Editorial assessment reports</h1>
-  <p class="subtitle">Reader's assessments of literary and scientific translations into Urdu, for interested readers and publishers. Each submission is judged against its source, segment by segment, on a fixed deviation typology, and ends with an editorial decision.</p>
+  <section class="manifesto">
+    <p class="eyebrow">Literary and scientific translation into Urdu</p>
+    <h1 class="headline">Translation is an art of failure.<br><span>Let's judge the error surface.</span></h1>
+    <div class="manifesto-body">
+      <p>Urdu is seeing a boom in literary translation, and since generative AI arrived, more of it is made at speed. Machine assistance does not in itself cheapen a literary act, but translation is not transcription. It asks for diligent reading and interpretation, with a feel for register, image and rhythm in two languages at once. None of this can be hurried.</p>
+      <p>Publishers rarely have the means to judge a translation, and common readers have none at all. As AI-assisted translations multiply, the work of telling the careful from the merely fluent, and both from the hack job, has fallen far behind.</p>
+      <p>These assessments are an attempt to close that gap. The process is semi-automated:</p>
+      <ol class="process">
+        <li>A sample is segmented sentence by sentence and set against its source, and potential deviations are flagged automatically as a first pass.</li>
+        <li>I then read every segment myself and record the deviations I find.</li>
+        <li>These deviations are scored on a framework adapted from <a href="https://www.themqm.org/" rel="noopener">Multidimensional Quality Metrics</a>.</li>
+        <li>On that analysis I give my verdict, and I own it.</li>
+      </ol>
+      <p>The verdict is an informal editorial decision for drafts and a grade for books in print. The assessments are offered as a public service: to readers deciding what to trust, to publishers deciding what to print, and to translators who want their work read with the care it asks for.</p>
+      <p class="contact">If you want to get your translation graded, or disagree with a verdict or the review behind it, please reach me at <a class="mail" data-u="asembuxi" data-d="gmail.com" href="#">asembuxi [at] gmail [dot] com</a>.</p>
+      <p class="signature"><em>Asim Bakhshi</em> · <a href="https://mechanomorph.substack.com/p/published-works" rel="noopener">Published works on Mechanomorph →</a></p>
+    </div>
+  </section>
 
+  <h2 class="list-head">Assessment reports</h2>
   <div class="search-wrap"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="q" class="search" type="search" placeholder="Search author, work, translator, or any phrase in English or Urdu…" autocomplete="off"></div>
   <div class="filters">
     <select id="f-stage"><option value="">All kinds</option><option>Pre-publication</option><option>Published</option></select>
@@ -30,6 +46,12 @@
 
 <footer class="site"><div class="wrap">© 2026 <a href="https://mechanomorph.substack.com" rel="noopener">Asim Bakhshi · Mechanomorph</a></div></footer>
 
+<script>
+for (const a of document.querySelectorAll('a.mail')) {
+  const addr = a.dataset.u + '@' + a.dataset.d;
+  a.href = 'mailto:' + addr; a.textContent = addr;
+}
+</script>
 <script type="module">
 import { loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon, isPublished, GRADES, gradeName, gradeClass } from './assets/common.js';
 
