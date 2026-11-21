@@ -64,7 +64,7 @@ let reports = [];
 
 function haystack(r) {
   const segs = (r.segments || []).flatMap((s) => [s.source, s.submission, s.keeps, ...(s.deviations || []).map((d) => d.note)]);
-  return [r.title, r.author, r.work, r.passage, r.source?.translator, r.source?.label, r.submission?.translator,
+  return [r.title, r.author, r.work, r.originalWork, r.passage, r.source?.translator, r.source?.label, r.submission?.translator,
     r.submission?.label, r.submission?.language, r.stage, isPublished(r) ? gradeName(r.grade) : r.decision, r.stakes, ...Object.values(r.publication || {}), ...(r.tags || []), r.source?.text, r.submission?.text, ...segs]
     .filter(Boolean).join('   ').toLowerCase();
 }
@@ -97,27 +97,32 @@ function render() {
       const fields = [r.submission?.text, r.source?.text, ...(r.segments || []).flatMap((s) => (s.deviations || []).map((d) => d.note))];
       for (const f of fields) { const s = f && snippet(f, q); if (s) { ex = s; break; } }
     }
-    return `<a class="card" href="report.html?id=${encodeURIComponent(r.id)}">
-      <div class="card-head"><div>
-        <div class="card-author">${esc(r.author)}</div>
-        <h2>${esc(r.passage || r.work)}</h2>
-        <div class="byline">
-          <span>${icon('book')}${esc(r.work)}</span>
-          <span>${icon('globe')}${esc(r.source?.language)}${r.source?.label ? ' (' + esc(r.source.label) + ')' : ''} → ${esc(r.submission?.language)}</span>
-          <span>${icon('user')}${esc(r.submission?.translator || 'Unnamed translator')}</span>
-          ${isPublished(r) && r.publication?.publisher ? `<span>${icon('book')}${esc([r.publication.publisher, r.publication.year].filter(Boolean).join(', '))}</span>` : ''}
-          <span>${icon('calendar')}${esc(r.date)}</span>
-        </div></div>
-        <span class="card-go">${icon('arrow')}</span>
+    const tone = isPublished(r) ? gradeClass(r.grade) : decisionClass(r.decision);
+    const pub = isPublished(r) && r.publication?.publisher ? [r.publication.publisher, r.publication.year].filter(Boolean).join(', ') : '';
+    return `<a class="card rcard" href="report.html?id=${encodeURIComponent(r.id)}">
+      <div class="rc-top">
+        <span class="badge author">${icon('feather')}${esc(r.author)}</span>
+        <span class="badge kind">${icon(isPublished(r) ? 'book' : 'doc')}${esc(r.stage || 'Pre-publication')}</span>
+        <span class="rc-go">${icon('arrow')}</span>
       </div>
-      <div class="meta-chips">
-        <span class="chip kind">${icon(isPublished(r) ? 'book' : 'doc')}${esc(r.stage || 'Pre-publication')}</span>
-        ${isPublished(r) ? `<span class="dec ${gradeClass(r.grade)}">${icon('scale')}Grade ${esc(gradeName(r.grade))}</span>`
-          : `<span class="dec ${decisionClass(r.decision)}">${icon('gavel')}${esc(r.decision)}</span>`}
-        <span class="chip">${icon('layers')}${esc(r.stakes)} stakes</span>
-        <span class="chip">${icon('chart')}${t.n} deviations · ${t.per100(t.n)} per 100 words</span>
-        <span class="chip">${t.total.Critical} critical · ${t.total.Major} major</span>
-        ${(r.tags || []).map((x) => `<span class="chip tag">${esc(x)}</span>`).join('')}
+      <h2 class="rc-title">${esc(r.passage || r.work)}</h2>
+      ${r.passage && r.work ? `<div class="rc-work">${esc(r.work)}</div>` : ''}
+      <div class="rc-people">
+        <span class="badge person"><small>${esc(r.source?.language || '')}</small>${esc(r.source?.label || r.source?.translator || 'Original')}</span>
+        <span class="rc-arrow">${icon('arrow')}</span>
+        <span class="badge person tr"><small>${esc(r.submission?.language || '')}</small>${esc(r.submission?.translator || 'Unnamed translator')}</span>
+      </div>
+      <div class="rc-verdict ${tone}">${isPublished(r) ? `${icon('scale')}Grade ${esc(gradeName(r.grade))}` : `${icon('gavel')}${esc(r.decision)}`}</div>
+      <div class="rc-metrics">
+        <div><b>${t.n}</b><span>deviations</span></div>
+        <div><b>${t.per100(t.n)}</b><span>per 100 words</span></div>
+        <div><b>${t.total.Critical}<i>·</i>${t.total.Major}</b><span>critical · major</span></div>
+        <div><b>${esc(r.stakes)}</b><span>stakes</span></div>
+      </div>
+      <div class="rc-foot">
+        <span>${icon('calendar')}${esc(r.date)}</span>
+        ${pub ? `<span>${icon('book')}${esc(pub)}</span>` : ''}
+        ${(r.tags || []).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}
       </div>
       ${ex ? (isUrdu(ex) ? `<div class="excerpt ur-block" lang="ur" dir="rtl">${ex}</div>` : `<div class="excerpt">${urduWrap(ex)}</div>`) : ''}
     </a>`;

@@ -109,7 +109,7 @@ function header() {
       <tr><th>Kind</th><td>${S('stage', STAGES)}</td><th>Stakes</th><td>${S('stakes', ['Standard', 'Literary', 'Canonical'])}</td></tr>
       <tr><th>Date</th><td>${I('date', 'YYYY-MM-DD')}</td><th>Sample location</th><td>${I('sampleLocation', 'e.g. vol. 1, pp. 410–412')}</td></tr>
       <tr><th>Author</th><td>${I('author')}</td><th>Work</th><td>${I('work')}</td></tr>
-      <tr><th>Passage</th><td colspan="3">${I('passage')}</td></tr>
+      <tr><th>Original title</th><td>${I('originalWork', 'e.g. Du côté de chez Swann')}</td><th>Passage</th><td>${I('passage')}</td></tr>
       <tr><th>Source language</th><td>${I('source.language')}</td><th>Source label / translator</th><td>${I('source.label', 'label')}${I('source.translator', 'translator')}</td></tr>
       <tr><th>Target language</th><td>${I('submission.language')}</td><th>Submission label / translator</th><td>${I('submission.label', 'label')}${I('submission.translator', 'translator')}</td></tr>
       ${isPublished(r) ? `

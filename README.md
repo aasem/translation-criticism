@@ -51,7 +51,7 @@ A **pre-publication** report assesses a draft for a publisher and ends in an edi
 | Field | Meaning |
 | --- | --- |
 | `id`, `title`, `subtitle`, `date` | Identity and heading |
-| `author`, `work`, `passage`, `tags` | Catalogue details (all searchable) |
+| `author`, `work`, `originalWork`, `passage`, `tags` | Catalogue details (all searchable); `work` is the title shown on cards, `originalWork` the title in the original language |
 | `source`, `submission`, `reference` | `{language, label, translator, text}`; `reference` is optional and shown for reading only |
 | `stage` | `Pre-publication` (a draft; ends in an editorial decision) or `Published` (in print; ends in a grade) |
 | `sampleLocation` | Where the sample comes from, e.g. "closing pages of Swann's Way" |
