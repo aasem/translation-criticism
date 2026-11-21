@@ -157,7 +157,10 @@ export const TOKENS = {
   total: 'all deviations', critical: 'critical', major: 'major', minor: 'minor',
   severe: 'major + critical', per100: 'deviations per 100 source words', words: 'source words',
   segments: 'segments', penalty: 'weighted penalty points', pp100: 'penalty points per 100 words',
-  score: 'MQM quality score', band: 'grade band from the score', A: 'accuracy (A) codes', B: 'language (B) codes', C: 'style (C) codes',
+  score: 'MQM quality score', band: 'grade band from the score',
+  clean: 'segments without deviation', cleanPct: '% of segments without deviation',
+  severeSegs: 'segments with a major or critical deviation', severePct: '% of segments with one',
+  A: 'accuracy (A) codes', B: 'language (B) codes', C: 'style (C) codes',
   A1: '…and so on for any single code',
 };
 export function figures(report) {
@@ -168,6 +171,12 @@ export function figures(report) {
     segments: (report.segments || []).length, penalty: t.penalty, pp100: t.pp100.toFixed(1),
     score: t.score.toFixed(1), band: `${t.band[0]} (${t.band[1]})`, A: 0, B: 0, C: 0,
   };
+  // Spread across segments: descriptive only, never part of the score or grade.
+  const segs = report.segments || [];
+  const pct = (n) => (segs.length ? Math.round((100 * n) / segs.length) : 0);
+  f.clean = segs.filter((x) => !(x.deviations || []).length).length;
+  f.severeSegs = segs.filter((x) => (x.deviations || []).some((d) => d.severity !== 'Minor')).length;
+  f.cleanPct = pct(f.clean); f.severePct = pct(f.severeSegs);
   for (const c of Object.keys(CODES)) {
     const x = t.byCode[c]; const n = x ? x.Critical + x.Major + x.Minor : 0;
     f[c] = n; f[c[0]] += n;

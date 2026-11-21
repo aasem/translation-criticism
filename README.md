@@ -30,6 +30,8 @@ Write a token in braces and the page fills in the current figure, so the prose a
 | `{per100}` | deviations per 100 source words |
 | `{words}`, `{segments}` | source words, segments |
 | `{penalty}`, `{pp100}`, `{score}`, `{band}` | weighted penalty (Minor 1, Major 5, Critical 25), per 100 words, quality score, grade band |
+| `{clean}`, `{cleanPct}` | segments without deviation, and their percentage |
+| `{severeSegs}`, `{severePct}` | segments with at least one major or critical deviation, and their percentage |
 | `{A}`, `{B}`, `{C}` | totals for each code family |
 | `{A1}`, `{C3}`, … | total for a single code |
 

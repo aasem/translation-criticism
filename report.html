@@ -209,6 +209,7 @@ function counts() {
     </tbody></table>
     <p class="score-line">${icon('scale')}<span><strong>Weighted score.</strong> With MQM weights (Minor ${WEIGHTS.Minor}, Major ${WEIGHTS.Major}, Critical ${WEIGHTS.Critical}), the penalty is ${t.penalty} points: ${t.pp100.toFixed(1)} per 100 source words, a quality score of ${t.score.toFixed(1)} out of 100. ${
       isPublished(R) ? `This places the score in grade band <strong>${t.band[0]} · ${t.band[1]}</strong>.` : 'The score is shown for reference; a pre-publication assessment ends in an editorial decision, not a grade.'}</span></p>
+    <p class="score-line">${icon('columns')}<span><strong>Spread across segments.</strong> ${F.clean} of ${F.segments} segments (${F.cleanPct}%) carry no deviation, and ${F.severeSegs} (${F.severePct}%) carry at least one major or critical deviation. These figures describe how the deviations are distributed; they do not enter the score or the ${isPublished(R) ? 'grade' : 'decision'}, because segments vary too much in length to serve as a unit of measure.</span></p>
     ${T('profileSummary', { md: true, rows: 5 })}`;
 }
 

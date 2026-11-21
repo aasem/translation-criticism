@@ -33,6 +33,8 @@
   <h2 id="score">Weighted score</h2>
   <p>Following MQM scoring, each deviation carries penalty points by severity: <span id="weights"></span>. Every report gives the total, the penalty points per 100 source words, and a quality score out of 100:</p>
   <p class="passage" style="text-align:center">quality score = 100 × (1 − penalty points ÷ source words)</p>
+  <p>All rates and scores are per 100 <em>source</em> words. Words rather than segments, because segments vary too much in length: a five-word sentence and a hundred-and-forty-word period would otherwise count alike, which would penalise texts written in short sentences and flatter long periodic prose. Source words rather than target words, because word counts in Urdu shift with spacing habits and compound verbs, while the source is fixed.</p>
+  <p>Each report also describes how the deviations spread across segments: how many segments carry no deviation, and how many carry at least one major or critical deviation. Two translations with the same rate can differ here, one with errors bunched in a few sentences, the other with errors in nearly every sentence. These figures are descriptive and do not enter the score.</p>
   <p>The score is a summary, not the verdict. Work-level findings, such as a method that carries source syntax across wholesale, are judged alongside it.</p>
 
   <h2 id="stakes">Stakes</h2>
