@@ -43,7 +43,7 @@
 </dialog>
 
 <script type="module">
-import { CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED } from './assets/common.js';
+import { CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved } from './assets/common.js';
 const H2 = (ic, t) => `<h2>${icon(ic)}${t}</h2>`;
 
 const $ = (id) => document.getElementById(id);
@@ -225,8 +225,8 @@ function counts() {
       <tr class="total"><td>Total</td><td class="num">${t.total.Critical}</td><td class="num">${t.total.Major}</td><td class="num">${t.total.Minor}</td><td class="num">${t.n}</td></tr>
       <tr class="total"><td>Per 100 source words</td><td class="num">${t.per100(t.total.Critical)}</td><td class="num">${t.per100(t.total.Major)}</td><td class="num">${t.per100(t.total.Minor)}</td><td class="num">${t.per100(t.n)}</td></tr>
     </tbody></table>
-    <p class="score-line">${icon('scale')}<span><strong>Weighted score.</strong> With MQM weights (Minor ${WEIGHTS.Minor}, Major ${WEIGHTS.Major}, Critical ${WEIGHTS.Critical}), the penalty is ${t.penalty} points: ${t.pp100.toFixed(1)} per 100 source words, a quality score of ${t.score.toFixed(1)} out of 100. ${
-      isPublished(R) ? `This places the score in grade band <strong>${t.band[0]} · ${t.band[1]}</strong>.` : 'The score is shown for reference; a pre-publication assessment ends in an editorial decision, not a grade.'}</span></p>
+    <p class="score-line">${icon('scale')}<span><strong>Weighted score.</strong> With MQM weights (Minor ${WEIGHTS.Minor}, Major ${WEIGHTS.Major}, Critical ${WEIGHTS.Critical}), the penalty is ${t.penalty} points: ${t.pp100.toFixed(1)} per 100 source words, a quality score of <strong>${t.score.toFixed(1)}</strong>. The score is 100 minus the penalty points per 100 words, not a percentage, and is read with its band: <strong>${t.band[0]} · ${t.band[1]}</strong> (scores ${scoreRange(t.band[0])}). ${
+      isPublished(R) ? 'The grade starts from this band.' : `For a draft, this band points to ${anchorText(t.band[0]).toLowerCase() === 'a rejection' ? 'a rejection' : `<em>${anchorText(t.band[0])}</em>`} as the default decision.`} Work-level findings, which the score does not count, may move the outcome; the basis says why.</span></p>
     <p class="score-line">${icon('columns')}<span><strong>Spread across segments.</strong> ${F.clean} of ${F.segments} segments (${F.cleanPct}%) carry no deviation, and ${F.severeSegs} (${F.severePct}%) carry at least one major or critical deviation. These figures describe how the deviations are distributed; they do not enter the score or the ${isPublished(R) ? 'grade' : 'decision'}, because segments vary too much in length to serve as a unit of measure.</span></p>
     ${T('profileSummary', { md: true, rows: 5 })}`;
 }
@@ -245,10 +245,12 @@ function findings() {
 
 function decision() {
   return `${H2('gavel', 'Editorial decision')}
-    <table><thead><tr><th>Decision</th><th>Meaning</th></tr></thead><tbody>
+    <table><thead><tr><th>Decision</th><th class="num">Default for band</th><th>Meaning</th></tr></thead><tbody>
     ${DECISIONS.map(([d, m]) => { const on = d === R.decision ? decisionClass(d) : '';
-      return `<tr><td class="${on}">${on ? `<strong>${d}</strong>` : d}</td><td class="${on}">${m}</td></tr>`; }).join('')}
+      const bands = Object.keys(DECISION_ANCHOR).filter((b) => DECISION_ANCHOR[b].includes(d)).join('–');
+      return `<tr><td class="${on}">${on ? `<strong>${d}</strong>` : d}</td><td class="num ${on}">${bands}</td><td class="${on}">${m}</td></tr>`; }).join('')}
     </tbody></table>
+    <p class="hint">Score band: ${tally(R).band[0]} (quality score ${tally(R).score.toFixed(1)}), which points to ${anchorText(tally(R).band[0]) === 'a rejection' ? 'a rejection' : anchorText(tally(R).band[0])} by default.${outcomeMoved(R, tally(R)) ? ' The decision is moved from the band by the work-level findings; the basis below gives the reason.' : ''}</p>
     <p class="decision-line">${icon('gavel')}<strong>Decision: ${editing ? S('decision', DECISIONS.map((d) => d[0])) : esc(R.decision) + '.'}</strong></p>
     ${editing ? `<p><strong>Basis.</strong></p>${T('decisionBasis', { md: true })}<p><strong>Note for the publisher.</strong></p>${T('publisherNote', { md: true })}`
       : `<p><strong>Basis.</strong> ${md(fill(R.decisionBasis, F)).replace(/^<p>|<\/p>$/g, '')}</p><p><strong>Note for the publisher.</strong> ${md(fill(R.publisherNote, F)).replace(/^<p>|<\/p>$/g, '')}</p>`}
@@ -261,13 +263,13 @@ function grade() {
   const cur = R.grade || band;
   const moved = cur !== band;
   return `${H2('scale', 'Grade')}
-    <table><thead><tr><th>Grade</th><th class="num">Penalty points per 100 words</th><th>Meaning</th></tr></thead><tbody>
+    <table><thead><tr><th>Grade</th><th class="num">Penalty points per 100 words</th><th class="num">Quality score</th><th>Meaning</th></tr></thead><tbody>
     ${GRADES.map(([g, name, max, m], i) => { const on = g === cur ? gradeClass(g) : '';
       const lo = i ? GRADES[i - 1][2] : 0; const range = max === Infinity ? `over ${lo}` : i ? `${lo}–${max}` : `up to ${max}`;
-      return `<tr><td class="${on}">${on ? `<strong>${g} · ${name}</strong>` : `${g} · ${name}`}</td><td class="num ${on}">${range}</td><td class="${on}">${m}</td></tr>`; }).join('')}
+      return `<tr><td class="${on}">${on ? `<strong>${g} · ${name}</strong>` : `${g} · ${name}`}</td><td class="num ${on}">${range}</td><td class="num ${on}">${scoreRange(g)}</td><td class="${on}">${m}</td></tr>`; }).join('')}
     </tbody></table>
     <p class="decision-line">${icon('scale')}<strong>Grade: ${editing ? S('grade', GRADES.map((g) => g[0])) : esc(gradeName(cur)) + '.'}</strong></p>
-    <p class="hint">Score band: ${band} (${t.pp100.toFixed(1)} penalty points per 100 words).${moved ? ` The grade is moved from the band; the basis below gives the reason.` : ''}</p>
+    <p class="hint">Score band: ${band} (quality score ${t.score.toFixed(1)}; ${t.pp100.toFixed(1)} penalty points per 100 words).${moved ? ` The grade is moved from the band; the basis below gives the reason.` : ''}</p>
     ${editing ? `<p><strong>Basis.</strong></p>${T('gradeBasis', { md: true })}<p><strong>Note for readers.</strong></p>${T('readerNote', { md: true })}`
       : `<p><strong>Basis.</strong> ${md(fill(R.gradeBasis, F)).replace(/^<p>|<\/p>$/g, '')}</p><p><strong>Note for readers.</strong> ${md(fill(R.readerNote, F)).replace(/^<p>|<\/p>$/g, '')}</p>`}
     <p class="ack">${ACK_PUBLISHED}</p>`;

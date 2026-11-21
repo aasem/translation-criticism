@@ -47,6 +47,24 @@ export const GRADES = [
   ['E', 'Unreliable', Infinity, 'Cannot be relied on to represent the work.'],
 ];
 export const bandFor = (pp100) => GRADES.find((g) => pp100 <= g[2]) || GRADES[GRADES.length - 1];
+// The quality score is 100 minus penalty points per 100 words, so each band has a score range too.
+export const scoreRange = (letter) => {
+  const i = GRADES.findIndex((g) => g[0] === letter); if (i < 0) return '';
+  const hi = i ? 100 - GRADES[i - 1][2] : 100, lo = GRADES[i][2] === Infinity ? null : 100 - GRADES[i][2];
+  return lo === null ? `below ${hi}` : i ? `${lo}–${hi}` : `${lo} and above`;
+};
+
+// Default editorial decision for each score band. Work-level findings may move a draft off it.
+export const DECISION_ANCHOR = {
+  A: ['Accept'], B: ['Accept with minor revisions'], C: ['Major revisions'],
+  D: ['Reject and resubmit', 'Reject'], E: ['Reject and resubmit', 'Reject'],
+};
+export const anchorText = (letter) => (DECISION_ANCHOR[letter] || []).length > 1 ? 'a rejection' : (DECISION_ANCHOR[letter] || [''])[0];
+// True when the outcome on record differs from the one the score band points to.
+export const outcomeMoved = (r, t) => (r.stage === 'Published'
+  ? !!r.grade && r.grade !== t.band[0]
+  : !!r.decision && !(DECISION_ANCHOR[t.band[0]] || []).includes(r.decision));
+
 export const gradeName = (letter) => { const g = GRADES.find((x) => x[0] === letter); return g ? `${g[0]} · ${g[1]}` : ''; };
 export const gradeClass = (letter) => ({ A: 'sev-none', B: 'sev-none', C: 'sev-minor', D: 'sev-major', E: 'sev-critical' }[letter] || '');
 

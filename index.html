@@ -57,7 +57,7 @@ for (const a of document.querySelectorAll('a.mail')) {
 }
 </script>
 <script type="module">
-import { loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon, isPublished, GRADES, gradeName, gradeClass } from './assets/common.js';
+import { loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon, isPublished, GRADES, gradeName, gradeClass, scoreRange, outcomeMoved } from './assets/common.js';
 
 const $ = (id) => document.getElementById(id);
 let reports = [];
@@ -112,7 +112,11 @@ function render() {
         <span class="rc-arrow">${icon('arrow')}</span>
         <span class="badge person tr"><small>${esc(r.submission?.language || '')}</small>${esc(r.submission?.translator || 'Unnamed translator')}</span>
       </div>
-      <div class="rc-verdict ${tone}">${isPublished(r) ? `${icon('scale')}Grade ${esc(gradeName(r.grade))}` : `${icon('gavel')}${esc(r.decision)}`}</div>
+      <div class="rc-verdict ${tone}">
+        <span class="rc-outcome"><span class="rc-outcome-label">${isPublished(r) ? `${icon('scale')}Grade ${esc(gradeName(r.grade))}` : `${icon('gavel')}${esc(r.decision)}`}</span>${
+          outcomeMoved(r, t) ? `<small>Set by work-level findings, not the score band</small>` : ''}</span>
+        <span class="rc-score ${gradeClass(t.band[0])}" title="MQM quality score: 100 minus ${t.pp100.toFixed(1)} penalty points per 100 source words. Band ${t.band[0]} covers scores ${scoreRange(t.band[0])}."><b>${t.score.toFixed(1)}</b><i>${t.band[0]}</i><span>quality score · band</span></span>
+      </div>
       <div class="rc-metrics">
         <div><b>${t.n}</b><span>deviations</span></div>
         <div><b>${t.per100(t.n)}</b><span>per 100 words</span></div>

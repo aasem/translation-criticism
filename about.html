@@ -35,14 +35,19 @@
   <p class="passage" style="text-align:center">quality score = 100 × (1 − penalty points ÷ source words)</p>
   <p>All rates and scores are per 100 <em>source</em> words. Words rather than segments, because segments vary too much in length: a five-word sentence and a hundred-and-forty-word period would otherwise count alike, which would penalise texts written in short sentences and flatter long periodic prose. Source words rather than target words, because word counts in Urdu shift with spacing habits and compound verbs, while the source is fixed.</p>
   <p>Each report also describes how the deviations spread across segments: how many segments carry no deviation, and how many carry at least one major or critical deviation. Two translations with the same rate can differ here, one with errors bunched in a few sentences, the other with errors in nearly every sentence. These figures are descriptive and do not enter the score.</p>
-  <p>The score is a summary, not the verdict. Work-level findings, such as a method that carries source syntax across wholesale, are judged alongside it.</p>
+  <p><strong>Reading the score.</strong> The formula comes to 100 minus the penalty points per 100 source words. It is not a percentage of sentences or words got right, and it should not be read like a school mark: one major deviation every hundred words already costs five points. Professional MQM practice usually sets its pass mark somewhere around 95 to 99. This site therefore always gives the score with its band (A to E, below), so that a score of 86 reads as what it is, band D · Deficient.</p>
+  <p>The score is a summary, not the verdict. It counts segment-level deviations only. Work-level findings, such as a method that carries source syntax across wholesale, are not in the count; they are judged alongside it and can move the outcome away from the band.</p>
 
   <h2 id="stakes">Stakes</h2>
   <p>Each report is set at Standard, Literary or Canonical stakes. <em>Standard</em> suits functional and scientific prose, <em>Literary</em> suits literary work where style matters, and <em>Canonical</em> suits a classic, or a translation likely to be the defining one in its language for a generation. Stakes do not change the severity of single deviations. They set how work-level findings are graded and how high the bar is for the outcome.</p>
 
   <h2 id="decision">Editorial decision (pre-publication)</h2>
   <div id="scale"></div>
-  <p>At Literary and Canonical stakes, a critical work-level finding rules out the first three steps. The choice between the two rejections rests on the evidence about the translator's competence.</p>
+  <ul>
+    <li>The decision starts from the default for the score band (the same bands as for grades, below): A points to Accept, B to Accept with minor revisions, C to Major revisions, and D or E to one of the two rejections.</li>
+    <li>Work-level findings may move the decision from that default, and the report says why. At Literary and Canonical stakes, a critical work-level finding rules out the first three steps, however good the score.</li>
+    <li>The choice between the two rejections rests on the evidence about the translator's competence.</li>
+  </ul>
 
   <h2 id="grade">Grade (published translations)</h2>
   <div id="grades"></div>
@@ -62,15 +67,15 @@
 <footer class="site"><div class="wrap">© 2026 <a href="https://mechanomorph.substack.com" rel="noopener">Asim Bakhshi · Mechanomorph</a></div></footer>
 
 <script type="module">
-import { CODES, DECISIONS, GRADES, WEIGHTS } from './assets/common.js';
+import { CODES, DECISIONS, GRADES, WEIGHTS, scoreRange, DECISION_ANCHOR } from './assets/common.js';
 document.getElementById('codes-table').innerHTML = `<table><thead><tr><th>Code</th><th>Name</th><th>Test</th></tr></thead><tbody>${
   Object.entries(CODES).map(([c, [n, t]]) => `<tr><td class="fam-${c[0]}"><strong>${c}</strong></td><td>${n}</td><td>${t}</td></tr>`).join('')}</tbody></table>`;
 document.getElementById('weights').textContent = `Minor ${WEIGHTS.Minor}, Major ${WEIGHTS.Major}, Critical ${WEIGHTS.Critical}`;
-document.getElementById('scale').innerHTML = `<table><thead><tr><th>Decision</th><th>Meaning</th></tr></thead><tbody>${
-  DECISIONS.map(([d, m]) => `<tr><td>${d}</td><td>${m}</td></tr>`).join('')}</tbody></table>`;
-document.getElementById('grades').innerHTML = `<table><thead><tr><th>Grade</th><th class="num">Penalty points per 100 words</th><th>Meaning</th></tr></thead><tbody>${
+document.getElementById('scale').innerHTML = `<table><thead><tr><th>Decision</th><th class="num">Default for band</th><th>Meaning</th></tr></thead><tbody>${
+  DECISIONS.map(([d, m]) => `<tr><td>${d}</td><td class="num">${Object.keys(DECISION_ANCHOR).filter((b) => DECISION_ANCHOR[b].includes(d)).join('–')}</td><td>${m}</td></tr>`).join('')}</tbody></table>`;
+document.getElementById('grades').innerHTML = `<table><thead><tr><th>Grade</th><th class="num">Penalty points per 100 words</th><th class="num">Quality score</th><th>Meaning</th></tr></thead><tbody>${
   GRADES.map(([g, n, max, m], i) => { const lo = i ? GRADES[i - 1][2] : 0;
-    return `<tr><td><strong>${g}</strong> · ${n}</td><td class="num">${max === Infinity ? 'over ' + lo : i ? lo + '–' + max : 'up to ' + max}</td><td>${m}</td></tr>`; }).join('')}</tbody></table>`;
+    return `<tr><td><strong>${g}</strong> · ${n}</td><td class="num">${max === Infinity ? 'over ' + lo : i ? lo + '–' + max : 'up to ' + max}</td><td class="num">${scoreRange(g)}</td><td>${m}</td></tr>`; }).join('')}</tbody></table>`;
 </script>
 </body>
 </html>

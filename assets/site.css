@@ -295,3 +295,17 @@ h2.list-head { margin-top: 1.6em; }
 .ref-passage { border-left: 4px solid #4c7a4f; }
 .rc-foot .has-ref { color: #23642a; font-weight: 600; }
 .ref-missing + .lead, .ref-passage + .lead, .passage + .lead { margin-top: 28px; }
+
+/* score + band beside the outcome on cards */
+.rc-verdict { justify-content: space-between; gap: 12px; }
+.rc-outcome { display: flex; flex-direction: column; }
+.rc-outcome-label { display: inline-flex; align-items: center; }
+.rc-outcome small { font: 500 11.5px var(--sans); color: #5a5148; margin-top: 3px; }
+.rc-score { display: grid; grid-template-columns: auto auto; justify-content: end; align-items: center; column-gap: 7px; text-align: right; flex-shrink: 0; }
+.rc-score i { justify-self: start; }
+.rc-score b { font: 800 22px/1 var(--sans); }
+.rc-score i { font: 800 13px/1 var(--sans); font-style: normal; padding: 3px 7px; border-radius: 5px; border: 1.5px solid currentColor; }
+.rc-score > span { grid-column: 1 / -1; font: 500 10px var(--sans); text-transform: uppercase; letter-spacing: .06em; color: #6b6259; margin-top: 4px; }
+.rc-score.sev-critical { color: #8f1f1f; } .rc-score.sev-major { color: #8a3d12; }
+.rc-score.sev-minor { color: #7a5a06; } .rc-score.sev-none { color: #23642a; }
+.rc-verdict .rc-score { background: #fff; padding: 6px 10px; border-radius: 6px; border: 1px solid rgba(0,0,0,.08); }
