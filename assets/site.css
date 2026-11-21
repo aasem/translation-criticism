@@ -115,3 +115,8 @@ dialog pre { max-height: 50vh; overflow: auto; font-size: 12px; background: var(
   .sbs thead, .sbs colgroup { display: none; }
   .sbs tr { border-bottom: 2px solid var(--rule); }
 }
+
+footer.site { border-top: 1px solid var(--rule); font: 13.5px var(--sans); color: var(--muted); text-align: center; }
+footer.site .wrap { padding-top: 20px; padding-bottom: 28px; }
+footer.site a { color: var(--muted); }
+@media print { footer.site { border: 0; } }

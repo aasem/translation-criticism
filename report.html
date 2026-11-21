@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Report · Translation Criticism</title>
+<title>Report · Editorial Assessments</title>
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 <header class="site"><div class="wrap">
-  <a class="brand" href="./">Translation <span>Criticism</span></a>
+  <a class="brand" href="./">Editorial <span>Assessments</span></a>
   <nav><a href="./">All reports</a><a href="about.html">Method</a></nav>
 </div></header>
 
@@ -23,6 +23,8 @@
 </div></div>
 
 <main id="root" class="wrap"><p class="empty">Loading…</p></main>
+
+<footer class="site"><div class="wrap">© 2026 <a href="https://mechanomorph.substack.com" rel="noopener">Asim Bakhshi · Mechanomorph</a></div></footer>
 
 <dialog id="commit-dlg">
   <form method="dialog">
@@ -210,7 +212,7 @@ function decision() {
 
 function render() {
   const y = scrollY;
-  document.title = `${R.title} · Translation Criticism`;
+  document.title = `${R.title} · Editorial Assessments`;
   $('root').className = 'wrap' + (editing ? ' editing' : '');
   $('root').innerHTML = [
     header(), passages(),

@@ -1,6 +1,6 @@
-# Translation Criticism
+# Editorial Assessments of Literary Translation
 
-Reader's reports on literary translations into Urdu. Each report is a JSON file in `reports/`. The site renders them as a searchable index (`index.html`) and as full reports (`report.html?id=<id>`). Urdu is set in Noto Nastaliq Urdu.
+Editorial assessment reports on literary translations into Urdu, for interested readers and publishers. Each report is a JSON file in `reports/`. The site renders them as a searchable index (`index.html`) and as full reports (`report.html?id=<id>`). Urdu is set in Noto Nastaliq Urdu.
 
 ## Publishing
 
