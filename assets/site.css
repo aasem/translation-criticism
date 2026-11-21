@@ -187,3 +187,7 @@ footer.site a { text-decoration: none; border-bottom: 1px solid var(--rule); }
 footer.site a:hover { color: var(--accent); border-color: var(--accent); }
 [hidden] { display: none !important; }
 header.site .brand .logo { color: #fbf3e8; }
+
+header.site .brand-wrap { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+header.site .byname { font: italic 15px var(--serif); color: var(--muted); text-decoration: none; }
+header.site .byname:hover { color: var(--accent); }
