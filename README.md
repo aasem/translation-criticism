@@ -66,6 +66,12 @@ A **pre-publication** report assesses a draft for a publisher and ends in an edi
 
 Deviation codes A1–A6, B1–B3 and C1–C3 are defined in `assets/common.js` and explained on the Method page.
 
+## Urdu interface
+
+Every page has an English / اردو switch in the header. The choice is remembered in the browser, and `?lang=ur` or `?lang=en` in an address sets it too. The interface strings (headings, labels, the Method page, scoring sentences, codes, decisions and grades) are in `assets/strings.js` as `[English, Urdu]` pairs; edit the Urdu there. In the pages, elements marked `data-i18n="key"` take their Urdu from that file, and `{name}` in a string is filled in by the site.
+
+A report's own prose (lead, tendencies, findings, basis and notes) is shown as written in its JSON, in either interface language.
+
 ## Licence
 
 © 2026 Asim Bakhshi. The reports and the site's writing are licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/): they may be quoted and shared unchanged, for non-commercial purposes, with attribution. The code and design are not licensed for reuse: you may read them, but not copy them or publish a site built from them without permission. Quoted source texts and translations remain the copyright of their authors, translators and publishers. See [LICENSE](LICENSE) for the full terms.

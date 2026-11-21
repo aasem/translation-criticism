@@ -1,5 +1,6 @@
 // Shared helpers for the translation-criticism site.
 // Reports live as JSON in /reports; this file renders them.
+import { t, UR } from './i18n.js';
 
 export const CODES = {
   A1: ['Mistranslation', "The sense differs from the source's (a word's meaning, a changed subject or referent)"],
@@ -16,6 +17,7 @@ export const CODES = {
   C3: ['Imagery', 'A metaphor, simile or image altered or weakened'],
   C4: ['Interference', 'Source syntax, punctuation or calques showing through (reported as a pattern under Stylistic tendencies)'],
 };
+if (UR) for (const c in CODES) CODES[c] = [t(`code.${c}`), t(`code.${c}.t`)];
 
 export const SEVERITIES = ['Critical', 'Major', 'Minor'];
 
@@ -26,9 +28,12 @@ export const DECISIONS = [
   ['Reject and resubmit', "The draft can't be revised into shape because the problem is its method, not its slips. A fresh translation could succeed, and the same translator is welcome to resubmit one."],
   ['Reject', 'A new translation is needed, and the evidence points to a different translator.'],
 ];
+// The first item is the value stored in reports; only the meaning is shown translated here.
+// Use label('decision', d) from i18n.js to show a decision's name.
+if (UR) for (const d of DECISIONS) d[1] = t(`decision.${d[0]}.m`);
 
-export const ACK = 'Any translation can be reworked. This decision concerns the submitted draft, not the possibility of a good translation of this work.';
-export const ACK_PUBLISHED = 'Any translation can be reworked. This grade concerns the published translation as sampled here, not the possibility of a good translation of this work.';
+export const ACK = UR ? t('ack.draft') : 'Any translation can be reworked. This decision concerns the submitted draft, not the possibility of a good translation of this work.';
+export const ACK_PUBLISHED = UR ? t('ack.published') : 'Any translation can be reworked. This grade concerns the published translation as sampled here, not the possibility of a good translation of this work.';
 
 // Two kinds of assessment: a draft before publication (editorial decision for a publisher)
 // and a translation already in print (grade for readers).
@@ -46,12 +51,13 @@ export const GRADES = [
   ['D', 'Deficient', 20, 'Frequent or serious deviations. Readers receive a distorted version of the work.'],
   ['E', 'Unreliable', Infinity, 'Cannot be relied on to represent the work.'],
 ];
+if (UR) for (const g of GRADES) { g[1] = t(`grade.${g[0]}`); g[3] = t(`grade.${g[0]}.m`); }
 export const bandFor = (pp100) => GRADES.find((g) => pp100 <= g[2]) || GRADES[GRADES.length - 1];
 // The quality score is 100 minus penalty points per 100 words, so each band has a score range too.
 export const scoreRange = (letter) => {
   const i = GRADES.findIndex((g) => g[0] === letter); if (i < 0) return '';
   const hi = i ? 100 - GRADES[i - 1][2] : 100, lo = GRADES[i][2] === Infinity ? null : 100 - GRADES[i][2];
-  return lo === null ? `below ${hi}` : i ? `${lo}–${hi}` : `${lo} and above`;
+  return lo === null ? t('grade.below', { max: hi }) : i ? `${lo}–${hi}` : t('grade.andAbove', { min: lo });
 };
 
 // Targets for reading a score: acceptable is band B (95+), ideal is band A (98+).
