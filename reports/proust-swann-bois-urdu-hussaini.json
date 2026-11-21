@@ -129,7 +129,7 @@
           "note": "With \"branches\" gone, یہ in جس کا یہ چوکھٹا can be read as the leaves rather than the trees."
         }
       ],
-      "keeps": "چوکھٹا keeps the frame image."
+      "keeps": ""
     },
     {
       "n": 4,
@@ -145,6 +145,11 @@
           "code": "A3",
           "severity": "Minor",
           "note": "وضع داری باقی نہیں رہی says elegance is gone; the source says the *standard* of elegance is gone."
+        },
+        {
+          "code": "A1",
+          "severity": "Major",
+          "note": "Horrible is a quite softer exclamation than وحشت ناک and no one can exclaim وحشت ناک in Urdu. "
         }
       ],
       "keeps": ""
@@ -228,7 +233,7 @@
           "note": "بند کھڑکی is singular; the source has \"closed windows\"."
         }
       ],
-      "keeps": "The long comparison (وہی دلکشی … جو … پھولوں کو حاصل تھی) is held together across the whole sentence."
+      "keeps": ""
     },
     {
       "n": 7,
