@@ -348,7 +348,7 @@ footer.site .social svg { width: 18px; height: 18px; }
 
 /* ---------- Urdu interface (right to left) ---------- */
 html.lang-ur { --serif: 'Source Serif 4', 'Noto Nastaliq Urdu', Georgia, serif; --sans: Inter, 'Noto Nastaliq Urdu', system-ui, sans-serif; }
-html.lang-ur body { line-height: 2.15; }
+html.lang-ur body { font-size: 19px; line-height: 2.15; }
 html.lang-ur h1, html.lang-ur h2, html.lang-ur .headline { line-height: 1.9; letter-spacing: 0; }
 html.lang-ur .headline span:not(.h1a), html.lang-ur .subtitle, html.lang-ur .ack, html.lang-ur .keeps, html.lang-ur .empty { font-style: normal; }
 html.lang-ur h3, html.lang-ur .eyebrow, html.lang-ur header.site .brand, html.lang-ur .card-author { text-transform: none; letter-spacing: 0; }
@@ -360,3 +360,50 @@ html[dir="rtl"] .rc-go .ico, html[dir="rtl"] .rc-arrow .ico { transform: scaleX(
 html.lang-ur .subtitle { max-width: none; }
 html.lang-ur :dir(ltr) { line-height: 1.6; }
 html.lang-ur .passage:dir(ltr) { line-height: 1.75; }
+
+/* Noto Nastaliq has no italic: never let the browser slant it. English keeps its real italics. */
+html.lang-ur, .ur, [lang="ur"], .ur-block, .sbs td.sub { font-synthesis: weight; }
+html.lang-ur .rc-score .tip, html.lang-ur .rc-score .tip b, html.lang-ur .rc-score .tip i, html.lang-ur .rc-score .tip em { line-height: 2; }
+html.lang-ur .rc-score .tip { width: 360px; }
+/* Urdu interface: text sizes scaled up for Nastaliq (generated from the sizes above). */
+html.lang-ur header.site .brand { font-size: 18px; }
+html.lang-ur header.site nav { font-size: 17px; }
+html.lang-ur .byline { font-size: 17px; }
+html.lang-ur .chip { font-size: 15px; }
+html.lang-ur th { font-size: 15.5px; }
+html.lang-ur .dev-tag { font-size: 14.5px; }
+html.lang-ur /* Index */
+.search { font-size: 20.5px; }
+html.lang-ur .filters { font-size: 17px; }
+html.lang-ur .dec { font-size: 15px; }
+html.lang-ur .toolbar .wrap { font-size: 17px; }
+html.lang-ur button, html.lang-ur .btn { font-size: 16px; }
+html.lang-ur button.small { font-size: 14.5px; }
+html.lang-ur .hint { font-size: 15px; }
+html.lang-ur footer.site { font-size: 16px; }
+html.lang-ur header.site .brand { font-size: 17.5px; }
+html.lang-ur .eyebrow { font-size: 14.5px; }
+html.lang-ur .card-author { font-size: 14.5px; }
+html.lang-ur .card .byline { font-size: 16px; }
+html.lang-ur header.site .byname { font-size: 18px; }
+html.lang-ur .reports-panel .search { font-size: 18px; }
+html.lang-ur .reports-panel .filters select { font-size: 15.5px; }
+html.lang-ur .reports-panel .card .byline { font-size: 15px; }
+html.lang-ur .reports-panel .chip, html.lang-ur .reports-panel .dec { font-size: 14px; }
+html.lang-ur .badge { font-size: 15px; }
+html.lang-ur .badge.person small { font-size: 12px; }
+html.lang-ur .rc-verdict { font-size: 17px; }
+html.lang-ur .rc-metrics span { font-size: 12.5px; }
+html.lang-ur .rc-foot { font-size: 15.5px; }
+html.lang-ur .rc-foot .tag { font-size: 14px; }
+html.lang-ur .rc-outcome small { font-size: 14px; }
+html.lang-ur .rc-score > span { font-size: 12px; }
+html.lang-ur .rc-score > span.tip { font-size: 15.5px; }
+html.lang-ur .rc-score .tip b { font-size: 15.5px; }
+html.lang-ur .rc-score .tip i { font-size: 15.5px; }
+html.lang-ur .rc-score .tip em { font-size: 15.5px; }
+/* rem-based sizes (headings, manifesto, passages, tables) scale with the root size */
+html.lang-ur { font-size: 19px; }
+html.lang-ur .headline { font-size: 2.3rem; }
+@media (max-width: 640px) { html.lang-ur .headline { font-size: 1.7rem; } }
+html.lang-ur .eyebrow { font-size: 16px; }
