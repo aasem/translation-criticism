@@ -340,7 +340,7 @@ h2.list-head { margin-top: 1.6em; }
 .rc-score .tip i { font: 400 13px/1.45 var(--sans); padding: 0; border: 0; border-radius: 0; justify-self: start; }
 .rc-score .tip em { font: 700 13px/1.45 var(--sans); }
 .rc-score .tip .tip-scale em:last-of-type, .rc-score .tip .tip-scale em:last-of-type ~ * { color: #8a3d12; }
-footer.site .social { display: flex; justify-content: center; gap: 18px; margin-bottom: 12px; }
+footer.site .social { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-bottom: 12px; }
 footer.site .social a { border: 0; display: inline-flex; color: var(--muted); }
 footer.site .social a:hover { color: var(--accent); border: 0; }
 footer.site .social svg { width: 18px; height: 18px; }
