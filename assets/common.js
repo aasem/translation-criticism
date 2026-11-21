@@ -54,6 +54,16 @@ export const scoreRange = (letter) => {
   return lo === null ? `below ${hi}` : i ? `${lo}–${hi}` : `${lo} and above`;
 };
 
+// Targets for reading a score: acceptable is band B (95+), ideal is band A (98+).
+export const TARGETS = { acceptable: 'B', ideal: 'A' };
+export function scoreGuide(t) {
+  const lvl = (letter) => { const g = GRADES.find((x) => x[0] === letter);
+    return { letter, name: g[1], score: 100 - g[2], maxPenalty: Math.floor((g[2] * t.words) / 100) }; };
+  const acc = lvl(TARGETS.acceptable), ideal = lvl(TARGETS.ideal);
+  const status = t.score >= ideal.score ? 'ideal' : t.score >= acc.score ? 'acceptable' : 'below';
+  return { acc, ideal, status, toAcc: Math.max(0, t.penalty - acc.maxPenalty), toIdeal: Math.max(0, t.penalty - ideal.maxPenalty) };
+}
+
 // Default editorial decision for each score band. Work-level findings may move a draft off it.
 export const DECISION_ANCHOR = {
   A: ['Accept'], B: ['Accept with minor revisions'], C: ['Major revisions'],

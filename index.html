@@ -57,7 +57,7 @@ for (const a of document.querySelectorAll('a.mail')) {
 }
 </script>
 <script type="module">
-import { loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon, isPublished, GRADES, gradeName, gradeClass, scoreRange, outcomeMoved } from './assets/common.js';
+import { loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon, isPublished, GRADES, gradeName, gradeClass, scoreRange, outcomeMoved, scoreGuide } from './assets/common.js';
 
 const $ = (id) => document.getElementById(id);
 let reports = [];
@@ -82,6 +82,19 @@ const isUrdu = (h) => {
   return (t.match(/[\u0600-\u06FF]/g) || []).length > (t.match(/[A-Za-z]/g) || []).length;
 };
 
+function scoreTip(t) {
+  const g = scoreGuide(t);
+  const where = g.status === 'ideal' ? 'Meets the ideal.'
+    : g.status === 'acceptable' ? `Acceptable. To reach the ideal, this sample would need at most ${g.ideal.maxPenalty} penalty points; it has ${t.penalty}.`
+    : `Below acceptable. To reach it, this ${t.words}-word sample would need at most ${g.acc.maxPenalty} penalty points; it has ${t.penalty}, so ${g.toAcc} too many (one major deviation = 5, one critical = 25).`;
+  return `<span class="tip" role="tooltip">
+    <strong>${t.score.toFixed(1)} · band ${t.band[0]} · ${t.band[1]}</strong> (scores ${scoreRange(t.band[0])})
+    <span>The score is 100 minus the penalty points per 100 source words (${t.pp100.toFixed(1)} here), with MQM weights: minor 1, major 5, critical 25. It is not a percentage.</span>
+    <span class="tip-scale"><em>Ideal</em><b>${g.ideal.score}+</b><i>band ${g.ideal.letter} · ${g.ideal.name}</i><em>Acceptable</em><b>${g.acc.score}+</b><i>band ${g.acc.letter} · ${g.acc.name}</i><em>This one</em><b>${t.score.toFixed(1)}</b><i>band ${t.band[0]} · ${t.band[1]}</i></span>
+    <span class="tip-where tip-${g.status}">${where}</span>
+  </span>`;
+}
+
 function render() {
   const q = $('q').value.trim().toLowerCase();
   const fd = $('f-decision').value, fs = $('f-stakes').value, fk = $('f-stage').value;
@@ -99,7 +112,7 @@ function render() {
     }
     const tone = isPublished(r) ? gradeClass(r.grade) : decisionClass(r.decision);
     const pub = isPublished(r) && r.publication?.publisher ? [r.publication.publisher, r.publication.year].filter(Boolean).join(', ') : '';
-    return `<a class="card rcard" href="report.html?id=${encodeURIComponent(r.id)}">
+    return `<a class="card rcard band-${t.band[0]}" href="report.html?id=${encodeURIComponent(r.id)}">
       <div class="rc-top">
         <span class="badge author">${icon('feather')}${esc(r.author)}</span>
         <span class="badge kind">${icon(isPublished(r) ? 'book' : 'doc')}${esc(r.stage || 'Pre-publication')}</span>
@@ -115,7 +128,7 @@ function render() {
       <div class="rc-verdict ${tone}">
         <span class="rc-outcome"><span class="rc-outcome-label">${isPublished(r) ? `${icon('scale')}Grade ${esc(gradeName(r.grade))}` : `${icon('gavel')}${esc(r.decision)}`}</span>${
           outcomeMoved(r, t) ? `<small>Set by work-level findings, not the score band</small>` : ''}</span>
-        <span class="rc-score ${gradeClass(t.band[0])}" title="MQM quality score: 100 minus ${t.pp100.toFixed(1)} penalty points per 100 source words. Band ${t.band[0]} covers scores ${scoreRange(t.band[0])}."><b>${t.score.toFixed(1)}</b><i>${t.band[0]}</i><span>quality score · band</span></span>
+        <span class="rc-score ${gradeClass(t.band[0])}" tabindex="0"><b>${t.score.toFixed(1)}</b><i>${t.band[0]}</i><span>quality score · band</span>${scoreTip(t)}</span>
       </div>
       <div class="rc-metrics">
         <div><b>${t.n}</b><span>deviations</span></div>

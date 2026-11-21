@@ -309,3 +309,34 @@ h2.list-head { margin-top: 1.6em; }
 .rc-score.sev-critical { color: #8f1f1f; } .rc-score.sev-major { color: #8a3d12; }
 .rc-score.sev-minor { color: #7a5a06; } .rc-score.sev-none { color: #23642a; }
 .rc-verdict .rc-score { background: #fff; padding: 6px 10px; border-radius: 6px; border: 1px solid rgba(0,0,0,.08); }
+
+/* band colour down the card's left edge */
+.rcard { border-left-width: 6px; }
+.rcard.band-A, .rcard.band-B { border-left-color: #3f9a48; }
+.rcard.band-C { border-left-color: #d4a72c; }
+.rcard.band-D { border-left-color: #d9732f; }
+.rcard.band-E { border-left-color: #c23b3b; }
+.rcard:hover { border-left-width: 6px; }
+
+/* score tooltip */
+.rc-score { position: relative; cursor: help; }
+.rc-score > span.tip { display: none; position: absolute; z-index: 20; right: 0; top: calc(100% + 8px); width: 310px; max-width: 80vw;
+  grid-column: auto; margin: 0; text-align: left; text-transform: none; letter-spacing: 0;
+  font: 400 13px/1.45 var(--sans); color: #2b2622; background: #fff; border: 1px solid #d9d2c6; border-radius: 8px;
+  padding: 12px 14px; box-shadow: 0 10px 30px rgba(40,30,20,.16); }
+.rc-score:hover > span.tip, .rc-score:focus > span.tip, .rc-score:focus-within > span.tip { display: block; }
+.tip > span { display: block; margin-top: 6px; }
+.tip strong { font-weight: 700; }
+.tip-scale { padding: 6px 8px; background: #f6f1ea; border-radius: 6px; }
+.tip-scale em { font-style: normal; font-weight: 700; margin-right: 3px; }
+.tip > span.tip-scale { display: grid; grid-template-columns: auto auto 1fr; column-gap: 8px; row-gap: 2px; align-items: baseline; }
+.tip-scale b { font-weight: 700; text-align: right; }
+.tip-scale em:last-of-type, .tip-scale em:last-of-type + b { color: #8a3d12; }
+.tip-where { font-weight: 600; }
+.tip-below { color: #8f1f1f; } .tip-acceptable { color: #7a5a06; } .tip-ideal { color: #23642a; }
+.tip-scale i { font-style: normal; color: #5a5148; }
+.tip .tip-scale em:last-of-type ~ i { color: #8a3d12; }
+.rc-score .tip b { font: 700 13px/1.45 var(--sans); }
+.rc-score .tip i { font: 400 13px/1.45 var(--sans); padding: 0; border: 0; border-radius: 0; justify-self: start; }
+.rc-score .tip em { font: 700 13px/1.45 var(--sans); }
+.rc-score .tip .tip-scale em:last-of-type, .rc-score .tip .tip-scale em:last-of-type ~ * { color: #8a3d12; }

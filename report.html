@@ -43,7 +43,7 @@
 </dialog>
 
 <script type="module">
-import { CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved } from './assets/common.js';
+import { CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide } from './assets/common.js';
 const H2 = (ic, t) => `<h2>${icon(ic)}${t}</h2>`;
 
 const $ = (id) => document.getElementById(id);
@@ -226,7 +226,7 @@ function counts() {
       <tr class="total"><td>Per 100 source words</td><td class="num">${t.per100(t.total.Critical)}</td><td class="num">${t.per100(t.total.Major)}</td><td class="num">${t.per100(t.total.Minor)}</td><td class="num">${t.per100(t.n)}</td></tr>
     </tbody></table>
     <p class="score-line">${icon('scale')}<span><strong>Weighted score.</strong> With MQM weights (Minor ${WEIGHTS.Minor}, Major ${WEIGHTS.Major}, Critical ${WEIGHTS.Critical}), the penalty is ${t.penalty} points: ${t.pp100.toFixed(1)} per 100 source words, a quality score of <strong>${t.score.toFixed(1)}</strong>. The score is 100 minus the penalty points per 100 words, not a percentage, and is read with its band: <strong>${t.band[0]} · ${t.band[1]}</strong> (scores ${scoreRange(t.band[0])}). ${
-      isPublished(R) ? 'The grade starts from this band.' : `For a draft, this band points to ${anchorText(t.band[0]).toLowerCase() === 'a rejection' ? 'a rejection' : `<em>${anchorText(t.band[0])}</em>`} as the default decision.`} Work-level findings, which the score does not count, may move the outcome; the basis says why.</span></p>
+      isPublished(R) ? 'The grade starts from this band.' : `For a draft, this band points to ${anchorText(t.band[0]).toLowerCase() === 'a rejection' ? 'a rejection' : `<em>${anchorText(t.band[0])}</em>`} as the default decision.`} Work-level findings, which the score does not count, may move the outcome; the basis says why. ${(() => { const g = scoreGuide(t); return `For reference, an <em>acceptable</em> translation scores ${g.acc.score} or above (band ${g.acc.letter} · ${g.acc.name}) and an <em>ideal</em> one ${g.ideal.score} or above (band ${g.ideal.letter} · ${g.ideal.name}). ${g.status === 'ideal' ? 'This one meets the ideal.' : g.status === 'acceptable' ? `This one is acceptable; the ideal would allow at most ${g.ideal.maxPenalty} penalty points in this ${t.words}-word sample, against ${t.penalty}.` : `To be acceptable, this ${t.words}-word sample could carry at most ${g.acc.maxPenalty} penalty points; it carries ${t.penalty}.`}`; })()}</span></p>
     <p class="score-line">${icon('columns')}<span><strong>Spread across segments.</strong> ${F.clean} of ${F.segments} segments (${F.cleanPct}%) carry no deviation, and ${F.severeSegs} (${F.severePct}%) carry at least one major or critical deviation. These figures describe how the deviations are distributed; they do not enter the score or the ${isPublished(R) ? 'grade' : 'decision'}, because segments vary too much in length to serve as a unit of measure.</span></p>
     ${T('profileSummary', { md: true, rows: 5 })}`;
 }
