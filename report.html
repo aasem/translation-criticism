@@ -287,7 +287,14 @@ $('c-go').onclick = async (e) => {
   try {
     out.textContent = 'Committing…';
     const cur = await fetch(`${api}?ref=${BRANCH}`, { headers: h });
-    const sha = cur.ok ? (await cur.json()).sha : undefined;
+    let sha;
+    if (cur.ok) {
+      const j = await cur.json(); sha = j.sha;
+      // Refuse to overwrite a version committed by someone else (or by Claude) since this page loaded it.
+      const remote = new TextDecoder().decode(Uint8Array.from(atob(j.content.replace(/\n/g, '')), (c) => c.charCodeAt(0)));
+      if (remote !== clean(original) && JSON.stringify(JSON.parse(remote)) !== JSON.stringify(original))
+        throw new Error('the report on GitHub has changed since you opened it. Download your JSON to keep your edits, then reload the page to see the newer version.');
+    }
     const res = await fetch(api, { method: 'PUT', headers: h, body: JSON.stringify({ message: $('c-msg').value, content: b64(clean(R)), branch: BRANCH, ...(sha && { sha }) }) });
     if (!res.ok) throw new Error(`${res.status} ${(await res.json()).message || ''}`);
     original = structuredClone(R); localStorage.removeItem(DRAFT); status();
