@@ -43,9 +43,19 @@
       "submission": "\"کیسی وحشت ناک بات ہے!\" میں خود سے کہہ رہا تھا: \"کیا کوئی ان موٹر گاڑیوں کو اتنا وضع دار پا سکتا ہے جتنی کہ پرانی بگھیاں تھیں؟",
       "deviations": [
         {
-          "code": "A4",
+          "code": "A1",
+          "severity": "Major",
+          "note": "Horrible is a quite softer exclamation than وحشت ناک and no one can exclaim وحشت ناک in Urdu. "
+        },
+        {
+          "code": "A1",
           "severity": "Minor",
-          "note": "کہہ رہا تھا (\"was saying\") makes the single act \"exclaimed\" continuous."
+          "note": "کہہ رہا تھا (\"was saying\") makes the single act \"exclaimed\" continuous and it is not sensible Urdu. It could have been میں نے دل ہی دل میں کہا "
+        },
+        {
+          "code": "A1",
+          "severity": "Minor",
+          "note": "How can motor cars be وضع دار and smart should not be translated as وضع دار. "
         },
         {
           "code": "A1",
@@ -53,7 +63,7 @@
           "note": "پا سکتا ہے (\"can find\") turns \"Does anyone really imagine\", scorn for a belief, into a question of whether one is able to find the cars smart."
         }
       ],
-      "keeps": "The comparison with بگھیاں is kept intact."
+      "keeps": ""
     },
     {
       "n": 2,
