@@ -194,3 +194,13 @@ header.site .byname:hover { color: var(--accent); }
 /* wordmark: keep both words in one flex item so the gap doesn't split them */
 header.site .brand .wm { color: var(--ink); }
 header.site .brand .wm b { color: var(--accent); font-weight: inherit; }
+
+/* rich-text prose editors */
+.rich-wrap { border: 1px dashed #b9b2a5; border-radius: 6px; background: #fffef9; margin: 6px 0 10px; }
+.rich-bar { display: flex; gap: 4px; padding: 5px 6px; border-bottom: 1px solid var(--rule); background: rgba(240,239,236,.6); border-radius: 6px 6px 0 0; position: sticky; top: 52px; z-index: 2; }
+.rich-bar button { padding: 2px 9px; font-size: 13px; }
+.rich { padding: 6px 14px; min-height: 2.5em; outline: none; }
+.rich:focus { box-shadow: inset 0 0 0 2px rgba(122,46,31,.15); border-radius: 0 0 6px 6px; }
+.rich p { margin: .5em 0; }
+.rich ul { margin: .5em 0; padding-left: 1.4em; }
+.hint code { font-size: 12px; background: var(--gray); padding: 0 4px; border-radius: 3px; }

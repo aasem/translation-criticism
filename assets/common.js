@@ -124,3 +124,64 @@ export const icon = (name, cls = '') =>
 
 export const REPO = 'aasem/translation-criticism';
 export const BRANCH = 'main';
+
+// ---------- live figures in prose ----------
+// Tokens such as {total} or {A1} in any prose field are replaced with figures
+// computed from the deviations, so the prose always matches the count table.
+export const TOKENS = {
+  total: 'all deviations', critical: 'critical', major: 'major', minor: 'minor',
+  severe: 'major + critical', per100: 'deviations per 100 source words', words: 'source words',
+  segments: 'segments', A: 'accuracy (A) codes', B: 'language (B) codes', C: 'style (C) codes',
+  A1: '…and so on for any single code',
+};
+export function figures(report) {
+  const t = tally(report);
+  const f = {
+    total: t.n, critical: t.total.Critical, major: t.total.Major, minor: t.total.Minor,
+    severe: t.total.Critical + t.total.Major, per100: t.per100(t.n), words: t.words,
+    segments: (report.segments || []).length, A: 0, B: 0, C: 0,
+  };
+  for (const c of Object.keys(CODES)) {
+    const x = t.byCode[c]; const n = x ? x.Critical + x.Major + x.Minor : 0;
+    f[c] = n; f[c[0]] += n;
+  }
+  return f;
+}
+export const fill = (text, f) => String(text ?? '').replace(/\{(\w+)\}/g, (m, k) => (k in f ? String(f[k]) : m));
+
+// ---------- rich-text editing ----------
+// Converts the edited HTML back to the light markdown the reports store:
+// paragraphs, "- " bullets, **bold**, *italic*.
+export function htmlToMd(root) {
+  const inline = (node) => {
+    let out = '';
+    for (const n of node.childNodes) {
+      if (n.nodeType === 3) out += n.nodeValue.replace(/ /g, ' ').replace(/_/g, '\\_');
+      else if (n.nodeType === 1) {
+        const tag = n.tagName;
+        if (tag === 'BR') out += ' ';
+        else if (tag === 'STRONG' || tag === 'B') { const s = inline(n); out += s.trim() ? `**${s.trim()}**${/\s$/.test(s) ? ' ' : ''}` : s; }
+        else if (tag === 'EM' || tag === 'I') { const s = inline(n); out += s.trim() ? `*${s.trim()}*${/\s$/.test(s) ? ' ' : ''}` : s; }
+        else if (tag === 'UL' || tag === 'OL' || tag === 'P' || tag === 'DIV') out += ' ' + inline(n) + ' ';
+        else out += inline(n);
+      }
+    }
+    return out;
+  };
+  const tidy = (s) => s.replace(/[ \t]+/g, ' ').trim();
+  const blocks = [];
+  let loose = '';
+  const flush = () => { if (tidy(loose)) blocks.push(tidy(loose)); loose = ''; };
+  for (const n of root.childNodes) {
+    if (n.nodeType === 1 && (n.tagName === 'UL' || n.tagName === 'OL')) {
+      flush();
+      const items = [...n.children].filter((li) => li.tagName === 'LI').map((li) => tidy(inline(li))).filter(Boolean);
+      if (items.length) blocks.push(items.map((i) => '- ' + i).join('\n'));
+    } else if (n.nodeType === 1 && (n.tagName === 'P' || n.tagName === 'DIV')) {
+      flush(); const s = tidy(inline(n)); if (s) blocks.push(s);
+    } else if (n.nodeType === 1 && n.tagName === 'BR') { flush(); }
+    else loose += n.nodeType === 3 ? n.nodeValue.replace(/ /g, ' ').replace(/_/g, '\\_') : inline({ childNodes: [n] });
+  }
+  flush();
+  return blocks.join('\n\n');
+}

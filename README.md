@@ -16,7 +16,23 @@ To preview it locally, run `python3 -m http.server` in the repository folder and
    - **Commit to GitHub** writes the file straight to `main`. It needs a fine-grained personal access token for this repository with *Contents: read and write*. The token is stored only in your browser.
    - **Download JSON**, then replace the file in `reports/` and commit it yourself.
 
-You can also edit the JSON directly. Prose fields accept light markdown: `**bold**`, `*italic*`, `- ` bullet lists and blank-line paragraphs.
+Prose sections (lead, scope, profile, tendencies, translator profile, findings lead, decision basis, publisher's note) are edited as formatted text, with **B**, *I* and list buttons (or Ctrl+B and Ctrl+I). They are stored as light markdown: `**bold**`, `*italic*`, `- ` bullet lists and blank-line paragraphs. You can also edit the JSON directly.
+
+### Live figures in prose
+
+Write a token in braces and the page fills in the current figure, so the prose always matches the count table:
+
+| Token | Figure |
+| --- | --- |
+| `{total}` | all deviations |
+| `{critical}`, `{major}`, `{minor}` | deviations of that severity |
+| `{severe}` | major + critical |
+| `{per100}` | deviations per 100 source words |
+| `{words}`, `{segments}` | source words, segments |
+| `{A}`, `{B}`, `{C}` | totals for each code family |
+| `{A1}`, `{C3}`, … | total for a single code |
+
+Figures that don't come from the deviations (for example, semicolons per 100 words) are ordinary text and have to be updated by hand.
 
 ## Adding a report
 
