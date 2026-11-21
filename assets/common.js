@@ -92,7 +92,7 @@ export function esc(s) {
   return String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 }
 
-// Wrap runs of Arabic-script text so they get Noto Nastaliq Urdu and RTL direction.
+// Wrap runs of Arabic-script text so they get the Urdu font (Amiri) and RTL direction.
 const AR = '؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿';
 const RUN = new RegExp(`[${AR}](?:[${AR}\\s…،؛؟۔.,:!()"'-]*[${AR}؟۔])?`, 'g');
 export function urduWrap(html) {
