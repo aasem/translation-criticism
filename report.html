@@ -138,9 +138,27 @@ function passages() {
   const head = (k, name) => `<h3>${name} (${esc(R[k]?.language || '')})${R[k]?.label ? ' - ' + esc(R[k].label) : ''}</h3>`;
   let h = `${H2('doc', 'The passages')}`;
   h += head('source', 'Source') + `<div class="passage">${editing ? T('source.text', { rows: 10 }) : `<p>${urduWrap(esc(R.source.text))}</p>`}</div>`;
-  h += head('submission', 'Submission') + `<div class="passage ${editing ? '' : 'ur-block'}" ${editing ? '' : 'lang="ur" dir="rtl"'}>${editing ? T('submission.text', { rows: 12, ur: true }) : esc(R.submission.text)}</div>`;
-  if (R.reference?.text) h += `<h3>Reference rendering</h3><div class="passage ur-block" lang="ur" dir="rtl">${esc(R.reference.text)}</div>`;
+  h += head('submission', isPublished(R) ? 'Translation' : 'Submission') + `<div class="passage ${editing ? '' : 'ur-block'}" ${editing ? '' : 'lang="ur" dir="rtl"'}>${editing ? T('submission.text', { rows: 12, ur: true }) : esc(R.submission.text)}</div>`;
+  h += reference();
   return h;
+}
+
+// A reference translation: an acceptable rendering of the same sample, free of the deviations
+// recorded here, by the assessor or another translator. Shown for comparison only; never assessed.
+function reference() {
+  const ref = R.reference || {};
+  const by = ref.translator || ref.label;
+  const about = `<p class="hint ref-about">An acceptable rendering of the same sample, without the deviations recorded in this report, shown so readers can see what a sound translation of the passage looks like. It is not assessed and plays no part in the score or ${isPublished(R) ? 'grade' : 'decision'}.</p>`;
+  if (editing) return `<h3>Reference translation</h3>${about}
+    <table><tbody>
+      <tr><th>Language</th><td>${I('reference.language', 'Urdu')}</td><th>Translated by</th><td>${I('reference.translator', 'e.g. Asim Bakhshi')}</td></tr>
+      <tr><th>Note</th><td colspan="3">${I('reference.note', 'optional, e.g. prepared by the assessor for this report')}</td></tr>
+    </tbody></table>
+    <div class="passage">${T('reference.text', { rows: 10, ur: true })}</div>`;
+  if (!ref.text?.trim()) return `<h3>Reference translation</h3><div class="ref-missing">${icon('info')}<p><strong>Not added.</strong> No reference translation has been added for this sample yet.</p></div>`;
+  return `<h3>Reference translation (${esc(ref.language || R.submission?.language || '')})${by ? ' - ' + esc(by) : ''}</h3>${about}
+    ${ref.note ? `<p class="hint">${urduWrap(esc(ref.note))}</p>` : ''}
+    <div class="passage ur-block ref-passage" lang="ur" dir="rtl">${esc(ref.text)}</div>`;
 }
 
 function scope() {

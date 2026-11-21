@@ -29,7 +29,12 @@
     "translator": "",
     "text": ""
   },
-  "reference": null,
+  "reference": {
+    "language": "Urdu",
+    "translator": "",
+    "note": "",
+    "text": ""
+  },
   "stakes": "Literary",
   "decision": "Major revisions",
   "tags": [],

@@ -65,7 +65,7 @@ let reports = [];
 function haystack(r) {
   const segs = (r.segments || []).flatMap((s) => [s.source, s.submission, s.keeps, ...(s.deviations || []).map((d) => d.note)]);
   return [r.title, r.author, r.work, r.originalWork, r.passage, r.source?.translator, r.source?.label, r.submission?.translator,
-    r.submission?.label, r.submission?.language, r.stage, isPublished(r) ? gradeName(r.grade) : r.decision, r.stakes, ...Object.values(r.publication || {}), ...(r.tags || []), r.source?.text, r.submission?.text, ...segs]
+    r.submission?.label, r.submission?.language, r.stage, isPublished(r) ? gradeName(r.grade) : r.decision, r.stakes, ...Object.values(r.publication || {}), ...(r.tags || []), r.source?.text, r.submission?.text, r.reference?.text, r.reference?.translator, ...segs]
     .filter(Boolean).join('   ').toLowerCase();
 }
 
@@ -122,6 +122,7 @@ function render() {
       <div class="rc-foot">
         <span>${icon('calendar')}${esc(r.date)}</span>
         ${pub ? `<span>${icon('book')}${esc(pub)}</span>` : ''}
+        ${r.reference?.text?.trim() ? `<span class="has-ref">${icon('check')}Reference translation</span>` : ''}
         ${(r.tags || []).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}
       </div>
       ${ex ? (isUrdu(ex) ? `<div class="excerpt ur-block" lang="ur" dir="rtl">${ex}</div>` : `<div class="excerpt">${urduWrap(ex)}</div>`) : ''}
