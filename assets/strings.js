@@ -58,11 +58,11 @@ export const STRINGS = {
 "آئیے ناکامیوں کی وسعت کا تخمینہ لگائیں۔"
 ],
 "index.p1": [
-"Translation is seeing a hyper-influx in the Urdu literary scene. The arrival of generative AI has made this influx exponential. While machine assistance does not in itself diminish the creativity of a literary act, it usually comes with a particular kind of laziness. Translation, therefore, comes out like a transcription of a foreign voice. Most of these attempts compromise diligent reading and interpretation, and the feel for registers, images and rhythms, which need to work in two languages at once. This is not a cheap compromise, since a translation becomes part of a culture for a very long time and often takes a literary trajectory of its own.",
+"Translation is seeing a hyper-influx in the Urdu literary scene. The arrival of generative AI has made this influx exponential. Many texts are now on the market in more than one translation. While machine assistance does not in itself diminish the creativity of a literary act, it usually comes with a particular kind of laziness. Translation, therefore, comes out like a transcription of a foreign voice. Like a dish or a fragrance of which we can say that something is off somewhere, but cannot locate or point out the deviation.",
 "حالیہ کچھ سالوں میں اردو کے ادبی منظرنامے میں ترجموں کی ریل پیل دکھائی دیتی ہے۔ تخلیقی مصنوعی ذہانت کی آمد نے اس کو ایک سیلاب کی شکل دے دی ہے اور مارکیٹ میں کئی متون کے ایک سے زیادہ تراجم بھی دستیاب ہیں۔ مشینی مدد بذاتِ خود کسی ادبی عمل کی تخلیقیت کو کم نہیں کرتی مگر عموماً اپنے ساتھ ایک خاص طرح کی کاہلی اور پھیکاپن لے کر آتی ہے۔ نتیجتاً ترجمہ کسی اجنبی آواز کی بے جان نقلِ محض بن کر رہ جاتا ہے۔ کسی ایسے پکوان یا خوشبو کی طرح جس کے بارے میں ہم یہ دعویٰ تو کر سکتے ہیں کہ کہیں کچھ اپنی جگہ سے ہٹا ہوا ہے لیکن اس انحراف کا تعین اور نشاندہی نہیں کر سکتے۔"
 ],
 "index.p2": [
-"Publishers rarely have the means to judge a translation. At the same time, they have to take timely business decisions and safeguard their reputation. Common readers have no means at all. As AI-assisted translations invade the space, the challenge is three-way: to tell the careful from the merely fluent, and to tell both from the hack job.",
+"Publishers rarely have the means to judge a translation. Usually their only means is to consult a few friends. At the same time, they have to take timely business decisions and safeguard their reputation. Common readers have no means at all. As AI-assisted translations invade the space, the challenge is three-way: to tell the careful from the merely fluent, and to tell both from the hack job.",
 "ناشروں کے پاس ترجمے کو پرکھنے کے وسائل بس یہی ہوتے ہیں کہ کچھ احباب سے مشورہ کیا جائے۔ ساتھ ہی انھیں بروقت کاروباری فیصلے بھی کرنے ہوتے ہیں اور کسی برے ترجمے کی اشاعت سے اپنی ساکھ داؤ پر لگنے کا خطرہ بھی ہوتا ہے۔ عام قاری بھی اپنے مطالعے پر بھروسے کے علاوہ اور کیا کر سکتا ہے۔ مصنوعی ذہانت کی مدد سے ہونے والے غیر محتاط تراجم جوں جوں میدان پر چھا رہے ہیں یہ چیلنج سہ رخی ہو گیا ہے یعنی محتاط ترجمے کو محض رواں لیکن پھیکے ترجمے اور پھر ان دونوں کو گھٹیا بازاری تراجم سے الگ کرنا۔"
 ],
 "index.p3": [
@@ -74,7 +74,7 @@ export const STRINGS = {
 "نمونے کو جملہ بہ جملہ ٹکڑوں میں بانٹ کر ماخذ کے مقابل رکھا جاتا ہے اور پہلے مرحلے میں ممکنہ انحرافات کی نشان دہی خودکار طریقے سے ہوتی ہے۔"
 ],
 "index.step2": [
-"I then read every segment myself and record the deviations I find.",
+"I then read every segment myself and record the deviations I find. Where needed, I also consult knowledgeable friends before the deviations are finalised.",
 "پھر میں ہر ٹکڑے کو خود پرکھتا ہوں اور ضرورت پڑنے پر اہلِ علم دوستوں سے مشورہ بھی کیا جاتا ہے۔ آخر کار انحرافات کو ردوقبول سے گزار کر حتمی شکل دے دی جاتی ہے۔"
 ],
 "index.step3": [
@@ -922,7 +922,7 @@ export const STRINGS = {
 "ہر رپورٹ پورے ترجمے کا نہیں بلکہ ایک نمونے کا جائزہ لیتی ہے جو عموماً چند سو سے چند ہزار الفاظ کا اقتباس ہوتا ہے۔ نمونے کو پورے کام کا نمائندہ مانا جاتا ہے۔ یعنی فرض کیا جاتا ہے کہ اس میں ملنے والے انحرافات اور رجحانات پورے ترجمے میں موجود ہیں اور اسی مفروضے پر فیصلہ یا گریڈ پورے کام پر لاگو ہوتا ہے۔ ناشر کے لیے لکھی جانے والی قاری کی رپورٹ کی یہی معمول کی بنیاد ہے اور یہی اس کی حد بھی۔ کوئی ترجمہ منتخب اقتباس کے علاوہ کہیں اور زیادہ مضبوط یا کمزور ہو سکتا ہے۔ ہر رپورٹ اپنے نمونے کی جسامت اور مقام بتاتی ہے تاکہ قاری اسے تول سکے۔"
 ],
 "index.p1b": [
-"",
+"Most of these attempts compromise diligent reading and interpretation, and the feel for registers, images and rhythms, which need to work in two languages at once. This is not a cheap compromise, since a translation becomes part of a culture for a very long time and often takes a literary trajectory of its own.",
 "عمومی طور پر اس طرح کے پھیکے تراجم سے پڑھنے اور تعبیر کرنے کا عمل قربان ہو جاتا ہے اور لہجے، پیکر تراشی اور آہنگ کی وہ حس بھی جاتی رہتی ہے جسے بیک وقت دو زبانوں میں زندہ رہ کر ہی اپنا کام کرنا ہوتا ہے۔ یہ کوئی معمولی سودا نہیں کیونکہ ترجمہ بہت لمبے عرصے کے لیے ایک ثقافت کا حصہ بن جاتا ہے اور اکثر اپنا ایک الگ ادبی سفر طے کرتا ہے۔"
 ],
 "index.privacy": [
