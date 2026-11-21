@@ -3,7 +3,7 @@
 export const STRINGS = {
 "site.name": [
 "Editorial Assessments",
-"ادارتی جائزے"
+"تراجم کے اداراتی جائزے"
 ],
 "site.by": [
 "by Asim Bakhshi",
@@ -43,7 +43,7 @@ export const STRINGS = {
 ],
 "index.title": [
 "Editorial Assessments · Translation into Urdu",
-"ادارتی جائزے · اردو میں ترجمہ"
+"تراجم کے اداراتی جائزے · اردو میں ترجمہ"
 ],
 "index.eyebrow": [
 "Literary and scientific translation into Urdu",
@@ -59,43 +59,43 @@ export const STRINGS = {
 ],
 "index.p1": [
 "Translation is seeing a hyper-influx in the Urdu literary scene. The arrival of generative AI has made this influx exponential. While machine assistance does not in itself diminish the creativity of a literary act, it usually comes with a particular kind of laziness. Translation, therefore, comes out like a transcription of a foreign voice. Most of these attempts compromise diligent reading and interpretation, and the feel for registers, images and rhythms, which need to work in two languages at once. This is not a cheap compromise, since a translation becomes part of a culture for a very long time and often takes a literary trajectory of its own.",
-"اردو کے ادبی منظرنامے میں ترجموں کی ریل پیل ہے اور تخلیقی مصنوعی ذہانت کی آمد نے اس سیلاب کو کئی گنا بڑھا دیا ہے۔ مشینی مدد بذاتِ خود کسی ادبی عمل کی تخلیقیت کو کم نہیں کرتی مگر عموماً اپنے ساتھ ایک خاص طرح کی کاہلی لے آتی ہے۔ نتیجتاً ترجمہ کسی اجنبی آواز کی نقلِ محض بن کر رہ جاتا ہے۔ ان میں سے بیشتر کوششوں میں توجہ سے پڑھنے اور تعبیر کرنے کا عمل قربان ہو جاتا ہے اور لہجوں، تصویروں اور آہنگ کی وہ حس بھی جاتی رہتی ہے جسے بیک وقت دو زبانوں میں کام کرنا ہوتا ہے۔ یہ کوئی معمولی سودا نہیں کیونکہ ترجمہ بہت لمبے عرصے کے لیے ایک ثقافت کا حصہ بن جاتا ہے اور اکثر اپنا ایک الگ ادبی سفر طے کرتا ہے۔"
+"حالیہ کچھ سالوں میں اردو کے ادبی منظرنامے میں ترجموں کی ریل پیل دکھائی دیتی ہے۔ تخلیقی مصنوعی ذہانت کی آمد نے اس کو ایک سیلاب کی شکل دے دی ہے اور مارکیٹ میں کئی متون کے ایک سے زیادہ تراجم بھی دستیاب ہیں۔ مشینی مدد بذاتِ خود کسی ادبی عمل کی تخلیقیت کو کم نہیں کرتی مگر عموماً اپنے ساتھ ایک خاص طرح کی کاہلی اور پھیکاپن لے کر آتی ہے۔ نتیجتاً ترجمہ کسی اجنبی آواز کی بے جان نقلِ محض بن کر رہ جاتا ہے۔ کسی ایسے پکوان یا خوشبو کی طرح جس کے بارے میں ہم یہ دعویٰ تو کر سکتے ہیں کہ کہیں کچھ اپنی جگہ سے ہٹا ہوا ہے لیکن اس انحراف کا تعین اور نشاندہی نہیں کر سکتے۔"
 ],
 "index.p2": [
 "Publishers rarely have the means to judge a translation. At the same time, they have to take timely business decisions and safeguard their reputation. Common readers have no means at all. As AI-assisted translations invade the space, the challenge is three-way: to tell the careful from the merely fluent, and to tell both from the hack job.",
-"ناشروں کے پاس ترجمے کو پرکھنے کے وسائل کم ہی ہوتے ہیں۔ ساتھ ہی انھیں بروقت کاروباری فیصلے بھی کرنے ہوتے ہیں اور اپنی ساکھ بھی بچانی ہوتی ہے۔ عام قاری کے پاس تو کوئی ذریعہ ہی نہیں۔ مصنوعی ذہانت کی مدد سے ہونے والے ترجمے جوں جوں میدان پر چھا رہے ہیں یہ چیلنج سہ رخی ہو گیا ہے۔ محتاط ترجمے کو محض رواں ترجمے اور پھر ان دونوں کو گھٹیا بازاری تراجم سے الگ کرنا۔"
+"ناشروں کے پاس ترجمے کو پرکھنے کے وسائل بس یہی ہوتے ہیں کہ کچھ احباب سے مشورہ کیا جائے۔ ساتھ ہی انھیں بروقت کاروباری فیصلے بھی کرنے ہوتے ہیں اور کسی برے ترجمے کی اشاعت سے اپنی ساکھ داؤ پر لگنے کا خطرہ بھی ہوتا ہے۔ عام قاری بھی اپنے مطالعے پر بھروسے کے علاوہ اور کیا کر سکتا ہے۔ مصنوعی ذہانت کی مدد سے ہونے والے غیر محتاط تراجم جوں جوں میدان پر چھا رہے ہیں یہ چیلنج سہ رخی ہو گیا ہے یعنی محتاط ترجمے کو محض رواں لیکن پھیکے ترجمے اور پھر ان دونوں کو گھٹیا بازاری تراجم سے الگ کرنا۔"
 ],
 "index.p3": [
 "These assessments are an attempt to close that gap. The process is semi-automated:",
-"یہ جائزے اسی خلا کو پُر کرنے کی ایک کوشش ہیں۔ طریقِ کار جزوی طور پر خودکار ہے:"
+"یہ جائزے اسی خلا کو پُر کرنے کی ایک کوشش ہیں۔ طریقِ کار جزوی طور پر خودکار ہے جس کا ایک خاکہ مندرجہ ذیل ہے۔"
 ],
 "index.step1": [
 "A sample is segmented sentence by sentence and set against its source, and potential deviations are flagged automatically as a first pass.",
-"نمونے کو جملہ بہ جملہ قطعات میں بانٹ کر ماخذ کے مقابل رکھا جاتا ہے اور پہلے مرحلے میں ممکنہ انحرافات کی نشان دہی خودکار طریقے سے ہوتی ہے۔"
+"نمونے کو جملہ بہ جملہ ٹکڑوں میں بانٹ کر ماخذ کے مقابل رکھا جاتا ہے اور پہلے مرحلے میں ممکنہ انحرافات کی نشان دہی خودکار طریقے سے ہوتی ہے۔"
 ],
 "index.step2": [
 "I then read every segment myself and record the deviations I find.",
-"پھر میں ہر قطعہ خود پڑھتا ہوں اور انحرافات کو ردوقبول سے گزار کر حتمی شکل دیتا ہوں۔"
+"پھر میں ہر ٹکڑے کو خود پرکھتا ہوں اور ضرورت پڑنے پر اہلِ علم دوستوں سے مشورہ بھی کیا جاتا ہے۔ آخر کار انحرافات کو ردوقبول سے گزار کر حتمی شکل دے دی جاتی ہے۔"
 ],
 "index.step3": [
 "These deviations are scored on a framework adapted from {mqm}.",
-"ان انحرافات کو {mqm} سے ماخوذ ایک ڈھانچے پر جانچا جاتا ہے۔"
+"پھر ان سب انحرافات کو {mqm} سے ماخوذ ایک ڈھانچے پر جانچا جاتا ہے۔"
 ],
 "index.mqm": [
 "Multidimensional Quality Metrics",
-"ملٹی ڈائمینشنل کوالٹی میٹرکس (MQM)"
+"ملٹی ڈائمینشنل کوالٹی میٹرکس"
 ],
 "index.step4": [
 "On that analysis I give my verdict, and I own it.",
-"اس تجزیے کی بنیاد پر میں اپنا فیصلہ دیتا ہوں اور اس کی ذمہ داری قبول کرتا ہوں۔"
+"اس تجزیے کی بنیاد پر میں اپنا فیصلہ درج کر دیتا ہوں اور اس کی ذمہ داری قبول کرتا ہوں۔"
 ],
 "index.p4": [
 "The verdict is an informal editorial decision for drafts and a grade for books in print. The assessments are offered as a public service: to readers deciding what to trust, to publishers deciding what to print, and to translators who want their work read with the care it asks for.",
-"مسودوں کے لیے یہ فیصلہ ایک غیر رسمی ادارتی رائے ہے اور چھپی ہوئی کتابوں کے لیے ایک گریڈ۔ یہ جائزے عوامی خدمت کے طور پر پیش کیے جا رہے ہیں۔ ان قارئین کے لیے جو طے کر رہے ہوں کہ کس پر بھروسا کریں، ان ناشروں کے لیے جو طے کر رہے ہوں کہ کیا چھاپیں اور ان مترجمین کے لیے جو چاہتے ہیں کہ ان کا کام اسی توجہ سے پڑھا جائے جس کا وہ متقاضی ہے۔"
+"مسودوں کے لیے یہ فیصلہ ایک غیر رسمی ادارتی رائے ہے اور چھپی ہوئی کتابوں کے لیے ایک گریڈ یا درجہ ہے۔ یہ جائزے عوامی خدمت کے طور پر پیش کیے جا رہے ہیں۔ ان قارئین کے لیے جو طے کر رہے ہوں کہ کس پر بھروسا کریں، ان ناشروں کے لیے جو طے کر رہے ہوں کہ کیا چھاپیں اور ان مترجمین کے لیے جو چاہتے ہیں کہ ان کا کام اسی توجہ سے پڑھا جائے جس کا وہ متقاضی ہے۔"
 ],
 "index.contact": [
 "If you want to get your translation graded, or disagree with a verdict or the review behind it, please reach me at {email}.",
-"اگر آپ اپنے ترجمے کا جائزہ کروانا چاہتے ہیں یا کسی فیصلے یا اس کے پیچھے کیے گئے تجزیے سے اختلاف رکھتے ہیں تو مجھ سے {email} پر رابطہ کیجیے۔"
+"اگر آپ اپنے ترجمے کا جائزہ کروانا چاہتے ہیں یا کسی فیصلے یا اس کے پیچھے کیے گئے تجزیے سے اختلاف رکھتے ہیں تو مجھ سے {email} پر رابطہ کر سکتے ہیں۔"
 ],
 "index.signature": [
 "Asim Bakhshi",
@@ -215,7 +215,7 @@ export const STRINGS = {
 ],
 "report.title": [
 "{title} · Editorial Assessments",
-"{title} · ادارتی جائزے"
+"{title} · تراجم کے اداراتی جائزے"
 ],
 "report.print": [
 "Print",
@@ -755,7 +755,7 @@ export const STRINGS = {
 ],
 "m.title": [
 "Method · Editorial Assessments",
-"طریقِ کار · ادارتی جائزے"
+"طریقِ کار · تراجم کے اداراتی جائزے"
 ],
 "m.eyebrow": [
 "How the reports are made",
@@ -920,5 +920,13 @@ export const STRINGS = {
 "m.sample.p": [
 "Every report assesses a sample, usually a passage of a few hundred to a few thousand words, not the whole translation. The sample is taken to stand for the whole work: the deviations and tendencies found in it are assumed to run through the translation, and the decision or grade applies to the whole on that assumption. This is the usual basis of a publisher's reader's report, and its limit. A translation can be stronger or weaker elsewhere than in the passage chosen. Each report states the size and location of its sample so the reader can weigh it.",
 "ہر رپورٹ پورے ترجمے کا نہیں بلکہ ایک نمونے کا جائزہ لیتی ہے جو عموماً چند سو سے چند ہزار الفاظ کا اقتباس ہوتا ہے۔ نمونے کو پورے کام کا نمائندہ مانا جاتا ہے۔ یعنی فرض کیا جاتا ہے کہ اس میں ملنے والے انحرافات اور رجحانات پورے ترجمے میں موجود ہیں اور اسی مفروضے پر فیصلہ یا گریڈ پورے کام پر لاگو ہوتا ہے۔ ناشر کے لیے لکھی جانے والی قاری کی رپورٹ کی یہی معمول کی بنیاد ہے اور یہی اس کی حد بھی۔ کوئی ترجمہ منتخب اقتباس کے علاوہ کہیں اور زیادہ مضبوط یا کمزور ہو سکتا ہے۔ ہر رپورٹ اپنے نمونے کی جسامت اور مقام بتاتی ہے تاکہ قاری اسے تول سکے۔"
+],
+"index.p1b": [
+"",
+"عمومی طور پر اس طرح کے پھیکے تراجم سے پڑھنے اور تعبیر کرنے کا عمل قربان ہو جاتا ہے اور لہجے، پیکر تراشی اور آہنگ کی وہ حس بھی جاتی رہتی ہے جسے بیک وقت دو زبانوں میں زندہ رہ کر ہی اپنا کام کرنا ہوتا ہے۔ یہ کوئی معمولی سودا نہیں کیونکہ ترجمہ بہت لمبے عرصے کے لیے ایک ثقافت کا حصہ بن جاتا ہے اور اکثر اپنا ایک الگ ادبی سفر طے کرتا ہے۔"
+],
+"index.privacy": [
+"If a translation is sent to me privately by email, the translator's name is published only with their permission.",
+"اگر ترجمہ ای میل کے ذریعے ذاتی طور پر بھیجا جائے تو مترجمین کا نام صرف ان کی اجازت ہی سے شائع کیا جاتا ہے۔"
 ]
 };

@@ -41,6 +41,7 @@ function fillEl(el, str) {
 
 export function applyStatic(root = document) {
   if (!UR) return;
+  root.querySelectorAll('.ur-only').forEach((el) => (el.hidden = false));
   root.querySelectorAll('[data-i18n]').forEach((el) => fillEl(el, t(el.dataset.i18n)));
   root.querySelectorAll('[data-i18n-ph]').forEach((el) => (el.placeholder = t(el.dataset.i18nPh)));
   root.querySelectorAll('[data-i18n-title]').forEach((el) => { el.title = t(el.dataset.i18nTitle); el.setAttribute('aria-label', el.title); });
