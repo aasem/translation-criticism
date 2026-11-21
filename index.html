@@ -17,6 +17,9 @@
   <section class="manifesto">
     <p class="eyebrow">Literary and scientific translation into Urdu</p>
     <h1 class="headline">Translation is an art of failure.<br><span>Let's judge the error surface.</span></h1>
+  </section>
+
+  <div class="front">
     <div class="manifesto-body">
       <p>Urdu is seeing a boom in literary translation, and since generative AI arrived, more of it is made at speed. Machine assistance does not in itself cheapen a literary act, but translation is not transcription. It asks for diligent reading and interpretation, with a feel for register, image and rhythm in two languages at once. None of this can be hurried.</p>
       <p>Publishers rarely have the means to judge a translation, and common readers have none at all. As AI-assisted translations multiply, the work of telling the careful from the merely fluent, and both from the hack job, has fallen far behind.</p>
@@ -31,17 +34,18 @@
       <p class="contact">If you want to get your translation graded, or disagree with a verdict or the review behind it, please reach me at <a class="mail" data-u="asembuxi" data-d="gmail.com" href="#">asembuxi [at] gmail [dot] com</a>.</p>
       <p class="signature"><em>Asim Bakhshi</em> · <a href="https://mechanomorph.substack.com/p/published-works" rel="noopener">Published works on Mechanomorph →</a></p>
     </div>
-  </section>
-
-  <h2 class="list-head">Assessment reports</h2>
-  <div class="search-wrap"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="q" class="search" type="search" placeholder="Search author, work, translator, or any phrase in English or Urdu…" autocomplete="off"></div>
-  <div class="filters">
-    <select id="f-stage"><option value="">All kinds</option><option>Pre-publication</option><option>Published</option></select>
-    <select id="f-decision"><option value="">All decisions and grades</option></select>
-    <select id="f-stakes"><option value="">All stakes</option></select>
-    <span id="count" class="hint" style="align-self:center"></span>
+    <aside class="reports-panel" aria-label="Assessment reports">
+      <h2 class="list-head"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg>Assessment reports</h2>
+      <div class="search-wrap"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="q" class="search" type="search" placeholder="Search author, translator, or any phrase…" autocomplete="off"></div>
+      <div class="filters">
+        <select id="f-stage"><option value="">All kinds</option><option>Pre-publication</option><option>Published</option></select>
+        <select id="f-decision"><option value="">All decisions and grades</option></select>
+        <select id="f-stakes"><option value="">All stakes</option></select>
+        <span id="count" class="hint" style="align-self:center"></span>
+      </div>
+      <div id="cards" class="cards"><p class="empty">Loading…</p></div>
+    </aside>
   </div>
-  <div id="cards" class="cards"><p class="empty">Loading…</p></div>
 </main>
 
 <footer class="site"><div class="wrap">© 2026 <a href="https://mechanomorph.substack.com" rel="noopener">Asim Bakhshi · Mechanomorph</a></div></footer>
