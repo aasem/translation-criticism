@@ -191,3 +191,6 @@ header.site .brand .logo { color: #fbf3e8; }
 header.site .brand-wrap { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 header.site .byname { font: italic 15px var(--serif); color: var(--muted); text-decoration: none; }
 header.site .byname:hover { color: var(--accent); }
+/* wordmark: keep both words in one flex item so the gap doesn't split them */
+header.site .brand .wm { color: var(--ink); }
+header.site .brand .wm b { color: var(--accent); font-weight: inherit; }
