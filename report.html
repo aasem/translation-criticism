@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Report · Translation Criticism</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="./">Translation <span>Criticism</span></a>
+  <nav><a href="./">All reports</a><a href="about.html">Method</a></nav>
+</div></header>
+
+<div class="toolbar"><div class="wrap">
+  <span id="status" class="status"></span>
+  <button id="b-edit" class="primary">Edit</button>
+  <button id="b-commit" hidden title="Write this report back to the GitHub repository">Commit to GitHub</button>
+  <button id="b-download" hidden>Download JSON</button>
+  <button id="b-discard" hidden class="danger">Discard local edits</button>
+  <a id="b-gh" class="btn" target="_blank" rel="noopener">JSON on GitHub</a>
+  <button id="b-print">Print</button>
+</div></div>
+
+<main id="root" class="wrap"><p class="empty">Loading…</p></main>
+
+<dialog id="commit-dlg">
+  <form method="dialog">
+    <h3 style="margin-top:0">Commit to GitHub</h3>
+    <p class="hint">Writes <code id="c-path"></code> on <code>main</code> using the GitHub contents API. You need a fine-grained personal access token for this repository with <em>Contents: read and write</em>. It is kept only in this browser.</p>
+    <p><label>Token<br><input id="c-token" type="password" style="width:100%;font:14px var(--sans);padding:6px"></label></p>
+    <p><label>Commit message<br><input id="c-msg" type="text" style="width:100%;font:14px var(--sans);padding:6px"></label></p>
+    <p><label class="hint"><input id="c-remember" type="checkbox" checked> Remember token in this browser</label></p>
+    <p id="c-out" class="hint"></p>
+    <p style="display:flex;gap:8px;justify-content:flex-end">
+      <button value="cancel">Close</button>
+      <button id="c-go" class="primary" value="default">Commit</button>
+    </p>
+  </form>
+</dialog>
+
+<script type="module">
+import { CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH } from './assets/common.js';
+
+const $ = (id) => document.getElementById(id);
+const id = new URLSearchParams(location.search).get('id');
+const DRAFT = `tc-draft:${id}`;
+const path = `reports/${id}.json`;
+let R, original, editing = false;
+
+// ---------- state helpers ----------
+const getAt = (o, p) => p.split('.').reduce((a, k) => a?.[k], o);
+function setAt(o, p, v) {
+  const ks = p.split('.'); const last = ks.pop();
+  const t = ks.reduce((a, k) => (a[k] ??= /^\d+$/.test(k) ? [] : {}), o);
+  t[last] = v;
+}
+const clean = (r) => JSON.stringify(r, null, 2) + '\n';
+const isDirty = () => clean(R) !== clean(original);
+function saveDraft() {
+  try { isDirty() ? localStorage.setItem(DRAFT, clean(R)) : localStorage.removeItem(DRAFT); } catch {}
+  status();
+}
+function status() {
+  const s = $('status');
+  if (isDirty()) { s.textContent = 'Local edits, not yet in the repository'; s.className = 'status dirty'; }
+  else { s.textContent = editing ? 'Editing. Changes are kept in this browser as you type.' : ''; s.className = 'status'; }
+  $('b-discard').hidden = !isDirty();
+  $('b-download').hidden = !(editing || isDirty());
+  $('b-commit').hidden = !(editing || isDirty());
+}
+
+// ---------- field builders ----------
+const T = (p, { ur = false, rows = 2, md: isMd = false } = {}) => {
+  const v = getAt(R, p) ?? '';
+  return editing
+    ? `<textarea data-path="${p}" rows="${rows}" class="${ur ? 'ur-in' : ''}" ${ur ? 'dir="rtl" lang="ur"' : ''}>${esc(v)}</textarea>`
+    : isMd ? md(v) : ur ? `<span lang="ur" dir="rtl">${esc(v)}</span>` : urduWrap(esc(v));
+};
+const I = (p, ph = '') => (editing ? `<input type="text" data-path="${p}" value="${esc(getAt(R, p) ?? '')}" placeholder="${esc(ph)}">` : esc(getAt(R, p) ?? ''));
+const S = (p, options, cls = '') => {
+  const v = getAt(R, p);
+  return editing
+    ? `<select data-path="${p}" data-rerender class="${cls}">${options.map((o) => `<option ${o === v ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select>`
+    : esc(v);
+};
+
+// ---------- sections ----------
+function header() {
+  const r = R;
+  if (editing) return `
+    <h3>Title</h3>${I('title')}
+    <h3>Subtitle</h3>${T('subtitle', { rows: 3 })}
+    <h3>Catalogue details</h3>
+    <table><tbody>
+      <tr><th>Date</th><td>${I('date', 'YYYY-MM-DD')}</td><th>Stakes</th><td>${S('stakes', ['Standard', 'Literary', 'Canonical'])}</td></tr>
+      <tr><th>Author</th><td>${I('author')}</td><th>Work</th><td>${I('work')}</td></tr>
+      <tr><th>Passage</th><td colspan="3">${I('passage')}</td></tr>
+      <tr><th>Source language</th><td>${I('source.language')}</td><th>Source label / translator</th><td>${I('source.label', 'label')}${I('source.translator', 'translator')}</td></tr>
+      <tr><th>Target language</th><td>${I('submission.language')}</td><th>Submission label / translator</th><td>${I('submission.label', 'label')}${I('submission.translator', 'translator')}</td></tr>
+      <tr><th>Tags</th><td colspan="3"><input type="text" data-tags value="${esc((r.tags || []).join(', '))}" placeholder="comma-separated"></td></tr>
+    </tbody></table>`;
+  return `
+    <h1>${esc(r.title)}</h1>
+    <p class="subtitle">${esc(r.subtitle)}</p>
+    <p class="byline">${esc(r.date)}</p>
+    <div class="meta-chips">
+      <span class="dec ${decisionClass(r.decision)}">${esc(r.decision)}</span>
+      <span class="chip">${esc(r.stakes)} stakes</span>
+      <span class="chip">${esc(r.source?.language)} → ${esc(r.submission?.language)}</span>
+      ${(r.tags || []).map((t) => `<a class="chip" href="./?q=${encodeURIComponent(t)}">${esc(t)}</a>`).join('')}
+    </div>`;
+}
+
+function passages() {
+  const head = (k, name) => `<h3>${name} (${esc(R[k]?.language || '')})${R[k]?.label ? ' - ' + esc(R[k].label) : ''}</h3>`;
+  let h = `<h2>The passages</h2>`;
+  h += head('source', 'Source') + `<div class="passage">${editing ? T('source.text', { rows: 10 }) : `<p>${urduWrap(esc(R.source.text))}</p>`}</div>`;
+  h += head('submission', 'Submission') + `<div class="passage ${editing ? '' : 'ur-block'}" ${editing ? '' : 'lang="ur" dir="rtl"'}>${editing ? T('submission.text', { rows: 12, ur: true }) : esc(R.submission.text)}</div>`;
+  if (R.reference?.text) h += `<h3>Reference rendering</h3><div class="passage ur-block" lang="ur" dir="rtl">${esc(R.reference.text)}</div>`;
+  return h;
+}
+
+function scope() {
+  return `<h2>Scope</h2>${T('scope', { md: true, rows: 10 })}
+    <p><strong>Deviation codes</strong> (adapted for literary translation from Multidimensional Quality Metrics)</p>
+    <table><thead><tr><th>Code</th><th>Name</th><th>Test</th></tr></thead><tbody>
+    ${Object.entries(CODES).map(([c, [n, t]]) => `<tr><td class="fam-${c[0]}"><strong>${c}</strong></td><td>${n}</td><td>${t}</td></tr>`).join('')}
+    </tbody></table>
+    <p><strong>Severity:</strong> <em>Minor</em> affects nuance, tone or texture. <em>Major</em> changes what the sentence says. <em>Critical</em> breaks a sentence the passage depends on (its key claim, turn or image).</p>`;
+}
+
+function devCell(s, i) {
+  if (!editing) {
+    const ds = (s.deviations || []).map((d) => `<p><span class="dev-tag">${esc(d.code)} · ${esc(d.severity)}.</span> ${md(d.note).replace(/^<p>|<\/p>$/g, '')}</p>`).join('');
+    const k = s.keeps ? `<p class="keeps">${urduWrap(esc(s.keeps))}</p>` : '';
+    return ds || k ? ds + k : '<p>No deviation noted.</p>';
+  }
+  const ds = (s.deviations || []).map((d, j) => `
+    <div class="dev-edit">
+      <div class="row">
+        ${S(`segments.${i}.deviations.${j}.code`, Object.keys(CODES).filter((c) => c !== 'C4'))}
+        ${S(`segments.${i}.deviations.${j}.severity`, SEVERITIES)}
+        <button class="small danger" data-act="del-dev" data-i="${i}" data-j="${j}" title="Remove this deviation">Remove</button>
+      </div>
+      ${T(`segments.${i}.deviations.${j}.note`, { rows: 3 })}
+    </div>`).join('');
+  return ds + `<button class="small" data-act="add-dev" data-i="${i}">+ Deviation</button>
+    <div class="hint" style="margin-top:8px">What the segment keeps well (optional)</div>${T(`segments.${i}.keeps`, { rows: 2 })}`;
+}
+
+function sideBySide() {
+  const segs = R.segments || [];
+  const rows = segs.map((s, i) => {
+    const w = worst(s.deviations);
+    return `<tr>
+      <td class="num">${i + 1}${editing ? `<div style="margin-top:6px;display:grid;gap:4px">
+        <button class="small" data-act="add-seg" data-i="${i}" title="Insert a segment after this one">+</button>
+        <button class="small danger" data-act="del-seg" data-i="${i}" title="Delete this segment">×</button></div>` : ''}</td>
+      <td>${editing ? T(`segments.${i}.source`, { rows: 5 }) : urduWrap(esc(s.source))}</td>
+      <td class="${editing ? '' : 'sub'}" ${editing ? '' : 'lang="ur" dir="rtl"'}>${editing ? T(`segments.${i}.submission`, { rows: 5, ur: true }) : esc(s.submission)}</td>
+      <td class="devs ${sevClass(w)}">${devCell(s, i)}</td>
+    </tr>`;
+  }).join('');
+  return `<h2>Side by side</h2>
+    <table class="sbs"><colgroup><col class="c-n"><col class="c-src"><col class="c-sub"><col></colgroup>
+    <thead><tr><th>#</th><th>Source</th><th>Submission</th><th>Deviations</th></tr></thead><tbody>${rows}</tbody></table>
+    ${editing && !segs.length ? '<button class="small" data-act="add-seg" data-i="-1">+ Segment</button>' : ''}
+    <p class="hint">${editing ? 'Counts, colours and per-100-word rates update from the deviations you set here.' : 'Codes as set out in Scope. Cell colour shows the worst severity in the segment.'}</p>`;
+}
+
+function counts() {
+  const t = tally(R);
+  const codes = Object.keys(CODES).filter((c) => t.byCode[c]);
+  const row = (c) => { const x = t.byCode[c]; const n = x.Critical + x.Major + x.Minor;
+    return `<tr><td>${c} ${CODES[c][0]}</td><td class="num">${x.Critical}</td><td class="num">${x.Major}</td><td class="num">${x.Minor}</td><td class="num">${n}</td></tr>`; };
+  return `<h2>Deviation count and profile</h2>
+    <p>${t.n} deviations across ${(R.segments || []).length} segments of a ${t.words}-word source: ${t.per100(t.n)} per 100 words, ${t.total.Critical + t.total.Major} of them major or critical.</p>
+    <table><thead><tr><th>Code</th><th class="num">Critical</th><th class="num">Major</th><th class="num">Minor</th><th class="num">Total</th></tr></thead><tbody>
+      ${codes.map(row).join('')}
+      <tr class="total"><td>Total</td><td class="num">${t.total.Critical}</td><td class="num">${t.total.Major}</td><td class="num">${t.total.Minor}</td><td class="num">${t.n}</td></tr>
+      <tr class="total"><td>Per 100 source words</td><td class="num">${t.per100(t.total.Critical)}</td><td class="num">${t.per100(t.total.Major)}</td><td class="num">${t.per100(t.total.Minor)}</td><td class="num">${t.per100(t.n)}</td></tr>
+    </tbody></table>
+    ${T('profileSummary', { md: true, rows: 5 })}`;
+}
+
+function findings() {
+  const f = R.findings || [];
+  const rows = f.map((x, i) => `<tr>
+      <td>${editing ? T(`findings.${i}.finding`, { rows: 3 }) : urduWrap(esc(x.finding))}</td>
+      <td class="${sevClass(x.severity)}">${S(`findings.${i}.severity`, SEVERITIES)}</td>
+      <td>${editing ? T(`findings.${i}.evidence`, { rows: 3 }) : urduWrap(esc(x.evidence))}
+        ${editing ? `<div><button class="small danger" data-act="del-find" data-i="${i}">Remove</button></div>` : ''}</td></tr>`).join('');
+  return `<h2>Work-level findings</h2>${T('findingsLead', { md: true, rows: 2 })}
+    <table><thead><tr><th>Finding</th><th>Severity</th><th>Evidence</th></tr></thead><tbody>${rows}</tbody></table>
+    ${editing ? '<button class="small" data-act="add-find">+ Finding</button>' : ''}`;
+}
+
+function decision() {
+  return `<h2>Editorial decision</h2>
+    <table><thead><tr><th>Decision</th><th>Meaning</th></tr></thead><tbody>
+    ${DECISIONS.map(([d, m]) => { const on = d === R.decision ? decisionClass(d) : '';
+      return `<tr><td class="${on}">${on ? `<strong>${d}</strong>` : d}</td><td class="${on}">${m}</td></tr>`; }).join('')}
+    </tbody></table>
+    <p><strong>Decision: ${editing ? S('decision', DECISIONS.map((d) => d[0])) : esc(R.decision) + '.'}</strong></p>
+    ${editing ? `<p><strong>Basis.</strong></p>${T('decisionBasis', { rows: 6 })}<p><strong>Note for the publisher.</strong></p>${T('publisherNote', { rows: 3 })}`
+      : `<p><strong>Basis.</strong> ${md(R.decisionBasis).replace(/^<p>|<\/p>$/g, '')}</p><p><strong>Note for the publisher.</strong> ${md(R.publisherNote).replace(/^<p>|<\/p>$/g, '')}</p>`}
+    <p class="ack">${ACK}</p>`;
+}
+
+function render() {
+  const y = scrollY;
+  document.title = `${R.title} · Translation Criticism`;
+  $('root').className = 'wrap' + (editing ? ' editing' : '');
+  $('root').innerHTML = [
+    header(), passages(),
+    editing ? `<h2>Lead</h2>${T('lead', { rows: 3 })}` : `<div class="lead">${md(R.lead)}</div>`,
+    scope(), sideBySide(), counts(),
+    `<h2>Stylistic tendencies</h2>${T('tendencies', { md: true, rows: 14 })}`,
+    `<h2>Translator profile</h2>${T('translatorProfile', { md: true, rows: 10 })}`,
+    findings(), decision(),
+  ].join('');
+  if (editing) document.querySelectorAll('textarea').forEach(grow);
+  $('b-edit').textContent = editing ? 'Done' : 'Edit';
+  scrollTo(0, y);
+  status();
+}
+function grow(t) { t.style.height = 'auto'; t.style.height = t.scrollHeight + 4 + 'px'; }
+
+// ---------- events ----------
+$('root').addEventListener('input', (e) => {
+  const el = e.target;
+  if (el.dataset.path) { setAt(R, el.dataset.path, el.value); if (el.tagName === 'TEXTAREA') grow(el); }
+  else if ('tags' in el.dataset) R.tags = el.value.split(',').map((s) => s.trim()).filter(Boolean);
+  if ('rerender' in el.dataset) render(); else saveDraft();
+});
+$('root').addEventListener('change', (e) => { if ('rerender' in e.target.dataset) { saveDraft(); render(); } });
+$('root').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const i = +b.dataset.i, j = +b.dataset.j;
+  const segs = (R.segments ??= []);
+  switch (b.dataset.act) {
+    case 'add-dev': (segs[i].deviations ??= []).push({ code: 'A1', severity: 'Minor', note: '' }); break;
+    case 'del-dev': segs[i].deviations.splice(j, 1); break;
+    case 'add-seg': segs.splice(i + 1, 0, { source: '', submission: '', deviations: [], keeps: '' }); break;
+    case 'del-seg': if (!confirm(`Delete segment ${i + 1}?`)) return; segs.splice(i, 1); break;
+    case 'add-find': (R.findings ??= []).push({ finding: '', severity: 'Major', evidence: '' }); break;
+    case 'del-find': R.findings.splice(i, 1); break;
+  }
+  segs.forEach((s, k) => (s.n = k + 1));
+  saveDraft(); render();
+});
+
+$('b-edit').onclick = () => { editing = !editing; render(); };
+$('b-print').onclick = () => { if (editing) { editing = false; render(); } setTimeout(print, 50); };
+$('b-discard').onclick = () => {
+  if (!confirm('Discard the edits kept in this browser and reload the version in the repository?')) return;
+  localStorage.removeItem(DRAFT); R = structuredClone(original); render();
+};
+$('b-download').onclick = () => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([clean(R)], { type: 'application/json' }));
+  a.download = `${id}.json`; a.click();
+};
+
+// ---------- commit via GitHub contents API ----------
+const b64 = (s) => { const bytes = new TextEncoder().encode(s); let bin = ''; for (const x of bytes) bin += String.fromCharCode(x); return btoa(bin); };
+$('b-commit').onclick = () => {
+  $('c-path').textContent = path;
+  $('c-token').value = localStorage.getItem('tc-gh-token') || '';
+  $('c-msg').value = `Edit report: ${R.title}`;
+  $('c-out').textContent = '';
+  $('commit-dlg').showModal();
+};
+$('c-go').onclick = async (e) => {
+  e.preventDefault();
+  const token = $('c-token').value.trim(); const out = $('c-out');
+  if (!token) { out.textContent = 'A token is needed.'; return; }
+  if ($('c-remember').checked) localStorage.setItem('tc-gh-token', token); else localStorage.removeItem('tc-gh-token');
+  const api = `https://api.github.com/repos/${REPO}/contents/${path}`;
+  const h = { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' };
+  try {
+    out.textContent = 'Committing…';
+    const cur = await fetch(`${api}?ref=${BRANCH}`, { headers: h });
+    const sha = cur.ok ? (await cur.json()).sha : undefined;
+    const res = await fetch(api, { method: 'PUT', headers: h, body: JSON.stringify({ message: $('c-msg').value, content: b64(clean(R)), branch: BRANCH, ...(sha && { sha }) }) });
+    if (!res.ok) throw new Error(`${res.status} ${(await res.json()).message || ''}`);
+    original = structuredClone(R); localStorage.removeItem(DRAFT); status();
+    out.textContent = 'Committed. The published site updates once GitHub Pages rebuilds (usually within a minute).';
+  } catch (err) { out.textContent = `Commit failed: ${err.message}`; }
+};
+
+// ---------- load ----------
+try {
+  if (!id) throw new Error('No report id in the address.');
+  original = await loadJSON(path);
+  R = structuredClone(original);
+  const d = localStorage.getItem(DRAFT);
+  if (d) { try { R = JSON.parse(d); } catch {} }
+  $('b-gh').href = `https://github.com/${REPO}/blob/${BRANCH}/${path}`;
+  render();
+} catch (e) {
+  $('root').innerHTML = `<p class="empty">Could not load this report (${esc(e.message)}). <a href="./">Back to all reports</a>.</p>`;
+}
+</script>
+</body>
+</html>

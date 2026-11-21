@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method · Translation Criticism</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="./">Translation <span>Criticism</span></a>
+  <nav><a href="./">All reports</a><a href="https://github.com/aasem/translation-criticism">Source</a></nav>
+</div></header>
+<main class="wrap narrow">
+  <h1>Method</h1>
+  <p>Each report judges a submitted translation by how it departs from its source, not by how the reviewer would have translated it. The source is split into sentence-level segments, and the submission is set beside it, segment by segment. Every departure gets one code and one severity.</p>
+  <p>The codes adapt Multidimensional Quality Metrics, the translation industry's standard error framework, to literary prose. A covers accuracy (what the source says), B covers the correctness of the target text, and C covers style (how the source sounds). Interference (C4) is reported as a pattern rather than counted segment by segment.</p>
+  <div id="codes"></div>
+  <p><strong>Severity.</strong> <em>Minor</em> affects nuance, tone or texture. <em>Major</em> changes what the sentence says. <em>Critical</em> breaks a sentence the passage depends on: its key claim, turn or image.</p>
+  <p><strong>Stakes.</strong> Each report is set at Standard, Literary or Canonical stakes. Stakes do not change the severity of single deviations. They set how work-level findings are graded and how high the bar is for the decision.</p>
+  <p><strong>Decision.</strong> Each report ends with one step on a five-step scale, from Accept to Reject. A sample is taken to represent the whole work.</p>
+  <div id="scale"></div>
+</main>
+<script type="module">
+import { CODES, DECISIONS } from './assets/common.js';
+document.getElementById('codes').innerHTML = `<table><thead><tr><th>Code</th><th>Name</th><th>Test</th></tr></thead><tbody>${
+  Object.entries(CODES).map(([c, [n, t]]) => `<tr><td class="fam-${c[0]}"><strong>${c}</strong></td><td>${n}</td><td>${t}</td></tr>`).join('')}</tbody></table>`;
+document.getElementById('scale').innerHTML = `<table><thead><tr><th>Decision</th><th>Meaning</th></tr></thead><tbody>${
+  DECISIONS.map(([d, m]) => `<tr><td>${d}</td><td>${m}</td></tr>`).join('')}</tbody></table>`;
+</script>
+</body>
+</html>

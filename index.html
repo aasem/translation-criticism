@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Translation Criticism</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="./">Translation <span>Criticism</span></a>
+  <nav><a href="about.html">Method</a><a href="https://github.com/aasem/translation-criticism">Source</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Reader's reports</h1>
+  <p class="subtitle">Segment-level assessments of literary translations into Urdu, each judged against its source on a fixed deviation typology, with an editorial decision for publishers.</p>
+
+  <input id="q" class="search" type="search" placeholder="Search author, work, translator, or any phrase in English or Urdu…" autocomplete="off">
+  <div class="filters">
+    <select id="f-decision"><option value="">All decisions</option></select>
+    <select id="f-stakes"><option value="">All stakes</option></select>
+    <select id="f-lang"><option value="">All languages</option></select>
+    <span id="count" class="hint" style="align-self:center"></span>
+  </div>
+  <div id="cards" class="cards"><p class="empty">Loading…</p></div>
+</main>
+
+<script type="module">
+import { loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS } from './assets/common.js';
+
+const $ = (id) => document.getElementById(id);
+let reports = [];
+
+function haystack(r) {
+  const segs = (r.segments || []).flatMap((s) => [s.source, s.submission, s.keeps, ...(s.deviations || []).map((d) => d.note)]);
+  return [r.title, r.author, r.work, r.passage, r.source?.translator, r.source?.label, r.submission?.translator,
+    r.submission?.label, r.submission?.language, r.decision, r.stakes, ...(r.tags || []), r.source?.text, r.submission?.text, ...segs]
+    .filter(Boolean).join('   ').toLowerCase();
+}
+
+function snippet(text, q) {
+  const i = text.toLowerCase().indexOf(q);
+  if (i < 0) return '';
+  const a = Math.max(0, i - 70), b = Math.min(text.length, i + q.length + 70);
+  const pre = esc(text.slice(a, i)), hit = esc(text.slice(i, i + q.length)), post = esc(text.slice(i + q.length, b));
+  return (a ? '…' : '') + pre + '<mark>' + hit + '</mark>' + post + (b < text.length ? '…' : '');
+}
+
+const isUrdu = (h) => {
+  const t = h.replace(/<[^>]+>/g, '');
+  return (t.match(/[\u0600-\u06FF]/g) || []).length > (t.match(/[A-Za-z]/g) || []).length;
+};
+
+function render() {
+  const q = $('q').value.trim().toLowerCase();
+  const fd = $('f-decision').value, fs = $('f-stakes').value, fl = $('f-lang').value;
+  const list = reports.filter((r) =>
+    (!fd || r.decision === fd) && (!fs || r.stakes === fs) && (!fl || r.submission?.language === fl) &&
+    (!q || r._hay.includes(q)));
+  $('count').textContent = `${list.length} of ${reports.length} report${reports.length === 1 ? '' : 's'}`;
+  if (!list.length) { $('cards').innerHTML = '<p class="empty">No reports match.</p>'; return; }
+  $('cards').innerHTML = list.map((r) => {
+    const t = tally(r);
+    let ex = '';
+    if (q) {
+      const fields = [r.submission?.text, r.source?.text, ...(r.segments || []).flatMap((s) => (s.deviations || []).map((d) => d.note))];
+      for (const f of fields) { const s = f && snippet(f, q); if (s) { ex = s; break; } }
+    }
+    return `<a class="card" href="report.html?id=${encodeURIComponent(r.id)}">
+      <h2>${esc(r.author)}: ${esc(r.passage || r.work)}</h2>
+      <div class="byline">${esc(r.work)} · ${esc(r.source?.language)} (${esc(r.source?.label || r.source?.translator || '')}) → ${esc(r.submission?.language)} · translated by ${esc(r.submission?.translator || 'unnamed')} · ${esc(r.date)}</div>
+      <div class="meta-chips">
+        <span class="dec ${decisionClass(r.decision)}">${esc(r.decision)}</span>
+        <span class="chip">${esc(r.stakes)} stakes</span>
+        <span class="chip">${t.n} deviations · ${t.per100(t.n)} per 100 words</span>
+        <span class="chip">${t.total.Critical} critical · ${t.total.Major} major</span>
+        ${(r.tags || []).map((x) => `<span class="chip">${esc(x)}</span>`).join('')}
+      </div>
+      ${ex ? (isUrdu(ex) ? `<div class="excerpt ur-block" lang="ur" dir="rtl">${ex}</div>` : `<div class="excerpt">${urduWrap(ex)}</div>`) : ''}
+    </a>`;
+  }).join('');
+}
+
+function fill(sel, values) {
+  for (const v of values) { const o = document.createElement('option'); o.value = o.textContent = v; sel.append(o); }
+}
+
+try {
+  const { reports: ids } = await loadJSON('reports/index.json');
+  const loaded = await Promise.allSettled(ids.map((id) => loadJSON(`reports/${id}.json`)));
+  reports = loaded.filter((x) => x.status === 'fulfilled').map((x) => ({ ...x.value, _hay: haystack(x.value) }));
+  reports.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  const present = new Set(reports.map((r) => r.decision));
+  fill($('f-decision'), DECISIONS.map((d) => d[0]).filter((d) => present.has(d)));
+  fill($('f-stakes'), [...new Set(reports.map((r) => r.stakes))]);
+  fill($('f-lang'), [...new Set(reports.map((r) => r.submission?.language))]);
+  const qs = new URLSearchParams(location.search).get('q');
+  if (qs) $('q').value = qs;
+  render();
+} catch (e) {
+  $('cards').innerHTML = `<p class="empty">Could not load reports (${esc(e.message)}).</p>`;
+}
+for (const id of ['q', 'f-decision', 'f-stakes', 'f-lang']) $(id).addEventListener('input', render);
+</script>
+</body>
+</html>
