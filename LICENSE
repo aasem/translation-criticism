@@ -1,0 +1,33 @@
+Copyright © 2026 Asim Bakhshi. All rights reserved, except as set out below.
+
+This repository has two parts, which are licensed differently.
+
+1. REPORTS AND WRITING
+
+The assessment reports (the files in reports/) and the written content of the
+site (including the Method and About pages) are licensed under the Creative
+Commons Attribution-NonCommercial-NoDerivatives 4.0 International licence
+(CC BY-NC-ND 4.0): https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+In short, you may quote, share and redistribute the reports unchanged, for
+non-commercial purposes, provided you credit "Asim Bakhshi, Translation
+Criticism" and link to https://aasem.github.io/translation-criticism/.
+You may not publish altered versions of a report, or use the reports
+commercially, without written permission.
+
+Quoted source texts and translations remain the copyright of their authors,
+translators and publishers, and are reproduced in short samples for the
+purpose of criticism and review. This licence does not cover them.
+
+2. CODE AND DESIGN
+
+The site's code and design (the HTML pages, assets/, and the report format)
+are not licensed for reuse. You may read the code and study how the site
+works, and GitHub's terms allow you to view and fork this repository on
+GitHub. You may not copy, adapt or redistribute the code or design, or
+publish a site built from them, without written permission.
+
+The scoring method described on the Method page draws on Multidimensional
+Quality Metrics (MQM); the method itself is public and anyone may apply it.
+
+For permissions, write to asembuxi [at] gmail [dot] com.
