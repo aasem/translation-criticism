@@ -2,7 +2,7 @@
 // {name} is filled in by the site.
 export const STRINGS = {
 "site.name": [
-"Editorial Assessments",
+"Editorial Assessments of Translations",
 "تراجم کے اداراتی جائزے"
 ],
 "site.by": [
@@ -42,7 +42,7 @@ export const STRINGS = {
 "لوڈ ہو رہا ہے…"
 ],
 "index.title": [
-"Editorial Assessments · Translation into Urdu",
+"Editorial Assessments of Translations · Translation into Urdu",
 "تراجم کے اداراتی جائزے · اردو میں ترجمہ"
 ],
 "index.eyebrow": [
@@ -214,7 +214,7 @@ export const STRINGS = {
 "قابلِ قبول سے کم ہے۔ وہاں تک پہنچنے کے لیے {words} الفاظ کے اس نمونے میں زیادہ سے زیادہ {max} منفی نمبر ہونے چاہییں۔ اس میں {penalty} ہیں یعنی {over} زیادہ (ایک بڑا انحراف = 5، ایک سنگین = 25)۔"
 ],
 "report.title": [
-"{title} · Editorial Assessments",
+"{title} · Editorial Assessments of Translations",
 "{title} · تراجم کے اداراتی جائزے"
 ],
 "report.print": [
@@ -754,7 +754,7 @@ export const STRINGS = {
 "ماخذ کی نحو، رموزِ اوقاف یا لفظی چربے جھلکتے ہیں (اسے اسلوبی رجحانات کے تحت ایک رجحان کے طور پر بیان کیا جاتا ہے)"
 ],
 "m.title": [
-"Method · Editorial Assessments",
+"Method · Editorial Assessments of Translations",
 "طریقِ کار · تراجم کے اداراتی جائزے"
 ],
 "m.eyebrow": [
