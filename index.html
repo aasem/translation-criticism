@@ -22,7 +22,6 @@
   <div class="filters">
     <select id="f-decision"><option value="">All decisions</option></select>
     <select id="f-stakes"><option value="">All stakes</option></select>
-    <select id="f-lang"><option value="">All languages</option></select>
     <span id="count" class="hint" style="align-self:center"></span>
   </div>
   <div id="cards" class="cards"><p class="empty">Loading…</p></div>
@@ -58,9 +57,9 @@ const isUrdu = (h) => {
 
 function render() {
   const q = $('q').value.trim().toLowerCase();
-  const fd = $('f-decision').value, fs = $('f-stakes').value, fl = $('f-lang').value;
+  const fd = $('f-decision').value, fs = $('f-stakes').value;
   const list = reports.filter((r) =>
-    (!fd || r.decision === fd) && (!fs || r.stakes === fs) && (!fl || r.submission?.language === fl) &&
+    (!fd || r.decision === fd) && (!fs || r.stakes === fs) &&
     (!q || r._hay.includes(q)));
   $('count').textContent = `${list.length} of ${reports.length} report${reports.length === 1 ? '' : 's'}`;
   if (!list.length) { $('cards').innerHTML = '<p class="empty">No reports match.</p>'; return; }
@@ -107,14 +106,13 @@ try {
   const present = new Set(reports.map((r) => r.decision));
   fill($('f-decision'), DECISIONS.map((d) => d[0]).filter((d) => present.has(d)));
   fill($('f-stakes'), [...new Set(reports.map((r) => r.stakes))]);
-  fill($('f-lang'), [...new Set(reports.map((r) => r.submission?.language))]);
   const qs = new URLSearchParams(location.search).get('q');
   if (qs) $('q').value = qs;
   render();
 } catch (e) {
   $('cards').innerHTML = `<p class="empty">Could not load reports (${esc(e.message)}).</p>`;
 }
-for (const id of ['q', 'f-decision', 'f-stakes', 'f-lang']) $(id).addEventListener('input', render);
+for (const id of ['q', 'f-decision', 'f-stakes']) $(id).addEventListener('input', render);
 </script>
 </body>
 </html>
