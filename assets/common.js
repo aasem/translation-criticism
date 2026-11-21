@@ -28,6 +28,27 @@ export const DECISIONS = [
 ];
 
 export const ACK = 'Any translation can be reworked. This decision concerns the submitted draft, not the possibility of a good translation of this work.';
+export const ACK_PUBLISHED = 'Any translation can be reworked. This grade concerns the published translation as sampled here, not the possibility of a good translation of this work.';
+
+// Two kinds of assessment: a draft before publication (editorial decision for a publisher)
+// and a translation already in print (grade for readers).
+export const STAGES = ['Pre-publication', 'Published'];
+export const isPublished = (r) => r.stage === 'Published';
+
+// MQM severity weights, as in MQM 2.0 scoring.
+export const WEIGHTS = { Minor: 1, Major: 5, Critical: 25 };
+
+// Grades for published translations, by weighted penalty points per 100 source words.
+export const GRADES = [
+  ['A', 'Exemplary', 2, 'A faithful literary equivalent. Deviations are rare and slight.'],
+  ['B', 'Sound', 5, 'Reliable throughout. Deviations are mostly minor and do not distort the work.'],
+  ['C', 'Serviceable', 10, 'Conveys the work, but readers meet recurring losses of sense, image or tone.'],
+  ['D', 'Deficient', 20, 'Frequent or serious deviations. Readers receive a distorted version of the work.'],
+  ['E', 'Unreliable', Infinity, 'Cannot be relied on to represent the work.'],
+];
+export const bandFor = (pp100) => GRADES.find((g) => pp100 <= g[2]) || GRADES[GRADES.length - 1];
+export const gradeName = (letter) => { const g = GRADES.find((x) => x[0] === letter); return g ? `${g[0]} · ${g[1]}` : ''; };
+export const gradeClass = (letter) => ({ A: 'sev-none', B: 'sev-none', C: 'sev-minor', D: 'sev-major', E: 'sev-critical' }[letter] || '');
 
 export const sevClass = (s) => ({ Critical: 'sev-critical', Major: 'sev-major', Minor: 'sev-minor' }[s] || 'sev-none');
 export const decisionClass = (d) =>
@@ -78,7 +99,11 @@ export function tally(report) {
     }
   const n = total.Critical + total.Major + total.Minor;
   const w = words(report.source?.text);
-  return { byCode: t, total, n, words: w, per100: (x) => (w ? ((100 * x) / w).toFixed(1) : '–') };
+  const penalty = total.Critical * WEIGHTS.Critical + total.Major * WEIGHTS.Major + total.Minor * WEIGHTS.Minor;
+  const pp100 = w ? (100 * penalty) / w : 0;
+  const score = w ? Math.max(0, 100 * (1 - penalty / w)) : 0;
+  return { byCode: t, total, n, words: w, penalty, pp100, score, band: bandFor(pp100),
+    per100: (x) => (w ? ((100 * x) / w).toFixed(1) : '–') };
 }
 
 export const worst = (devs) => {
@@ -131,7 +156,8 @@ export const BRANCH = 'main';
 export const TOKENS = {
   total: 'all deviations', critical: 'critical', major: 'major', minor: 'minor',
   severe: 'major + critical', per100: 'deviations per 100 source words', words: 'source words',
-  segments: 'segments', A: 'accuracy (A) codes', B: 'language (B) codes', C: 'style (C) codes',
+  segments: 'segments', penalty: 'weighted penalty points', pp100: 'penalty points per 100 words',
+  score: 'MQM quality score', band: 'grade band from the score', A: 'accuracy (A) codes', B: 'language (B) codes', C: 'style (C) codes',
   A1: '…and so on for any single code',
 };
 export function figures(report) {
@@ -139,7 +165,8 @@ export function figures(report) {
   const f = {
     total: t.n, critical: t.total.Critical, major: t.total.Major, minor: t.total.Minor,
     severe: t.total.Critical + t.total.Major, per100: t.per100(t.n), words: t.words,
-    segments: (report.segments || []).length, A: 0, B: 0, C: 0,
+    segments: (report.segments || []).length, penalty: t.penalty, pp100: t.pp100.toFixed(1),
+    score: t.score.toFixed(1), band: `${t.band[0]} (${t.band[1]})`, A: 0, B: 0, C: 0,
   };
   for (const c of Object.keys(CODES)) {
     const x = t.byCode[c]; const n = x ? x.Critical + x.Major + x.Minor : 0;

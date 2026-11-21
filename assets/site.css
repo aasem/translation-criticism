@@ -204,3 +204,13 @@ header.site .brand .wm b { color: var(--accent); font-weight: inherit; }
 .rich p { margin: .5em 0; }
 .rich ul { margin: .5em 0; padding-left: 1.4em; }
 .hint code { font-size: 12px; background: var(--gray); padding: 0 4px; border-radius: 3px; }
+
+/* stage, grade, sample note */
+.chip.kind { background: #ece7df; }
+.sample-note { display: flex; gap: 12px; align-items: flex-start; margin: 14px 0 0; padding: 10px 16px; border: 1px solid var(--rule); border-radius: 6px; background: var(--blue); font-size: .95rem; }
+.sample-note .ico { width: 20px; height: 20px; margin: 3px 0 0; color: #2f5d8a; }
+.sample-note p { margin: 0; }
+.score-line { display: flex; gap: 10px; align-items: flex-start; background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 10px 14px; }
+.score-line .ico { width: 20px; height: 20px; margin: 3px 0 0; color: var(--accent); }
+table.kv { width: auto; min-width: 50%; }
+table.kv th { width: 11em; }

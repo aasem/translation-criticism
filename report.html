@@ -43,7 +43,7 @@
 </dialog>
 
 <script type="module">
-import { CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS } from './assets/common.js';
+import { CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED } from './assets/common.js';
 const H2 = (ic, t) => `<h2>${icon(ic)}${t}</h2>`;
 
 const $ = (id) => document.getElementById(id);
@@ -106,19 +106,28 @@ function header() {
     <h3>Subtitle</h3>${T('subtitle', { rows: 3 })}
     <h3>Catalogue details</h3>
     <table><tbody>
-      <tr><th>Date</th><td>${I('date', 'YYYY-MM-DD')}</td><th>Stakes</th><td>${S('stakes', ['Standard', 'Literary', 'Canonical'])}</td></tr>
+      <tr><th>Kind</th><td>${S('stage', STAGES)}</td><th>Stakes</th><td>${S('stakes', ['Standard', 'Literary', 'Canonical'])}</td></tr>
+      <tr><th>Date</th><td>${I('date', 'YYYY-MM-DD')}</td><th>Sample location</th><td>${I('sampleLocation', 'e.g. vol. 1, pp. 410–412')}</td></tr>
       <tr><th>Author</th><td>${I('author')}</td><th>Work</th><td>${I('work')}</td></tr>
       <tr><th>Passage</th><td colspan="3">${I('passage')}</td></tr>
       <tr><th>Source language</th><td>${I('source.language')}</td><th>Source label / translator</th><td>${I('source.label', 'label')}${I('source.translator', 'translator')}</td></tr>
       <tr><th>Target language</th><td>${I('submission.language')}</td><th>Submission label / translator</th><td>${I('submission.label', 'label')}${I('submission.translator', 'translator')}</td></tr>
+      ${isPublished(r) ? `
+      <tr><th colspan="4">Publication</th></tr>
+      <tr><th>Publisher</th><td>${I('publication.publisher')}</td><th>Place</th><td>${I('publication.place')}</td></tr>
+      <tr><th>Year</th><td>${I('publication.year')}</td><th>Edition</th><td>${I('publication.edition')}</td></tr>
+      <tr><th>ISBN</th><td>${I('publication.isbn')}</td><th>Pages sampled</th><td>${I('publication.pages')}</td></tr>` : ''}
       <tr><th>Tags</th><td colspan="3"><input type="text" data-tags value="${esc((r.tags || []).join(', '))}" placeholder="comma-separated"></td></tr>
     </tbody></table>`;
   return `
     <h1>${esc(r.title)}</h1>
     <p class="subtitle">${esc(r.subtitle)}</p>
-    <p class="byline"><span>${icon('calendar')}${esc(r.date)}</span>${r.submission?.translator ? `<span>${icon('user')}Translated by ${esc(r.submission.translator)}</span>` : ''}</p>
+    <p class="byline"><span>${icon('calendar')}${esc(r.date)}</span>${r.submission?.translator ? `<span>${icon('user')}Translated by ${esc(r.submission.translator)}</span>` : ''}${
+      isPublished(r) && r.publication?.publisher ? `<span>${icon('book')}${esc([r.publication.publisher, r.publication.place, r.publication.year].filter(Boolean).join(', '))}</span>` : ''}</p>
     <div class="meta-chips">
-      <span class="dec ${decisionClass(r.decision)}">${icon('gavel')}${esc(r.decision)}</span>
+      <span class="chip kind">${icon(isPublished(r) ? 'book' : 'doc')}${esc(r.stage || 'Pre-publication')}</span>
+      ${isPublished(r) ? `<span class="dec ${gradeClass(r.grade)}">${icon('scale')}Grade ${esc(gradeName(r.grade))}</span>`
+        : `<span class="dec ${decisionClass(r.decision)}">${icon('gavel')}${esc(r.decision)}</span>`}
       <span class="chip">${icon('layers')}${esc(r.stakes)} stakes</span>
       <span class="chip">${icon('globe')}${esc(r.source?.language)} → ${esc(r.submission?.language)}</span>
       ${(r.tags || []).map((t) => `<a class="chip tag" href="./?q=${encodeURIComponent(t)}">${esc(t)}</a>`).join('')}
@@ -135,7 +144,11 @@ function passages() {
 }
 
 function scope() {
-  return `${H2('info', 'Scope')}${T('scope', { md: true, rows: 10 })}
+  const pub = R.publication || {};
+  const pubRows = [['Publisher', pub.publisher], ['Place', pub.place], ['Year', pub.year], ['Edition', pub.edition], ['ISBN', pub.isbn], ['Pages sampled', pub.pages]].filter((x) => x[1]);
+  const pubTable = isPublished(R) && !editing && pubRows.length
+    ? `<p><strong>Publication</strong></p><table class="kv"><tbody>${pubRows.map(([k, v]) => `<tr><th>${k}</th><td>${urduWrap(esc(v))}</td></tr>`).join('')}</tbody></table>` : '';
+  return `${H2('info', 'Scope')}${T('scope', { md: true, rows: 10 })}${pubTable}
     <p><strong>Deviation codes</strong> (adapted for literary translation from Multidimensional Quality Metrics)</p>
     <table><thead><tr><th>Code</th><th>Name</th><th>Test</th></tr></thead><tbody>
     ${Object.entries(CODES).map(([c, [n, t]]) => `<tr><td class="fam-${c[0]}"><strong>${c}</strong></td><td>${n}</td><td>${t}</td></tr>`).join('')}
@@ -194,6 +207,8 @@ function counts() {
       <tr class="total"><td>Total</td><td class="num">${t.total.Critical}</td><td class="num">${t.total.Major}</td><td class="num">${t.total.Minor}</td><td class="num">${t.n}</td></tr>
       <tr class="total"><td>Per 100 source words</td><td class="num">${t.per100(t.total.Critical)}</td><td class="num">${t.per100(t.total.Major)}</td><td class="num">${t.per100(t.total.Minor)}</td><td class="num">${t.per100(t.n)}</td></tr>
     </tbody></table>
+    <p class="score-line">${icon('scale')}<span><strong>Weighted score.</strong> With MQM weights (Minor ${WEIGHTS.Minor}, Major ${WEIGHTS.Major}, Critical ${WEIGHTS.Critical}), the penalty is ${t.penalty} points: ${t.pp100.toFixed(1)} per 100 source words, a quality score of ${t.score.toFixed(1)} out of 100. ${
+      isPublished(R) ? `This places the score in grade band <strong>${t.band[0]} · ${t.band[1]}</strong>.` : 'The score is shown for reference; a pre-publication assessment ends in an editorial decision, not a grade.'}</span></p>
     ${T('profileSummary', { md: true, rows: 5 })}`;
 }
 
@@ -221,6 +236,29 @@ function decision() {
     <p class="ack">${ACK}</p>`;
 }
 
+function grade() {
+  const t = tally(R); const band = t.band[0];
+  if (editing && !R.grade) R.grade = band; // start from the score band
+  const cur = R.grade || band;
+  const moved = cur !== band;
+  return `${H2('scale', 'Grade')}
+    <table><thead><tr><th>Grade</th><th class="num">Penalty points per 100 words</th><th>Meaning</th></tr></thead><tbody>
+    ${GRADES.map(([g, name, max, m], i) => { const on = g === cur ? gradeClass(g) : '';
+      const lo = i ? GRADES[i - 1][2] : 0; const range = max === Infinity ? `over ${lo}` : i ? `${lo}–${max}` : `up to ${max}`;
+      return `<tr><td class="${on}">${on ? `<strong>${g} · ${name}</strong>` : `${g} · ${name}`}</td><td class="num ${on}">${range}</td><td class="${on}">${m}</td></tr>`; }).join('')}
+    </tbody></table>
+    <p class="decision-line">${icon('scale')}<strong>Grade: ${editing ? S('grade', GRADES.map((g) => g[0])) : esc(gradeName(cur)) + '.'}</strong></p>
+    <p class="hint">Score band: ${band} (${t.pp100.toFixed(1)} penalty points per 100 words).${moved ? ` The grade is moved from the band; the basis below gives the reason.` : ''}</p>
+    ${editing ? `<p><strong>Basis.</strong></p>${T('gradeBasis', { md: true })}<p><strong>Note for readers.</strong></p>${T('readerNote', { md: true })}`
+      : `<p><strong>Basis.</strong> ${md(fill(R.gradeBasis, F)).replace(/^<p>|<\/p>$/g, '')}</p><p><strong>Note for readers.</strong> ${md(fill(R.readerNote, F)).replace(/^<p>|<\/p>$/g, '')}</p>`}
+    <p class="ack">${ACK_PUBLISHED}</p>`;
+}
+
+function sampleNote() {
+  const loc = R.sampleLocation || (isPublished(R) && R.publication?.pages ? `pp. ${R.publication.pages}` : '');
+  return `<div class="sample-note">${icon('info')}<p><strong>Sample assumption.</strong> This assessment rests on a sample of ${F.words} source words in ${F.segments} segments${loc ? ` (${esc(loc)})` : ''}. As in any sample-based assessment, the sample is taken to stand for the whole translation: the deviations and tendencies found here are assumed to run through the work, and the ${isPublished(R) ? 'grade' : 'decision'} applies to the whole on that assumption.</p></div>`;
+}
+
 function render() {
   const y = scrollY;
   F = figures(R);
@@ -228,11 +266,11 @@ function render() {
   $('root').className = 'wrap' + (editing ? ' editing' : '');
   $('root').innerHTML = [
     header(), passages(),
-    editing ? `${H2('pen', 'Lead')}${T('lead', { md: true })}${tokenHint()}` : `<div class="lead">${icon('target', 'lead-ico')}<div>${md(fill(R.lead, F))}</div></div>`,
+    editing ? `${H2('pen', 'Lead')}${T('lead', { md: true })}${tokenHint()}` : `<div class="lead">${icon('target', 'lead-ico')}<div>${md(fill(R.lead, F))}</div></div>${sampleNote()}`,
     scope(), sideBySide(), counts(),
     `${H2('wave', 'Stylistic tendencies')}${T('tendencies', { md: true, rows: 14 })}`,
     `${H2('user', 'Translator profile')}${T('translatorProfile', { md: true, rows: 10 })}`,
-    findings(), decision(),
+    findings(), isPublished(R) ? grade() : decision(),
   ].join('');
   if (editing) document.querySelectorAll('textarea').forEach(grow);
   $('b-edit').innerHTML = editing ? icon('check') + 'Done' : icon('pen') + 'Edit';

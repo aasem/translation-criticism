@@ -4,6 +4,16 @@
   "title": "Translation Assessment: ",
   "subtitle": "An editorial assessment report for interested readers and publishers. Segment-level deviation analysis on an error typology adapted from Multidimensional Quality Metrics, the translation industry's standard framework, calibrated to <stakes> stakes, with a descriptive translation-studies profile of the translator.",
   "date": "",
+  "stage": "Pre-publication",
+  "sampleLocation": "",
+  "publication": {
+    "publisher": "",
+    "place": "",
+    "year": "",
+    "edition": "",
+    "isbn": "",
+    "pages": ""
+  },
   "author": "",
   "work": "",
   "passage": "",
@@ -52,5 +62,9 @@
     }
   ],
   "decisionBasis": "",
-  "publisherNote": ""
+  "publisherNote": "",
+  "grade": "",
+  "gradeBasis": "",
+  "readerNote": "",
+  "_comment": "stage is 'Pre-publication' (ends in decision, decisionBasis, publisherNote) or 'Published' (fill publication; ends in grade, gradeBasis, readerNote)."
 }

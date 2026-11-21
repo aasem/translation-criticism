@@ -20,7 +20,8 @@
 
   <div class="search-wrap"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="q" class="search" type="search" placeholder="Search author, work, translator, or any phrase in English or Urdu…" autocomplete="off"></div>
   <div class="filters">
-    <select id="f-decision"><option value="">All decisions</option></select>
+    <select id="f-stage"><option value="">All kinds</option><option>Pre-publication</option><option>Published</option></select>
+    <select id="f-decision"><option value="">All decisions and grades</option></select>
     <select id="f-stakes"><option value="">All stakes</option></select>
     <span id="count" class="hint" style="align-self:center"></span>
   </div>
@@ -30,7 +31,7 @@
 <footer class="site"><div class="wrap">© 2026 <a href="https://mechanomorph.substack.com" rel="noopener">Asim Bakhshi · Mechanomorph</a></div></footer>
 
 <script type="module">
-import { loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon } from './assets/common.js';
+import { loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon, isPublished, GRADES, gradeName, gradeClass } from './assets/common.js';
 
 const $ = (id) => document.getElementById(id);
 let reports = [];
@@ -38,7 +39,7 @@ let reports = [];
 function haystack(r) {
   const segs = (r.segments || []).flatMap((s) => [s.source, s.submission, s.keeps, ...(s.deviations || []).map((d) => d.note)]);
   return [r.title, r.author, r.work, r.passage, r.source?.translator, r.source?.label, r.submission?.translator,
-    r.submission?.label, r.submission?.language, r.decision, r.stakes, ...(r.tags || []), r.source?.text, r.submission?.text, ...segs]
+    r.submission?.label, r.submission?.language, r.stage, isPublished(r) ? gradeName(r.grade) : r.decision, r.stakes, ...Object.values(r.publication || {}), ...(r.tags || []), r.source?.text, r.submission?.text, ...segs]
     .filter(Boolean).join('   ').toLowerCase();
 }
 
@@ -57,9 +58,9 @@ const isUrdu = (h) => {
 
 function render() {
   const q = $('q').value.trim().toLowerCase();
-  const fd = $('f-decision').value, fs = $('f-stakes').value;
+  const fd = $('f-decision').value, fs = $('f-stakes').value, fk = $('f-stage').value;
   const list = reports.filter((r) =>
-    (!fd || r.decision === fd) && (!fs || r.stakes === fs) &&
+    (!fk || (r.stage || 'Pre-publication') === fk) && (!fd || (isPublished(r) ? 'Grade ' + r.grade : r.decision) === fd) && (!fs || r.stakes === fs) &&
     (!q || r._hay.includes(q)));
   $('count').textContent = `${list.length} of ${reports.length} report${reports.length === 1 ? '' : 's'}`;
   if (!list.length) { $('cards').innerHTML = '<p class="empty">No reports match.</p>'; return; }
@@ -78,12 +79,15 @@ function render() {
           <span>${icon('book')}${esc(r.work)}</span>
           <span>${icon('globe')}${esc(r.source?.language)}${r.source?.label ? ' (' + esc(r.source.label) + ')' : ''} → ${esc(r.submission?.language)}</span>
           <span>${icon('user')}${esc(r.submission?.translator || 'Unnamed translator')}</span>
+          ${isPublished(r) && r.publication?.publisher ? `<span>${icon('book')}${esc([r.publication.publisher, r.publication.year].filter(Boolean).join(', '))}</span>` : ''}
           <span>${icon('calendar')}${esc(r.date)}</span>
         </div></div>
         <span class="card-go">${icon('arrow')}</span>
       </div>
       <div class="meta-chips">
-        <span class="dec ${decisionClass(r.decision)}">${icon('gavel')}${esc(r.decision)}</span>
+        <span class="chip kind">${icon(isPublished(r) ? 'book' : 'doc')}${esc(r.stage || 'Pre-publication')}</span>
+        ${isPublished(r) ? `<span class="dec ${gradeClass(r.grade)}">${icon('scale')}Grade ${esc(gradeName(r.grade))}</span>`
+          : `<span class="dec ${decisionClass(r.decision)}">${icon('gavel')}${esc(r.decision)}</span>`}
         <span class="chip">${icon('layers')}${esc(r.stakes)} stakes</span>
         <span class="chip">${icon('chart')}${t.n} deviations · ${t.per100(t.n)} per 100 words</span>
         <span class="chip">${t.total.Critical} critical · ${t.total.Major} major</span>
@@ -103,8 +107,8 @@ try {
   const loaded = await Promise.allSettled(ids.map((id) => loadJSON(`reports/${id}.json`)));
   reports = loaded.filter((x) => x.status === 'fulfilled').map((x) => ({ ...x.value, _hay: haystack(x.value) }));
   reports.sort((a, b) => String(b.date).localeCompare(String(a.date)));
-  const present = new Set(reports.map((r) => r.decision));
-  fill($('f-decision'), DECISIONS.map((d) => d[0]).filter((d) => present.has(d)));
+  const present = new Set(reports.map((r) => (isPublished(r) ? 'Grade ' + r.grade : r.decision)));
+  fill($('f-decision'), [...DECISIONS.map((d) => d[0]), ...GRADES.map((g) => 'Grade ' + g[0])].filter((d) => present.has(d)));
   fill($('f-stakes'), [...new Set(reports.map((r) => r.stakes))]);
   const qs = new URLSearchParams(location.search).get('q');
   if (qs) $('q').value = qs;
@@ -112,7 +116,7 @@ try {
 } catch (e) {
   $('cards').innerHTML = `<p class="empty">Could not load reports (${esc(e.message)}).</p>`;
 }
-for (const id of ['q', 'f-decision', 'f-stakes']) $(id).addEventListener('input', render);
+for (const id of ['q', 'f-stage', 'f-decision', 'f-stakes']) $(id).addEventListener('input', render);
 </script>
 </body>
 </html>

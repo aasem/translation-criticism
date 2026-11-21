@@ -29,10 +29,15 @@ Write a token in braces and the page fills in the current figure, so the prose a
 | `{severe}` | major + critical |
 | `{per100}` | deviations per 100 source words |
 | `{words}`, `{segments}` | source words, segments |
+| `{penalty}`, `{pp100}`, `{score}`, `{band}` | weighted penalty (Minor 1, Major 5, Critical 25), per 100 words, quality score, grade band |
 | `{A}`, `{B}`, `{C}` | totals for each code family |
 | `{A1}`, `{C3}`, … | total for a single code |
 
 Figures that don't come from the deviations (for example, semicolons per 100 words) are ordinary text and have to be updated by hand.
+
+## Two kinds of report
+
+A **pre-publication** report assesses a draft for a publisher and ends in an editorial decision. A **published** report assesses a translation in print, records its publication details, and ends in a grade from A to E, banded by weighted penalty points per 100 source words. The method is the same for both; the Method page sets out the scales and the sample assumption.
 
 ## Adding a report
 
@@ -46,9 +51,13 @@ Figures that don't come from the deviations (for example, semicolons per 100 wor
 | `id`, `title`, `subtitle`, `date` | Identity and heading |
 | `author`, `work`, `passage`, `tags` | Catalogue details (all searchable) |
 | `source`, `submission`, `reference` | `{language, label, translator, text}`; `reference` is optional and shown for reading only |
+| `stage` | `Pre-publication` (a draft; ends in an editorial decision) or `Published` (in print; ends in a grade) |
+| `sampleLocation` | Where the sample comes from, e.g. "closing pages of Swann's Way" |
+| `publication` | Published only: `{publisher, place, year, edition, isbn, pages}` |
 | `stakes` | `Standard`, `Literary` or `Canonical` |
-| `decision` | One of the five steps on the decision scale |
-| `lead`, `scope`, `profileSummary`, `tendencies`, `translatorProfile`, `findingsLead`, `decisionBasis`, `publisherNote` | Prose (light markdown) |
+| `decision`, `decisionBasis`, `publisherNote` | Pre-publication: one of the five steps on the decision scale, and its reasoning |
+| `grade`, `gradeBasis`, `readerNote` | Published: `A`–`E`, and its reasoning |
+| `lead`, `scope`, `profileSummary`, `tendencies`, `translatorProfile`, `findingsLead` | Prose (light markdown) |
 | `segments[]` | `{n, source, submission, deviations: [{code, severity, note}], keeps}` |
 | `findings[]` | `{finding, severity, evidence}` |
 
