@@ -10,13 +10,13 @@ To preview it locally, run `python3 -m http.server` in the repository folder and
 
 ## Editing a report
 
-1. Open the report and press **Edit**. Everything becomes editable: catalogue details, passages, segment texts, each deviation's code, severity, note, function test and gain, the human suggestions, every prose section, the work-level findings and the decision. You can also add or delete segments, deviations and findings.
+1. Open the report and press **Edit**. Everything becomes editable: catalogue details, passages, segment texts, each deviation's code, severity, note, function test and gain, the human suggestions, every prose section and the decision or grade. You can also add or delete segments and deviations.
 2. Counts, per-100-word rates and severity colours are calculated from the deviations, so they stay consistent as you edit.
 3. Your edits are saved in this browser as you type. To make them permanent, use one of these:
    - **Commit to GitHub** writes the file straight to `main`. It needs a fine-grained personal access token for this repository with *Contents: read and write*. The token is stored only in your browser.
    - **Download JSON**, then replace the file in `reports/` and commit it yourself.
 
-Prose sections (lead, notes on the texts, profile, tendencies, translator profile, findings lead, decision basis, publisher's note) are edited as formatted text, with **B**, *I* and list buttons (or Ctrl+B and Ctrl+I). They are stored as light markdown: `**bold**`, `*italic*`, `- ` bullet lists and blank-line paragraphs. You can also edit the JSON directly.
+Prose sections (lead, notes on the texts, profile, tendencies, translator profile, decision basis, publisher's note) are edited as formatted text, with **B**, *I* and list buttons (or Ctrl+B and Ctrl+I). They are stored as light markdown: `**bold**`, `*italic*`, `- ` bullet lists and blank-line paragraphs. You can also edit the JSON directly.
 
 ### Live figures in prose
 
@@ -61,11 +61,11 @@ A **pre-publication** report assesses a draft for a publisher and ends in an edi
 | `textType` | `Expressive` (literary: form and register count) or `Informative` (scientific, technical: style codes only where content changes) |
 | `decision`, `decisionBasis`, `publisherNote` | Pre-publication: one of the five steps on the decision scale, and its reasoning |
 | `grade`, `gradeBasis`, `readerNote` | Published: `A`–`E`, and its reasoning |
-| `lead`, `profileSummary`, `tendencies`, `translatorProfile`, `findingsLead` | Prose (light markdown) |
+| `lead` | Conclusions: three short paragraphs on Accuracy, Language and Style, for a general reader |
+| `profileSummary`, `tendencies`, `translatorProfile` | Prose (light markdown) |
 | `textNotes` | Report-specific notes on the texts only (transcription, misprints, segmentation). Everything general is on the Method page |
 | `aiSuggestions` | `{model, date}` of the AI suggestions |
 | `segments[]` | `{n, source, submission, deviations: [{code, severity, note, functions, gain, compensatedBy}], suggestion: {ai, state, human}}`. Severity is Critical, Major, Minor or Neutral (weight 0). `functions` is the function test `[{fn, kept}]`; `gain` is what a transposition adds (never scored). the second suggestion column is Asim Bakhshi's; `suggestion.state` is `Not reviewed`, `Agrees with AI` or `Own suggestion`; the AI text is kept as generated |
-| `findings[]` | `{finding, severity, evidence}` |
 
 Deviation codes A1–A6, B1–B3 and C1–C3 are defined in `assets/common.js` and explained on the Method page.
 
@@ -73,7 +73,7 @@ Deviation codes A1–A6, B1–B3 and C1–C3 are defined in `assets/common.js` a
 
 Every page has an English / اردو switch in the header. The choice is remembered in the browser, and `?lang=ur` or `?lang=en` in an address sets it too. The interface strings (headings, labels, the Method page, scoring sentences, codes, decisions and grades) are in `assets/strings.js` as `[English, Urdu]` pairs; edit the Urdu there. In the pages, elements marked `data-i18n="key"` take their Urdu from that file, and `{name}` in a string is filled in by the site.
 
-A report's own prose (lead, tendencies, findings, basis and notes) is shown as written in its JSON, in either interface language.
+A report's own prose (conclusions, tendencies, basis and notes) is shown as written in its JSON, in either interface language.
 
 ## Licence
 

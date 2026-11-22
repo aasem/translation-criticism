@@ -411,3 +411,5 @@ html.lang-ur .rc-score .tip em { font-size: 14.5px; }
 html.lang-ur .eyebrow { font-size: 15px; }
 .privacy { font-size: .95rem; color: var(--muted); }
 .muted { color: #8a8178; font-style: italic; }
+
+.lead p + p { margin-top: .45em; }

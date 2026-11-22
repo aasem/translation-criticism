@@ -74,7 +74,7 @@ export function scoreGuide(t) {
   return { acc, ideal, status, toAcc: Math.max(0, t.penalty - acc.maxPenalty), toIdeal: Math.max(0, t.penalty - ideal.maxPenalty) };
 }
 
-// Default editorial decision for each score band. Work-level findings may move a draft off it.
+// Default editorial decision for each score band. The assessor may move a draft one step off it, with the reason in the basis.
 export const DECISION_ANCHOR = {
   A: ['Accept'], B: ['Accept with minor revisions'], C: ['Major revisions'], D: ['Retranslation required'],
 };

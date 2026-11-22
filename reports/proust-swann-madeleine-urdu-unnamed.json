@@ -35,7 +35,7 @@
     "Proust",
     "French"
   ],
-  "lead": "**Decision: Retranslation required.** Across {segments} segments of a {words}-word source the submission shows {total} deviations ({per100} per 100 words): {critical} critical, {major} major and {minor} minor, for a quality score of {score}, in band {band}, which points to retranslation by default. Its critical and major deviations both fall in the passage's central sentence.",
+  "lead": "**Accuracy ({A}).** The sense is kept almost everywhere, with small additions and shifts of tense. The exception is the central sentence, where the paragraph's key turn is reversed.\n\n**Language ({B}).** Mostly correct, with a few slips of grammar and clarity and one non-word in the central sentence.\n\n**Style ({C}).** Close to the source, with one image roughened and one word given a religious weight.",
   "segments": [
     {
       "n": 1,
@@ -289,23 +289,10 @@
     }
   ],
   "profileSummary": "The minor deviations are small and scattered. Most are single-word additions (A2: #1, #4, #5, #6), with small slips in Urdu grammar and clarity (B1, B3: #2, #4, #9) and in tense or modality (A4: #11, #15). The critical and the major deviation both fall at the passage's philosophical climax: a mistranslated pronoun phrase in #9 (A1) and a non-word in #8 (B2). Together they change what the key sentence says. There are no omissions (A3) or changes to the logic between clauses (A6), and {clean} of {segments} segments ({cleanPct}%) carry no deviation.",
-  "tendencies": "The submission reproduces the shape of the English sentences in Urdu (C4 interference). This is a habit of the whole sample, not of single words.\n\n- **Sentence architecture.** It keeps the source's sentence boundaries and clause order, and attaches descriptions after the noun with جو as English does (1.5 per 100 words in the passage, 1.0 across the chapter). Proust's long sentences arrive as chains of clauses rather than as a single movement.\n- **Calques and punctuation.** The English article and possessive are carried over as ایک (2.3 per 100 words in the passage, 1.0 across the chapter) and میرے (2.3 and 0.7), and semicolons follow the source (1.7 and 1.3). Read across a book, the English stays visible beneath the Urdu.\n- **Register (C1).** It settles into formal Persianate vocabulary (متوجہ، واقع ہو رہی تھیں، قادرِ مطلق، گرم مائع), slightly above the source's plain, intimate narration.\n- **Logical links.** Links between clauses are kept as the source states them, neither added nor dropped. This is the main reason the deviation count stays low.\n\nCounts are from the 343-word passage and from the full chapter manuscript (about 23,500 words, with sentences averaging 42 words).",
-  "translatorProfile": "**Competent but mechanical.** The submission works by formal equivalence throughout. Interference from the source shows as the default setting rather than a choice, and a mild ennoblement appears in its Persianate vocabulary. Its apparent purpose is a faithful crib of Moncrieff for readers who want the content intact, **not a literary Urdu Proust**. Its deviations look accidental rather than chosen and the worst one comes exactly where understanding, not diligence, is tested (#9). The pattern is consistent with lightly edited machine output.",
-  "findingsLead": "These belong to the translation as a whole, not to single segments.",
-  "findings": [
-    {
-      "finding": "Breakdown at conceptual turns: the worst errors fall where understanding, not diligence, is tested",
-      "severity": "Major",
-      "evidence": ""
-    },
-    {
-      "finding": "Register lifted toward formal Persianate vocabulary (C1)",
-      "severity": "Minor",
-      "evidence": ""
-    }
-  ],
-  "decisionBasis": "The score of {score}, in band {band}, points to retranslation by default, and no work-level finding moves it. The penalty is concentrated: the critical deviation in #9 inverts the turn the paragraph builds to, and #8 loses \"its brevity\" to a non-word, while the {minor} minor deviations are scattered. Accuracy elsewhere ({clean} segments with no deviation) argues against a weak grasp of English, so the same translator could undertake the retranslation. The errors at the central sentence (#8, #9) keep that a close call. If machine drafting were confirmed, a different translator would be advised.",
-  "publisherNote": "A fresh translation is needed; the same translator could undertake it. Possible machine drafting; see Translator profile.",
+  "tendencies": "The submission keeps the shape of the English sentences in Urdu (C4 interference). This is a habit of the whole sample, not of single words.\n\n- **Sentence architecture.** It keeps the source's sentence boundaries and clause order, and attaches descriptions after the noun with جو as English does (5 times, 1.7 per 100 source words). Proust's long sentences arrive as chains of clauses rather than as a single movement.\n- **Article, possessive and punctuation.** ایک renders the English indefinite article 6 times (2.0 per 100 source words), and میرے appears 8 times against the source's 7 \"my\". The Urdu has 6 semicolons where the source has 1 (2.0 per 100 source words). Across the full chapter manuscript the same habits recur, at about 1.0, 0.7 and 1.3 per 100 Urdu words.\n- **Register.** It follows the source's register, except where one word gives the joy a religious weight (#11, C1).\n- **Logical links.** Links between clauses are kept as the source states them, neither added nor dropped. This is the main reason the deviation count stays low.\n\nThe effect is a close, readable rendering in which the English sentence stays visible beneath the Urdu.",
+  "translatorProfile": "- **Strategy.** Formal equivalence (Nida), foreignizing in syntax and punctuation (Venuti): the source's sentence boundaries, clause order and links are kept, and Toury's interference shows in the article, possessive and semicolons. Adequacy is chosen over acceptability.\n- **Apparent purpose.** A faithful rendering of Moncrieff for readers who want the content intact, **not a literary Urdu Proust**.\n- **Level.** Competent. The sense is held across the paragraph and the links are kept exactly, but the deviations look accidental rather than chosen, and the worst ones fall exactly where understanding, not diligence, is tested (#8, #9).",
+  "decisionBasis": "The score of {score}, in band {band}, points to retranslation by default. The penalty is concentrated: the critical deviation in #9 reverses the turn the paragraph builds to, and #8 loses a word to a non-word, while the {minor} minor deviations are scattered. Accuracy elsewhere ({clean} segments with no deviation) shows a sound grasp of English, so the same translator could undertake the retranslation.",
+  "publisherNote": "A fresh translation is needed; the same translator could undertake it.",
   "grade": "",
   "gradeBasis": "",
   "readerNote": "",

@@ -252,18 +252,6 @@ function counts() {
     ${T('profileSummary', { md: true, rows: 5 })}`;
 }
 
-function findings() {
-  const f = R.findings || [];
-  const rows = f.map((x, i) => `<tr>
-      <td dir="auto">${editing ? T(`findings.${i}.finding`, { rows: 3 }) : urduWrap(esc(fill(x.finding, F)))}</td>
-      <td class="${sevClass(x.severity)}">${S(`findings.${i}.severity`, FINDING_SEVERITIES, '', 'sev')}</td>
-      <td dir="auto">${editing ? T(`findings.${i}.evidence`, { rows: 3 }) : urduWrap(esc(fill(x.evidence, F)))}
-        ${editing ? `<div><button class="small danger" data-act="del-find" data-i="${i}">Remove</button></div>` : ''}</td></tr>`).join('');
-  return `${H2('flag', tt('h.findings'))}${T('findingsLead', { md: true, rows: 2 })}
-    <table><thead><tr><th>${tt('th.finding')}</th><th>${tt('th.severity')}</th><th>${tt('th.evidence')}</th></tr></thead><tbody>${rows}</tbody></table>
-    ${editing ? '<button class="small" data-act="add-find">+ Finding</button>' : ''}`;
-}
-
 function decision() {
   return `${H2('gavel', tt('h.decision'))}
     <table><thead><tr><th>${tt('th.decision')}</th><th class="num">${tt('th.defaultBand')}</th><th>${tt('th.meaning')}</th></tr></thead><tbody>
@@ -303,11 +291,11 @@ function render() {
   $('root').className = 'wrap' + (editing ? ' editing' : '');
   $('root').innerHTML = [
     header(), passages(),
-    editing ? `${H2('pen', 'Lead')}${T('lead', { md: true })}${tokenHint()}` : `<div class="lead">${icon('target', 'lead-ico')}<div dir="auto">${md(fill(R.lead, F))}</div></div>`,
+    editing ? `${H2('pen', 'Conclusions (Accuracy, Language, Style)')}${T('lead', { md: true })}${tokenHint()}` : `<div class="lead">${icon('target', 'lead-ico')}<div dir="auto">${md(fill(R.lead, F))}</div></div>`,
     details(), sideBySide(), counts(),
     `${H2('wave', tt('h.tendencies'))}${T('tendencies', { md: true, rows: 14 })}`,
     `${H2('user', tt('h.profile'))}${T('translatorProfile', { md: true, rows: 10 })}`,
-    findings(), isPublished(R) ? grade() : decision(),
+    isPublished(R) ? grade() : decision(),
   ].join('');
   if (editing) document.querySelectorAll('textarea').forEach(grow);
   $('b-edit').innerHTML = editing ? icon('check') + 'Done' : icon('pen') + 'Edit';
@@ -353,8 +341,6 @@ $('root').addEventListener('click', (e) => {
     case 'add-seg': segs.splice(i + 1, 0, { source: '', submission: '', deviations: [], suggestion: { ai: '', state: 'Not reviewed', human: '' } }); break;
     case 'copy-ai': { const g = (segs[i].suggestion ??= {}); g.human = g.ai || ''; g.state = 'Own suggestion'; break; }
     case 'del-seg': if (!confirm(`Delete segment ${i + 1}?`)) return; segs.splice(i, 1); break;
-    case 'add-find': (R.findings ??= []).push({ finding: '', severity: 'Major', evidence: '' }); break;
-    case 'del-find': R.findings.splice(i, 1); break;
   }
   segs.forEach((s, k) => (s.n = k + 1));
   saveDraft(); render();

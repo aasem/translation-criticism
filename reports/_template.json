@@ -31,7 +31,7 @@
   },
   "decision": "Major revisions",
   "tags": [],
-  "lead": "",
+  "lead": "**Accuracy ({A}).** … **Language ({B}).** … **Style ({C}).** …",
   "segments": [
     {
       "n": 1,
@@ -57,14 +57,6 @@
   "profileSummary": "",
   "tendencies": "",
   "translatorProfile": "",
-  "findingsLead": "",
-  "findings": [
-    {
-      "finding": "",
-      "severity": "Major",
-      "evidence": ""
-    }
-  ],
   "decisionBasis": "",
   "publisherNote": "",
   "grade": "",

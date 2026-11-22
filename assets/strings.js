@@ -146,8 +146,8 @@ export const STRINGS = {
 "گریڈ {grade}"
 ],
 "card.moved": [
-"Set by work-level findings, not the score band",
-"یہ اسکور بینڈ سے نہیں بلکہ کلی سطح کے نتائج سے طے ہوا"
+"Moved one step from the score band; see the basis",
+"اسکور بینڈ سے ایک درجہ ہٹایا گیا، وجہ بنیاد میں درج ہے"
 ],
 "card.scoreLabel": [
 "quality score · band",
@@ -362,8 +362,8 @@ export const STRINGS = {
 "مسودے کے لیے یہ بینڈ بطورِ طے شدہ فیصلہ {decision} کی طرف اشارہ کرتا ہے۔"
 ],
 "score.findings": [
-"Work-level findings, which the score does not count, may move the outcome; the basis says why.",
-"کلی سطح کے نتائج اسکور میں شمار نہیں ہوتے مگر نتیجے کو بدل سکتے ہیں۔ اس کی وجہ بنیاد میں بیان کی جاتی ہے۔"
+"The assessor may move the outcome one step from the band; the basis says why.",
+"جائزہ کار نتیجے کو بینڈ سے ایک درجہ ہٹا سکتا ہے، اور بنیاد میں اس کی وجہ درج ہوتی ہے۔"
 ],
 "score.reference": [
 "For reference, an acceptable translation scores {accScore} or above (band {accBand}) and an ideal one {idealScore} or above (band {idealBand}).",
@@ -397,14 +397,6 @@ export const STRINGS = {
 "Translator profile",
 "مترجم کا خاکہ"
 ],
-"h.findings": [
-"Work-level findings",
-"کلی سطح کے نتائج"
-],
-"th.finding": [
-"Finding",
-"نتیجہ"
-],
 "th.severity": [
 "Severity",
 "شدت"
@@ -434,8 +426,8 @@ export const STRINGS = {
 "اسکور بینڈ: {band} (معیار اسکور {score})، جو بطورِ طے شدہ {decision} کی طرف اشارہ کرتا ہے۔"
 ],
 "dec.moved": [
-"The decision is moved from the band by the work-level findings; the basis below gives the reason.",
-"کلی سطح کے نتائج کی وجہ سے فیصلہ بینڈ سے ہٹ گیا ہے۔ وجہ نیچے بنیاد میں درج ہے۔"
+"The decision is moved one step from the band; the basis below gives the reason.",
+"فیصلہ بینڈ سے ایک درجہ ہٹا دیا گیا ہے۔ وجہ نیچے بنیاد میں درج ہے۔"
 ],
 "dec.line": [
 "Decision: {decision}.",
@@ -798,8 +790,8 @@ export const STRINGS = {
 "اسکور کیسے پڑھیں۔ کلیہ سو میں سے فی سو ماخذ الفاظ منفی نمبر نکالنے کے برابر ہے۔ یہ درست جملوں یا الفاظ کا فیصد نہیں اور اسے اسکول کے نمبروں کی طرح نہیں پڑھنا چاہیے۔ ہر سو الفاظ میں ایک بڑا انحراف ہی پانچ نمبر کاٹ لیتا ہے۔ MQM کے پیشہ ورانہ معمول میں کامیابی کی حد عموماً 95 سے 99 کے درمیان رکھی جاتی ہے۔ اسی لیے یہ سائٹ اسکور ہمیشہ اس کے بینڈ (A سے D، نیچے) کے ساتھ دیتی ہے تاکہ 86 کا اسکور ویسا ہی پڑھا جائے جیسا وہ ہے یعنی بینڈ D · ناقص۔"
 ],
 "m.score.p5": [
-"The score is a summary, not the verdict. It counts segment-level deviations only. Work-level findings, such as the loss of a form the passage depends on, are not in the count; they are judged alongside it and can move the outcome away from the band.",
-"اسکور ایک خلاصہ ہے، فیصلہ نہیں۔ یہ صرف قطعات کی سطح کے انحرافات گنتا ہے۔ کلی سطح کے نتائج، مثلاً کسی ایسی ہیئت کا زیاں جس پر اقتباس کا دار و مدار ہو، اس گنتی میں شامل نہیں۔ انھیں اس کے ساتھ ساتھ پرکھا جاتا ہے اور وہ نتیجے کو بینڈ سے ہٹا سکتے ہیں۔"
+"The score is a summary, not the verdict. It counts segment-level deviations only and sets the band. The assessor may move the outcome one step from the band, and the report says why.",
+"اسکور ایک خلاصہ ہے، فیصلہ نہیں۔ یہ صرف قطعات کی سطح کے انحرافات گنتا ہے اور بینڈ طے کرتا ہے۔ جائزہ کار نتیجے کو بینڈ سے ایک درجہ ہٹا سکتا ہے، اور رپورٹ اس کی وجہ بتاتی ہے۔"
 ],
 "m.decision.h": [
 "Editorial decision (pre-publication)",
@@ -810,8 +802,8 @@ export const STRINGS = {
 "فیصلے کا آغاز اسکور بینڈ کے طے شدہ فیصلے سے ہوتا ہے (وہی چار بینڈ جو نیچے گریڈ کے لیے ہیں)۔ A منظور کی طرف اشارہ کرتا ہے، B منظور (معمولی ترامیم) کی طرف، C کثیر ترامیم درکار کی طرف اور D ازسرِنو ترجمہ درکار کی طرف۔"
 ],
 "m.decision.li2": [
-"Work-level findings may move the decision from that default, and the report says why. In an expressive text, a critical work-level finding rules out the first three steps, however good the score.",
-"کلی سطح کے نتائج فیصلے کو اس طے شدہ نقطے سے ہٹا سکتے ہیں اور رپورٹ اس کی وجہ بتاتی ہے۔ اظہاری متن میں کلی سطح کا ایک سنگین نتیجہ پہلے تین درجوں کو خارج کر دیتا ہے خواہ اسکور کتنا ہی اچھا ہو۔"
+"The assessor may move the decision one step from that default, and the report says why.",
+"جائزہ کار فیصلے کو اس طے شدہ نقطے سے ایک درجہ ہٹا سکتا ہے، اور رپورٹ اس کی وجہ بتاتی ہے۔"
 ],
 "m.decision.li3": [
 "For a retranslation, the note for the publisher says whether the same translator could undertake it, on the evidence about the translator's competence.",
@@ -824,10 +816,6 @@ export const STRINGS = {
 "m.grade.li1": [
 "The grade starts from the band set by penalty points per 100 source words.",
 "گریڈ کا آغاز اس بینڈ سے ہوتا ہے جو فی سو ماخذ الفاظ منفی نمبروں سے طے ہوتا ہے۔"
-],
-"m.grade.li2": [
-"In an expressive text, a critical work-level finding caps the grade at C, however good the score.",
-"اظہاری متن میں کلی سطح کا ایک سنگین نتیجہ گریڈ کو C سے اوپر نہیں جانے دیتا خواہ اسکور کچھ بھی ہو۔"
 ],
 "m.grade.li3": [
 "The assessor may move the grade one step from its band, and the report says why.",
@@ -950,8 +938,8 @@ export const STRINGS = {
 "گنتی میں کیا شامل نہیں"
 ],
 "m.notcounted.p": [
-"Fluency, sentence shape and rhythm are not counted segment by segment unless they alter what is said. They are described under Stylistic tendencies, and where they matter to the whole (a form the passage depends on, a register that drifts) they are recorded as work-level findings. In Urdu, the absence of semicolons is never a deviation. Notes on what a segment renders well are not recorded: they have no bearing on the score or the outcome.",
-"روانی، جملے کی ساخت اور آہنگ کو قطعہ بہ قطعہ نہیں گنا جاتا جب تک وہ کہی ہوئی بات کو نہ بدلیں۔ ان کا بیان اسلوبی رجحانات کے تحت ہوتا ہے، اور جہاں وہ پورے متن کے لیے اہم ہوں (کوئی ہیئت جس پر اقتباس ٹکا ہو، یا لہجہ جو بھٹکتا جائے) وہاں انھیں کلی سطح کے نتائج میں درج کیا جاتا ہے۔ اردو میں سیمی کولن کا نہ ہونا کبھی انحراف نہیں۔ کسی قطعے کی خوبیوں کے بارے میں نوٹ درج نہیں کیے جاتے کیونکہ اسکور یا نتیجے پر ان کا کوئی اثر نہیں۔"
+"Fluency, sentence shape and rhythm are not counted segment by segment unless they alter what is said. They are described under Stylistic tendencies. Neither the copying of the source's form nor the vocabulary's origin (Persian, Arabic, Sanskrit or English) is a deviation in itself. In Urdu, the absence of semicolons is never a deviation. Notes on what a segment renders well are not recorded: they have no bearing on the score or the outcome.",
+"روانی، جملے کی ساخت اور آہنگ کو قطعہ بہ قطعہ نہیں گنا جاتا جب تک وہ کہی ہوئی بات کو نہ بدلیں۔ ان کا بیان اسلوبی رجحانات کے تحت ہوتا ہے۔ نہ ماخذ کی ہیئت کی نقل بذاتِ خود انحراف ہے اور نہ الفاظ کا ماخذ (فارسی، عربی، سنسکرت یا انگریزی)۔ اردو میں سیمی کولن کا نہ ہونا کبھی انحراف نہیں۔ کسی قطعے کی خوبیوں کے بارے میں نوٹ درج نہیں کیے جاتے کیونکہ اسکور یا نتیجے پر ان کا کوئی اثر نہیں۔"
 ],
 "counts.crisp": [
 "{n} scored deviations{neutral} in {words} source words: {per100} per 100 words.",
@@ -1002,8 +990,8 @@ export const STRINGS = {
 "متن کی قسم"
 ],
 "m.type.p": [
-"Each report records the source's text type, following Reiss. In an expressive (literary) text, form is part of what the source says: an accumulating sentence, a chain of images or a register can carry meaning, so its loss is a deviation, recorded segment by segment where it can be and as a work-level finding where it belongs to the whole. In an informative (scientific or technical) text, rebuilding sentences or shifting register loses nothing of what the source says, so style codes apply only where the content changes, and form-level findings do not arise. The text type never changes the severity of a single deviation, and the standing or fame of a work plays no part in the assessment.",
-"ہر رپورٹ میں ماخذ کے متن کی قسم درج ہوتی ہے (رائس کی تقسیم کے مطابق)۔ اظہاری (ادبی) متن میں ہیئت بھی ماخذ کے کہے ہوئے کا حصہ ہوتی ہے: مسلسل بڑھتا ہوا جملہ، تصویروں کا سلسلہ یا لہجہ معنی اٹھا سکتا ہے، اس لیے اس کا زیاں انحراف ہے۔ جہاں ممکن ہو اسے قطعہ بہ قطعہ درج کیا جاتا ہے اور جہاں وہ پورے متن سے متعلق ہو وہاں کلی سطح کے نتیجے کے طور پر۔ اطلاعاتی (سائنسی یا تکنیکی) متن میں جملوں کی نئی تشکیل یا لہجے کی تبدیلی سے ماخذ کی کہی ہوئی بات میں کچھ ضائع نہیں ہوتا، اس لیے اسلوب کے کوڈ صرف وہاں لاگو ہوتے ہیں جہاں مواد بدل جائے، اور ہیئت سے متعلق کلی نتائج پیدا نہیں ہوتے۔ متن کی قسم کسی انفرادی انحراف کی شدت نہیں بدلتی، اور کسی تصنیف کا مرتبہ یا شہرت جائزے میں کوئی کردار ادا نہیں کرتی۔"
+"Each report records the source's text type, following Reiss. In an expressive (literary) text, form is part of what the source says: an image, a register or the shape of a sentence can carry meaning, so changing it is a deviation where it alters what a segment says, and is described under Stylistic tendencies where it runs through the passage. In an informative (scientific or technical) text, rebuilding sentences or shifting register loses nothing of what the source says, so style codes apply only where the content changes. The text type never changes the severity of a single deviation, and the standing or fame of a work plays no part in the assessment.",
+"ہر رپورٹ میں ماخذ کے متن کی قسم درج ہوتی ہے (رائس کی تقسیم کے مطابق)۔ اظہاری (ادبی) متن میں ہیئت بھی ماخذ کے کہے ہوئے کا حصہ ہوتی ہے: تصویر، لہجہ یا جملے کی ساخت معنی اٹھا سکتی ہے، اس لیے جہاں اس کی تبدیلی کسی قطعے کی بات بدل دے وہاں وہ انحراف ہے، اور جہاں وہ پورے اقتباس میں جاری ہو وہاں اسلوبی رجحانات کے تحت بیان کی جاتی ہے۔ اطلاعاتی (سائنسی یا تکنیکی) متن میں جملوں کی نئی تشکیل یا لہجے کی تبدیلی سے ماخذ کی کہی ہوئی بات میں کچھ ضائع نہیں ہوتا، اس لیے اسلوب کے کوڈ صرف وہاں لاگو ہوتے ہیں جہاں مواد بدل جائے۔ متن کی قسم کسی انفرادی انحراف کی شدت نہیں بدلتی، اور کسی تصنیف کا مرتبہ یا شہرت جائزے میں کوئی کردار ادا نہیں کرتی۔"
 ],
 "textTypeShort.Expressive": [
 "Literary",
