@@ -129,7 +129,7 @@ function header() {
     <h1 dir="auto">${esc(r.title)}</h1>
     <p class="subtitle" dir="auto">${esc(r.subtitle)}</p>
     <p class="byline"><span>${icon('calendar')}${esc(r.date)}</span>${r.submission?.translator ? `<span>${icon('user')}${esc(tt('report.translatedBy', { name: r.submission.translator }))}</span>` : ''}${
-      isPublished(r) && r.publication?.publisher ? `<span>${icon('book')}${esc([r.publication.publisher, r.publication.place, r.publication.year].filter(Boolean).join(', '))}</span>` : ''}</p>
+      isPublished(r) && r.publication?.publisher ? `<span>${icon('book')}${esc([r.publication.publisher, r.publication.place, r.publication.year, r.publication.edition].filter(Boolean).join(', '))}</span>` : ''}</p>
     <div class="meta-chips">
       <span class="chip kind">${icon(isPublished(r) ? 'book' : 'doc')}${esc(label('stage', r.stage || 'Pre-publication'))}</span>
       ${isPublished(r) ? `<span class="dec ${gradeClass(r.grade)}">${icon('scale')}${esc(tt('card.grade', { grade: gradeName(r.grade) }))}</span>`
@@ -145,7 +145,6 @@ function passages() {
   let h = `${H2('doc', tt('h.passages'))}`;
   h += head('source', tt('h.source')) + `<div class="passage" dir="auto">${editing ? T('source.text', { rows: 10 }) : `<p>${urduWrap(esc(R.source.text))}</p>`}</div>`;
   h += head('submission', isPublished(R) ? tt('h.translation') : tt('h.submission')) + `<div class="passage ${editing ? '' : 'ur-block'}" ${editing ? '' : 'lang="ur" dir="rtl"'}>${editing ? T('submission.text', { rows: 12, ur: true }) : esc(R.submission.text)}</div>`;
-  h += reference();
   return h;
 }
 
@@ -155,24 +154,25 @@ function reference() {
   const ref = R.reference || {};
   const by = ref.translator || ref.label;
   const outcomeWord = isPublished(R) ? tt('word.grade') : tt('word.decision');
-  const about = UR ? `<p class="hint ref-about">${tt('ref.about', { outcome: outcomeWord })}</p>` : `<p class="hint ref-about">An acceptable rendering of the same sample, without the deviations recorded in this report, shown so readers can see what a sound translation of the passage looks like. It is not assessed and plays no part in the score or ${isPublished(R) ? 'grade' : 'decision'}.</p>`;
-  if (editing) return `<h3>${tt('ref.head')}</h3>${about}
+  const about = `<p class="hint ref-about">${tt('ref.about', { outcome: outcomeWord })}</p>`;
+  const head = `${H2('check', tt('ref.head'))}`;
+  if (editing) return `${head}${about}
     <table><tbody>
       <tr><th>Language</th><td>${I('reference.language', 'Urdu')}</td><th>Translated by</th><td>${I('reference.translator', 'e.g. Asim Bakhshi')}</td></tr>
       <tr><th>Note</th><td colspan="3">${I('reference.note', 'optional, e.g. prepared by the assessor for this report')}</td></tr>
     </tbody></table>
     <div class="passage">${T('reference.text', { rows: 10, ur: true })}</div>`;
-  if (!ref.text?.trim()) return `<h3>${tt('ref.head')}</h3><div class="ref-missing">${icon('info')}<p><strong>${tt('ref.missing')}</strong> ${tt('ref.missingText')}</p></div>`;
-  return `<h3>${tt('ref.head')} (${esc(ref.language || R.submission?.language || '')})${by ? ' - ' + esc(by) : ''}</h3>${about}
+  if (!ref.text?.trim()) return `${head}${about}<div class="ref-missing">${icon('info')}<p><strong>${tt('ref.missing')}</strong> ${tt('ref.missingText')}</p></div>`;
+  return `${head}<h3>${esc(ref.language || R.submission?.language || '')}${by ? ' - ' + esc(by) : ''}</h3>${about}
     ${ref.note ? `<p class="hint">${urduWrap(esc(ref.note))}</p>` : ''}
     <div class="passage ur-block ref-passage" lang="ur" dir="rtl">${esc(ref.text)}</div>`;
 }
 
 function scope() {
   const pub = R.publication || {};
-  const pubRows = [[tt('pub.publisher'), pub.publisher], [tt('pub.place'), pub.place], [tt('pub.year'), pub.year], [tt('pub.edition'), pub.edition], [tt('pub.isbn'), pub.isbn], [tt('pub.pages'), pub.pages]].filter((x) => x[1]);
-  const pubTable = isPublished(R) && !editing && pubRows.length
-    ? `<p><strong>${tt('pub.head')}</strong></p><table class="kv"><tbody>${pubRows.map(([k, v]) => `<tr><th>${k}</th><td>${urduWrap(esc(v))}</td></tr>`).join('')}</tbody></table>` : '';
+  const pubRows = [[tt('pub.publisher'), pub.publisher], [tt('pub.place'), pub.place], [tt('pub.year'), pub.year], [tt('pub.edition'), pub.edition], [tt('pub.isbn'), pub.isbn], [tt('pub.pages'), pub.pages]];
+  const pubTable = isPublished(R) && !editing
+    ? `<p><strong>${tt('pub.head')}</strong></p><table class="kv"><tbody>${pubRows.map(([k, v]) => `<tr><th>${k}</th><td>${v ? urduWrap(esc(v)) : `<span class="muted">${tt('pub.none')}</span>`}</td></tr>`).join('')}</tbody></table>` : '';
   return `${H2('info', tt('h.scope'))}${T('scope', { md: true, rows: 10 })}${pubTable}
     <p><strong>${tt('scope.codesHead')}</strong> ${tt('scope.codesNote')}</p>
     <table><thead><tr><th>${tt('th.code')}</th><th>${tt('th.name')}</th><th>${tt('th.test')}</th></tr></thead><tbody>
@@ -307,7 +307,7 @@ function render() {
     scope(), sideBySide(), counts(),
     `${H2('wave', tt('h.tendencies'))}${T('tendencies', { md: true, rows: 14 })}`,
     `${H2('user', tt('h.profile'))}${T('translatorProfile', { md: true, rows: 10 })}`,
-    findings(), isPublished(R) ? grade() : decision(),
+    findings(), isPublished(R) ? grade() : decision(), reference(),
   ].join('');
   if (editing) document.querySelectorAll('textarea').forEach(grow);
   $('b-edit').innerHTML = editing ? icon('check') + 'Done' : icon('pen') + 'Edit';

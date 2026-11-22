@@ -53,7 +53,7 @@ A **pre-publication** report assesses a draft for a publisher and ends in an edi
 | `id`, `title`, `subtitle`, `date` | Identity and heading |
 | `author`, `work`, `originalWork`, `passage`, `tags` | Catalogue details (all searchable); `work` is the title shown on cards, `originalWork` the title in the original language |
 | `source`, `submission` | `{language, label, translator, text}` |
-| `reference` | `{language, translator, note, text}`: an acceptable rendering of the same sample, without the recorded deviations, shown for comparison and never assessed. Leave `text` empty and the report says none has been added |
+| `reference` | `{language, translator, note, text}`: a corrective rendering of the same sample that removes every recorded deviation, shown at the end of the report for comparison and never assessed. Leave `text` empty and the report says none has been added |
 | `stage` | `Pre-publication` (a draft; ends in an editorial decision) or `Published` (in print; ends in a grade) |
 | `sampleLocation` | Where the sample comes from, e.g. "closing pages of Swann's Way" |
 | `publication` | Published only: `{publisher, place, year, edition, isbn, pages}` |

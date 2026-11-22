@@ -258,8 +258,8 @@ export const STRINGS = {
 "حوالہ جاتی ترجمہ"
 ],
 "ref.about": [
-"An acceptable rendering of the same sample, without the deviations recorded in this report, shown so readers can see what a sound translation of the passage looks like. It is not assessed and plays no part in the score or {outcome}.",
-"اسی نمونے کا ایک قابلِ قبول ترجمہ جس میں اس رپورٹ میں درج انحرافات نہیں ہیں۔ اسے اس لیے دکھایا گیا ہے کہ قاری دیکھ سکے کہ اس اقتباس کا ایک درست ترجمہ کیسا ہوتا ہے۔ اس کا جائزہ نہیں لیا گیا اور اسکور یا {outcome} میں اس کا کوئی دخل نہیں۔"
+"A corrective rendering of the same sample, proposed after the assessment. It removes every deviation recorded in this report, so readers can see the passage without them. It is one acceptable reading, not the only one, and plays no part in the score or {outcome}.",
+"اسی نمونے کا ایک اصلاحی ترجمہ جو جائزے کے بعد تجویز کیا گیا ہے۔ اس میں اس رپورٹ میں درج تمام انحرافات دور کر دیے گئے ہیں تاکہ قاری اقتباس کو ان کے بغیر دیکھ سکے۔ یہ ایک قابلِ قبول قراءت ہے، واحد نہیں، اور اسکور یا {outcome} میں اس کا کوئی دخل نہیں۔"
 ],
 "ref.missing": [
 "Not added.",
@@ -316,6 +316,10 @@ export const STRINGS = {
 "pub.pages": [
 "Pages sampled",
 "نمونے کے صفحات"
+],
+"pub.none": [
+"Not recorded",
+"درج نہیں"
 ],
 "scope.codesHead": [
 "Deviation codes",
@@ -890,8 +894,8 @@ export const STRINGS = {
 "حوالہ جاتی ترجمہ"
 ],
 "m.ref.p": [
-"A report may include a reference translation: an acceptable rendering of the same sample, made by the assessor or another translator, without the deviations the report records. It shows what a sound translation of the passage looks like. It is offered as one acceptable reading, not the only correct one, and it is not assessed: it plays no part in the score, the decision or the grade. When no reference translation has been added, the report says so.",
-"رپورٹ میں ایک حوالہ جاتی ترجمہ بھی شامل ہو سکتا ہے۔ یعنی اسی نمونے کا ایک قابلِ قبول ترجمہ جو جائزہ لینے والے یا کسی اور مترجم نے کیا ہو اور جس میں رپورٹ میں درج انحرافات نہ ہوں۔ یہ دکھاتا ہے کہ اس اقتباس کا ایک درست ترجمہ کیسا ہوتا ہے۔ اسے ایک قابلِ قبول قراءت کے طور پر پیش کیا جاتا ہے، واحد درست قراءت کے طور پر نہیں اور اس کا جائزہ نہیں لیا جاتا۔ اسکور، فیصلے یا گریڈ میں اس کا کوئی دخل نہیں۔ جب کوئی حوالہ جاتی ترجمہ شامل نہ کیا گیا ہو تو رپورٹ یہ بات واضح کر دیتی ہے۔"
+"A report may end with a reference translation: a corrective rendering of the same sample, proposed after the assessment by the assessor or another translator, that removes every deviation the report records. It comes last, after the grade or decision, so the passage can be read without the deviations once they have been set out. It is one acceptable reading, not the only one, is never assessed, and plays no part in the score or the outcome. Where none has been added, the report says so.",
+"رپورٹ کے آخر میں ایک حوالہ جاتی ترجمہ بھی ہو سکتا ہے۔ یعنی اسی نمونے کا ایک اصلاحی ترجمہ جو جائزے کے بعد جائزہ لینے والے یا کسی اور مترجم نے تجویز کیا ہو اور جس میں رپورٹ میں درج تمام انحرافات دور کر دیے گئے ہوں۔ یہ گریڈ یا فیصلے کے بعد سب سے آخر میں آتا ہے تاکہ انحرافات کی نشاندہی کے بعد اقتباس کو ان کے بغیر پڑھا جا سکے۔ یہ ایک قابلِ قبول قراءت ہے، واحد نہیں۔ اس کا جائزہ نہیں لیا جاتا اور اسکور یا نتیجے میں اس کا کوئی دخل نہیں۔ جہاں یہ شامل نہ ہو، رپورٹ یہ بات بتا دیتی ہے۔"
 ],
 "m.sample.h": [
 "The sample assumption",
