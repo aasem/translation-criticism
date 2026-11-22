@@ -39,7 +39,6 @@
   "decision": "Major revisions",
   "tags": [],
   "lead": "",
-  "scope": "",
   "segments": [
     {
       "n": 1,
@@ -49,10 +48,17 @@
         {
           "code": "A1",
           "severity": "Minor",
-          "note": ""
+          "note": "",
+          "functions": [],
+          "gain": "",
+          "compensatedBy": ""
         }
       ],
-      "keeps": ""
+      "suggestion": {
+        "ai": "",
+        "state": "Not reviewed",
+        "human": ""
+      }
     }
   ],
   "profileSummary": "",
@@ -71,5 +77,10 @@
   "grade": "",
   "gradeBasis": "",
   "readerNote": "",
-  "_comment": "stage is 'Pre-publication' (ends in decision, decisionBasis, publisherNote) or 'Published' (fill publication; ends in grade, gradeBasis, readerNote)."
+  "_comment": "stage is 'Pre-publication' (ends in decision, decisionBasis, publisherNote) or 'Published' (fill publication; ends in grade, gradeBasis, readerNote). textNotes: report-specific notes on the texts only (transcription, misprints, segmentation); everything general is on the Method page.",
+  "textNotes": "",
+  "aiSuggestions": {
+    "model": "",
+    "date": ""
+  }
 }

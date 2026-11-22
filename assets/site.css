@@ -67,6 +67,10 @@ td.num, th.num { text-align: end; font-variant-numeric: tabular-nums; width: 1%;
 .sev-minor { background: var(--yellow); }
 .sev-none { background: var(--green); }
 .sev-neutral { background: #eef1f5; }
+table.details { width: 100%; }
+table.details th { width: 9em; white-space: nowrap; }
+table.details td ul { margin: 0; padding-inline-start: 1.1em; }
+table.details td p { margin: 0; }
 .sbs col.c-sug { width: 14%; }
 .sbs td.sug { font-size: .95rem; }
 .sbs td.sug .ur-s { font-family: var(--urdu); direction: rtl; text-align: right; font-size: 1.05rem; line-height: 1.9; display: block; }

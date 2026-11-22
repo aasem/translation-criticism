@@ -43,7 +43,6 @@
     "French"
   ],
   "lead": "**Decision: Retranslation required.** At canonical stakes, the submission's mechanical method is a critical work-level finding. Across {segments} segments of a {words}-word source it shows {total} deviations ({per100} per 100 words): {critical} critical, {major} major and {minor} minor, for a quality score of {score}, in band {band}. Its critical and major deviations both fall in the passage's central sentence.",
-  "scope": "- **Source:** C. K. Scott Moncrieff's English translation of the madeleine paragraph from the Overture of *Swann's Way*, {words} words, quoted as supplied. It is the only yardstick; the French original is deliberately left out.\n- **Submission:** an Urdu translation of the same passage by an unnamed translator, from a chapter manuscript (pp. 40–42), quoted as supplied. Only this text is assessed.\n- **Reference translation:** a second Urdu rendering of the same passage, shown above for comparison only. It is not assessed, counted or compared.\n- **Stage: Pre-publication.** The submission is a draft under consideration by a publisher, so the report ends in an editorial decision rather than a grade.\n- **Stakes: Canonical.** A first major Urdu translation of Proust is likely to be the defining one for a generation, so the bar for the decision is set high.\n- **Segmentation:** {segments} segments, one per source sentence, with two adjustments. The first sentence is split at \"when one day…\" into #1–2, and the seventh at its em dash into #8–9.\n- **Score:** deviations are weighted by severity with the Multidimensional Quality Metrics weights (Minor 1, Major 5, Critical 25) and measured per 100 source words. The score is given for reference; at the pre-publication stage the outcome is the decision.\n- **Fluency** is assessed under Stylistic tendencies, not in the count. The absence of semicolons is never a deviation in Urdu.\n- **Sample:** {words} source words in {segments} segments, from the madeleine episode of the Overture. The passage is taken to stand for the whole translation: the deviations and tendencies found here are assumed to run through the work, and the decision applies to the whole on that assumption.",
   "segments": [
     {
       "n": 1,
@@ -56,7 +55,11 @@
           "note": "نہ رہا adds \"no longer\": the source simply says nothing of Combray had any existence for him."
         }
       ],
-      "keeps": "Otherwise close, and شامل matches \"comprised\"."
+      "suggestion": {
+        "ai": "کئی برس گزر چکے تھے جن میں کومبرے کی کوئی بھی چیز، سوائے اس کے جو وہاں میرے سونے جانے کے تھیٹر اور ڈرامے میں شامل تھی، میرے لیے کوئی وجود نہیں رکھتی تھی،",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 2,
@@ -69,14 +72,22 @@
           "note": "سرد دیکھ کر can be read as \"seeing me aloof\", where the source means physically cold."
         }
       ],
-      "keeps": "The کہ keeps the source's long delayed \"when\" intact."
+      "suggestion": {
+        "ai": "کہ سردیوں کے ایک دن، جب میں گھر لوٹا، میری ماں نے یہ دیکھ کر کہ مجھے سردی لگ رہی ہے، مجھے چائے پیش کی، جو میں عموماً نہیں پیتا تھا۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 3,
       "source": "I declined at first, and then, for no particular reason, changed my mind.",
       "submission": "پہلے میں نے انکار کیا، پھر کسی خاص سبب کے بغیر اپنا ارادہ بدل لیا۔",
       "deviations": [],
-      "keeps": ""
+      "suggestion": {
+        "ai": "",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 4,
@@ -99,7 +110,11 @@
           "note": "کیک is treated as feminine (منگوائی، لگتی ہیں)."
         }
       ],
-      "keeps": ""
+      "suggestion": {
+        "ai": "انہوں نے ان چھوٹے، گدرائے ہوئے ننھے کیکوں میں سے ایک منگوایا جنہیں 'پتیت مادلین' کہتے ہیں، اور جو یوں لگتے ہیں جیسے کسی زائر کی سیپ کے نالی دار خول میں ڈھالے گئے ہوں۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 5,
@@ -112,7 +127,11 @@
           "note": "تقریباً (\"almost\") hedges a \"mechanically\" the source leaves unqualified."
         }
       ],
-      "keeps": "The raised spoon and the earlier soaking are kept in sequence."
+      "suggestion": {
+        "ai": "اور جلد ہی، مشینی انداز میں، ایک بے رنگ دن کے بعد تھکا ہوا اور اداس کل کے امکان کے ساتھ، میں نے چائے کا ایک چمچ اپنے ہونٹوں تک اٹھایا جس میں میں نے کیک کا ایک ٹکڑا بھگو رکھا تھا۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 6,
@@ -125,7 +144,11 @@
           "note": "میرے اندر (\"inside me\") locates the changes, which the source leaves unplaced."
         }
       ],
-      "keeps": "The \"no sooner… than\" structure is rendered faithfully with جونہی."
+      "suggestion": {
+        "ai": "جونہی وہ گرم مائع، اور اس کے ساتھ ریزے، میرے تالو سے لگے، میرے پورے بدن میں ایک جھرجھری دوڑ گئی اور میں ٹھہر گیا، ان غیر معمولی تبدیلیوں پر متوجہ جو رونما ہو رہی تھیں۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 7,
@@ -138,7 +161,11 @@
           "note": "منفرد means distinctive or unique; the source's \"individual\" means single, standing on its own."
         }
       ],
-      "keeps": "نفیس and قبضہ carry \"exquisite\" and \"invaded\" well."
+      "suggestion": {
+        "ai": "ایک نفیس لذت میرے حواس پر چھا گئی تھی، مگر اکیلی، الگ تھلگ، اپنی اصل کا کوئی اشارہ دیے بغیر۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 8,
@@ -156,7 +183,11 @@
           "note": "بے معنی (\"meaningless\") is stronger than \"indifferent to me\", which describes the narrator's detachment, not life's lack of meaning."
         }
       ],
-      "keeps": ""
+      "suggestion": {
+        "ai": "اور فوراً زندگی کے نشیب و فراز کی مجھے پروا نہ رہی، اس کی آفتیں بے ضرر ہو گئیں، اس کی کوتاہی ایک واہمہ ——",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 9,
@@ -174,14 +205,22 @@
           "note": "بھر دینا is left as a dangling infinitive."
         }
       ],
-      "keeps": ""
+      "suggestion": {
+        "ai": "اس نئے احساس نے مجھ پر وہی اثر کیا تھا جو محبت کرتی ہے، کہ مجھے ایک قیمتی جوہر سے بھر دیتی ہے، یا یوں کہیے کہ یہ جوہر مجھ میں نہیں تھا، وہ خود میری ذات تھا۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 10,
       "source": "I had ceased now to feel mediocre, accidental, mortal.",
       "submission": "اب میں نے اپنے آپ کو معمولی، اتفاقی، فانی محسوس کرنا چھوڑ دیا تھا۔",
       "deviations": [],
-      "keeps": ""
+      "suggestion": {
+        "ai": "",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 11,
@@ -199,28 +238,44 @@
           "note": "آئی تھی (\"had come\") drops the wondering \"could it have\"."
         }
       ],
-      "keeps": ""
+      "suggestion": {
+        "ai": "یہ بے پناہ قوت والی مسرت مجھ تک کہاں سے آ سکتی تھی؟",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 12,
       "source": "I was conscious that it was connected with the taste of tea and cake, but that it infinitely transcended those savours, could not, indeed, be of the same nature as theirs.",
       "submission": "مجھے شعور تھا کہ اس کا تعلق چائے اور کیک کے ذائقے سے ہے، لیکن وہ ان ذائقوں سے لامحدود طور پر بڑھ کر تھی؛ بلکہ ان ہی کی نوعیت کی ہو ہی نہیں سکتی تھی۔",
       "deviations": [],
-      "keeps": ""
+      "suggestion": {
+        "ai": "",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 13,
       "source": "Whence did it come?",
       "submission": "یہ کہاں سے آئی؟",
       "deviations": [],
-      "keeps": "No deviation. But \"whence\" is more directional than \"where\", hence کدھر might be more suitable"
+      "suggestion": {
+        "ai": "",
+        "state": "Own suggestion",
+        "human": "No deviation. But \"whence\" is more directional than \"where\", hence کدھر might be more suitable"
+      }
     },
     {
       "n": 14,
       "source": "What did it signify?",
       "submission": "اس کا مطلب کیا تھا؟",
       "deviations": [],
-      "keeps": "No deviation. However, \"signify\" is more specific than \"what does it mean\". The former points somewhere."
+      "suggestion": {
+        "ai": "",
+        "state": "Own suggestion",
+        "human": "No deviation. However, \"signify\" is more specific than \"what does it mean\". The former points somewhere."
+      }
     },
     {
       "n": 15,
@@ -233,7 +288,11 @@
           "note": "The present پکڑوں، متعین کروں (\"how shall I\") replaces the source's past conditional \"how could I\", pulling the question out of the narrated past."
         }
       ],
-      "keeps": ""
+      "suggestion": {
+        "ai": "میں اسے کیسے گرفت میں لے سکتا تھا، کیسے متعین کر سکتا تھا؟",
+        "state": "Not reviewed",
+        "human": ""
+      }
     }
   ],
   "profileSummary": "The minor deviations are small and scattered. Most are single-word additions (A2: #1, #4, #5, #6), with small slips in Urdu grammar and clarity (B1, B3: #2, #4, #9) and in tense or modality (A4: #11, #15). The critical and the major deviation both fall at the passage's philosophical climax: a mistranslated pronoun phrase in #9 (A1) and a non-word in #8 (B2). Together they change what the key sentence says. There are no omissions (A3) or changes to the logic between clauses (A6), and {clean} of {segments} segments ({cleanPct}%) carry no deviation.",
@@ -261,5 +320,10 @@
   "publisherNote": "A fresh translation is needed; the same translator could undertake it. Possible machine drafting; see Translator profile.",
   "grade": "",
   "gradeBasis": "",
-  "readerNote": ""
+  "readerNote": "",
+  "aiSuggestions": {
+    "model": "Claude Opus 5.5",
+    "date": "2026-11-22"
+  },
+  "textNotes": "- Source: C. K. Scott Moncrieff's English translation of the madeleine paragraph. The French original is deliberately left out.\n- The submission is by an unnamed translator, from a chapter manuscript (pp. 40–42).\n- The first sentence is split at \"when one day…\" (#1–2), and the seventh at its em dash (#8–9)."
 }

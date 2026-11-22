@@ -976,5 +976,49 @@ export const STRINGS = {
 "m.transp.p": [
 "When a translator replaces an image or phrase with a different one by choice, the severity is set by a function test: what does the source image do in the passage, and which of those functions survive? If all of them survive, the deviation is Neutral. If some are lost, it is Minor. If the image the passage depends on is lost, it is Major or Critical. Where a transposition also adds something the source lacks, the report records it as a gain. Gains never offset penalty points; they inform the stylistic tendencies, the translator profile, and the one-step move of the outcome.",
 ""
+],
+"det.head": [
+"Details",
+""
+],
+"det.kind": [
+"Assessment",
+""
+],
+"det.sample": [
+"Sample",
+""
+],
+"det.sampleUr": [
+"{words} source words, {segments} segments{loc}. Taken to stand for the whole translation.",
+""
+],
+"det.publication": [
+"Publication",
+""
+],
+"det.notes": [
+"Notes on the texts",
+""
+],
+"det.method": [
+"Codes, severities, weights, bands, the sample assumption and the suggestion columns are explained in the",
+""
+],
+"sbs.crisp": [
+"Cell colour shows the worst severity. Suggestions are never scored.",
+""
+],
+"sug.line2": [
+"AI suggestions ({model}, {date}): {aiSugg}. Assessor agrees with {agree}, differs on {differ}, not yet reviewed {unreviewed}.",
+""
+],
+"m.notcounted.h": [
+"What the count leaves out",
+""
+],
+"m.notcounted.p": [
+"Fluency, sentence shape and rhythm are not counted segment by segment unless they alter what is said. They are described under Stylistic tendencies, and where they matter to the whole (a form the passage depends on, a register that drifts) they are recorded as work-level findings. In Urdu, the absence of semicolons is never a deviation. Notes on what a segment renders well are not recorded: they have no bearing on the score or the outcome.",
+""
 ]
 };

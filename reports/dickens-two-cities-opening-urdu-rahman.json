@@ -32,7 +32,7 @@
   "reference": {
     "language": "Urdu",
     "translator": "Asim Bakhshi",
-    "note": "Prepared by the assessor for this report.",
+    "note": "Prepared by the assessor for this report. A second acceptable reading, in a Persianate register, shows that the source's form survives in either register of Urdu: وہ بہترین زمانہ تھا، وہ بدترین زمانہ تھا، وہ دورِ خرد تھا، وہ دورِ حماقت تھا، وہ عصرِ ایمان تھا، وہ عصرِ تشکیک تھا، وہ فصلِ نور تھی، وہ فصلِ ظلمت تھی، وہ بہارِ امید تھی، وہ زمستانِ مایوسی تھا، ہمارے سامنے سب کچھ تھا، ہمارے سامنے کچھ بھی نہ تھا، ہم سب سیدھے جنت کی طرف جا رہے تھے، ہم سب سیدھے دوسری طرف جا رہے تھے — مختصراً یہ کہ وہ زمانہ موجودہ زمانے سے اس قدر مشابہ تھا کہ اس کے شوریدہ ترین اربابِ اختیار کا اصرار تھا کہ چاہے خیر کے معنی میں ہو یا شر کے، اسے صرف اور صرف موازنے کے بلند ترین درجے پر ہی بامعنی سمجھا جائے۔",
     "text": "وہ بہترین زمانہ تھا، وہ بدترین زمانہ تھا، وہ دانائی کا دور تھا، وہ نادانی کا دور تھا، وہ ایمان کا عہد تھا، وہ بے یقینی کا عہد تھا، وہ روشنی کا موسم تھا، وہ تاریکی کا موسم تھا، وہ امید کی بہار تھی، وہ مایوسی کی خزاں تھی، ہمارے سامنے سب کچھ تھا، ہمارے سامنے کچھ بھی نہ تھا، ہم سب سیدھے جنت کی طرف جا رہے تھے، ہم سب سیدھے دوسری طرف جا رہے تھے — قصہ مختصر یہ کہ وہ زمانہ موجودہ زمانے سے اس قدر ملتا جلتا تھا کہ اس کے سب سے زیادہ ہاؤ ہو مچانے والے کرتا دھرتاؤں کا اصرار تھا کہ چاہے اچھائی کے معنی میں ہو یا برائی کے، اسے صرف اور صرف موازنے کے سب سے اونچے درجے پر ہی بامعنی سمجھا جائے۔"
   },
   "stakes": "Canonical",
@@ -42,7 +42,6 @@
     "English"
   ],
   "lead": "**Grade: D · Deficient.** Against the {words}-word source, the translation shows {total} deviations ({per100} per 100 words): {critical} critical, {major} major and {minor} minor, for a quality score of {score}, in band {band}. The translation is fluent and free of language errors, but it dissolves the one-sentence form that carries the passage's meaning and replaces its closing proposition.",
-  "scope": "- **Source:** the opening sentence of Charles Dickens's *A Tale of Two Cities* (1859), {words} words, quoted as supplied. It is the only yardstick.\n- **Translation:** a published Urdu translation of the same sentence by Fazlur Rahman, transcribed from a scanned page and quoted as transcribed. Only this text is assessed.\n- **Stage: Published.** The translation is in print, so the report ends in a grade for readers rather than an editorial decision. Its publication details are in the table below; those not known are marked as not recorded.\n- **Stakes: Canonical.** *A Tale of Two Cities* is a classic, and this is among the most quoted sentences in English fiction. The bar for the grade is set accordingly.\n- **Reference translation:** a plain Hindustani rendering, given at the end of the report as a corrective for comparison only. It is not assessed, counted or compared. A second acceptable reading, in a Persianate register, shows that the source's form survives in either register of Urdu: وہ بہترین زمانہ تھا، وہ بدترین زمانہ تھا، وہ دورِ خرد تھا، وہ دورِ حماقت تھا، وہ عصرِ ایمان تھا، وہ عصرِ تشکیک تھا، وہ فصلِ نور تھی، وہ فصلِ ظلمت تھی، وہ بہارِ امید تھی، وہ زمستانِ مایوسی تھا، ہمارے سامنے سب کچھ تھا، ہمارے سامنے کچھ بھی نہ تھا، ہم سب سیدھے جنت کی طرف جا رہے تھے، ہم سب سیدھے دوسری طرف جا رہے تھے — مختصراً یہ کہ وہ زمانہ موجودہ زمانے سے اس قدر مشابہ تھا کہ اس کے شوریدہ ترین اربابِ اختیار کا اصرار تھا کہ چاہے خیر کے معنی میں ہو یا شر کے، اسے صرف اور صرف موازنے کے بلند ترین درجے پر ہی بامعنی سمجھا جائے۔\n- **Segmentation:** the source is one sentence. It is split at its seven antithetical pairs and at the em dash into {segments} segments. The translation's second and third pairs are merged into one sentence, shown against #3, with #4 marked as merged.\n- **Codes:** A1 Mistranslation, A2 Addition, A3 Omission, A4 Grammatical meaning, A5 Distinction, A6 Logic (accuracy); B1 Grammar, B2 Non-word or spelling, B3 Ambiguity (language); C1 Register, C2 Word choice, C3 Imagery (style). C4 Interference is reported as a pattern under Stylistic tendencies, not counted. **Severity:** Minor (nuance, tone, texture), Major (changes what the sentence says), Critical (breaks a sentence the passage depends on).\n- **Score:** deviations are weighted with the Multidimensional Quality Metrics weights (Minor 1, Major 5, Critical 25) and measured per 100 source words. The quality score is 100 minus penalty points per 100 source words. It is not a percentage and is always read with its band. The bands, which set the starting grade, are this practice's calibration for literary and scientific prose, not a Multidimensional Quality Metrics standard, which leaves thresholds to each project.\n- **Fluency** is assessed under Stylistic tendencies, not in the count. The absence of semicolons is never a deviation in Urdu. Changes in sentence shape and rhythm are not counted unless they alter what is said, so the loss of the source's form is recorded as a work-level finding, not segment by segment.\n- **Sample:** {words} source words in {segments} segments, from the opening of Book the First, Chapter I. The sample is taken to stand for the whole translation, and the grade applies to the whole work on that assumption.",
   "segments": [
     {
       "n": 1,
@@ -60,7 +59,11 @@
           "note": "ایک طرف … دوسری طرف (\"on one side … on the other\") divides the period into two sides. The source asserts both superlatives of the same time, with nothing to separate them."
         }
       ],
-      "keeps": "Both superlatives survive as superlatives (بہترین، بدترین), and وہ … زمانہ تھا keeps the source's \"it was\" frame for the first clause."
+      "suggestion": {
+        "ai": "وہ بہترین زمانہ تھا، وہ بدترین زمانہ تھا،",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 2,
@@ -73,7 +76,11 @@
           "note": "ایک لحاظ سے … دوسرے اعتبار سے (\"in one respect … in another\") makes the paradox relative. The source says the age was wise and foolish without qualification, and the qualifier makes the contradiction reasonable."
         }
       ],
-      "keeps": "The doublets عقل و دانش and جہل و نادانی carry the sense of wisdom and foolishness."
+      "suggestion": {
+        "ai": "وہ دانائی کا دور تھا، وہ حماقت کا دور تھا،",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 3,
@@ -91,7 +98,11 @@
           "note": "Two separate antitheses are merged into one sentence, and the light-and-darkness pair becomes a relative clause (جہاں …) describing the atmosphere of belief. The source sets the pairs side by side, with neither subordinate to the other."
         }
       ],
-      "keeps": "بیک وقت (\"at once\") keeps the simultaneity the source insists on."
+      "suggestion": {
+        "ai": "وہ اعتقاد کا عہد تھا، وہ بے اعتقادی کا عہد تھا،",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 4,
@@ -104,7 +115,11 @@
           "note": "\"Season\" is dropped with the merge. The source's time-words shrink from times to age, epoch and season, and \"season\" is the hinge into the spring and winter of the next pair."
         }
       ],
-      "keeps": "روشنی and اندھیرا keep the Light/Darkness antithesis."
+      "suggestion": {
+        "ai": "وہ روشنی کا موسم تھا، وہ اندھیرے کا موسم تھا،",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 5,
@@ -114,10 +129,25 @@
         {
           "code": "C3",
           "severity": "Minor",
-          "note": "خزائیں (\"autumns\") replaces \"winter\". The image of decline replaces the image of the dead season."
+          "note": "خزائیں (\"autumns\") replaces \"winter\". The image of decline replaces the image of the dead season.",
+          "functions": [
+            {
+              "fn": "the season set against spring",
+              "kept": true
+            },
+            {
+              "fn": "the dead season, the year's end, which gives despair its finality",
+              "kept": false
+            }
+          ],
+          "gain": "بہار and خزاں are the canonical opposition of Urdu poetry, so the antithesis lands with idiomatic force."
         }
       ],
-      "keeps": "The substitution keeps the seasonal antithesis intact by moving it to the stock Urdu pairing of بہار and خزاں."
+      "suggestion": {
+        "ai": "وہ امید کی بہار تھی، وہ مایوسی کا جاڑا تھا،",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 6,
@@ -140,7 +170,11 @@
           "note": "Two parallel assertions become a concessive (ہوتے ہوئے بھی … کچھ نہ تھا, \"despite having everything, there was nothing\"). The source states both without relating them."
         }
       ],
-      "keeps": ""
+      "suggestion": {
+        "ai": "ہمارے سامنے سب کچھ تھا، ہمارے سامنے کچھ بھی نہ تھا،",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 7,
@@ -155,7 +189,17 @@
         {
           "code": "C3",
           "severity": "Minor",
-          "note": "دوزخ (\"Hell\") names what the source leaves as the euphemism \"the other way\", and the understatement is lost."
+          "note": "دوزخ (\"Hell\") names what the source leaves as the euphemism \"the other way\", and the understatement is lost.",
+          "functions": [
+            {
+              "fn": "points to the opposite of Heaven",
+              "kept": true
+            },
+            {
+              "fn": "comic understatement: the destination is not named",
+              "kept": false
+            }
+          ]
         },
         {
           "code": "A2",
@@ -163,7 +207,11 @@
           "note": "سامنے منزل بھی تھی اور گمراہی بھی (\"ahead lay both the destination and the going astray\") adds a pair the source does not have."
         }
       ],
-      "keeps": ""
+      "suggestion": {
+        "ai": "ہم سب سیدھے جنت کو جا رہے تھے، ہم سب سیدھے دوسری طرف جا رہے تھے ——",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 8,
@@ -181,7 +229,11 @@
           "note": "\"Its noisiest authorities\" become ہمارے بعض ہم عصر جنھوں نے اس زمانے کی تاریخ لکھی ہے (\"some of our contemporaries who have written that period's history\"). If \"its\" refers to the period being described, as the sentence's grammar suggests, the speakers move from that period to the narrator's present and from public voices to historians. \"Noisiest\" also loses its superlative and survives only as the manner بڑے زور شور سے."
         }
       ],
-      "keeps": "مختصر یہ کہ keeps \"in short\", and مشابہ keeps the likeness of the two periods."
+      "suggestion": {
+        "ai": "غرض وہ زمانہ موجودہ زمانے سے اس حد تک ملتا تھا کہ اس کے سب سے زیادہ شور مچانے والے بعض صاحبانِ اختیار اصرار کرتے تھے کہ اچھے معنوں میں ہو یا برے، اسے صرف تفضیلِ کل کے درجے ہی میں قبول کیا جائے۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     }
   ],
   "profileSummary": "Accuracy codes make up {A} of the {total} deviations, led by A1 ({A1}) and A6 ({A6}). Every segment carries at least one deviation. The {severe} major and critical deviations gather in the last three segments (#6–#8), where the source moves from paired abstractions to \"we\" and then to its closing self-description. The first five segments carry only minor deviations, mostly A6: the translation keeps each antithesis but adds a frame (sides, respects, an atmosphere) that relates its halves differently. There are no B-code errors.",
@@ -215,5 +267,10 @@
   "grade": "D",
   "gradeBasis": "The score of {score}, in band {band}, comes from {severe} major and critical deviations, all in #6–#8, which change what the closing segments say. The critical work-level finding caps the grade at C at canonical stakes. The grade stays at its band, D. The translation has no language errors, its deviations in #1–#5 are minor and follow a consistent norm rather than slips, and it carries the sense of the antitheses into fluent Urdu; but it stays below C because the form the passage depends on is lost and its closing proposition is misread.",
   "readerNote": "Readers get fluent, idiomatic Urdu that carries the antitheses and the mood of the opening, but not Dickens's single accumulating sentence, its \"we\", or the self-mocking point of its last clause.",
-  "originalWork": "A Tale of Two Cities"
+  "originalWork": "A Tale of Two Cities",
+  "aiSuggestions": {
+    "model": "Claude Opus 5.5",
+    "date": "2026-11-22"
+  },
+  "textNotes": "- The translation is transcribed from a scanned page.\n- The source is one sentence, split at its seven antithetical pairs and at the em dash. The translation merges #3 and #4.\n- Changes of sentence shape are not counted segment by segment. The loss of the one-sentence form is a work-level finding."
 }

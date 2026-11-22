@@ -168,18 +168,26 @@ function reference() {
     <div class="passage ur-block ref-passage" lang="ur" dir="rtl">${esc(ref.text)}</div>`;
 }
 
-function scope() {
+// Report-specific facts only. Codes, severities, weights, bands and the sample assumption are on the Method page.
+function details() {
   const pub = R.publication || {};
-  const pubRows = [[tt('pub.publisher'), pub.publisher], [tt('pub.place'), pub.place], [tt('pub.year'), pub.year], [tt('pub.edition'), pub.edition], [tt('pub.isbn'), pub.isbn], [tt('pub.pages'), pub.pages]];
-  const pubTable = isPublished(R) && !editing
-    ? `<p><strong>${tt('pub.head')}</strong></p><table class="kv"><tbody>${pubRows.map(([k, v]) => `<tr><th>${k}</th><td>${v ? urduWrap(esc(v)) : `<span class="muted">${tt('pub.none')}</span>`}</td></tr>`).join('')}</tbody></table>` : '';
-  return `${H2('info', tt('h.scope'))}${T('scope', { md: true, rows: 10 })}${pubTable}
-    <p><strong>${tt('scope.codesHead')}</strong> ${tt('scope.codesNote')}</p>
-    <table><thead><tr><th>${tt('th.code')}</th><th>${tt('th.name')}</th><th>${tt('th.test')}</th></tr></thead><tbody>
-    ${Object.entries(CODES).map(([c, [n, t]]) => `<tr><td class="fam-${c[0]}"><strong>${c}</strong></td><td>${n}</td><td>${t}</td></tr>`).join('')}
-    </tbody></table>
-    <p>${tr('sev.text', {}, '<strong>Severity:</strong> <em>Minor</em> affects nuance, tone or texture. <em>Major</em> changes what the sentence says. <em>Critical</em> breaks a sentence the passage depends on (its key claim, turn or image).')}</p>
-    <p dir="auto">${tr('sev.neutralText', {}, '<em>Neutral</em> (weight 0) records a deliberate transposition that keeps every function the source image or phrase serves in the passage, or a loss the translator makes good elsewhere (compensation). It is shown and counted, but it never enters the score.')}</p>`;
+  const loc = R.sampleLocation || '';
+  const row = (k, v) => `<tr><th>${k}</th><td dir="auto">${v}</td></tr>`;
+  const nr = `<span class="muted">${tt('pub.none')}</span>`;
+  const pv = (v) => (v ? urduWrap(esc(v)) : nr);
+  if (editing) return `${H2('info', tt('det.head'))}
+    <p class="hint">Notes on the texts: report-specific only (transcription, misprints, segmentation). Everything general belongs on the Method page.</p>${T('textNotes', { md: true, rows: 4 })}`;
+  const sample = UR ? tt('det.sampleUr', { words: F.words, segments: F.segments, loc: loc ? ` · ${esc(loc)}` : '' })
+    : `${F.words} source words, ${F.segments} segments${loc ? ` · ${urduWrap(esc(loc))}` : ''}. Taken to stand for the whole translation.`;
+  const rows = [
+    row(tt('det.kind'), `${esc(label('stage', R.stage || 'Pre-publication'))} · ${esc(tt('report.stakesChip', { stakes: label('stakes', R.stakes) }))}`),
+    row(tt('det.sample'), sample),
+  ];
+  if (isPublished(R)) rows.push(row(tt('det.publication'),
+    `${pv(pub.publisher)} · ${pv(pub.place)} · ${pv(pub.year)} · ${tt('pub.edition')}: ${pv(pub.edition)} · ${tt('pub.isbn')}: ${pv(pub.isbn)} · ${tt('pub.pages')}: ${pv(pub.pages)}`));
+  if (R.textNotes?.trim()) rows.push(row(tt('det.notes'), md(fill(R.textNotes, F))));
+  return `<table class="kv details"><tbody>${rows.join('')}</tbody></table>
+    <p class="hint">${tt('det.method')} <a href="about.html">${tt('nav.method')}</a>.</p>`;
 }
 
 function devExtras(d) {
@@ -217,9 +225,9 @@ function aiCell(s) {
 function humanCell(s, i) {
   const g = s.suggestion || {};
   if (editing) return `${S(`segments.${i}.suggestion.state`, REVIEW)}
-    ${g.state === 'Own suggestion' ? T(`segments.${i}.suggestion.human`, { rows: 4, ur: true }) : ''}
+    ${g.state === 'Own suggestion' ? T(`segments.${i}.suggestion.human`, { rows: 4 }) : ''}
     ${g.ai?.trim() && g.state !== 'Own suggestion' ? `<button class="small" data-act="copy-ai" data-i="${i}" title="Start your own suggestion from the AI's">Start from AI</button>` : ''}`;
-  if (g.state === 'Own suggestion' && g.human?.trim()) return `<span class="ur-s" lang="ur" dir="rtl">${esc(g.human)}</span>`;
+  if (g.state === 'Own suggestion' && g.human?.trim()) return /^[^A-Za-z]*[\u0600-\u06FF]/.test(g.human) ? `<span class="ur-s" lang="ur" dir="rtl">${esc(g.human)}</span>` : `<span dir="auto">${urduWrap(esc(g.human))}</span>`;
   if (g.state === 'Agrees with AI') return `<span class="muted">${tt('sug.agrees')}</span>`;
   return g.ai?.trim() ? `<span class="muted">${tt('sug.unreviewed')}</span>` : '';
 }
@@ -243,8 +251,8 @@ function sideBySide() {
     <table class="sbs"><colgroup><col class="c-n"><col class="c-src"><col class="c-sub"><col><col class="c-sug"><col class="c-sug"></colgroup>
     <thead><tr><th>#</th><th>${tt('h.source')}</th><th>${isPublished(R) ? tt('h.translation') : tt('h.submission')}</th><th>${tt('th.deviations')}</th><th>${tt('th.ai')}</th><th>${tt('th.human')}</th></tr></thead><tbody>${rows}</tbody></table>
     ${editing && !segs.length ? '<button class="small" data-act="add-seg" data-i="-1">+ Segment</button>' : ''}
-    <p class="hint">${editing ? 'Counts, colours and per-100-word rates update from the deviations you set here. The AI suggestion is kept as generated and cannot be edited; set your review in the Human suggestion column.' : tt('sbs.hint')}</p>
-    ${agreement(R).aiSugg ? `<p class="hint">${esc(tt('sug.hint', { model: R.aiSuggestions?.model || 'model not recorded', date: R.aiSuggestions?.date || 'date not recorded' }))} ${esc(tt('sug.line', agreement(R)))}</p>` : ''}`;
+    <p class="hint">${editing ? 'Counts and colours update from the deviations you set here. The AI suggestion is kept as generated; set your review in the Human suggestion column.'
+      : `${tt('sbs.crisp')}${agreement(R).aiSugg ? ' ' + esc(tt('sug.line2', { ...agreement(R), model: R.aiSuggestions?.model || '–', date: R.aiSuggestions?.date || '–' })) : ''}`}</p>`;
 }
 
 function scoreUr(t) {
@@ -263,15 +271,14 @@ function counts() {
   const row = (c) => { const x = t.byCode[c]; const n = x.Critical + x.Major + x.Minor;
     return `<tr><td>${c} ${CODES[c][0]}</td><td class="num">${x.Critical}</td><td class="num">${x.Major}</td><td class="num">${x.Minor}</td><td class="num">${n}</td>${NC ? `<td class="num sev-neutral">${x.Neutral}</td>` : ''}</tr>`; };
   return `${H2('chart', tt('h.counts'))}
-    <p>${tr('counts.line', { n: t.n, segments: (R.segments || []).length, words: t.words, per100: t.per100(t.n), severe: t.total.Critical + t.total.Major }, `${t.n} deviations across ${(R.segments || []).length} segments of a ${t.words}-word source: ${t.per100(t.n)} per 100 words, ${t.total.Critical + t.total.Major} of them major or critical.`)}</p>
+    <p>${tr('counts.line', { n: t.n, segments: (R.segments || []).length, words: t.words, per100: t.per100(t.n), severe: t.total.Critical + t.total.Major }, `${t.n} scored deviations${t.neutral ? ` and ${t.neutral} neutral` : ''} in ${t.words} source words: ${t.per100(t.n)} per 100 words.`)}</p>
     <table><thead><tr><th>${tt('th.code')}</th><th class="num">${label('sev', 'Critical')}</th><th class="num">${label('sev', 'Major')}</th><th class="num">${label('sev', 'Minor')}</th><th class="num">${tt('th.total')}</th>${NC ? `<th class="num">${tt('counts.neutral')}</th>` : ''}</tr></thead><tbody>
       ${codes.map(row).join('')}
       <tr class="total"><td>${tt('th.total')}</td><td class="num">${t.total.Critical}</td><td class="num">${t.total.Major}</td><td class="num">${t.total.Minor}</td><td class="num">${t.n}</td>${NC ? `<td class="num">${t.neutral}</td>` : ''}</tr>
       <tr class="total"><td>${tt('th.per100')}</td><td class="num">${t.per100(t.total.Critical)}</td><td class="num">${t.per100(t.total.Major)}</td><td class="num">${t.per100(t.total.Minor)}</td><td class="num">${t.per100(t.n)}</td>${NC ? '<td class="num">–</td>' : ''}</tr>
     </tbody></table>
-    <p class="score-line">${icon('scale')}<span>${UR ? scoreUr(t) : `<strong>Weighted score.</strong> With MQM weights (Minor ${WEIGHTS.Minor}, Major ${WEIGHTS.Major}, Critical ${WEIGHTS.Critical}), the penalty is ${t.penalty} points: ${t.pp100.toFixed(1)} per 100 source words, a quality score of <strong>${t.score.toFixed(1)}</strong>. The score is 100 minus the penalty points per 100 words, not a percentage, and is read with its band: <strong>${t.band[0]} · ${t.band[1]}</strong> (scores ${scoreRange(t.band[0])}). ${
-      isPublished(R) ? 'The grade starts from this band.' : `For a draft, this band points to <em>${esc(label('decision', anchorText(t.band[0])))}</em> as the default decision.`} Work-level findings, which the score does not count, may move the outcome; the basis says why. ${(() => { const g = scoreGuide(t); return `For reference, an <em>acceptable</em> translation scores ${g.acc.score} or above (band ${g.acc.letter} · ${g.acc.name}) and an <em>ideal</em> one ${g.ideal.score} or above (band ${g.ideal.letter} · ${g.ideal.name}). ${g.status === 'ideal' ? 'This one meets the ideal.' : g.status === 'acceptable' ? `This one is acceptable; the ideal would allow at most ${g.ideal.maxPenalty} penalty points in this ${t.words}-word sample, against ${t.penalty}.` : `To be acceptable, this ${t.words}-word sample could carry at most ${g.acc.maxPenalty} penalty points; it carries ${t.penalty}.`}`; })()}`}</span></p>
-    <p class="score-line">${icon('columns')}<span>${UR ? `<strong>${tt('spread.head')}</strong> ${tt('spread.text', { ...F, outcome: isPublished(R) ? tt('word.grade') : tt('word.decision') })}` : `<strong>Spread across segments.</strong> ${F.clean} of ${F.segments} segments (${F.cleanPct}%) carry no deviation, and ${F.severeSegs} (${F.severePct}%) carry at least one major or critical deviation. These figures describe how the deviations are distributed; they do not enter the score or the ${isPublished(R) ? 'grade' : 'decision'}, because segments vary too much in length to serve as a unit of measure.`}</span></p>
+    <p class="score-line">${icon('scale')}<span>${UR ? scoreUr(t) : `<strong>Score.</strong> ${t.penalty} penalty points, ${t.pp100.toFixed(1)} per 100 source words: quality score <strong>${t.score.toFixed(1)}</strong>, band <strong>${t.band[0]} · ${t.band[1]}</strong>. ${isPublished(R) ? 'The grade starts from this band.' : `Default decision for this band: <em>${esc(label('decision', anchorText(t.band[0])))}</em>.`}`}</span></p>
+    <p class="score-line">${icon('columns')}<span>${UR ? `<strong>${tt('spread.head')}</strong> ${tt('spread.text', { ...F, outcome: isPublished(R) ? tt('word.grade') : tt('word.decision') })}` : `<strong>Spread.</strong> ${F.clean} of ${F.segments} segments clean (${F.cleanPct}%); ${F.severeSegs} with a major or critical deviation (${F.severePct}%).`}</span></p>
     ${T('profileSummary', { md: true, rows: 5 })}`;
 }
 
@@ -319,11 +326,6 @@ function grade() {
     <p class="ack">${ACK_PUBLISHED}</p>`;
 }
 
-function sampleNote() {
-  const loc = R.sampleLocation || (isPublished(R) && R.publication?.pages ? `pp. ${R.publication.pages}` : '');
-  return `<div class="sample-note">${icon('info')}<p>${UR ? `<strong>${tt('sample.head')}</strong> ${tt('sample.text', { words: F.words, segments: F.segments, loc: loc ? ` (${esc(loc)})` : '', outcome: isPublished(R) ? tt('word.grade') : tt('word.decision') })}` : `<strong>Sample assumption.</strong> This assessment rests on a sample of ${F.words} source words in ${F.segments} segments${loc ? ` (${esc(loc)})` : ''}. As in any sample-based assessment, the sample is taken to stand for the whole translation: the deviations and tendencies found here are assumed to run through the work, and the ${isPublished(R) ? 'grade' : 'decision'} applies to the whole on that assumption.`}</p></div>`;
-}
-
 function render() {
   const y = scrollY;
   F = figures(R);
@@ -331,8 +333,8 @@ function render() {
   $('root').className = 'wrap' + (editing ? ' editing' : '');
   $('root').innerHTML = [
     header(), passages(),
-    editing ? `${H2('pen', 'Lead')}${T('lead', { md: true })}${tokenHint()}` : `<div class="lead">${icon('target', 'lead-ico')}<div dir="auto">${md(fill(R.lead, F))}</div></div>${sampleNote()}`,
-    scope(), sideBySide(), counts(),
+    editing ? `${H2('pen', 'Lead')}${T('lead', { md: true })}${tokenHint()}` : `<div class="lead">${icon('target', 'lead-ico')}<div dir="auto">${md(fill(R.lead, F))}</div></div>`,
+    details(), sideBySide(), counts(),
     `${H2('wave', tt('h.tendencies'))}${T('tendencies', { md: true, rows: 14 })}`,
     `${H2('user', tt('h.profile'))}${T('translatorProfile', { md: true, rows: 10 })}`,
     findings(), isPublished(R) ? grade() : decision(), reference(),
