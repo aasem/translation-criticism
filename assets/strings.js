@@ -554,8 +554,8 @@ export const STRINGS = {
 "ازسرِنو ترجمہ درکار"
 ],
 "decision.Retranslation required.m": [
-"The draft can't be revised into shape because the problem is its method, not its slips. The work must be translated afresh.",
-"ترامیم سے یہ مسودہ نہیں سنور سکتا کیونکہ مسئلہ اس کی لغزشوں میں نہیں بلکہ اس کے طریقِ کار میں ہے۔ کام کا ازسرِنو ترجمہ کرنا ہوگا۔"
+"The deviations are too many or too deep to revise. The work must be translated afresh.",
+"انحرافات اتنے زیادہ یا اتنے گہرے ہیں کہ ترامیم سے بات نہیں بنے گی۔ ازسرِنو ترجمہ کرنا ہوگا۔"
 ],
 "grade.A": [
 "Exemplary",

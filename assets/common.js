@@ -31,7 +31,7 @@ export const DECISIONS = [
   ['Accept', 'Publish as it is.'],
   ['Accept with minor revisions', 'A copy-editor can resolve the issues.'],
   ['Major revisions', 'The draft is sound, and the same translator can revise it into shape.'],
-  ['Retranslation required', "The draft can't be revised into shape because the problem is its method, not its slips. The work must be translated afresh."],
+  ['Retranslation required', "The deviations are too many or too deep to revise. The work must be translated afresh."],
 ];
 // The first item is the value stored in reports; only the meaning is shown translated here.
 // Use label('decision', d) from i18n.js to show a decision's name.
