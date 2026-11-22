@@ -578,32 +578,32 @@ export const STRINGS = {
 "جوں کا توں شائع کیجیے۔"
 ],
 "decision.Accept with minor revisions": [
-"Accept with minor revisions",
-"معمولی ترامیم کے ساتھ منظور"
+"Accept (minor revisions)",
+"منظور (معمولی ترامیم)"
 ],
 "decision.Accept with minor revisions.m": [
 "A copy-editor can resolve the issues.",
 "مسائل ایک مدیرِ متن حل کر سکتا ہے۔"
 ],
 "decision.Major revisions": [
-"Major revisions",
-"بڑی ترامیم درکار"
+"Extensive revisions required",
+"کثیر ترامیم درکار"
 ],
 "decision.Major revisions.m": [
 "The draft is sound, and the same translator can revise it into shape.",
-"مسودہ درست بنیاد پر ہے اور وہی مترجم اس پر نظرِ ثانی کر کے اسے سنوار سکتا ہے۔"
+"مسودہ درست بنیاد پر ہے اور وہی مترجم ترامیم کر کے اسے سنوار سکتا ہے۔"
 ],
 "decision.Reject and resubmit": [
-"Reject and resubmit",
-"مسترد، نیا ترجمہ پیش کیا جا سکتا ہے"
+"Reject (reconsideration possible)",
+"مسترد (نظرثانی ممکن)"
 ],
 "decision.Reject and resubmit.m": [
 "The draft can't be revised into shape because the problem is its method, not its slips. A fresh translation could succeed, and the same translator is welcome to resubmit one.",
-"نظرِ ثانی سے یہ مسودہ نہیں سنور سکتا کیونکہ مسئلہ اس کی لغزشوں میں نہیں بلکہ اس کے طریقِ کار میں ہے۔ نیا ترجمہ کامیاب ہو سکتا ہے اور وہی مترجم بخوشی نیا ترجمہ پیش کر سکتا ہے۔"
+"ترامیم سے یہ مسودہ نہیں سنور سکتا کیونکہ مسئلہ اس کی لغزشوں میں نہیں بلکہ اس کے طریقِ کار میں ہے۔ نیا ترجمہ کامیاب ہو سکتا ہے اور وہی مترجم بخوشی نیا ترجمہ پیش کر سکتا ہے۔"
 ],
 "decision.Reject": [
-"Reject",
-"مسترد"
+"Reject (reconsideration not possible)",
+"مسترد (نظرثانی ناممکن)"
 ],
 "decision.Reject.m": [
 "A new translation is needed, and the evidence points to a different translator.",
@@ -874,8 +874,8 @@ export const STRINGS = {
 "ادارتی فیصلہ (قبل از اشاعت)"
 ],
 "m.decision.li1": [
-"The decision starts from the default for the score band (the same bands as for grades, below): A points to Accept, B to Accept with minor revisions, C to Major revisions, and D or E to one of the two rejections.",
-"فیصلے کا آغاز اسکور بینڈ کے طے شدہ فیصلے سے ہوتا ہے (وہی بینڈ جو نیچے گریڈ کے لیے ہیں)۔ A منظور کی طرف اشارہ کرتا ہے، B معمولی ترامیم کے ساتھ منظوری کی طرف، C بڑی ترامیم کی طرف اور D یا E استرداد کی دو صورتوں میں سے کسی ایک کی طرف۔"
+"The decision starts from the default for the score band (the same bands as for grades, below): A points to Accept, B to Accept (minor revisions), C to Extensive revisions required, and D or E to one of the two rejections.",
+"فیصلے کا آغاز اسکور بینڈ کے طے شدہ فیصلے سے ہوتا ہے (وہی بینڈ جو نیچے گریڈ کے لیے ہیں)۔ A منظور کی طرف اشارہ کرتا ہے، B منظور (معمولی ترامیم) کی طرف، C کثیر ترامیم درکار کی طرف اور D یا E استرداد کی دو صورتوں میں سے کسی ایک کی طرف۔"
 ],
 "m.decision.li2": [
 "Work-level findings may move the decision from that default, and the report says why. At Literary and Canonical stakes, a critical work-level finding rules out the first three steps, however good the score.",

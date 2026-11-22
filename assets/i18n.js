@@ -23,7 +23,8 @@ export function t(key, vars = {}) {
 export const tr = (key, vars, en) => (UR ? t(key, vars) : en);
 
 // label('decision', 'Accept') translates a value stored in a report (decision, stage, stakes, severity).
-export const label = (prefix, value) => (UR && STRINGS[`${prefix}.${value}`] ? t(`${prefix}.${value}`) : value ?? '');
+// Stored values are stable keys; readers see the current label in either language.
+export const label = (prefix, value) => (STRINGS[`${prefix}.${value}`] ? t(`${prefix}.${value}`) : value ?? '');
 
 // Rebuild an element's text from a translated string, keeping the child elements
 // marked data-slot="name" where the string has {name}.
