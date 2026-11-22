@@ -29,6 +29,13 @@
   <p data-i18n="m.codes.p">The codes adapt Multidimensional Quality Metrics (MQM), the translation industry's standard error framework, to literary and scientific prose. A covers accuracy (what the source says), B covers the correctness of the target text, and C covers style (how the source sounds). Interference (C4) is reported as a pattern rather than counted segment by segment.</p>
   <div id="codes-table"></div>
   <p data-i18n="sev.text"><strong>Severity.</strong> <em>Minor</em> affects nuance, tone or texture. <em>Major</em> changes what the sentence says. <em>Critical</em> breaks a sentence the passage depends on: its key claim, turn or image.</p>
+  <p data-i18n="sev.neutralText" dir="auto"><em>Neutral</em> (weight 0) records a deliberate transposition that keeps every function the source image or phrase serves in the passage, or a loss the translator makes good elsewhere (compensation). It is shown and counted, but it never enters the score.</p>
+
+  <h2 id="transpositions" data-i18n="m.transp.h">Transpositions, function test and gains</h2>
+  <p data-i18n="m.transp.p" dir="auto">When a translator replaces an image or phrase with a different one by choice, the severity is set by a function test: what does the source image do in the passage, and which of those functions survive? If all of them survive, the deviation is <em>Neutral</em>. If some are lost, it is <em>Minor</em>. If the image the passage depends on is lost, it is <em>Major</em> or <em>Critical</em>. Where a transposition also adds something the source lacks, the report records it as a gain. Gains never offset penalty points; they inform the stylistic tendencies, the translator profile, and the one-step move of the outcome.</p>
+
+  <h2 id="suggestions" data-i18n="m.sugg.h">AI and human suggestions</h2>
+  <p data-i18n="m.sugg.p" dir="auto">Beside each segment with a deviation the table gives two suggested renderings. The AI suggestion is the model's alternative, kept exactly as generated and marked with the model and date. The human suggestion is the assessor's: blank until reviewed, marked as agreeing with the AI, or written out in full. Neither is assessed, and neither enters the score or the outcome. Over many reports, how often the two agree is itself a measure of how far machine judgement has come.</p>
 
   <h2 id="score" data-i18n="m.score.h">Weighted score</h2>
   <p data-i18n="m.score.p1">Following MQM scoring, each deviation carries penalty points by severity: <span id="weights" data-slot="weights"></span>. Every report gives the total, the penalty points per 100 source words, and a quality score out of 100:</p>

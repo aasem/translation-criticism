@@ -55,8 +55,8 @@ th { background: var(--gray); font: 600 13px var(--sans); }
 td.num, th.num { text-align: end; font-variant-numeric: tabular-nums; width: 1%; white-space: nowrap; }
 .sbs { table-layout: fixed; }
 .sbs col.c-n { width: 3.2em; }
-.sbs col.c-src { width: 27%; }
-.sbs col.c-sub { width: 31%; }
+.sbs col.c-src { width: 20%; }
+.sbs col.c-sub { width: 22%; }
 .sbs td.sub { font-family: var(--urdu); direction: rtl; text-align: right; font-size: 1.08rem; line-height: 1.95; }
 .sbs td.devs p { margin: 0 0 .55em; }
 .dev-tag { font: 600 12px var(--sans); white-space: nowrap; }
@@ -66,6 +66,16 @@ td.num, th.num { text-align: end; font-variant-numeric: tabular-nums; width: 1%;
 .sev-major { background: var(--orange); }
 .sev-minor { background: var(--yellow); }
 .sev-none { background: var(--green); }
+.sev-neutral { background: #eef1f5; }
+.sbs col.c-sug { width: 14%; }
+.sbs td.sug { font-size: .95rem; }
+.sbs td.sug .ur-s { font-family: var(--urdu); direction: rtl; text-align: right; font-size: 1.05rem; line-height: 1.9; display: block; }
+.sbs td.sug .who { font: 600 11px var(--sans); color: var(--muted); display: block; margin-bottom: 4px; }
+.fn-test { list-style: none; padding: 0; margin: .2em 0 .6em; font-size: .92em; }
+.fn-test li::before { content: '✓ '; color: #23642a; font-weight: 700; }
+.fn-test li.lost::before { content: '✗ '; color: #8f1f1f; }
+.gain { margin: .2em 0 .6em; font-size: .92em; }
+.gain b, .fn-head { font: 600 12px var(--sans); }
 .fam-A { background: var(--blue); }
 .fam-B { background: var(--purple); }
 .fam-C { background: var(--orange); }

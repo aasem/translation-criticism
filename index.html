@@ -66,7 +66,7 @@ const $ = (id) => document.getElementById(id);
 let reports = [];
 
 function haystack(r) {
-  const segs = (r.segments || []).flatMap((s) => [s.source, s.submission, s.keeps, ...(s.deviations || []).map((d) => d.note)]);
+  const segs = (r.segments || []).flatMap((s) => [s.source, s.submission, s.suggestion?.ai, s.suggestion?.human, ...(s.deviations || []).flatMap((d) => [d.note, d.gain])]);
   return [r.title, r.author, r.work, r.originalWork, r.passage, r.source?.translator, r.source?.label, r.submission?.translator,
     r.submission?.label, r.submission?.language, r.stage, isPublished(r) ? gradeName(r.grade) : r.decision, r.stakes, ...Object.values(r.publication || {}), ...(r.tags || []), r.source?.text, r.submission?.text, r.reference?.text, r.reference?.translator, ...segs]
     .filter(Boolean).join('   ').toLowerCase();

@@ -44,7 +44,7 @@
 
 <script type="module">
 import { t as tt, tr, label, UR } from './assets/i18n.js';
-import { CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide } from './assets/common.js';
+import { SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide } from './assets/common.js';
 const H2 = (ic, t) => `<h2>${icon(ic)}${t}</h2>`;
 // "Basis." followed by report prose: inline in English; in Urdu the prose gets its own block,
 // so English prose keeps its own direction.
@@ -178,14 +178,21 @@ function scope() {
     <table><thead><tr><th>${tt('th.code')}</th><th>${tt('th.name')}</th><th>${tt('th.test')}</th></tr></thead><tbody>
     ${Object.entries(CODES).map(([c, [n, t]]) => `<tr><td class="fam-${c[0]}"><strong>${c}</strong></td><td>${n}</td><td>${t}</td></tr>`).join('')}
     </tbody></table>
-    <p>${tr('sev.text', {}, '<strong>Severity:</strong> <em>Minor</em> affects nuance, tone or texture. <em>Major</em> changes what the sentence says. <em>Critical</em> breaks a sentence the passage depends on (its key claim, turn or image).')}</p>`;
+    <p>${tr('sev.text', {}, '<strong>Severity:</strong> <em>Minor</em> affects nuance, tone or texture. <em>Major</em> changes what the sentence says. <em>Critical</em> breaks a sentence the passage depends on (its key claim, turn or image).')}</p>
+    <p dir="auto">${tr('sev.neutralText', {}, '<em>Neutral</em> (weight 0) records a deliberate transposition that keeps every function the source image or phrase serves in the passage, or a loss the translator makes good elsewhere (compensation). It is shown and counted, but it never enters the score.')}</p>`;
 }
 
+function devExtras(d) {
+  let h = '';
+  if ((d.functions || []).length) h += `<div class="fn-head">${tt('fn.head')}</div><ul class="fn-test">${d.functions.map((x) => `<li class="${x.kept ? '' : 'lost'}" dir="auto">${urduWrap(esc(x.fn))}</li>`).join('')}</ul>`;
+  if (d.gain?.trim()) h += `<p class="gain" dir="auto"><b>${tt('gain.head')}</b> ${md(d.gain).replace(/^<p>|<\/p>$/g, '')}</p>`;
+  if (d.compensatedBy) h += `<p class="gain"><b>${tt('comp.head', { n: d.compensatedBy })}</b></p>`;
+  return h;
+}
 function devCell(s, i) {
   if (!editing) {
-    const ds = (s.deviations || []).map((d) => `<p dir="auto"><span class="dev-tag">${esc(d.code)} · ${esc(label('sev', d.severity))}.</span> ${md(d.note).replace(/^<p>|<\/p>$/g, '')}</p>`).join('');
-    const k = s.keeps ? `<p class="keeps" dir="auto">${urduWrap(esc(s.keeps))}</p>` : '';
-    return ds || k ? ds + k : `<p>${tt('sbs.none')}</p>`;
+    const ds = (s.deviations || []).map((d) => `<p dir="auto"><span class="dev-tag">${esc(d.code)} · ${esc(label('sev', d.severity))}.</span> ${md(d.note).replace(/^<p>|<\/p>$/g, '')}</p>${devExtras(d)}`).join('');
+    return ds || `<p>${tt('sbs.none')}</p>`;
   }
   const ds = (s.deviations || []).map((d, j) => `
     <div class="dev-edit">
@@ -195,9 +202,26 @@ function devCell(s, i) {
         <button class="small danger" data-act="del-dev" data-i="${i}" data-j="${j}" title="Remove this deviation">Remove</button>
       </div>
       ${T(`segments.${i}.deviations.${j}.note`, { rows: 3 })}
+      <div class="hint">Function test (optional, for transpositions): one function per line, "+ kept" or "- lost"</div>
+      <textarea data-fn="${i}.${j}" rows="2">${esc(fnToText(d.functions))}</textarea>
+      <div class="hint">Gain (optional): what the departure adds. Never scored.</div>${T(`segments.${i}.deviations.${j}.gain`, { rows: 2 })}
+      <div class="hint">Compensated in segment # (optional)</div>${I(`segments.${i}.deviations.${j}.compensatedBy`, 'e.g. 7')}
     </div>`).join('');
-  return ds + `<button class="small" data-act="add-dev" data-i="${i}">+ Deviation</button>
-    <div class="hint" style="margin-top:8px">What the segment keeps well (optional)</div>${T(`segments.${i}.keeps`, { rows: 2 })}`;
+  return ds + `<button class="small" data-act="add-dev" data-i="${i}">+ Deviation</button>`;
+}
+
+function aiCell(s) {
+  const a = s.suggestion?.ai;
+  return a?.trim() ? `<span class="ur-s" lang="ur" dir="rtl">${esc(a)}</span>` : '';
+}
+function humanCell(s, i) {
+  const g = s.suggestion || {};
+  if (editing) return `${S(`segments.${i}.suggestion.state`, REVIEW)}
+    ${g.state === 'Own suggestion' ? T(`segments.${i}.suggestion.human`, { rows: 4, ur: true }) : ''}
+    ${g.ai?.trim() && g.state !== 'Own suggestion' ? `<button class="small" data-act="copy-ai" data-i="${i}" title="Start your own suggestion from the AI's">Start from AI</button>` : ''}`;
+  if (g.state === 'Own suggestion' && g.human?.trim()) return `<span class="ur-s" lang="ur" dir="rtl">${esc(g.human)}</span>`;
+  if (g.state === 'Agrees with AI') return `<span class="muted">${tt('sug.agrees')}</span>`;
+  return g.ai?.trim() ? `<span class="muted">${tt('sug.unreviewed')}</span>` : '';
 }
 
 function sideBySide() {
@@ -211,13 +235,16 @@ function sideBySide() {
       <td dir="auto">${editing ? T(`segments.${i}.source`, { rows: 5 }) : urduWrap(esc(s.source))}</td>
       <td class="${editing ? '' : 'sub'}" ${editing ? '' : 'lang="ur" dir="rtl"'}>${editing ? T(`segments.${i}.submission`, { rows: 5, ur: true }) : esc(s.submission)}</td>
       <td class="devs ${sevClass(w)}">${devCell(s, i)}</td>
+      <td class="sug">${aiCell(s)}</td>
+      <td class="sug">${humanCell(s, i)}</td>
     </tr>`;
   }).join('');
   return `${H2('columns', tt('h.sbs'))}
-    <table class="sbs"><colgroup><col class="c-n"><col class="c-src"><col class="c-sub"><col></colgroup>
-    <thead><tr><th>#</th><th>${tt('h.source')}</th><th>${isPublished(R) ? tt('h.translation') : tt('h.submission')}</th><th>${tt('th.deviations')}</th></tr></thead><tbody>${rows}</tbody></table>
+    <table class="sbs"><colgroup><col class="c-n"><col class="c-src"><col class="c-sub"><col><col class="c-sug"><col class="c-sug"></colgroup>
+    <thead><tr><th>#</th><th>${tt('h.source')}</th><th>${isPublished(R) ? tt('h.translation') : tt('h.submission')}</th><th>${tt('th.deviations')}</th><th>${tt('th.ai')}</th><th>${tt('th.human')}</th></tr></thead><tbody>${rows}</tbody></table>
     ${editing && !segs.length ? '<button class="small" data-act="add-seg" data-i="-1">+ Segment</button>' : ''}
-    <p class="hint">${editing ? 'Counts, colours and per-100-word rates update from the deviations you set here.' : tt('sbs.hint')}</p>`;
+    <p class="hint">${editing ? 'Counts, colours and per-100-word rates update from the deviations you set here. The AI suggestion is kept as generated and cannot be edited; set your review in the Human suggestion column.' : tt('sbs.hint')}</p>
+    ${agreement(R).aiSugg ? `<p class="hint">${esc(tt('sug.hint', { model: R.aiSuggestions?.model || 'model not recorded', date: R.aiSuggestions?.date || 'date not recorded' }))} ${esc(tt('sug.line', agreement(R)))}</p>` : ''}`;
 }
 
 function scoreUr(t) {
@@ -232,14 +259,15 @@ function scoreUr(t) {
 function counts() {
   const t = tally(R);
   const codes = Object.keys(CODES).filter((c) => t.byCode[c]);
+  const NC = t.neutral > 0;
   const row = (c) => { const x = t.byCode[c]; const n = x.Critical + x.Major + x.Minor;
-    return `<tr><td>${c} ${CODES[c][0]}</td><td class="num">${x.Critical}</td><td class="num">${x.Major}</td><td class="num">${x.Minor}</td><td class="num">${n}</td></tr>`; };
+    return `<tr><td>${c} ${CODES[c][0]}</td><td class="num">${x.Critical}</td><td class="num">${x.Major}</td><td class="num">${x.Minor}</td><td class="num">${n}</td>${NC ? `<td class="num sev-neutral">${x.Neutral}</td>` : ''}</tr>`; };
   return `${H2('chart', tt('h.counts'))}
     <p>${tr('counts.line', { n: t.n, segments: (R.segments || []).length, words: t.words, per100: t.per100(t.n), severe: t.total.Critical + t.total.Major }, `${t.n} deviations across ${(R.segments || []).length} segments of a ${t.words}-word source: ${t.per100(t.n)} per 100 words, ${t.total.Critical + t.total.Major} of them major or critical.`)}</p>
-    <table><thead><tr><th>${tt('th.code')}</th><th class="num">${label('sev', 'Critical')}</th><th class="num">${label('sev', 'Major')}</th><th class="num">${label('sev', 'Minor')}</th><th class="num">${tt('th.total')}</th></tr></thead><tbody>
+    <table><thead><tr><th>${tt('th.code')}</th><th class="num">${label('sev', 'Critical')}</th><th class="num">${label('sev', 'Major')}</th><th class="num">${label('sev', 'Minor')}</th><th class="num">${tt('th.total')}</th>${NC ? `<th class="num">${tt('counts.neutral')}</th>` : ''}</tr></thead><tbody>
       ${codes.map(row).join('')}
-      <tr class="total"><td>${tt('th.total')}</td><td class="num">${t.total.Critical}</td><td class="num">${t.total.Major}</td><td class="num">${t.total.Minor}</td><td class="num">${t.n}</td></tr>
-      <tr class="total"><td>${tt('th.per100')}</td><td class="num">${t.per100(t.total.Critical)}</td><td class="num">${t.per100(t.total.Major)}</td><td class="num">${t.per100(t.total.Minor)}</td><td class="num">${t.per100(t.n)}</td></tr>
+      <tr class="total"><td>${tt('th.total')}</td><td class="num">${t.total.Critical}</td><td class="num">${t.total.Major}</td><td class="num">${t.total.Minor}</td><td class="num">${t.n}</td>${NC ? `<td class="num">${t.neutral}</td>` : ''}</tr>
+      <tr class="total"><td>${tt('th.per100')}</td><td class="num">${t.per100(t.total.Critical)}</td><td class="num">${t.per100(t.total.Major)}</td><td class="num">${t.per100(t.total.Minor)}</td><td class="num">${t.per100(t.n)}</td>${NC ? '<td class="num">–</td>' : ''}</tr>
     </tbody></table>
     <p class="score-line">${icon('scale')}<span>${UR ? scoreUr(t) : `<strong>Weighted score.</strong> With MQM weights (Minor ${WEIGHTS.Minor}, Major ${WEIGHTS.Major}, Critical ${WEIGHTS.Critical}), the penalty is ${t.penalty} points: ${t.pp100.toFixed(1)} per 100 source words, a quality score of <strong>${t.score.toFixed(1)}</strong>. The score is 100 minus the penalty points per 100 words, not a percentage, and is read with its band: <strong>${t.band[0]} · ${t.band[1]}</strong> (scores ${scoreRange(t.band[0])}). ${
       isPublished(R) ? 'The grade starts from this band.' : `For a draft, this band points to <em>${esc(label('decision', anchorText(t.band[0])))}</em> as the default decision.`} Work-level findings, which the score does not count, may move the outcome; the basis says why. ${(() => { const g = scoreGuide(t); return `For reference, an <em>acceptable</em> translation scores ${g.acc.score} or above (band ${g.acc.letter} · ${g.acc.name}) and an <em>ideal</em> one ${g.ideal.score} or above (band ${g.ideal.letter} · ${g.ideal.name}). ${g.status === 'ideal' ? 'This one meets the ideal.' : g.status === 'acceptable' ? `This one is acceptable; the ideal would allow at most ${g.ideal.maxPenalty} penalty points in this ${t.words}-word sample, against ${t.penalty}.` : `To be acceptable, this ${t.words}-word sample could carry at most ${g.acc.maxPenalty} penalty points; it carries ${t.penalty}.`}`; })()}`}</span></p>
@@ -251,7 +279,7 @@ function findings() {
   const f = R.findings || [];
   const rows = f.map((x, i) => `<tr>
       <td dir="auto">${editing ? T(`findings.${i}.finding`, { rows: 3 }) : urduWrap(esc(fill(x.finding, F)))}</td>
-      <td class="${sevClass(x.severity)}">${S(`findings.${i}.severity`, SEVERITIES, '', 'sev')}</td>
+      <td class="${sevClass(x.severity)}">${S(`findings.${i}.severity`, FINDING_SEVERITIES, '', 'sev')}</td>
       <td dir="auto">${editing ? T(`findings.${i}.evidence`, { rows: 3 }) : urduWrap(esc(fill(x.evidence, F)))}
         ${editing ? `<div><button class="small danger" data-act="del-find" data-i="${i}">Remove</button></div>` : ''}</td></tr>`).join('');
   return `${H2('flag', tt('h.findings'))}${T('findingsLead', { md: true, rows: 2 })}
@@ -320,6 +348,8 @@ function grow(t) { t.style.height = 'auto'; t.style.height = t.scrollHeight + 4 
 $('root').addEventListener('input', (e) => {
   const el = e.target;
   if (el.dataset.path) { setAt(R, el.dataset.path, el.value); if (el.tagName === 'TEXTAREA') grow(el); }
+  else if (el.dataset.fn) { const [i, j] = el.dataset.fn.split('.'); const d = R.segments[+i].deviations[+j];
+    const a = textToFn(el.value); if (a.length) d.functions = a; else delete d.functions; grow(el); }
   else if ('tags' in el.dataset) R.tags = el.value.split(',').map((s) => s.trim()).filter(Boolean);
   if ('rerender' in el.dataset) render(); else saveDraft();
 });
@@ -348,7 +378,8 @@ $('root').addEventListener('click', (e) => {
   switch (b.dataset.act) {
     case 'add-dev': (segs[i].deviations ??= []).push({ code: 'A1', severity: 'Minor', note: '' }); break;
     case 'del-dev': segs[i].deviations.splice(j, 1); break;
-    case 'add-seg': segs.splice(i + 1, 0, { source: '', submission: '', deviations: [], keeps: '' }); break;
+    case 'add-seg': segs.splice(i + 1, 0, { source: '', submission: '', deviations: [], suggestion: { ai: '', state: 'Not reviewed', human: '' } }); break;
+    case 'copy-ai': { const g = (segs[i].suggestion ??= {}); g.human = g.ai || ''; g.state = 'Own suggestion'; break; }
     case 'del-seg': if (!confirm(`Delete segment ${i + 1}?`)) return; segs.splice(i, 1); break;
     case 'add-find': (R.findings ??= []).push({ finding: '', severity: 'Major', evidence: '' }); break;
     case 'del-find': R.findings.splice(i, 1); break;

@@ -19,7 +19,13 @@ export const CODES = {
 };
 if (UR) for (const c in CODES) CODES[c] = [t(`code.${c}`), t(`code.${c}.t`)];
 
-export const SEVERITIES = ['Critical', 'Major', 'Minor'];
+export const SEVERITIES = ['Critical', 'Major', 'Minor', 'Neutral'];
+// Penalised severities. Neutral (MQM's zero-weight level) records a deliberate transposition
+// or a compensated loss: it is shown and counted separately, and never enters the score.
+export const SCORED = ['Critical', 'Major', 'Minor'];
+export const FINDING_SEVERITIES = SCORED;
+// Human review of the AI suggestion for a segment.
+export const REVIEW = ['Not reviewed', 'Agrees with AI', 'Own suggestion'];
 
 export const DECISIONS = [
   ['Accept', 'Publish as it is.'],
@@ -40,7 +46,7 @@ export const STAGES = ['Pre-publication', 'Published'];
 export const isPublished = (r) => r.stage === 'Published';
 
 // MQM severity weights, as in MQM 2.0 scoring.
-export const WEIGHTS = { Minor: 1, Major: 5, Critical: 25 };
+export const WEIGHTS = { Neutral: 0, Minor: 1, Major: 5, Critical: 25 };
 
 // Grades for published translations, by weighted penalty points per 100 source words.
 export const GRADES = [
@@ -81,7 +87,7 @@ export const outcomeMoved = (r, t) => (r.stage === 'Published'
 export const gradeName = (letter) => { const g = GRADES.find((x) => x[0] === letter); return g ? `${g[0]} · ${g[1]}` : ''; };
 export const gradeClass = (letter) => ({ A: 'sev-none', B: 'sev-none', C: 'sev-minor', D: 'sev-critical' }[letter] || '');
 
-export const sevClass = (s) => ({ Critical: 'sev-critical', Major: 'sev-major', Minor: 'sev-minor' }[s] || 'sev-none');
+export const sevClass = (s) => ({ Critical: 'sev-critical', Major: 'sev-major', Minor: 'sev-minor', Neutral: 'sev-neutral' }[s] || 'sev-none');
 export const decisionClass = (d) =>
   ({ Accept: 'sev-none', 'Accept with minor revisions': 'sev-minor', 'Major revisions': 'sev-major' }[d] || 'sev-critical');
 
@@ -121,10 +127,10 @@ export const words = (t) => (String(t || '').match(/\S+/g) || []).filter((w) => 
 
 export function tally(report) {
   const t = {};
-  const total = { Critical: 0, Major: 0, Minor: 0 };
+  const total = { Critical: 0, Major: 0, Minor: 0, Neutral: 0 };
   for (const s of report.segments || [])
     for (const d of s.deviations || []) {
-      t[d.code] ??= { Critical: 0, Major: 0, Minor: 0 };
+      t[d.code] ??= { Critical: 0, Major: 0, Minor: 0, Neutral: 0 };
       t[d.code][d.severity] = (t[d.code][d.severity] || 0) + 1;
       total[d.severity] = (total[d.severity] || 0) + 1;
     }
@@ -133,12 +139,12 @@ export function tally(report) {
   const penalty = total.Critical * WEIGHTS.Critical + total.Major * WEIGHTS.Major + total.Minor * WEIGHTS.Minor;
   const pp100 = w ? (100 * penalty) / w : 0;
   const score = w ? Math.max(0, 100 * (1 - penalty / w)) : 0;
-  return { byCode: t, total, n, words: w, penalty, pp100, score, band: bandFor(pp100),
+  return { byCode: t, total, n, neutral: total.Neutral, words: w, penalty, pp100, score, band: bandFor(pp100),
     per100: (x) => (w ? ((100 * x) / w).toFixed(1) : '–') };
 }
 
 export const worst = (devs) => {
-  for (const s of SEVERITIES) if ((devs || []).some((d) => d.severity === s)) return s;
+  for (const s of SEVERITIES) if ((devs || []).some((d) => d.severity === s)) return s; // Neutral last
   return null;
 };
 
@@ -189,9 +195,11 @@ export const TOKENS = {
   severe: 'major + critical', per100: 'deviations per 100 source words', words: 'source words',
   segments: 'segments', penalty: 'weighted penalty points', pp100: 'penalty points per 100 words',
   score: 'MQM quality score', band: 'grade band from the score',
+  neutral: 'neutral (unscored) deviations',
   clean: 'segments without deviation', cleanPct: '% of segments without deviation',
   severeSegs: 'segments with a major or critical deviation', severePct: '% of segments with one',
   A: 'accuracy (A) codes', B: 'language (B) codes', C: 'style (C) codes',
+  aiSugg: 'segments with an AI suggestion', agree: 'human agrees with AI', differ: 'human gives own suggestion', unreviewed: 'not yet reviewed',
   A1: '…and so on for any single code',
 };
 export function figures(report) {
@@ -200,13 +208,15 @@ export function figures(report) {
     total: t.n, critical: t.total.Critical, major: t.total.Major, minor: t.total.Minor,
     severe: t.total.Critical + t.total.Major, per100: t.per100(t.n), words: t.words,
     segments: (report.segments || []).length, penalty: t.penalty, pp100: t.pp100.toFixed(1),
-    score: t.score.toFixed(1), band: `${t.band[0]} (${t.band[1]})`, A: 0, B: 0, C: 0,
+    score: t.score.toFixed(1), band: `${t.band[0]} (${t.band[1]})`, A: 0, B: 0, C: 0, neutral: t.neutral,
   };
   // Spread across segments: descriptive only, never part of the score or grade.
   const segs = report.segments || [];
   const pct = (n) => (segs.length ? Math.round((100 * n) / segs.length) : 0);
-  f.clean = segs.filter((x) => !(x.deviations || []).length).length;
-  f.severeSegs = segs.filter((x) => (x.deviations || []).some((d) => d.severity !== 'Minor')).length;
+  const scored = (x) => (x.deviations || []).filter((d) => SCORED.includes(d.severity));
+  f.clean = segs.filter((x) => !scored(x).length).length;
+  f.severeSegs = segs.filter((x) => scored(x).some((d) => d.severity !== 'Minor')).length;
+  const ag = agreement(report); Object.assign(f, ag);
   f.cleanPct = pct(f.clean); f.severePct = pct(f.severeSegs);
   for (const c of Object.keys(CODES)) {
     const x = t.byCode[c]; const n = x ? x.Critical + x.Major + x.Minor : 0;
@@ -214,6 +224,17 @@ export function figures(report) {
   }
   return f;
 }
+// AI and human suggestions: how often the human reviewer agrees with the AI's alternative.
+export function agreement(report) {
+  const withAI = (report.segments || []).filter((s) => s.suggestion?.ai?.trim());
+  const st = (s) => s.suggestion?.state || 'Not reviewed';
+  return { aiSugg: withAI.length, agree: withAI.filter((s) => st(s) === 'Agrees with AI').length,
+    differ: withAI.filter((s) => st(s) === 'Own suggestion').length, unreviewed: withAI.filter((s) => st(s) === 'Not reviewed').length };
+}
+// Function test lines are stored as [{fn, kept}] and edited as "+ kept" / "- lost" lines.
+export const fnToText = (a) => (a || []).map((x) => `${x.kept ? '+' : '-'} ${x.fn}`).join('\n');
+export const textToFn = (s) => String(s || '').split('\n').map((l) => l.trim()).filter(Boolean)
+  .map((l) => ({ kept: !l.startsWith('-'), fn: l.replace(/^[+-]\s*/, '') }));
 export const fill = (text, f) => String(text ?? '').replace(/\{(\w+)\}/g, (m, k) => (k in f ? String(f[k]) : m));
 
 // ---------- rich-text editing ----------

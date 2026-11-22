@@ -43,7 +43,7 @@
     "English"
   ],
   "lead": "**Grade: D · Deficient.** Against the {words}-word source, the translation shows {total} deviations ({per100} per 100 words): {critical} critical, {major} major and {minor} minor, for a quality score of {score}, in band {band}. It renders Ahab's speech in vigorous, error-free spoken Urdu and keeps its argument, but the opening drops the \"little lower layer\" and adds an insult, the mask does not hold as one image, and minor losses of nuance accumulate across the speech.",
-  "scope": "- **Source:** Ahab's reply to Starbuck in Chapter 36, \"The Quarter-Deck\", of Herman Melville's *Moby-Dick* (1851), {words} words, quoted as supplied. It is the only yardstick. The supplied text reads \"strike though the mask\" in #4. Standard editions read \"through\", and the sentence, with \"thrusting through the wall\" in #5, requires it; the report reads it so, as the translation does.\n- **Translation:** a published Urdu translation of the same passage, quoted as supplied. Only this text is assessed.\n- **Stage: Published.** The translation is in print, so the report ends in a grade for readers rather than an editorial decision. Its publication details are in the table below; those not known are marked as not recorded.\n- **Stakes: Canonical.** *Moby-Dick* is a classic, the pasteboard-masks speech is among its most quoted passages, and this translation is likely to stand as the Urdu *Moby-Dick* for its readers. The bar for the grade is set accordingly.\n- **Reference translation:** none has been added yet. The closing section says so.\n- **Segmentation:** the source's 12 sentences are split into {segments} segments. Four are divided at a semicolon (#9–#10, #11–#12, #13–#14, #15–#16). The translation's added opening sentence is shown with #1. The translation joins #14 and #15 into one sentence, shown against #14, with #15 marked as merged; the deviations in #15's clause are recorded under #15.\n- **Codes:** A1 Mistranslation, A2 Addition, A3 Omission, A4 Grammatical meaning, A5 Distinction, A6 Logic (accuracy); B1 Grammar, B2 Non-word or spelling, B3 Ambiguity (language); C1 Register, C2 Word choice, C3 Imagery (style). C4 Interference is reported as a pattern under Stylistic tendencies, not counted. **Severity:** Minor (nuance, tone, texture), Major (changes what the sentence says), Critical (breaks a sentence the passage depends on).\n- **Score:** deviations are weighted with the Multidimensional Quality Metrics weights (Minor 1, Major 5, Critical 25) and measured per 100 source words. The quality score is 100 minus penalty points per 100 source words. It is not a percentage and is always read with its band. The bands, which set the starting grade, are this practice's calibration for literary and scientific prose, not a Multidimensional Quality Metrics standard, which leaves thresholds to each project.\n- **Fluency** is assessed under Stylistic tendencies, not in the count. The absence of semicolons is never a deviation in Urdu.\n- **Sample:** {words} source words in {segments} segments, from Chapter 36. The sample is taken to stand for the whole translation, and the grade applies to the whole work on that assumption.",
+  "scope": "- **Source:** Ahab's reply to Starbuck in Chapter 36, \"The Quarter-Deck\", of Herman Melville's *Moby-Dick* (1851), {words} words, quoted as supplied. It is the only yardstick. The supplied text reads \"strike though the mask\" in #4. Standard editions read \"through\", and the sentence, with \"thrusting through the wall\" in #5, requires it; the report reads it so, as the translation does.\n- **Translation:** a published Urdu translation of the same passage, quoted as supplied. Only this text is assessed.\n- **Stage: Published.** The translation is in print, so the report ends in a grade for readers rather than an editorial decision. Its publication details are in the table below; those not known are marked as not recorded.\n- **Stakes: Canonical.** *Moby-Dick* is a classic, the pasteboard-masks speech is among its most quoted passages, and this translation is likely to stand as the Urdu *Moby-Dick* for its readers. The bar for the grade is set accordingly.\n- **Reference translation:** none has been added yet. The closing section says so.\n- **Suggestions:** for each segment with a deviation, the side-by-side table gives an AI suggestion, the model's own alternative kept as generated, and a Human suggestion column for the assessor's review. Neither is assessed, and neither enters the score or the grade.\n- **Segmentation:** the source's 12 sentences are split into {segments} segments. Four are divided at a semicolon (#9–#10, #11–#12, #13–#14, #15–#16). The translation's added opening sentence is shown with #1. The translation joins #14 and #15 into one sentence, shown against #14, with #15 marked as merged; the deviations in #15's clause are recorded under #15.\n- **Codes:** A1 Mistranslation, A2 Addition, A3 Omission, A4 Grammatical meaning, A5 Distinction, A6 Logic (accuracy); B1 Grammar, B2 Non-word or spelling, B3 Ambiguity (language); C1 Register, C2 Word choice, C3 Imagery (style). C4 Interference is reported as a pattern under Stylistic tendencies, not counted. **Severity:** Minor (nuance, tone, texture), Major (changes what the sentence says), Critical (breaks a sentence the passage depends on), and Neutral (weight 0) for a deliberate transposition that passes the function test or a loss compensated elsewhere. Where an image is replaced by choice, its severity is set by a function test, listed under the deviation, and any gain the departure brings is recorded there without entering the score.\n- **Score:** deviations are weighted with the Multidimensional Quality Metrics weights (Minor 1, Major 5, Critical 25) and measured per 100 source words. The quality score is 100 minus penalty points per 100 source words. It is not a percentage and is always read with its band. The bands, which set the starting grade, are this practice's calibration for literary and scientific prose, not a Multidimensional Quality Metrics standard, which leaves thresholds to each project.\n- **Fluency** is assessed under Stylistic tendencies, not in the count. The absence of semicolons is never a deviation in Urdu.\n- **Sample:** {words} source words in {segments} segments, from Chapter 36. The sample is taken to stand for the whole translation, and the grade applies to the whole work on that assumption.",
   "segments": [
     {
       "n": 1,
@@ -71,7 +71,11 @@
           "note": "کان کھول کے سنو (\"open your ears and listen\") is a brusque colloquial command. The source's \"Hark ye\" is archaic and elevated, the idiom of Ahab's Shakespearean rhetoric."
         }
       ],
-      "keeps": ""
+      "suggestion": {
+        "ai": "ایک بار پھر سنو —— ذرا نچلی تہ کی بات۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 2,
@@ -81,7 +85,30 @@
         {
           "code": "C3",
           "severity": "Minor",
-          "note": "\"Pasteboard masks\" become مٹی کی مورتیں (\"clay figures\"). The sense the sentence needs survives: visible things are lifeless, made things, behind which, as #3 says, something else shows. What changes is the kind of thing. A mask is a thin cover worn over a face, so it already implies the face behind it, and pasteboard stresses how flimsy that cover is. A clay figure is solid and implies nothing behind it, and مورت brings the sense of an idol. This is a deliberate transposition rather than a slip, but the image no longer contains the \"behind\" that #3 and #4 depend on."
+          "note": "\"Pasteboard masks\" become مٹی کی مورتیں (\"clay figures\"). This is a deliberate transposition rather than a slip, and the sense the sentence needs survives: visible things are lifeless, made things, behind which, as #3 says, something else shows. But a mask is a thin cover worn over a face, so it already implies the face behind it, and pasteboard stresses how flimsy that cover is. A clay figure is solid and implies nothing behind it. The function test below sets the severity: one function kept, four lost.",
+          "functions": [
+            {
+              "fn": "a made, lifeless thing",
+              "kept": true
+            },
+            {
+              "fn": "a thin cover worn over something else",
+              "kept": false
+            },
+            {
+              "fn": "implies a face behind it, which #3 needs",
+              "kept": false
+            },
+            {
+              "fn": "flimsy (pasteboard)",
+              "kept": false
+            },
+            {
+              "fn": "something that can be struck through, which #4 needs",
+              "kept": false
+            }
+          ],
+          "gain": "مورت brings in the بت, the idol of the Urdu-Persian tradition, and with it the idol-breaker, which arguably suits a speech about striking at the visible world."
         },
         {
           "code": "A3",
@@ -89,7 +116,11 @@
           "note": "The vocative \"man\", addressed to Starbuck, is dropped."
         }
       ],
-      "keeps": "جتنی چیزیں ہمیں دکھائی دیتی ہیں keeps \"all visible objects\", and تو بس keeps the dismissive \"but as\". The contrast of a lifeless figure with a reasoning presence carries into #3 (بے عقل مورت)."
+      "suggestion": {
+        "ai": "جتنی چیزیں دکھائی دیتی ہیں، میاں، وہ سب محض گتے کے نقاب ہیں۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 3,
@@ -112,7 +143,11 @@
           "note": "\"The mouldings of its features\", a face pressing its shape into the mask from behind, become features that جھلکتے (\"glimmer\") into view. The sculptural, tactile image becomes one of light."
         }
       ],
-      "keeps": "ہر واقعے میں keeps \"in each event\". ذی عقل … بے عقل keeps the source's antithesis of \"reasoning\" and \"unreasoning\", and the paired dashes keep the source's appositive interruption."
+      "suggestion": {
+        "ai": "لیکن ہر واقعے میں —— زندہ عمل میں، ناقابلِ تردید فعل میں —— وہاں کوئی نامعلوم مگر پھر بھی ذی عقل شے بے عقل نقاب کے پیچھے سے اپنے خدوخال ابھارتی ہے۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 4,
@@ -127,17 +162,43 @@
         {
           "code": "C3",
           "severity": "Minor",
-          "note": "The mask is now پردہ (\"veil, curtain\"), after مٹی کی مورت in #2 and #3. A مورت can be struck but not struck through, and the change of image at this point shows the clay figure could not carry the command. The veil keeps concealment, but not a face, and the image no longer holds from one sentence to the next."
+          "note": "The mask is now پردہ (\"veil, curtain\"), after مٹی کی مورت in #2 and #3. A مورت can be struck but not struck through, and the change of image at this point shows the clay figure could not carry the command. The veil keeps concealment, but not a face, and the image no longer holds from one sentence to the next.",
+          "functions": [
+            {
+              "fn": "a cover that conceals",
+              "kept": true
+            },
+            {
+              "fn": "something that can be struck through",
+              "kept": true
+            },
+            {
+              "fn": "implies a face behind it",
+              "kept": false
+            },
+            {
+              "fn": "continues the image of #2 and #3",
+              "kept": false
+            }
+          ]
         }
       ],
-      "keeps": "اگر انسان اپنا وار کرنا چاہتا ہے keeps the condition, the will to strike. وار is repeated as in the source (\"strike, strike\"), and میں سے ہو کر keeps \"through\"."
+      "suggestion": {
+        "ai": "اگر انسان کو وار کرنا ہے تو نقاب کے آر پار وار کرے!",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 5,
       "source": "How can the prisoner reach outside except by thrusting through the wall?",
       "submission": "قیدی دیوار کو توڑے بغیر باہر کیسے پہنچ سکتا ہے؟",
       "deviations": [],
-      "keeps": "The rhetorical question, the prisoner and the wall are carried over intact."
+      "suggestion": {
+        "ai": "",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 6,
@@ -150,14 +211,22 @@
           "note": "\"Shoved\" becomes پہنچا دی گئی (\"has been brought\"). The sense of placement survives, but not the violence of the source's verb."
         }
       ],
-      "keeps": "وہی دیوار keeps the demonstrative link to the wall of #5, and the passive keeps the unnamed agent who placed it."
+      "suggestion": {
+        "ai": "میرے لیے سفید ویل وہی دیوار ہے، جو دھکیل کر میرے قریب کر دی گئی ہے۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 7,
       "source": "Sometimes I think there's naught beyond.",
       "submission": "بعض اوقات میں سوچتا ہوں کہ اس کے دوسری طرف کچھ بھی نہیں۔",
       "deviations": [],
-      "keeps": ""
+      "suggestion": {
+        "ai": "",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 8,
@@ -170,7 +239,11 @@
           "note": "With خیر, اتنا ہی کافی ہے reads most readily as \"anyway, enough of that\", closing the topic. If the source's \"'tis enough\" means that the wall suffices even if nothing lies beyond it, the Urdu allows a dismissive reading the source does not."
         }
       ],
-      "keeps": ""
+      "suggestion": {
+        "ai": "لیکن یہی کافی ہے۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 9,
@@ -193,7 +266,11 @@
           "note": "The source's present tense (\"tasks\", \"heaps\"), a torment still going on, becomes a completed past (دیا، لادا)."
         }
       ],
-      "keeps": "میرے سر پر ایک بوجھ تو لادا keeps the weight of \"heaps me\"."
+      "suggestion": {
+        "ai": "وہ مجھ سے مشقت لیتا ہے، وہ مجھ پر بوجھ کا ڈھیر لادتا ہے۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 10,
@@ -216,7 +293,11 @@
           "note": "The source makes the malice the sinew of the strength, so that the one drives the other. The translation states them in two separate sentences, and the relation between them is lost."
         }
       ],
-      "keeps": "ناقابلِ فہم for \"inscrutable\" is repeated in #11, keeping the source's repetition."
+      "suggestion": {
+        "ai": "مجھے اس میں ایک حد سے گزری ہوئی قوت دکھائی دیتی ہے، جس کے پٹھوں کو ایک ناقابلِ فہم کینہ کسے ہوئے ہے۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 11,
@@ -229,14 +310,22 @@
           "note": "\"Chiefly\" becomes دراصل … اسی (\"in fact … this very thing\"). The source names the main object of Ahab's hate; the translation makes it the only one."
         }
       ],
-      "keeps": ""
+      "suggestion": {
+        "ai": "مجھے سب سے بڑھ کر اسی ناقابلِ فہم چیز سے نفرت ہے۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 12,
       "source": "and be the white whale agent, or be the white whale principal, I will wreak that hate upon him.",
       "submission": "سفید ویل چاہے کسی کی نمائندہ ہو یا خود اپنی مالک، بہر حال میں اپنی نفرت کا شکار اسی کو بناؤں گا۔",
       "deviations": [],
-      "keeps": "کسی کی نمائندہ … خود اپنی مالک carries the agent-and-principal distinction exactly, and نفرت کا شکار بناؤں گا (\"make him the prey of my hate\") keeps the source's vengeance in a hunter's idiom."
+      "suggestion": {
+        "ai": "",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 13,
@@ -249,7 +338,11 @@
           "note": "\"Blasphemy\", an act of impious speech, becomes بے دینی (\"irreligion, godlessness\"), a state. What Ahab forbids Starbuck to name is the offence of his words, not his lack of faith."
         }
       ],
-      "keeps": "دیکھو carries the force of the vocative \"man\"."
+      "suggestion": {
+        "ai": "میرے سامنے کفر بکنے کی بات نہ کرو، میاں۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 14,
@@ -262,7 +355,11 @@
           "note": "\"I'd strike\", a hypothetical, becomes حملہ کروں گا (\"I will attack\"), a declared intention."
         }
       ],
-      "keeps": "The Urdu sentence also carries #15. بھی (\"even the sun\") makes explicit what the source implies."
+      "suggestion": {
+        "ai": "اگر سورج میری توہین کرتا تو میں اس پر بھی وار کرتا۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 15,
@@ -275,7 +372,11 @@
           "note": "In the clause merged into #14, ایک کام … دوسرا کام (\"one thing … the other thing\") loses the source's \"that\", which points back to the insult. The Urdu allows the reading that the sun and Ahab can each do some unspecified deed, where the source means: if the sun can insult, Ahab can strike."
         }
       ],
-      "keeps": "کیونکہ keeps the source's causal \"for\"."
+      "suggestion": {
+        "ai": "کیونکہ اگر سورج وہ کر سکتا ہے تو میں یہ دوسرا کر سکتا ہوں۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     },
     {
       "n": 16,
@@ -293,7 +394,11 @@
           "note": "\"Fair play\", the equal footing of two contestants, becomes منصفی (\"justice, adjudication\"). The basic sense of fairness survives, but the connotation moves from a contest between equals to a judgment handed down."
         }
       ],
-      "keeps": "رقابت (\"rivalry\") keeps the competitive sense of \"jealousy\", and حکمرانی keeps \"presiding\"."
+      "suggestion": {
+        "ai": "اس لیے کہ اس معاملے میں ہمیشہ ایک طرح کا برابر کا مقابلہ رہتا ہے، اور ساری مخلوقات پر رقابت کی حکمرانی ہے۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
     }
   ],
   "profileSummary": "Accuracy codes make up {A} of the {total} deviations, and style codes {C}. The {major} major deviations are both in #1, the opening line: an insult is added and \"the little lower layer\" is dropped. These make #1 the only one of the {segments} segments ({severePct}%) with a major deviation. Everything else is minor, and the minor deviations are spread evenly: the mask image (#2, #4), the active, sculptural face behind it (#3), the whale's personhood and present torment (#9), the logical links that drop out where sentences are broken up (#10, #16), and shifts of word or mood (#6, #11, #13, #14). {clean} of {segments} segments ({cleanPct}%) carry no deviation (#5, #7, #12). There are no grammar or spelling errors.",
@@ -331,5 +436,9 @@
   "publisherNote": "",
   "grade": "D",
   "gradeBasis": "The score of {score}, in band {band}, comes mostly from the accumulation of {minor} minor deviations spread across the speech, with the {major} major deviations confined to the opening line. There is no critical deviation or critical work-level finding, and the grade stays at its band, D. The translation follows Ahab's argument accurately and its Urdu is flawless, but at canonical stakes the steady loss of image, register and logical link, together with the altered opening, leaves readers a recognisable but thinned version of the speech.",
-  "readerNote": "Readers get Ahab's argument and his defiance in vivid, colloquial Urdu, but with a lowered register, an unstable central image and many small losses of nuance along the way."
+  "readerNote": "Readers get Ahab's argument and his defiance in vivid, colloquial Urdu, but with a lowered register, an unstable central image and many small losses of nuance along the way.",
+  "aiSuggestions": {
+    "model": "Claude Opus 5.5",
+    "date": "2026-11-22"
+  }
 }

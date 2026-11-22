@@ -912,5 +912,69 @@ export const STRINGS = {
 "index.privacy": [
 "If a translation is sent to me privately by email, the translator's name is published only with their permission.",
 "اگر ترجمہ ای میل کے ذریعے ذاتی طور پر بھیجا جائے تو مترجمین کا نام صرف ان کی اجازت ہی سے شائع کیا جاتا ہے۔"
+],
+"sev.Neutral": [
+"Neutral",
+""
+],
+"sev.neutralText": [
+"Neutral (weight 0) records a deliberate transposition that keeps every function the source image or phrase serves in the passage, or a loss the translator makes good elsewhere (compensation). It is shown and counted, but it never enters the score.",
+""
+],
+"th.ai": [
+"AI suggestion",
+""
+],
+"th.human": [
+"Human suggestion",
+""
+],
+"sug.agrees": [
+"Agrees with the AI suggestion.",
+""
+],
+"sug.unreviewed": [
+"Not yet reviewed.",
+""
+],
+"sug.hint": [
+"The AI suggestion is the model's own alternative, kept as generated ({model}, {date}). The human suggestion is the assessor's. Neither is assessed or scored.",
+""
+],
+"sug.line": [
+"Suggestions: {aiSugg} segments carry an AI suggestion. The assessor agrees with {agree}, gives an own suggestion for {differ}, and has not yet reviewed {unreviewed}.",
+""
+],
+"fn.head": [
+"Function test:",
+""
+],
+"gain.head": [
+"Gain:",
+""
+],
+"comp.head": [
+"Compensated in #{n}.",
+""
+],
+"counts.neutral": [
+"Neutral (not scored)",
+""
+],
+"m.sugg.h": [
+"AI and human suggestions",
+""
+],
+"m.sugg.p": [
+"Beside each segment with a deviation the table gives two suggested renderings. The AI suggestion is the model's alternative, kept exactly as generated and marked with the model and date. The human suggestion is the assessor's: blank until reviewed, marked as agreeing with the AI, or written out in full. Neither is assessed, and neither enters the score or the outcome. Over many reports, how often the two agree is itself a measure of how far machine judgement has come.",
+""
+],
+"m.transp.h": [
+"Transpositions, function test and gains",
+""
+],
+"m.transp.p": [
+"When a translator replaces an image or phrase with a different one by choice, the severity is set by a function test: what does the source image do in the passage, and which of those functions survive? If all of them survive, the deviation is Neutral. If some are lost, it is Minor. If the image the passage depends on is lost, it is Major or Critical. Where a transposition also adds something the source lacks, the report records it as a gain. Gains never offset penalty points; they inform the stylistic tendencies, the translator profile, and the one-step move of the outcome.",
+""
 ]
 };
