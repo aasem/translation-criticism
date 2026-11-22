@@ -1,0 +1,345 @@
+{
+  "schema": 1,
+  "id": "melville-moby-dick-quarter-deck-urdu-askari",
+  "title": "Translation Assessment: Melville's Quarter-Deck Speech from Moby-Dick in Urdu",
+  "subtitle": "An editorial assessment report for interested readers and publishers. Segment-level deviation analysis on an error typology adapted from Multidimensional Quality Metrics, the translation industry's standard framework, calibrated to canonical stakes, with a descriptive translation-studies profile of the translator.",
+  "date": "2026-11-22",
+  "stage": "Published",
+  "sampleLocation": "Chapter 36, \"The Quarter-Deck\", Ahab's reply to Starbuck",
+  "publication": {
+    "publisher": "Sheikh Ghulam Ali and Sons Educational Publications",
+    "place": "Lahore",
+    "year": "1967",
+    "edition": "",
+    "isbn": "",
+    "pages": ""
+  },
+  "author": "Herman Melville",
+  "work": "Moby-Dick",
+  "originalWork": "Moby-Dick; or, The Whale",
+  "passage": "Ahab's speech: \"Hark ye yet again…\"",
+  "source": {
+    "language": "English",
+    "label": "Melville",
+    "translator": "",
+    "text": "Hark ye yet again- the little lower layer. All visible objects, man, are but as pasteboard masks. But in each event- in the living act, the undoubted deed- there, some unknown but still reasoning thing puts forth the mouldings of its features from behind the unreasoning mask. If man will strike, strike though the mask! How can the prisoner reach outside except by thrusting through the wall? To me, the white whale is that wall, shoved near to me. Sometimes I think there's naught beyond. But 'tis enough. He tasks me; he heaps me; I see in him outrageous strength, with an inscrutable malice sinewing it. That inscrutable thing is chiefly what I hate; and be the white whale agent, or be the white whale principal, I will wreak that hate upon him. Talk not to me of blasphemy, man; I'd strike the sun if it insulted me. For could the sun do that, then could I do the other; since there is ever a sort of fair play herein, jealousy presiding over all creations."
+  },
+  "submission": {
+    "language": "Urdu",
+    "label": "Muhammad Hasan Askari",
+    "translator": "Muhammad Hasan Askari",
+    "text": "”تم تو بڑے احمق ہو۔ اچھا کان کھول کے سنو۔ جتنی چیزیں ہمیں دکھائی دیتی ہیں وہ تو بس مٹی کی مورتیں ہیں۔ لیکن ہر علاقے میں —— ہر زندہ اور عظیم کارنامے میں —— بے عقل مورت کے پیچھے سے ہمیں کسی نامعلوم مگر ذی عقل چیز کے خدوخال جھلکتے نظر آتے ہیں۔ اگر انسان اپنا فائدہ کرنا چاہتا ہے تو اس کا وار اس پردے میں سے ہو کر پڑے گا۔ قیدی دیوار کو توڑے بغیر باہر کیسے پہنچ سکتا ہے؟ میرے لیے یہ سفید ویل وہی دیوار ہے جو میرے قریب پہنچا دی گئی ہے۔ بعض اوقات میں سوچتا ہوں کہ اس کے دوسری طرف کچھ بھی نہیں۔ لیکن خیر اتنا ہی کافی ہے۔ اس مچھلی نے مجھے ایک کام تو دیا، میرے سر پر ایک بوجھ تو لادا۔ مجھے اس کے اندر ہولناک قوت نظر آتی ہے۔ اس کے جوڑ جوڑ میں ناقابلِ فہم کینہ بھرا پڑا ہے۔ دراصل مجھے اسی ناقابلِ فہم چیز سے نفرت ہے۔ سفید ویل چاہے کسی کی نمائندہ ہو یا خود اپنی مالک، بہر حال میں اپنی نفرت کا شکار اسی کو بناؤں گا۔ دیکھو، میرے سامنے بے دینی کا ذکر نہ کرو۔ اگر سورج میری توہین کرے تو میں اس پر بھی حملہ کروں گا کیونکہ اگر سورج ایک کام کر سکتا ہے تو میں بھی دوسرا کام کر سکتا ہوں۔ یہاں دنیا میں ایک طرح کی منصفی رائج ہے۔ ہر قسم کی مخلوق پر رقابت کی حکمرانی ہے۔"
+  },
+  "reference": {
+    "language": "Urdu",
+    "translator": "",
+    "note": "",
+    "text": ""
+  },
+  "stakes": "Canonical",
+  "decision": "",
+  "tags": [
+    "Melville",
+    "English"
+  ],
+  "lead": "**Grade: D · Deficient.** Against the {words}-word source, the translation shows {total} deviations ({per100} per 100 words): {critical} critical, {major} major and {minor} minor, for a quality score of {score}, in band {band}. It renders Ahab's defiance in vigorous, error-free spoken Urdu, but it loses the pasteboard mask the speech is built on and misreads the condition at its turn, the will to strike.",
+  "scope": "- **Source:** Ahab's reply to Starbuck in Chapter 36, \"The Quarter-Deck\", of Herman Melville's *Moby-Dick* (1851), {words} words, quoted as supplied. It is the only yardstick. The supplied text reads \"strike though the mask\" in #4. Standard editions read \"through\", and the sentence, with \"thrusting through the wall\" in #5, requires it; the report reads it so, as the translation does.\n- **Translation:** a published Urdu translation of the same passage, quoted as supplied. Only this text is assessed. In #3 it reads ہر علاقے میں (\"in every region\") where the source has \"in each event\". This may be a misprint for ہر واقعے میں, but the report assesses the text as printed, which is the text its readers receive.\n- **Stage: Published.** The translation is in print, so the report ends in a grade for readers rather than an editorial decision. Its publication details are in the table below; those not known are marked as not recorded.\n- **Stakes: Canonical.** *Moby-Dick* is a classic, the pasteboard-masks speech is among its most quoted passages, and this translation is likely to stand as the Urdu *Moby-Dick* for its readers. The bar for the grade is set accordingly.\n- **Reference translation:** none has been added yet. The closing section says so.\n- **Segmentation:** the source's 12 sentences are split into {segments} segments. Four are divided at a semicolon (#9–#10, #11–#12, #13–#14, #15–#16). The translation's added opening sentence is shown with #1. The translation joins #14 and #15 into one sentence, shown against #14, with #15 marked as merged; the deviations in #15's clause are recorded under #15.\n- **Codes:** A1 Mistranslation, A2 Addition, A3 Omission, A4 Grammatical meaning, A5 Distinction, A6 Logic (accuracy); B1 Grammar, B2 Non-word or spelling, B3 Ambiguity (language); C1 Register, C2 Word choice, C3 Imagery (style). C4 Interference is reported as a pattern under Stylistic tendencies, not counted. **Severity:** Minor (nuance, tone, texture), Major (changes what the sentence says), Critical (breaks a sentence the passage depends on).\n- **Score:** deviations are weighted with the Multidimensional Quality Metrics weights (Minor 1, Major 5, Critical 25) and measured per 100 source words. The quality score is 100 minus penalty points per 100 source words. It is not a percentage and is always read with its band. The bands, which set the starting grade, are this practice's calibration for literary and scientific prose, not a Multidimensional Quality Metrics standard, which leaves thresholds to each project.\n- **Fluency** is assessed under Stylistic tendencies, not in the count. The absence of semicolons is never a deviation in Urdu.\n- **Sample:** {words} source words in {segments} segments, from Chapter 36. The sample is taken to stand for the whole translation, and the grade applies to the whole work on that assumption.",
+  "segments": [
+    {
+      "n": 1,
+      "source": "Hark ye yet again- the little lower layer.",
+      "submission": "”تم تو بڑے احمق ہو۔ اچھا کان کھول کے سنو۔",
+      "deviations": [
+        {
+          "code": "A2",
+          "severity": "Major",
+          "note": "تم تو بڑے احمق ہو (\"you really are a great fool\") has no counterpart in the source. Ahab's insistence that Starbuck hear him out once more becomes an insult, and the speech opens in contempt rather than in argument."
+        },
+        {
+          "code": "A3",
+          "severity": "Major",
+          "note": "\"The little lower layer\" is dropped. The phrase names the speech's subject before the argument begins: what lies beneath the surface of things, which the masks of #2–#4 then figure."
+        },
+        {
+          "code": "A3",
+          "severity": "Minor",
+          "note": "\"Yet again\" is dropped. The source marks this as Ahab's second attempt to make Starbuck understand; اچھا (\"well then\") keeps a turn in the exchange but not the repetition."
+        },
+        {
+          "code": "C1",
+          "severity": "Minor",
+          "note": "کان کھول کے سنو (\"open your ears and listen\") is a brusque colloquial command. The source's \"Hark ye\" is archaic and elevated, the idiom of Ahab's Shakespearean rhetoric."
+        }
+      ],
+      "keeps": ""
+    },
+    {
+      "n": 2,
+      "source": "All visible objects, man, are but as pasteboard masks.",
+      "submission": "جتنی چیزیں ہمیں دکھائی دیتی ہیں وہ تو بس مٹی کی مورتیں ہیں۔",
+      "deviations": [
+        {
+          "code": "C3",
+          "severity": "Major",
+          "note": "\"Pasteboard masks\" become مٹی کی مورتیں (\"clay figures\"). A mask is a thin cover with a face behind it, and the whole speech depends on that behind. A clay figure is solid and conceals nothing, and مورت also carries the sense of an idol. The flimsiness of pasteboard is replaced by the weight of clay."
+        },
+        {
+          "code": "A3",
+          "severity": "Minor",
+          "note": "The vocative \"man\", addressed to Starbuck, is dropped."
+        }
+      ],
+      "keeps": "جتنی چیزیں ہمیں دکھائی دیتی ہیں keeps \"all visible objects\", and تو بس keeps the dismissive \"but as\"."
+    },
+    {
+      "n": 3,
+      "source": "But in each event- in the living act, the undoubted deed- there, some unknown but still reasoning thing puts forth the mouldings of its features from behind the unreasoning mask.",
+      "submission": "لیکن ہر علاقے میں —— ہر زندہ اور عظیم کارنامے میں —— بے عقل مورت کے پیچھے سے ہمیں کسی نامعلوم مگر ذی عقل چیز کے خدوخال جھلکتے نظر آتے ہیں۔",
+      "deviations": [
+        {
+          "code": "A1",
+          "severity": "Major",
+          "note": "ہر علاقے میں (\"in every region\") replaces \"in each event\". The source locates the revelation in events, in what happens; the translation places it in territory. (If علاقے is a misprint for واقعے, the error lies with the printing, but this is the text readers receive.)"
+        },
+        {
+          "code": "A1",
+          "severity": "Minor",
+          "note": "\"The undoubted deed\" becomes عظیم کارنامے (\"great feat\"). The source's word is epistemic: the deed is certain, in contrast with the deceptive visible objects. عظیم makes it heroic, and کارنامہ, standing for both \"act\" and \"deed\", narrows any act to an exploit."
+        },
+        {
+          "code": "A1",
+          "severity": "Minor",
+          "note": "The reasoning thing no longer acts. In the source it \"puts forth\" its features. In the translation its features are seen by an added \"us\" (ہمیں … نظر آتے ہیں), and the subject moves from the hidden agent to the observer."
+        },
+        {
+          "code": "C3",
+          "severity": "Minor",
+          "note": "\"The mouldings of its features\", a face pressing its shape into the mask from behind, become features that جھلکتے (\"glimmer\") into view. The sculptural, tactile image becomes one of light."
+        }
+      ],
+      "keeps": "ذی عقل … بے عقل keeps the source's antithesis of \"reasoning\" and \"unreasoning\", and the paired dashes keep the source's appositive interruption."
+    },
+    {
+      "n": 4,
+      "source": "If man will strike, strike though the mask!",
+      "submission": "اگر انسان اپنا فائدہ کرنا چاہتا ہے تو اس کا وار اس پردے میں سے ہو کر پڑے گا۔",
+      "deviations": [
+        {
+          "code": "A1",
+          "severity": "Critical",
+          "note": "\"If man will strike\" becomes اگر انسان اپنا فائدہ کرنا چاہتا ہے (\"if man wishes to serve his own advantage\"). The source's condition is the will to strike, the hinge on which the speech turns from what the world is to what Ahab will do. The translation replaces it with self-interest, which the source does not mention and which undoes the defiance of everything that follows."
+        },
+        {
+          "code": "A4",
+          "severity": "Major",
+          "note": "The imperative \"strike through the mask!\" becomes a future statement: اس کا وار … پڑے گا (\"his blow will fall through\"). The source commands; the translation predicts."
+        },
+        {
+          "code": "C3",
+          "severity": "Minor",
+          "note": "The mask is now پردہ (\"veil, curtain\"), its third rendering after مٹی کی مورت in #2 and #3. The veil keeps the idea of concealment but not of a face, and the image no longer holds from one sentence to the next."
+        }
+      ],
+      "keeps": "وار keeps the blow, and میں سے ہو کر keeps \"through\"."
+    },
+    {
+      "n": 5,
+      "source": "How can the prisoner reach outside except by thrusting through the wall?",
+      "submission": "قیدی دیوار کو توڑے بغیر باہر کیسے پہنچ سکتا ہے؟",
+      "deviations": [],
+      "keeps": "The rhetorical question, the prisoner and the wall are carried over intact."
+    },
+    {
+      "n": 6,
+      "source": "To me, the white whale is that wall, shoved near to me.",
+      "submission": "میرے لیے یہ سفید ویل وہی دیوار ہے جو میرے قریب پہنچا دی گئی ہے۔",
+      "deviations": [
+        {
+          "code": "C2",
+          "severity": "Minor",
+          "note": "\"Shoved\" becomes پہنچا دی گئی (\"has been brought\"). The sense of placement survives, but not the violence of the source's verb."
+        }
+      ],
+      "keeps": "وہی دیوار keeps the demonstrative link to the wall of #5, and the passive keeps the unnamed agent who placed it."
+    },
+    {
+      "n": 7,
+      "source": "Sometimes I think there's naught beyond.",
+      "submission": "بعض اوقات میں سوچتا ہوں کہ اس کے دوسری طرف کچھ بھی نہیں۔",
+      "deviations": [],
+      "keeps": ""
+    },
+    {
+      "n": 8,
+      "source": "But 'tis enough.",
+      "submission": "لیکن خیر اتنا ہی کافی ہے۔",
+      "deviations": [
+        {
+          "code": "B3",
+          "severity": "Minor",
+          "note": "With خیر, اتنا ہی کافی ہے reads most readily as \"anyway, enough of that\", closing the topic. If the source's \"'tis enough\" means that the wall suffices even if nothing lies beyond it, the Urdu allows a dismissive reading the source does not."
+        }
+      ],
+      "keeps": ""
+    },
+    {
+      "n": 9,
+      "source": "He tasks me; he heaps me;",
+      "submission": "اس مچھلی نے مجھے ایک کام تو دیا، میرے سر پر ایک بوجھ تو لادا۔",
+      "deviations": [
+        {
+          "code": "C2",
+          "severity": "Minor",
+          "note": "\"He\" becomes اس مچھلی (\"this fish\"). The source's personal pronoun treats the whale as an adversary with a will, which is the question of #12. \"This fish\" reduces him to a creature, with a note of contempt."
+        },
+        {
+          "code": "A1",
+          "severity": "Minor",
+          "note": "\"Tasks me\" (strains, taxes, oppresses) becomes ایک کام تو دیا (\"did give me a task\"). With the particle تو the sense tilts toward a grudging acknowledgment, as though the whale had given Ahab something to do."
+        },
+        {
+          "code": "A4",
+          "severity": "Minor",
+          "note": "The source's present tense (\"tasks\", \"heaps\"), a torment still going on, becomes a completed past (دیا، لادا)."
+        }
+      ],
+      "keeps": "میرے سر پر ایک بوجھ تو لادا keeps the weight of \"heaps me\"."
+    },
+    {
+      "n": 10,
+      "source": "I see in him outrageous strength, with an inscrutable malice sinewing it.",
+      "submission": "مجھے اس کے اندر ہولناک قوت نظر آتی ہے۔ اس کے جوڑ جوڑ میں ناقابلِ فہم کینہ بھرا پڑا ہے۔",
+      "deviations": [
+        {
+          "code": "C2",
+          "severity": "Minor",
+          "note": "\"Outrageous\" (beyond all bounds, an affront) becomes ہولناک (\"dreadful, terrifying\"). The word shifts from the whale's excess to the fear it inspires."
+        },
+        {
+          "code": "C3",
+          "severity": "Minor",
+          "note": "\"Sinewing\", malice as the tendons that drive the strength, becomes malice filling every joint (جوڑ جوڑ میں … بھرا پڑا ہے). The anatomical image is kept, but as something stored, not as something that moves."
+        },
+        {
+          "code": "A6",
+          "severity": "Minor",
+          "note": "The source makes the malice the sinew of the strength, so that the one drives the other. The translation states them in two separate sentences, and the relation between them is lost."
+        }
+      ],
+      "keeps": "ناقابلِ فہم for \"inscrutable\" is repeated in #11, keeping the source's repetition."
+    },
+    {
+      "n": 11,
+      "source": "That inscrutable thing is chiefly what I hate;",
+      "submission": "دراصل مجھے اسی ناقابلِ فہم چیز سے نفرت ہے۔",
+      "deviations": [
+        {
+          "code": "A1",
+          "severity": "Minor",
+          "note": "\"Chiefly\" becomes دراصل … اسی (\"in fact … this very thing\"). The source names the main object of Ahab's hate; the translation makes it the only one."
+        }
+      ],
+      "keeps": ""
+    },
+    {
+      "n": 12,
+      "source": "and be the white whale agent, or be the white whale principal, I will wreak that hate upon him.",
+      "submission": "سفید ویل چاہے کسی کی نمائندہ ہو یا خود اپنی مالک، بہر حال میں اپنی نفرت کا شکار اسی کو بناؤں گا۔",
+      "deviations": [],
+      "keeps": "کسی کی نمائندہ … خود اپنی مالک carries the agent-and-principal distinction exactly, and نفرت کا شکار بناؤں گا (\"make him the prey of my hate\") keeps the source's vengeance in a hunter's idiom."
+    },
+    {
+      "n": 13,
+      "source": "Talk not to me of blasphemy, man;",
+      "submission": "دیکھو، میرے سامنے بے دینی کا ذکر نہ کرو۔",
+      "deviations": [
+        {
+          "code": "A1",
+          "severity": "Minor",
+          "note": "\"Blasphemy\", an act of impious speech, becomes بے دینی (\"irreligion, godlessness\"), a state. What Ahab forbids Starbuck to name is the offence of his words, not his lack of faith."
+        }
+      ],
+      "keeps": "دیکھو carries the force of the vocative \"man\"."
+    },
+    {
+      "n": 14,
+      "source": "I'd strike the sun if it insulted me.",
+      "submission": "اگر سورج میری توہین کرے تو میں اس پر بھی حملہ کروں گا کیونکہ اگر سورج ایک کام کر سکتا ہے تو میں بھی دوسرا کام کر سکتا ہوں۔",
+      "deviations": [
+        {
+          "code": "A4",
+          "severity": "Minor",
+          "note": "\"I'd strike\", a hypothetical, becomes حملہ کروں گا (\"I will attack\"), a declared intention."
+        }
+      ],
+      "keeps": "The Urdu sentence also carries #15. بھی (\"even the sun\") makes explicit what the source implies."
+    },
+    {
+      "n": 15,
+      "source": "For could the sun do that, then could I do the other;",
+      "submission": "(merged into #14)",
+      "deviations": [
+        {
+          "code": "B3",
+          "severity": "Minor",
+          "note": "In the clause merged into #14, ایک کام … دوسرا کام (\"one thing … the other thing\") loses the source's \"that\", which points back to the insult. The Urdu allows the reading that the sun and Ahab can each do some unspecified deed, where the source means: if the sun can insult, Ahab can strike."
+        }
+      ],
+      "keeps": "کیونکہ keeps the source's causal \"for\"."
+    },
+    {
+      "n": 16,
+      "source": "since there is ever a sort of fair play herein, jealousy presiding over all creations.",
+      "submission": "یہاں دنیا میں ایک طرح کی منصفی رائج ہے۔ ہر قسم کی مخلوق پر رقابت کی حکمرانی ہے۔",
+      "deviations": [
+        {
+          "code": "A6",
+          "severity": "Minor",
+          "note": "\"Since\" is dropped. The source gives fair play as the ground for Ahab's right to strike back; the translation sets out two independent statements about the world."
+        },
+        {
+          "code": "C2",
+          "severity": "Minor",
+          "note": "\"Fair play\", the equal footing of two contestants, becomes منصفی (\"justice, adjudication\"). The basic sense of fairness survives, but the connotation moves from a contest between equals to a judgment handed down."
+        }
+      ],
+      "keeps": "رقابت (\"rivalry\") keeps the competitive sense of \"jealousy\", and حکمرانی keeps \"presiding\"."
+    }
+  ],
+  "profileSummary": "Accuracy codes make up {A} of the {total} deviations, led by A1 ({A1}). The {severe} major and critical deviations all fall in #1–#4, the metaphysical argument with which the speech opens: the \"little lower layer\" is dropped, the pasteboard masks become clay figures, \"each event\" becomes \"every region\", and the condition \"if man will strike\" becomes a remark about self-interest. These are the {severeSegs} segments ({severePct}%) with a major or critical deviation. From #5 onward, where Ahab turns from the argument to the whale and the sun, only minor deviations occur, spread across style (C2, C3), logic (A6) and grammatical meaning (A4). {clean} of {segments} segments ({cleanPct}%) carry no deviation, all of them in the second half (#5, #7, #12). There are no grammar or spelling errors.",
+  "tendencies": "The translation recasts Ahab's speech as spoken Urdu: a captain haranguing his mate, not a tragic hero declaiming. This is a target-language norm, not interference, and there is no C4 pattern; the one carried-over feature is the paired dash in #3 (——), which Urdu prose admits.\n\n- **Sentence architecture.** The source's 12 sentences become 18 Urdu sentences. Every semicolon-joined sequence is broken at the semicolon (#9–#10, #11–#12, #13–#14, #16), and #10's participial clause becomes a sentence of its own. Only once, at #14–#15, are two source sentences joined. The clauses mostly keep the source's order, so the argument reads in sequence, but its links (\"sinewing\", \"since\") fall away at the breaks.\n- **Spoken particles.** The translation adds discourse markers the source lacks: اچھا، دیکھو، خیر، دراصل، بہر حال، and the emphatic تو four times (تم تو، وہ تو بس، کام تو، بوجھ تو). That is about 5 added particles per 100 source words. They give the speech the rhythm of talk and a note of familiarity, even condescension, that the source's address to Starbuck does not have.\n- **Register.** Ahab's archaic idiom (\"Hark ye\", \"'tis\", \"naught\", \"Talk not\", \"be the white whale agent\") has no counterpart in the Urdu, which settles into a plain, colloquial register from the first line (کان کھول کے سنو). Persianate vocabulary appears only where the concept calls for it (ذی عقل، ناقابلِ فہم، رقابت).\n- **Unstable key images.** The source repeats its two governing words. \"Mask\" appears three times (#2–#4) and is rendered first as مٹی کی مورت, then as مورت, then as پردہ. \"Strike\" appears three times (#4 twice, #14) and becomes فائدہ کرنا، وار and حملہ. Neither chain survives as a chain.\n- **The whale depersonalized.** Ahab's \"he\" and \"him\" become اس مچھلی (#9) and, with the feminine of مچھلی, اپنی مالک (#12). The adversary with a will, on which the agent-or-principal question depends, becomes a creature.\n\n**Effect on the reader.** The Urdu reader meets a forceful, direct Ahab whose anger is clear and whose closing defiance of the sun survives almost whole. What the reader does not meet is the reasoning that makes the anger metaphysical: the world as a mask, a face pressing from behind it, and the duty to strike through. Because the mask keeps changing its name and the command to strike becomes a remark about advantage, the speech's argument is not available to be followed, and its second half reads as rage rather than as the conclusion of an argument.",
+  "translatorProfile": "- **Strategy.** Dynamic equivalence (Nida) under a strongly domesticating norm (Venuti): the speech is rebuilt as natural spoken Urdu, and its archaic register is not carried over. Of Berman's deforming tendencies, expansion and clarification appear in the added insult and particles (#1) and the added observer (#3), ennoblement in عظیم کارنامے (#3), qualitative impoverishment in the loss of the mask image (#2), and the destruction of underlying networks of signification in the broken chains of \"mask\" and \"strike\" (#2–#4, #14). In Toury's terms the translation chooses acceptability over adequacy.\n- **Apparent purpose.** The skopos appears to be a readable, dramatic Urdu novel for a general or student readership, in which Ahab speaks as a living character rather than as a figure of Elizabethan rhetoric.\n- **Level.** An established master of Urdu prose, working here at speed. The target language is flawless, with no B1 or B2 errors, and the second half of the speech (#5–#16) is rendered with control, including the exact agent-and-principal distinction at #12. But the major and critical deviations fall precisely at the speech's conceptual turns (#1, #2, #4), and the one at #4 is a misreading, not a choice: the condition \"if man will strike\" is read as something other than striking.",
+  "findingsLead": "One finding is critical at canonical stakes: the image on which the speech's argument rests does not survive.",
+  "findings": [
+    {
+      "finding": "The governing image is lost: the pasteboard mask, a cover with a face behind it, becomes a clay figure and then a veil, so \"strike through the mask\" has no stable object and the speech's metaphysics cannot be followed",
+      "severity": "Critical",
+      "evidence": "#2 (C3 Major), #3, #4 (C3 Minor)"
+    },
+    {
+      "finding": "The speech's turn is misread: the will to strike becomes self-interest, and the command becomes a prediction, cutting the link between the argument of #1–#4 and the defiance of #5–#16",
+      "severity": "Major",
+      "evidence": "#4 (A1 Critical, A4 Major); \"strike\" rendered three ways (#4, #14)"
+    },
+    {
+      "finding": "Ahab's elevated, archaic address is brought down to a brusque colloquial harangue, with an added insult and added spoken particles",
+      "severity": "Major",
+      "evidence": "#1 (A2 Major, C1); about 5 added particles per 100 source words"
+    },
+    {
+      "finding": "The whale is depersonalized: Ahab's \"he\" becomes \"this fish\" and takes the feminine, weakening the agent-or-principal question",
+      "severity": "Minor",
+      "evidence": "#9 (C2), #12"
+    },
+    {
+      "finding": "Logical links are dropped where sentences are broken up",
+      "severity": "Minor",
+      "evidence": "#10 (A6), #16 (A6)"
+    }
+  ],
+  "decisionBasis": "",
+  "publisherNote": "",
+  "grade": "D",
+  "gradeBasis": "The score of {score}, in band {band}, is driven by the {severe} major and critical deviations in #1–#4, which change what the opening argument says. The critical work-level finding, the loss of the mask image the passage is built on, would cap the grade at C at canonical stakes in any case. The grade stays at its band, D. The Urdu is fluent and free of language errors, and the second half of the speech is rendered with only minor deviations, but at canonical stakes the opening argument is the part of the speech that matters most, and readers do not receive it.",
+  "readerNote": "Readers get a vivid, colloquial Ahab whose rage against the whale and the sun comes through clearly, but not the metaphysical argument of the pasteboard masks that the speech is built on."
+}
