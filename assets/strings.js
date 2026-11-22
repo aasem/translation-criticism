@@ -173,10 +173,6 @@ export const STRINGS = {
 "stakes",
 "اہمیت کی سطح"
 ],
-"card.reference": [
-"Reference translation",
-"حوالہ جاتی ترجمہ"
-],
 "tip.band": [
 "band {letter} · {name}",
 "بینڈ {letter} · {name}"
@@ -252,22 +248,6 @@ export const STRINGS = {
 "h.submission": [
 "Submission",
 "پیش کردہ مسودہ"
-],
-"ref.head": [
-"Reference translation",
-"حوالہ جاتی ترجمہ"
-],
-"ref.about": [
-"A corrective rendering of the same sample, proposed after the assessment. It removes every deviation recorded in this report, so readers can see the passage without them. It is one acceptable reading, not the only one, and plays no part in the score or {outcome}.",
-"اسی نمونے کا ایک اصلاحی ترجمہ جو جائزے کے بعد تجویز کیا گیا ہے۔ اس میں اس رپورٹ میں درج تمام انحرافات دور کر دیے گئے ہیں تاکہ قاری اقتباس کو ان کے بغیر دیکھ سکے۔ یہ ایک قابلِ قبول قراءت ہے، واحد نہیں، اور اسکور یا {outcome} میں اس کا کوئی دخل نہیں۔"
-],
-"ref.missing": [
-"Not added.",
-"شامل نہیں کیا گیا۔"
-],
-"ref.missingText": [
-"No reference translation has been added for this sample yet.",
-"اس نمونے کے لیے ابھی کوئی حوالہ جاتی ترجمہ شامل نہیں کیا گیا۔"
 ],
 "word.grade": [
 "grade",
@@ -888,14 +868,6 @@ export const STRINGS = {
 "m.grade.after": [
 "MQM leaves pass thresholds to each project. The bands above are this site's calibration for literary and scientific prose, not an MQM standard.",
 "MQM کامیابی کی حد ہر منصوبے پر چھوڑ دیتا ہے۔ اوپر دیے گئے بینڈ ادبی اور سائنسی نثر کے لیے اس سائٹ کی اپنی پیمانہ بندی ہیں، MQM کا کوئی معیار نہیں۔"
-],
-"m.ref.h": [
-"Reference translation",
-"حوالہ جاتی ترجمہ"
-],
-"m.ref.p": [
-"A report may end with a reference translation: a corrective rendering of the same sample, proposed after the assessment by the assessor or another translator, that removes every deviation the report records. It comes last, after the grade or decision, so the passage can be read without the deviations once they have been set out. It is one acceptable reading, not the only one, is never assessed, and plays no part in the score or the outcome. Where none has been added, the report says so.",
-"رپورٹ کے آخر میں ایک حوالہ جاتی ترجمہ بھی ہو سکتا ہے۔ یعنی اسی نمونے کا ایک اصلاحی ترجمہ جو جائزے کے بعد جائزہ لینے والے یا کسی اور مترجم نے تجویز کیا ہو اور جس میں رپورٹ میں درج تمام انحرافات دور کر دیے گئے ہوں۔ یہ گریڈ یا فیصلے کے بعد سب سے آخر میں آتا ہے تاکہ انحرافات کی نشاندہی کے بعد اقتباس کو ان کے بغیر پڑھا جا سکے۔ یہ ایک قابلِ قبول قراءت ہے، واحد نہیں۔ اس کا جائزہ نہیں لیا جاتا اور اسکور یا نتیجے میں اس کا کوئی دخل نہیں۔ جہاں یہ شامل نہ ہو، رپورٹ یہ بات بتا دیتی ہے۔"
 ],
 "m.sample.h": [
 "The sample assumption",

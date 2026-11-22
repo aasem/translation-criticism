@@ -301,14 +301,6 @@ h2.list-head { margin-top: 1.6em; }
 .reports-panel .rcard { background: #fffdf9; padding: 16px 18px; }
 @media (max-width: 480px) { .rc-metrics { grid-template-columns: repeat(2, 1fr); } .rc-metrics > div:nth-child(3) { border-inline-start: 0; } }
 
-/* reference translation */
-.ref-missing { display: flex; gap: 10px; align-items: flex-start; padding: 12px 16px; border: 1px dashed #cfc6b8; border-radius: 6px; background: #fffdf9; color: #4f4840; }
-.ref-missing .ico { width: 18px; height: 18px; margin: 3px 0 0; color: #8a7f72; }
-.ref-missing p { margin: 0; }
-.ref-about { margin-top: -4px; }
-.ref-passage { border-inline-start: 4px solid #4c7a4f; }
-.rc-foot .has-ref { color: #23642a; font-weight: 600; }
-.ref-missing + .lead, .ref-passage + .lead, .passage + .lead { margin-top: 28px; }
 
 /* score + band beside the outcome on cards */
 .rc-verdict { justify-content: space-between; gap: 12px; }

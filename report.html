@@ -148,26 +148,6 @@ function passages() {
   return h;
 }
 
-// A reference translation: an acceptable rendering of the same sample, free of the deviations
-// recorded here, by the assessor or another translator. Shown for comparison only; never assessed.
-function reference() {
-  const ref = R.reference || {};
-  const by = ref.translator || ref.label;
-  const outcomeWord = isPublished(R) ? tt('word.grade') : tt('word.decision');
-  const about = `<p class="hint ref-about">${tt('ref.about', { outcome: outcomeWord })}</p>`;
-  const head = `${H2('check', tt('ref.head'))}`;
-  if (editing) return `${head}${about}
-    <table><tbody>
-      <tr><th>Language</th><td>${I('reference.language', 'Urdu')}</td><th>Translated by</th><td>${I('reference.translator', 'e.g. Asim Bakhshi')}</td></tr>
-      <tr><th>Note</th><td colspan="3">${I('reference.note', 'optional, e.g. prepared by the assessor for this report')}</td></tr>
-    </tbody></table>
-    <div class="passage">${T('reference.text', { rows: 10, ur: true })}</div>`;
-  if (!ref.text?.trim()) return `${head}${about}<div class="ref-missing">${icon('info')}<p><strong>${tt('ref.missing')}</strong> ${tt('ref.missingText')}</p></div>`;
-  return `${head}<h3>${esc(ref.language || R.submission?.language || '')}${by ? ' - ' + esc(by) : ''}</h3>${about}
-    ${ref.note ? `<p class="hint">${urduWrap(esc(ref.note))}</p>` : ''}
-    <div class="passage ur-block ref-passage" lang="ur" dir="rtl">${esc(ref.text)}</div>`;
-}
-
 // Report-specific facts only. Codes, severities, weights, bands and the sample assumption are on the Method page.
 function details() {
   const pub = R.publication || {};
@@ -327,7 +307,7 @@ function render() {
     details(), sideBySide(), counts(),
     `${H2('wave', tt('h.tendencies'))}${T('tendencies', { md: true, rows: 14 })}`,
     `${H2('user', tt('h.profile'))}${T('translatorProfile', { md: true, rows: 10 })}`,
-    findings(), isPublished(R) ? grade() : decision(), reference(),
+    findings(), isPublished(R) ? grade() : decision(),
   ].join('');
   if (editing) document.querySelectorAll('textarea').forEach(grow);
   $('b-edit').innerHTML = editing ? icon('check') + 'Done' : icon('pen') + 'Edit';
