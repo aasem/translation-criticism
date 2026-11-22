@@ -42,7 +42,7 @@
       <div class="filters">
         <select id="f-stage"><option value="" data-i18n="list.allKinds">All kinds</option><option value="Pre-publication" data-i18n="stage.Pre-publication">Pre-publication</option><option value="Published" data-i18n="stage.Published">Published</option></select>
         <select id="f-decision"><option value="" data-i18n="list.allOutcomes">All decisions and grades</option></select>
-        <select id="f-stakes"><option value="" data-i18n="list.allStakes">All stakes</option></select>
+        <select id="f-type"><option value="" data-i18n="list.allTypes">All text types</option></select>
         <span id="count" class="hint" style="align-self:center"></span>
       </div>
       <div id="cards" class="cards"><p class="empty" data-i18n="common.loading">Loading…</p></div>
@@ -68,7 +68,7 @@ let reports = [];
 function haystack(r) {
   const segs = (r.segments || []).flatMap((s) => [s.source, s.submission, s.suggestion?.ai, s.suggestion?.human, ...(s.deviations || []).flatMap((d) => [d.note, d.gain])]);
   return [r.title, r.author, r.work, r.originalWork, r.passage, r.source?.translator, r.source?.label, r.submission?.translator,
-    r.submission?.label, r.submission?.language, r.stage, isPublished(r) ? gradeName(r.grade) : r.decision, r.stakes, ...Object.values(r.publication || {}), ...(r.tags || []), r.source?.text, r.submission?.text, r.reference?.translator, ...segs]
+    r.submission?.label, r.submission?.language, r.stage, isPublished(r) ? gradeName(r.grade) : r.decision, label('textType', r.textType), ...Object.values(r.publication || {}), ...(r.tags || []), r.source?.text, r.submission?.text, r.reference?.translator, ...segs]
     .filter(Boolean).join('   ').toLowerCase();
 }
 
@@ -101,9 +101,9 @@ function scoreTip(t) {
 
 function render() {
   const q = $('q').value.trim().toLowerCase();
-  const fd = $('f-decision').value, fs = $('f-stakes').value, fk = $('f-stage').value;
+  const fd = $('f-decision').value, fs = $('f-type').value, fk = $('f-stage').value;
   const list = reports.filter((r) =>
-    (!fk || (r.stage || 'Pre-publication') === fk) && (!fd || (isPublished(r) ? 'Grade ' + r.grade : r.decision) === fd) && (!fs || r.stakes === fs) &&
+    (!fk || (r.stage || 'Pre-publication') === fk) && (!fd || (isPublished(r) ? 'Grade ' + r.grade : r.decision) === fd) && (!fs || r.textType === fs) &&
     (!q || r._hay.includes(q)));
   $('count').textContent = UR ? T('list.count', { shown: list.length, total: reports.length }) : `${list.length} of ${reports.length} report${reports.length === 1 ? '' : 's'}`;
   if (!list.length) { $('cards').innerHTML = `<p class="empty">${T('list.none')}</p>`; return; }
@@ -138,7 +138,7 @@ function render() {
         <div><b>${t.n}</b><span>${T('card.deviations')}</span></div>
         <div><b>${t.per100(t.n)}</b><span>${T('card.per100')}</span></div>
         <div><b>${t.total.Critical}<i>·</i>${t.total.Major}</b><span>${T('card.critMaj')}</span></div>
-        <div><b>${esc(label('stakes', r.stakes))}</b><span>${T('card.stakes')}</span></div>
+        <div><b>${esc(label('textTypeShort', r.textType))}</b><span>${T('card.type')}</span></div>
       </div>
       <div class="rc-foot">
         <span>${icon('calendar')}${esc(r.date)}</span>
@@ -162,14 +162,14 @@ try {
   reports.sort((a, b) => String(b.date).localeCompare(String(a.date)));
   const present = new Set(reports.map((r) => (isPublished(r) ? 'Grade ' + r.grade : r.decision)));
   fill($('f-decision'), [...DECISIONS.map((d) => d[0]), ...GRADES.map((g) => 'Grade ' + g[0])].filter((d) => present.has(d)), outcomeText);
-  fill($('f-stakes'), [...new Set(reports.map((r) => r.stakes))], (v) => label('stakes', v));
+  fill($('f-type'), [...new Set(reports.map((r) => r.textType).filter(Boolean))], (v) => label('textType', v));
   const qs = new URLSearchParams(location.search).get('q');
   if (qs) $('q').value = qs;
   render();
 } catch (e) {
   $('cards').innerHTML = `<p class="empty">${esc(T('list.error', { error: e.message }))}</p>`;
 }
-for (const id of ['q', 'f-stage', 'f-decision', 'f-stakes']) $(id).addEventListener('input', render);
+for (const id of ['q', 'f-stage', 'f-decision', 'f-type']) $(id).addEventListener('input', render);
 </script>
 </body>
 </html>

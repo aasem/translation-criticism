@@ -121,10 +121,6 @@ export const STRINGS = {
 "All decisions and grades",
 "تمام فیصلے اور گریڈ"
 ],
-"list.allStakes": [
-"All stakes",
-"اہمیت کی تمام سطحیں"
-],
 "list.count": [
 "{shown} of {total} reports",
 "{total} میں سے {shown} رپورٹیں"
@@ -168,10 +164,6 @@ export const STRINGS = {
 "card.critMaj": [
 "critical · major",
 "سنگین · بڑے"
-],
-"card.stakes": [
-"stakes",
-"اہمیت کی سطح"
 ],
 "tip.band": [
 "band {letter} · {name}",
@@ -228,10 +220,6 @@ export const STRINGS = {
 "report.translatedBy": [
 "Translated by {name}",
 "ترجمہ: {name}"
-],
-"report.stakesChip": [
-"{stakes} stakes",
-"اہمیت: {stakes}"
 ],
 "h.passages": [
 "The passages",
@@ -525,18 +513,6 @@ export const STRINGS = {
 "Published",
 "شائع شدہ"
 ],
-"stakes.Standard": [
-"Standard",
-"عام"
-],
-"stakes.Literary": [
-"Literary",
-"ادبی"
-],
-"stakes.Canonical": [
-"Canonical",
-"کلاسیکی"
-],
 "sev.Minor": [
 "Minor",
 "معمولی"
@@ -822,16 +798,8 @@ export const STRINGS = {
 "اسکور کیسے پڑھیں۔ کلیہ سو میں سے فی سو ماخذ الفاظ منفی نمبر نکالنے کے برابر ہے۔ یہ درست جملوں یا الفاظ کا فیصد نہیں اور اسے اسکول کے نمبروں کی طرح نہیں پڑھنا چاہیے۔ ہر سو الفاظ میں ایک بڑا انحراف ہی پانچ نمبر کاٹ لیتا ہے۔ MQM کے پیشہ ورانہ معمول میں کامیابی کی حد عموماً 95 سے 99 کے درمیان رکھی جاتی ہے۔ اسی لیے یہ سائٹ اسکور ہمیشہ اس کے بینڈ (A سے D، نیچے) کے ساتھ دیتی ہے تاکہ 86 کا اسکور ویسا ہی پڑھا جائے جیسا وہ ہے یعنی بینڈ D · ناقص۔"
 ],
 "m.score.p5": [
-"The score is a summary, not the verdict. It counts segment-level deviations only. Work-level findings, such as a method that carries source syntax across wholesale, are not in the count; they are judged alongside it and can move the outcome away from the band.",
-"اسکور ایک خلاصہ ہے، فیصلہ نہیں۔ یہ صرف قطعات کی سطح کے انحرافات گنتا ہے۔ کلی سطح کے نتائج، مثلاً ایسا طریقِ کار جو ماخذ کی نحو کو جوں کا توں منتقل کر دے، اس گنتی میں شامل نہیں۔ انھیں اس کے ساتھ ساتھ پرکھا جاتا ہے اور وہ نتیجے کو بینڈ سے ہٹا سکتے ہیں۔"
-],
-"m.stakes.h": [
-"Stakes",
-"اہمیت کی سطح"
-],
-"m.stakes.p": [
-"Each report is set at Standard, Literary or Canonical stakes. Standard suits functional and scientific prose, Literary suits literary work where style matters, and Canonical suits a classic, or a translation likely to be the defining one in its language for a generation. Stakes do not change the severity of single deviations. They set how work-level findings are graded and how high the bar is for the outcome.",
-"ہر رپورٹ کی اہمیت کی سطح عام، ادبی یا کلاسیکی رکھی جاتی ہے۔ عام سطح عملی اور سائنسی نثر کے لیے ہے، ادبی سطح ان ادبی کاموں کے لیے جن میں اسلوب اہم ہو اور کلاسیکی سطح کسی کلاسیک یا ایسے ترجمے کے لیے جو ممکنہ طور پر ایک نسل تک اپنی زبان میں اس کا معیاری ترجمہ سمجھا جائے گا۔ اہمیت کی سطح انفرادی انحرافات کی شدت نہیں بدلتی۔ یہ طے کرتی ہے کہ کلی سطح کے نتائج کو کیسے درجہ دیا جائے اور نتیجے کے لیے معیار کتنا بلند ہو۔"
+"The score is a summary, not the verdict. It counts segment-level deviations only. Work-level findings, such as the loss of a form the passage depends on, are not in the count; they are judged alongside it and can move the outcome away from the band.",
+"اسکور ایک خلاصہ ہے، فیصلہ نہیں۔ یہ صرف قطعات کی سطح کے انحرافات گنتا ہے۔ کلی سطح کے نتائج، مثلاً کسی ایسی ہیئت کا زیاں جس پر اقتباس کا دار و مدار ہو، اس گنتی میں شامل نہیں۔ انھیں اس کے ساتھ ساتھ پرکھا جاتا ہے اور وہ نتیجے کو بینڈ سے ہٹا سکتے ہیں۔"
 ],
 "m.decision.h": [
 "Editorial decision (pre-publication)",
@@ -842,8 +810,8 @@ export const STRINGS = {
 "فیصلے کا آغاز اسکور بینڈ کے طے شدہ فیصلے سے ہوتا ہے (وہی چار بینڈ جو نیچے گریڈ کے لیے ہیں)۔ A منظور کی طرف اشارہ کرتا ہے، B منظور (معمولی ترامیم) کی طرف، C کثیر ترامیم درکار کی طرف اور D ازسرِنو ترجمہ درکار کی طرف۔"
 ],
 "m.decision.li2": [
-"Work-level findings may move the decision from that default, and the report says why. At Literary and Canonical stakes, a critical work-level finding rules out the first three steps, however good the score.",
-"کلی سطح کے نتائج فیصلے کو اس طے شدہ نقطے سے ہٹا سکتے ہیں اور رپورٹ اس کی وجہ بتاتی ہے۔ ادبی اور کلاسیکی سطح پر کلی سطح کا ایک سنگین نتیجہ پہلے تین درجوں کو خارج کر دیتا ہے خواہ اسکور کتنا ہی اچھا ہو۔"
+"Work-level findings may move the decision from that default, and the report says why. In an expressive text, a critical work-level finding rules out the first three steps, however good the score.",
+"کلی سطح کے نتائج فیصلے کو اس طے شدہ نقطے سے ہٹا سکتے ہیں اور رپورٹ اس کی وجہ بتاتی ہے۔ اظہاری متن میں کلی سطح کا ایک سنگین نتیجہ پہلے تین درجوں کو خارج کر دیتا ہے خواہ اسکور کتنا ہی اچھا ہو۔"
 ],
 "m.decision.li3": [
 "For a retranslation, the note for the publisher says whether the same translator could undertake it, on the evidence about the translator's competence.",
@@ -858,8 +826,8 @@ export const STRINGS = {
 "گریڈ کا آغاز اس بینڈ سے ہوتا ہے جو فی سو ماخذ الفاظ منفی نمبروں سے طے ہوتا ہے۔"
 ],
 "m.grade.li2": [
-"At Literary and Canonical stakes, a critical work-level finding caps the grade at C, however low the score.",
-"ادبی اور کلاسیکی سطح پر کلی سطح کا ایک سنگین نتیجہ گریڈ کو C سے اوپر نہیں جانے دیتا خواہ اسکور کچھ بھی ہو۔"
+"In an expressive text, a critical work-level finding caps the grade at C, however good the score.",
+"اظہاری متن میں کلی سطح کا ایک سنگین نتیجہ گریڈ کو C سے اوپر نہیں جانے دیتا خواہ اسکور کچھ بھی ہو۔"
 ],
 "m.grade.li3": [
 "The assessor may move the grade one step from its band, and the report says why.",
@@ -1008,5 +976,41 @@ export const STRINGS = {
 "spread.crisp": [
 "<strong>Spread.</strong> {clean} of {segments} segments clean ({cleanPct}%); {severeSegs} with a major or critical deviation ({severePct}%).",
 "<strong>پھیلاؤ۔</strong> {segments} میں سے {clean} قطعات بے داغ ({cleanPct}٪)، {severeSegs} میں کم از کم ایک بڑا یا سنگین انحراف ({severePct}٪)۔"
+],
+"textType.Expressive": [
+"Expressive",
+"اظہاری"
+],
+"textType.Informative": [
+"Informative",
+"اطلاعاتی"
+],
+"report.typeChip": [
+"{type} text",
+"{type} متن"
+],
+"list.allTypes": [
+"All text types",
+"متن کی تمام اقسام"
+],
+"card.type": [
+"text type",
+"متن کی قسم"
+],
+"m.type.h": [
+"Text type",
+"متن کی قسم"
+],
+"m.type.p": [
+"Each report records the source's text type, following Reiss. In an expressive (literary) text, form is part of what the source says: an accumulating sentence, a chain of images or a register can carry meaning, so its loss is a deviation, recorded segment by segment where it can be and as a work-level finding where it belongs to the whole. In an informative (scientific or technical) text, rebuilding sentences or shifting register loses nothing of what the source says, so style codes apply only where the content changes, and form-level findings do not arise. The text type never changes the severity of a single deviation, and the standing or fame of a work plays no part in the assessment.",
+"ہر رپورٹ میں ماخذ کے متن کی قسم درج ہوتی ہے (رائس کی تقسیم کے مطابق)۔ اظہاری (ادبی) متن میں ہیئت بھی ماخذ کے کہے ہوئے کا حصہ ہوتی ہے: مسلسل بڑھتا ہوا جملہ، تصویروں کا سلسلہ یا لہجہ معنی اٹھا سکتا ہے، اس لیے اس کا زیاں انحراف ہے۔ جہاں ممکن ہو اسے قطعہ بہ قطعہ درج کیا جاتا ہے اور جہاں وہ پورے متن سے متعلق ہو وہاں کلی سطح کے نتیجے کے طور پر۔ اطلاعاتی (سائنسی یا تکنیکی) متن میں جملوں کی نئی تشکیل یا لہجے کی تبدیلی سے ماخذ کی کہی ہوئی بات میں کچھ ضائع نہیں ہوتا، اس لیے اسلوب کے کوڈ صرف وہاں لاگو ہوتے ہیں جہاں مواد بدل جائے، اور ہیئت سے متعلق کلی نتائج پیدا نہیں ہوتے۔ متن کی قسم کسی انفرادی انحراف کی شدت نہیں بدلتی، اور کسی تصنیف کا مرتبہ یا شہرت جائزے میں کوئی کردار ادا نہیں کرتی۔"
+],
+"textTypeShort.Expressive": [
+"Literary",
+"ادبی"
+],
+"textTypeShort.Informative": [
+"Scientific",
+"سائنسی"
 ]
 };

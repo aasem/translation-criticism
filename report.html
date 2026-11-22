@@ -112,7 +112,7 @@ function header() {
     <h3>Subtitle</h3>${T('subtitle', { rows: 3 })}
     <h3>Catalogue details</h3>
     <table><tbody>
-      <tr><th>Kind</th><td>${S('stage', STAGES)}</td><th>Stakes</th><td>${S('stakes', ['Standard', 'Literary', 'Canonical'])}</td></tr>
+      <tr><th>Kind</th><td>${S('stage', STAGES)}</td><th>Text type</th><td>${S('textType', ['Expressive', 'Informative'], '', 'textType')}</td></tr>
       <tr><th>Date</th><td>${I('date', 'YYYY-MM-DD')}</td><th>Sample location</th><td>${I('sampleLocation', 'e.g. vol. 1, pp. 410–412')}</td></tr>
       <tr><th>Author</th><td>${I('author')}</td><th>Work</th><td>${I('work')}</td></tr>
       <tr><th>Original title</th><td>${I('originalWork', 'e.g. Du côté de chez Swann')}</td><th>Passage</th><td>${I('passage')}</td></tr>
@@ -134,7 +134,7 @@ function header() {
       <span class="chip kind">${icon(isPublished(r) ? 'book' : 'doc')}${esc(label('stage', r.stage || 'Pre-publication'))}</span>
       ${isPublished(r) ? `<span class="dec ${gradeClass(r.grade)}">${icon('scale')}${esc(tt('card.grade', { grade: gradeName(r.grade) }))}</span>`
         : `<span class="dec ${decisionClass(r.decision)}">${icon('gavel')}${esc(label('decision', r.decision))}</span>`}
-      <span class="chip">${icon('layers')}${esc(tt('report.stakesChip', { stakes: label('stakes', r.stakes) }))}</span>
+      <span class="chip">${icon('layers')}${esc(tt('report.typeChip', { type: label('textType', r.textType) }))}</span>
       <span class="chip">${icon('globe')}${esc(r.source?.language)} → ${esc(r.submission?.language)}</span>
       ${(r.tags || []).map((t) => `<a class="chip tag" href="./?q=${encodeURIComponent(t)}">${esc(t)}</a>`).join('')}
     </div>`;
@@ -159,7 +159,7 @@ function details() {
     <p class="hint">Notes on the texts: report-specific only (transcription, misprints, segmentation). Everything general belongs on the Method page.</p>${T('textNotes', { md: true, rows: 4 })}`;
   const sample = tt('det.sampleUr', { words: F.words, segments: F.segments, loc: loc ? ` · ${urduWrap(esc(loc))}` : '' });
   const rows = [
-    row(tt('det.kind'), `${esc(label('stage', R.stage || 'Pre-publication'))} · ${esc(tt('report.stakesChip', { stakes: label('stakes', R.stakes) }))}`),
+    row(tt('det.kind'), `${esc(label('stage', R.stage || 'Pre-publication'))} · ${esc(tt('report.typeChip', { type: label('textType', R.textType) }))}`),
     row(tt('det.sample'), sample),
   ];
   if (isPublished(R)) rows.push(row(tt('det.publication'),

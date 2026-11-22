@@ -22,7 +22,7 @@ export function t(key, vars = {}) {
 // tr('key', vars, englishHtml): Urdu from strings.js, or the page's own English markup.
 export const tr = (key, vars, en) => (UR ? t(key, vars) : en);
 
-// label('decision', 'Accept') translates a value stored in a report (decision, stage, stakes, severity).
+// label('decision', 'Accept') translates a value stored in a report (decision, stage, text type, severity).
 // Stored values are stable keys; readers see the current label in either language.
 export const label = (prefix, value) => (STRINGS[`${prefix}.${value}`] ? t(`${prefix}.${value}`) : value ?? '');
 

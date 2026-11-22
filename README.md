@@ -58,7 +58,7 @@ A **pre-publication** report assesses a draft for a publisher and ends in an edi
 | `stage` | `Pre-publication` (a draft; ends in an editorial decision) or `Published` (in print; ends in a grade) |
 | `sampleLocation` | Where the sample comes from, e.g. "closing pages of Swann's Way" |
 | `publication` | Published only: `{publisher, place, year, edition, isbn, pages}` |
-| `stakes` | `Standard`, `Literary` or `Canonical` |
+| `textType` | `Expressive` (literary: form and register count) or `Informative` (scientific, technical: style codes only where content changes) |
 | `decision`, `decisionBasis`, `publisherNote` | Pre-publication: one of the five steps on the decision scale, and its reasoning |
 | `grade`, `gradeBasis`, `readerNote` | Published: `A`–`E`, and its reasoning |
 | `lead`, `profileSummary`, `tendencies`, `translatorProfile`, `findingsLead` | Prose (light markdown) |

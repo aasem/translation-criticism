@@ -2,7 +2,7 @@
   "schema": 1,
   "id": "melville-moby-dick-quarter-deck-urdu-askari",
   "title": "Translation Assessment: Melville's Quarter-Deck Speech from Moby-Dick in Urdu",
-  "subtitle": "An editorial assessment report for interested readers and publishers. Segment-level deviation analysis on an error typology adapted from Multidimensional Quality Metrics, the translation industry's standard framework, calibrated to canonical stakes, with a descriptive translation-studies profile of the translator.",
+  "subtitle": "An editorial assessment report for interested readers and publishers. Segment-level deviation analysis on an error typology adapted from Multidimensional Quality Metrics, the translation industry's standard framework, for an expressive (literary) text, with a descriptive translation-studies profile of the translator.",
   "date": "2026-11-22",
   "stage": "Published",
   "sampleLocation": "Chapter 36, \"The Quarter-Deck\", Ahab's reply to Starbuck",
@@ -30,7 +30,6 @@
     "translator": "Muhammad Hasan Askari",
     "text": "”تم تو بڑے احمق ہو۔ اچھا کان کھول کے سنو۔ جتنی چیزیں ہمیں دکھائی دیتی ہیں وہ تو بس مٹی کی مورتیں ہیں۔ لیکن ہر واقعے میں —— ہر زندہ اور عظیم کارنامے میں —— بے عقل مورت کے پیچھے سے ہمیں کسی نامعلوم مگر ذی عقل چیز کے خدوخال جھلکتے نظر آتے ہیں۔ اگر انسان اپنا وار کرنا چاہتا ہے تو اس کا وار اس پردے میں سے ہو کر پڑے گا۔ قیدی دیوار کو توڑے بغیر باہر کیسے پہنچ سکتا ہے؟ میرے لیے یہ سفید ویل وہی دیوار ہے جو میرے قریب پہنچا دی گئی ہے۔ بعض اوقات میں سوچتا ہوں کہ اس کے دوسری طرف کچھ بھی نہیں۔ لیکن خیر اتنا ہی کافی ہے۔ اس مچھلی نے مجھے ایک کام تو دیا، میرے سر پر ایک بوجھ تو لادا۔ مجھے اس کے اندر ہولناک قوت نظر آتی ہے۔ اس کے جوڑ جوڑ میں ناقابلِ فہم کینہ بھرا پڑا ہے۔ دراصل مجھے اسی ناقابلِ فہم چیز سے نفرت ہے۔ سفید ویل چاہے کسی کی نمائندہ ہو یا خود اپنی مالک، بہر حال میں اپنی نفرت کا شکار اسی کو بناؤں گا۔ دیکھو، میرے سامنے بے دینی کا ذکر نہ کرو۔ اگر سورج میری توہین کرے تو میں اس پر بھی حملہ کروں گا کیونکہ اگر سورج ایک کام کر سکتا ہے تو میں بھی دوسرا کام کر سکتا ہوں۔ یہاں دنیا میں ایک طرح کی منصفی رائج ہے۔ ہر قسم کی مخلوق پر رقابت کی حکمرانی ہے۔"
   },
-  "stakes": "Canonical",
   "decision": "",
   "tags": [
     "Melville",
@@ -428,11 +427,12 @@
   "decisionBasis": "",
   "publisherNote": "",
   "grade": "D",
-  "gradeBasis": "The score of {score}, in band {band}, comes mostly from the accumulation of {minor} minor deviations spread across the speech, with the {major} major deviations confined to the opening line. There is no critical deviation or critical work-level finding, and the grade stays at its band, D. The translation follows Ahab's argument accurately and its Urdu is flawless, but at canonical stakes the steady loss of image, register and logical link, together with the altered opening, leaves readers a recognisable but thinned version of the speech.",
+  "gradeBasis": "The score of {score}, in band {band}, comes mostly from the accumulation of {minor} minor deviations spread across the speech, with the {major} major deviations confined to the opening line. There is no critical deviation or critical work-level finding, and the grade stays at its band, D. The translation follows Ahab's argument accurately and its Urdu is flawless, but in an expressive text the steady loss of image, register and logical link, together with the altered opening, leaves readers a recognisable but thinned version of the speech.",
   "readerNote": "Readers get Ahab's argument and his defiance in vivid, colloquial Urdu, but with a lowered register, an unstable central image and many small losses of nuance along the way.",
   "aiSuggestions": {
     "model": "Claude Opus 5.5",
     "date": "2026-11-22"
   },
-  "textNotes": "- The supplied source reads \"strike though the mask\" (#4). It is read as the standard \"through\", as the translation does.\n- Four sentences are split at a semicolon (#9–10, #11–12, #13–14, #15–16). The translation's added opening sentence is shown with #1. The translation joins #14 and #15; #15's deviations are recorded under #15."
+  "textNotes": "- The supplied source reads \"strike though the mask\" (#4). It is read as the standard \"through\", as the translation does.\n- Four sentences are split at a semicolon (#9–10, #11–12, #13–14, #15–16). The translation's added opening sentence is shown with #1. The translation joins #14 and #15; #15's deviations are recorded under #15.",
+  "textType": "Expressive"
 }
