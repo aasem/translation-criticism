@@ -65,7 +65,7 @@ A **pre-publication** report assesses a draft for a publisher and ends in an edi
 | `lead`, `profileSummary`, `tendencies`, `translatorProfile`, `findingsLead` | Prose (light markdown) |
 | `textNotes` | Report-specific notes on the texts only (transcription, misprints, segmentation). Everything general is on the Method page |
 | `aiSuggestions` | `{model, date}` of the AI suggestions |
-| `segments[]` | `{n, source, submission, deviations: [{code, severity, note, functions, gain, compensatedBy}], suggestion: {ai, state, human}}`. Severity is Critical, Major, Minor or Neutral (weight 0). `functions` is the function test `[{fn, kept}]`; `gain` is what a transposition adds (never scored). `suggestion.state` is `Not reviewed`, `Agrees with AI` or `Own suggestion`; the AI text is kept as generated |
+| `segments[]` | `{n, source, submission, deviations: [{code, severity, note, functions, gain, compensatedBy}], suggestion: {ai, state, human}}`. Severity is Critical, Major, Minor or Neutral (weight 0). `functions` is the function test `[{fn, kept}]`; `gain` is what a transposition adds (never scored). the second suggestion column is Asim Bakhshi's; `suggestion.state` is `Not reviewed`, `Agrees with AI` or `Own suggestion`; the AI text is kept as generated |
 | `findings[]` | `{finding, severity, evidence}` |
 
 Deviation codes A1–A6, B1–B3 and C1–C3 are defined in `assets/common.js` and explained on the Method page.

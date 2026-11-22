@@ -177,8 +177,7 @@ function details() {
   const pv = (v) => (v ? urduWrap(esc(v)) : nr);
   if (editing) return `${H2('info', tt('det.head'))}
     <p class="hint">Notes on the texts: report-specific only (transcription, misprints, segmentation). Everything general belongs on the Method page.</p>${T('textNotes', { md: true, rows: 4 })}`;
-  const sample = UR ? tt('det.sampleUr', { words: F.words, segments: F.segments, loc: loc ? ` · ${esc(loc)}` : '' })
-    : `${F.words} source words, ${F.segments} segments${loc ? ` · ${urduWrap(esc(loc))}` : ''}. Taken to stand for the whole translation.`;
+  const sample = tt('det.sampleUr', { words: F.words, segments: F.segments, loc: loc ? ` · ${urduWrap(esc(loc))}` : '' });
   const rows = [
     row(tt('det.kind'), `${esc(label('stage', R.stage || 'Pre-publication'))} · ${esc(tt('report.stakesChip', { stakes: label('stakes', R.stakes) }))}`),
     row(tt('det.sample'), sample),
@@ -187,7 +186,7 @@ function details() {
     `${pv(pub.publisher)} · ${pv(pub.place)} · ${pv(pub.year)} · ${tt('pub.edition')}: ${pv(pub.edition)} · ${tt('pub.isbn')}: ${pv(pub.isbn)} · ${tt('pub.pages')}: ${pv(pub.pages)}`));
   if (R.textNotes?.trim()) rows.push(row(tt('det.notes'), md(fill(R.textNotes, F))));
   return `<table class="kv details"><tbody>${rows.join('')}</tbody></table>
-    <p class="hint">${tt('det.method')} <a href="about.html">${tt('nav.method')}</a>.</p>`;
+    <p class="hint">${tt('det.method', { link: `<a href="about.html">${tt('nav.method')}</a>` })}</p>`;
 }
 
 function devExtras(d) {
@@ -251,17 +250,8 @@ function sideBySide() {
     <table class="sbs"><colgroup><col class="c-n"><col class="c-src"><col class="c-sub"><col><col class="c-sug"><col class="c-sug"></colgroup>
     <thead><tr><th>#</th><th>${tt('h.source')}</th><th>${isPublished(R) ? tt('h.translation') : tt('h.submission')}</th><th>${tt('th.deviations')}</th><th>${tt('th.ai')}</th><th>${tt('th.human')}</th></tr></thead><tbody>${rows}</tbody></table>
     ${editing && !segs.length ? '<button class="small" data-act="add-seg" data-i="-1">+ Segment</button>' : ''}
-    <p class="hint">${editing ? 'Counts and colours update from the deviations you set here. The AI suggestion is kept as generated; set your review in the Human suggestion column.'
+    <p class="hint">${editing ? 'Counts and colours update from the deviations you set here. The AI suggestion is kept as generated; set your review in the Asim Bakhshi column.'
       : `${tt('sbs.crisp')}${agreement(R).aiSugg ? ' ' + esc(tt('sug.line2', { ...agreement(R), model: R.aiSuggestions?.model || '–', date: R.aiSuggestions?.date || '–' })) : ''}`}</p>`;
-}
-
-function scoreUr(t) {
-  const g = scoreGuide(t);
-  const dflt = label('decision', anchorText(t.band[0]));
-  return `<strong>${tt('score.head')}</strong> ${tt('score.text', { penalty: t.penalty, pp100: t.pp100.toFixed(1), score: `<strong>${t.score.toFixed(1)}</strong>`, band: `<strong>${t.band[0]} · ${t.band[1]}</strong>`, range: scoreRange(t.band[0]) })} ${
-    isPublished(R) ? tt('score.gradeStart') : tt('score.draftDefault', { decision: dflt })} ${tt('score.findings')} ${
-    tt('score.reference', { accScore: g.acc.score, accBand: `${g.acc.letter} · ${g.acc.name}`, idealScore: g.ideal.score, idealBand: `${g.ideal.letter} · ${g.ideal.name}` })} ${
-    g.status === 'ideal' ? tt('score.isIdeal') : g.status === 'acceptable' ? tt('score.isAcceptable', { max: g.ideal.maxPenalty, words: t.words, penalty: t.penalty }) : tt('score.isBelow', { max: g.acc.maxPenalty, words: t.words, penalty: t.penalty })}`;
 }
 
 function counts() {
@@ -271,14 +261,14 @@ function counts() {
   const row = (c) => { const x = t.byCode[c]; const n = x.Critical + x.Major + x.Minor;
     return `<tr><td>${c} ${CODES[c][0]}</td><td class="num">${x.Critical}</td><td class="num">${x.Major}</td><td class="num">${x.Minor}</td><td class="num">${n}</td>${NC ? `<td class="num sev-neutral">${x.Neutral}</td>` : ''}</tr>`; };
   return `${H2('chart', tt('h.counts'))}
-    <p>${tr('counts.line', { n: t.n, segments: (R.segments || []).length, words: t.words, per100: t.per100(t.n), severe: t.total.Critical + t.total.Major }, `${t.n} scored deviations${t.neutral ? ` and ${t.neutral} neutral` : ''} in ${t.words} source words: ${t.per100(t.n)} per 100 words.`)}</p>
+    <p>${tt('counts.crisp', { n: t.n, words: t.words, per100: t.per100(t.n), neutral: t.neutral ? tt('counts.neutralPart', { k: t.neutral }) : '' })}</p>
     <table><thead><tr><th>${tt('th.code')}</th><th class="num">${label('sev', 'Critical')}</th><th class="num">${label('sev', 'Major')}</th><th class="num">${label('sev', 'Minor')}</th><th class="num">${tt('th.total')}</th>${NC ? `<th class="num">${tt('counts.neutral')}</th>` : ''}</tr></thead><tbody>
       ${codes.map(row).join('')}
       <tr class="total"><td>${tt('th.total')}</td><td class="num">${t.total.Critical}</td><td class="num">${t.total.Major}</td><td class="num">${t.total.Minor}</td><td class="num">${t.n}</td>${NC ? `<td class="num">${t.neutral}</td>` : ''}</tr>
       <tr class="total"><td>${tt('th.per100')}</td><td class="num">${t.per100(t.total.Critical)}</td><td class="num">${t.per100(t.total.Major)}</td><td class="num">${t.per100(t.total.Minor)}</td><td class="num">${t.per100(t.n)}</td>${NC ? '<td class="num">–</td>' : ''}</tr>
     </tbody></table>
-    <p class="score-line">${icon('scale')}<span>${UR ? scoreUr(t) : `<strong>Score.</strong> ${t.penalty} penalty points, ${t.pp100.toFixed(1)} per 100 source words: quality score <strong>${t.score.toFixed(1)}</strong>, band <strong>${t.band[0]} · ${t.band[1]}</strong>. ${isPublished(R) ? 'The grade starts from this band.' : `Default decision for this band: <em>${esc(label('decision', anchorText(t.band[0])))}</em>.`}`}</span></p>
-    <p class="score-line">${icon('columns')}<span>${UR ? `<strong>${tt('spread.head')}</strong> ${tt('spread.text', { ...F, outcome: isPublished(R) ? tt('word.grade') : tt('word.decision') })}` : `<strong>Spread.</strong> ${F.clean} of ${F.segments} segments clean (${F.cleanPct}%); ${F.severeSegs} with a major or critical deviation (${F.severePct}%).`}</span></p>
+    <p class="score-line">${icon('scale')}<span>${tt('score.crisp', { penalty: t.penalty, pp100: t.pp100.toFixed(1), score: t.score.toFixed(1), band: `${t.band[0]} · ${t.band[1]}`, after: isPublished(R) ? tt('score.afterGrade') : tt('score.afterDraft', { decision: esc(label('decision', anchorText(t.band[0]))) }) })}</span></p>
+    <p class="score-line">${icon('columns')}<span>${tt('spread.crisp', F)}</span></p>
     ${T('profileSummary', { md: true, rows: 5 })}`;
 }
 

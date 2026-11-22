@@ -915,110 +915,126 @@ export const STRINGS = {
 ],
 "sev.Neutral": [
 "Neutral",
-""
+"بے وزن"
 ],
 "sev.neutralText": [
 "Neutral (weight 0) records a deliberate transposition that keeps every function the source image or phrase serves in the passage, or a loss the translator makes good elsewhere (compensation). It is shown and counted, but it never enters the score.",
-""
+"بے وزن (وزن صفر) انحراف ایسی دانستہ تبدیلی کو درج کرتا ہے جو اقتباس میں ماخذ کی تصویر یا فقرے کا ہر وظیفہ برقرار رکھے، یا ایسے نقصان کو جس کی تلافی مترجم کہیں اور کر دے۔ یہ دکھایا اور گنا جاتا ہے مگر اسکور میں کبھی شامل نہیں ہوتا۔"
 ],
 "th.ai": [
-"AI suggestion",
-""
+"Suggestion (AI)",
+"رائے (مصنوعی ذہانت)"
 ],
 "th.human": [
-"Human suggestion",
-""
+"Suggestion (Asim Bakhshi)",
+"رائے (عاصم بخشی)"
 ],
 "sug.agrees": [
 "Agrees with the AI suggestion.",
-""
+"مصنوعی ذہانت کی رائے سے متفق۔"
 ],
 "sug.unreviewed": [
 "Not yet reviewed.",
-""
-],
-"sug.hint": [
-"The AI suggestion is the model's own alternative, kept as generated ({model}, {date}). The human suggestion is the assessor's. Neither is assessed or scored.",
-""
-],
-"sug.line": [
-"Suggestions: {aiSugg} segments carry an AI suggestion. The assessor agrees with {agree}, gives an own suggestion for {differ}, and has not yet reviewed {unreviewed}.",
-""
+"ابھی جائزہ نہیں لیا گیا۔"
 ],
 "fn.head": [
 "Function test:",
-""
+"وظائف کی جانچ:"
 ],
 "gain.head": [
 "Gain:",
-""
+"حاصل:"
 ],
 "comp.head": [
 "Compensated in #{n}.",
-""
+"قطعہ #{n} میں تلافی۔"
 ],
 "counts.neutral": [
 "Neutral (not scored)",
-""
+"بے وزن (اسکور سے باہر)"
 ],
 "m.sugg.h": [
-"AI and human suggestions",
-""
+"Suggestions: AI and Asim Bakhshi",
+"رائے: مصنوعی ذہانت اور عاصم بخشی"
 ],
 "m.sugg.p": [
-"Beside each segment with a deviation the table gives two suggested renderings. The AI suggestion is the model's alternative, kept exactly as generated and marked with the model and date. The human suggestion is the assessor's: blank until reviewed, marked as agreeing with the AI, or written out in full. Neither is assessed, and neither enters the score or the outcome. Over many reports, how often the two agree is itself a measure of how far machine judgement has come.",
-""
+"Beside each segment with a deviation the table gives two suggested renderings. The AI suggestion is the model's alternative, kept exactly as generated and marked with the model and date. The second is Asim Bakhshi's: blank until reviewed, marked as agreeing with the AI, or written out in full. Neither is assessed, and neither enters the score or the outcome. Over many reports, how often the two agree is itself a measure of how far machine judgement has come.",
+"جدول میں ہر اس قطعے کے ساتھ جس میں انحراف ہو، دو متبادل تراجم دیے جاتے ہیں۔ مصنوعی ذہانت کی رائے ماڈل کا اپنا متبادل ہے، جو بالکل ویسا ہی رکھا جاتا ہے جیسا تیار ہوا تھا، اور اس پر ماڈل اور تاریخ درج ہوتی ہے۔ دوسری رائے عاصم بخشی کی ہے: جائزے تک خالی، یا مصنوعی ذہانت سے اتفاق کے طور پر نشان زد، یا پوری لکھی ہوئی۔ ان میں سے کسی کا جائزہ نہیں لیا جاتا، اور نہ کوئی اسکور یا نتیجے میں شامل ہوتی ہے۔ بہت سی رپورٹوں میں دونوں کا باہمی اتفاق خود اس بات کا پیمانہ ہے کہ مشینی فیصلہ کہاں تک پہنچا ہے۔"
 ],
 "m.transp.h": [
 "Transpositions, function test and gains",
-""
+"تصویر کی تبدیلی، وظائف کی جانچ اور حاصلات"
 ],
 "m.transp.p": [
 "When a translator replaces an image or phrase with a different one by choice, the severity is set by a function test: what does the source image do in the passage, and which of those functions survive? If all of them survive, the deviation is Neutral. If some are lost, it is Minor. If the image the passage depends on is lost, it is Major or Critical. Where a transposition also adds something the source lacks, the report records it as a gain. Gains never offset penalty points; they inform the stylistic tendencies, the translator profile, and the one-step move of the outcome.",
-""
+"جب مترجم کسی تصویر یا فقرے کی جگہ جان بوجھ کر کوئی دوسری تصویر یا فقرہ لاتا ہے تو شدت کا تعین وظائف کی جانچ سے ہوتا ہے: اقتباس میں ماخذ کی تصویر کیا کام کرتی ہے، اور ان میں سے کون سے کام باقی رہتے ہیں؟ اگر سب باقی رہیں تو انحراف بے وزن ہے۔ اگر کچھ ضائع ہوں تو معمولی۔ اگر وہ تصویر ضائع ہو جس پر اقتباس ٹکا ہے تو بڑا یا سنگین۔ جہاں ایسی تبدیلی کوئی ایسی چیز بھی شامل کرے جو ماخذ میں نہیں، رپورٹ اسے حاصل کے طور پر درج کرتی ہے۔ حاصلات منفی نمبر کبھی کم نہیں کرتے۔ البتہ اسلوبی رجحانات، مترجم کے خاکے اور نتیجے کو ایک درجہ اوپر یا نیچے کرنے میں ان کا حوالہ دیا جا سکتا ہے۔"
 ],
 "det.head": [
 "Details",
-""
+"تفصیلات"
 ],
 "det.kind": [
 "Assessment",
-""
+"جائزہ"
 ],
 "det.sample": [
 "Sample",
-""
+"نمونہ"
 ],
 "det.sampleUr": [
 "{words} source words, {segments} segments{loc}. Taken to stand for the whole translation.",
-""
+"{words} ماخذ الفاظ، {segments} قطعات{loc}۔ اسے پورے ترجمے کا نمائندہ مانا گیا ہے۔"
 ],
 "det.publication": [
 "Publication",
-""
+"اشاعت"
 ],
 "det.notes": [
 "Notes on the texts",
-""
+"متون کے بارے میں نوٹ"
 ],
 "det.method": [
-"Codes, severities, weights, bands, the sample assumption and the suggestion columns are explained in the",
-""
+"Codes, severities, weights, bands, the sample assumption and the suggestion columns are explained in the {link}.",
+"کوڈ، شدتیں، اوزان، بینڈ، نمونے کا مفروضہ اور رائے کے کالم {link} میں سمجھائے گئے ہیں۔"
 ],
 "sbs.crisp": [
 "Cell colour shows the worst severity. Suggestions are never scored.",
-""
+"خانے کا رنگ شدید ترین شدت ظاہر کرتا ہے۔ رائے کبھی اسکور میں شامل نہیں ہوتی۔"
 ],
 "sug.line2": [
-"AI suggestions ({model}, {date}): {aiSugg}. Assessor agrees with {agree}, differs on {differ}, not yet reviewed {unreviewed}.",
-""
+"AI suggestions ({model}, {date}): {aiSugg}. Asim Bakhshi agrees with {agree}, differs on {differ}, not yet reviewed {unreviewed}.",
+"مصنوعی ذہانت کی رائے ({model}، {date}): {aiSugg} قطعات۔ عاصم بخشی {agree} سے متفق، {differ} پر مختلف رائے، {unreviewed} کا جائزہ باقی۔"
 ],
 "m.notcounted.h": [
 "What the count leaves out",
-""
+"گنتی میں کیا شامل نہیں"
 ],
 "m.notcounted.p": [
 "Fluency, sentence shape and rhythm are not counted segment by segment unless they alter what is said. They are described under Stylistic tendencies, and where they matter to the whole (a form the passage depends on, a register that drifts) they are recorded as work-level findings. In Urdu, the absence of semicolons is never a deviation. Notes on what a segment renders well are not recorded: they have no bearing on the score or the outcome.",
-""
+"روانی، جملے کی ساخت اور آہنگ کو قطعہ بہ قطعہ نہیں گنا جاتا جب تک وہ کہی ہوئی بات کو نہ بدلیں۔ ان کا بیان اسلوبی رجحانات کے تحت ہوتا ہے، اور جہاں وہ پورے متن کے لیے اہم ہوں (کوئی ہیئت جس پر اقتباس ٹکا ہو، یا لہجہ جو بھٹکتا جائے) وہاں انھیں کلی سطح کے نتائج میں درج کیا جاتا ہے۔ اردو میں سیمی کولن کا نہ ہونا کبھی انحراف نہیں۔ کسی قطعے کی خوبیوں کے بارے میں نوٹ درج نہیں کیے جاتے کیونکہ اسکور یا نتیجے پر ان کا کوئی اثر نہیں۔"
+],
+"counts.crisp": [
+"{n} scored deviations{neutral} in {words} source words: {per100} per 100 words.",
+"{words} ماخذ الفاظ میں {n} شمار شدہ انحرافات{neutral}، یعنی فی سو الفاظ {per100}۔"
+],
+"counts.neutralPart": [
+" and {k} neutral",
+" اور {k} بے وزن"
+],
+"score.crisp": [
+"<strong>Score.</strong> {penalty} penalty points, {pp100} per 100 source words: quality score <strong>{score}</strong>, band <strong>{band}</strong>. {after}",
+"<strong>اسکور۔</strong> {penalty} منفی نمبر، یعنی فی سو ماخذ الفاظ {pp100}۔ معیار اسکور <strong>{score}</strong>، بینڈ <strong>{band}</strong>۔ {after}"
+],
+"score.afterGrade": [
+"The grade starts from this band.",
+"گریڈ اسی بینڈ سے شروع ہوتا ہے۔"
+],
+"score.afterDraft": [
+"Default decision for this band: <em>{decision}</em>.",
+"اس بینڈ کا طے شدہ فیصلہ: {decision}۔"
+],
+"spread.crisp": [
+"<strong>Spread.</strong> {clean} of {segments} segments clean ({cleanPct}%); {severeSegs} with a major or critical deviation ({severePct}%).",
+"<strong>پھیلاؤ۔</strong> {segments} میں سے {clean} قطعات بے داغ ({cleanPct}٪)، {severeSegs} میں کم از کم ایک بڑا یا سنگین انحراف ({severePct}٪)۔"
 ]
 };
