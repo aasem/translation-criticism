@@ -25,8 +25,7 @@ export const DECISIONS = [
   ['Accept', 'Publish as it is.'],
   ['Accept with minor revisions', 'A copy-editor can resolve the issues.'],
   ['Major revisions', 'The draft is sound, and the same translator can revise it into shape.'],
-  ['Reject and resubmit', "The draft can't be revised into shape because the problem is its method, not its slips. A fresh translation could succeed, and the same translator is welcome to resubmit one."],
-  ['Reject', 'A new translation is needed, and the evidence points to a different translator.'],
+  ['Retranslation required', "The draft can't be revised into shape because the problem is its method, not its slips. The work must be translated afresh."],
 ];
 // The first item is the value stored in reports; only the meaning is shown translated here.
 // Use label('decision', d) from i18n.js to show a decision's name.
@@ -48,8 +47,7 @@ export const GRADES = [
   ['A', 'Exemplary', 2, 'A faithful literary equivalent. Deviations are rare and slight.'],
   ['B', 'Sound', 5, 'Reliable throughout. Deviations are mostly minor and do not distort the work.'],
   ['C', 'Serviceable', 10, 'Conveys the work, but readers meet recurring losses of sense, image or tone.'],
-  ['D', 'Deficient', 20, 'Frequent or serious deviations. Readers receive a distorted version of the work.'],
-  ['E', 'Unreliable', Infinity, 'Cannot be relied on to represent the work.'],
+  ['D', 'Deficient', Infinity, 'Frequent or serious deviations. Readers receive a distorted version of the work, which cannot be relied on to represent it.'],
 ];
 if (UR) for (const g of GRADES) { g[1] = t(`grade.${g[0]}`); g[3] = t(`grade.${g[0]}.m`); }
 export const bandFor = (pp100) => GRADES.find((g) => pp100 <= g[2]) || GRADES[GRADES.length - 1];
@@ -72,17 +70,16 @@ export function scoreGuide(t) {
 
 // Default editorial decision for each score band. Work-level findings may move a draft off it.
 export const DECISION_ANCHOR = {
-  A: ['Accept'], B: ['Accept with minor revisions'], C: ['Major revisions'],
-  D: ['Reject and resubmit', 'Reject'], E: ['Reject and resubmit', 'Reject'],
+  A: ['Accept'], B: ['Accept with minor revisions'], C: ['Major revisions'], D: ['Retranslation required'],
 };
-export const anchorText = (letter) => (DECISION_ANCHOR[letter] || []).length > 1 ? 'a rejection' : (DECISION_ANCHOR[letter] || [''])[0];
+export const anchorText = (letter) => (DECISION_ANCHOR[letter] || [''])[0];
 // True when the outcome on record differs from the one the score band points to.
 export const outcomeMoved = (r, t) => (r.stage === 'Published'
   ? !!r.grade && r.grade !== t.band[0]
   : !!r.decision && !(DECISION_ANCHOR[t.band[0]] || []).includes(r.decision));
 
 export const gradeName = (letter) => { const g = GRADES.find((x) => x[0] === letter); return g ? `${g[0]} · ${g[1]}` : ''; };
-export const gradeClass = (letter) => ({ A: 'sev-none', B: 'sev-none', C: 'sev-minor', D: 'sev-major', E: 'sev-critical' }[letter] || '');
+export const gradeClass = (letter) => ({ A: 'sev-none', B: 'sev-none', C: 'sev-minor', D: 'sev-critical' }[letter] || '');
 
 export const sevClass = (s) => ({ Critical: 'sev-critical', Major: 'sev-major', Minor: 'sev-minor' }[s] || 'sev-none');
 export const decisionClass = (d) =>

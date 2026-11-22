@@ -29,12 +29,12 @@
     "text": ""
   },
   "stakes": "Canonical",
-  "decision": "Reject and resubmit",
+  "decision": "Retranslation required",
   "tags": [
     "Proust",
     "French"
   ],
-  "lead": "**Decision: Reject (reconsideration possible).** Against the {words}-word English source, the submission shows {total} deviations ({per100} per 100 words): {critical} critical, {major} major and {minor} minor, with a literal method that tracks a text other than the designated source and errors that gather at the passage's closing turns.",
+  "lead": "**Decision: Retranslation required.** Against the {words}-word English source, the submission shows {total} deviations ({per100} per 100 words): {critical} critical, {major} major and {minor} minor, with a literal method that tracks a text other than the designated source and errors that gather at the passage's closing turns.",
   "scope": "- **Source:** the C. K. Scott Moncrieff English rendering of the closing pages of *Swann's Way* (the Bois de Boulogne coda), {words} words, quoted as supplied. It is the only yardstick; no other text is used to judge the submission.\n- **Submission:** an Urdu translation of the same passage, quoted as supplied.\n- **Stage: Pre-publication.** The submission is a draft under consideration by a publisher, so the report ends in an editorial decision rather than a grade.\n- **Stakes: Canonical** (inferred). This is Proust, and an Urdu rendering of the *Recherche* is likely to be the defining one for a generation.\n- **Segmentation:** {segments} segments, one per source sentence, with three adjustments. Short exclamations and fragments are joined to the sentence that follows (“I dare say.” in #2, “Oh, horrible!” in #4). The long Bois sentence is split at its semicolons and at “and helped me” into #18–21. The final sentence is split at its first semicolon into #25–26.\n- **Score:** deviations are weighted by MQM severity (Minor 1, Major 5, Critical 25) and measured per 100 source words. The score is given for reference; at the pre-publication stage the outcome is the decision.\n- **Fluency** is assessed under Stylistic tendencies, not in the count. The absence of semicolons is never a deviation in Urdu.\n- **Sample:** {words} source words in {segments} segments, from the closing pages of *Swann's Way*. The passage is taken to stand for the whole translation: the deviations and tendencies found here are assumed to run through the work, and the decision applies to the whole on that assumption.",
   "segments": [
     {
@@ -614,6 +614,6 @@
       "evidence": "#2 (A4 Major), #7, #9, #16"
     }
   ],
-  "decisionBasis": "At canonical stakes, two critical work-level findings rule out revision: the draft departs from the designated source at its key claim (#24) and elsewhere (#13, #20), and its method carries the source's sentence shape, semicolons and phrasing across one for one. The {severe} major and critical deviations fall at the passage's turns (#2, #5, #11, #15, #20, #21, #24), while {minor} minor ones steadily thin its images and contrasts. Rejection outright is not warranted: the translator writes correct, often fine literary Urdu (#6, #8, #19), and the failures are of method and source discipline, not of language.",
+  "decisionBasis": "At canonical stakes, two critical work-level findings rule out revision: the draft departs from the designated source at its key claim (#24) and elsewhere (#13, #20), and its method carries the source's sentence shape, semicolons and phrasing across one for one. The {severe} major and critical deviations fall at the passage's turns (#2, #5, #11, #15, #20, #21, #24), while {minor} minor ones steadily thin its images and contrasts. The same translator could undertake the retranslation: the translator writes correct, often fine literary Urdu (#6, #8, #19), and the failures are of method and source discipline, not of language.",
   "publisherNote": "This calls for a fresh translation, which the same translator may undertake, made from one agreed source text and with a brief on voice and allusion."
 }

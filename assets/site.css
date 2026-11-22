@@ -314,8 +314,7 @@ h2.list-head { margin-top: 1.6em; }
 .rcard { border-inline-start-width: 6px; }
 .rcard.band-A, .rcard.band-B { border-inline-start-color: #3f9a48; }
 .rcard.band-C { border-inline-start-color: #d4a72c; }
-.rcard.band-D { border-inline-start-color: #d9732f; }
-.rcard.band-E { border-inline-start-color: #c23b3b; }
+.rcard.band-D { border-inline-start-color: #c23b3b; }
 .rcard:hover { border-inline-start-width: 6px; }
 
 /* score tooltip */

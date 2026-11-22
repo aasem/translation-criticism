@@ -389,10 +389,6 @@ export const STRINGS = {
 "For a draft, this band points to {decision} as the default decision.",
 "مسودے کے لیے یہ بینڈ بطورِ طے شدہ فیصلہ {decision} کی طرف اشارہ کرتا ہے۔"
 ],
-"score.aRejection": [
-"a rejection",
-"استرداد"
-],
 "score.findings": [
 "Work-level findings, which the score does not count, may move the outcome; the basis says why.",
 "کلی سطح کے نتائج اسکور میں شمار نہیں ہوتے مگر نتیجے کو بدل سکتے ہیں۔ اس کی وجہ بنیاد میں بیان کی جاتی ہے۔"
@@ -593,21 +589,13 @@ export const STRINGS = {
 "The draft is sound, and the same translator can revise it into shape.",
 "مسودہ درست بنیاد پر ہے اور وہی مترجم ترامیم کر کے اسے سنوار سکتا ہے۔"
 ],
-"decision.Reject and resubmit": [
-"Reject (reconsideration possible)",
-"مسترد (نظرثانی ممکن)"
+"decision.Retranslation required": [
+"Retranslation required",
+"ازسرِنو ترجمہ درکار"
 ],
-"decision.Reject and resubmit.m": [
-"The draft can't be revised into shape because the problem is its method, not its slips. A fresh translation could succeed, and the same translator is welcome to resubmit one.",
-"ترامیم سے یہ مسودہ نہیں سنور سکتا کیونکہ مسئلہ اس کی لغزشوں میں نہیں بلکہ اس کے طریقِ کار میں ہے۔ نیا ترجمہ کامیاب ہو سکتا ہے اور وہی مترجم بخوشی نیا ترجمہ پیش کر سکتا ہے۔"
-],
-"decision.Reject": [
-"Reject (reconsideration not possible)",
-"مسترد (نظرثانی ناممکن)"
-],
-"decision.Reject.m": [
-"A new translation is needed, and the evidence points to a different translator.",
-"نیا ترجمہ درکار ہے اور شواہد کسی دوسرے مترجم کی طرف اشارہ کرتے ہیں۔"
+"decision.Retranslation required.m": [
+"The draft can't be revised into shape because the problem is its method, not its slips. The work must be translated afresh.",
+"ترامیم سے یہ مسودہ نہیں سنور سکتا کیونکہ مسئلہ اس کی لغزشوں میں نہیں بلکہ اس کے طریقِ کار میں ہے۔ کام کا ازسرِنو ترجمہ کرنا ہوگا۔"
 ],
 "grade.A": [
 "Exemplary",
@@ -638,16 +626,8 @@ export const STRINGS = {
 "ناقص"
 ],
 "grade.D.m": [
-"Frequent or serious deviations. Readers receive a distorted version of the work.",
-"بار بار ہونے والے یا سنگین انحرافات۔ قاری تک کام کی ایک مسخ شدہ صورت پہنچتی ہے۔"
-],
-"grade.E": [
-"Unreliable",
-"ناقابلِ اعتبار"
-],
-"grade.E.m": [
-"Cannot be relied on to represent the work.",
-"اس پر کام کی نمائندگی کے لیے بھروسا نہیں کیا جا سکتا۔"
+"Frequent or serious deviations. Readers receive a distorted version of the work, which cannot be relied on to represent it.",
+"بار بار ہونے والے یا سنگین انحرافات۔ قاری تک کام کی ایک مسخ شدہ صورت پہنچتی ہے جس پر کام کی نمائندگی کے لیے بھروسا نہیں کیا جا سکتا۔"
 ],
 "code.A1": [
 "Mistranslation",
@@ -802,8 +782,8 @@ export const STRINGS = {
 "ناشر اور مترجم"
 ],
 "m.pre.ends": [
-"An editorial decision, from Accept to Reject",
-"ایک ادارتی فیصلہ، منظور سے مسترد تک"
+"An editorial decision, from Accept to Retranslation required",
+"ایک ادارتی فیصلہ، منظور سے ازسرِنو ترجمہ درکار تک"
 ],
 "m.pub.what": [
 "A translation already in print, with its publication details recorded",
@@ -814,8 +794,8 @@ export const STRINGS = {
 "قارئین اور ہر وہ شخص جو مختلف ترجموں میں سے انتخاب کر رہا ہو"
 ],
 "m.pub.ends": [
-"A grade, from A (Exemplary) to E (Unreliable)",
-"ایک گریڈ، A (مثالی) سے E (ناقابلِ اعتبار) تک"
+"A grade, from A (Exemplary) to D (Deficient)",
+"ایک گریڈ، A (مثالی) سے D (ناقص) تک"
 ],
 "m.kinds.after": [
 "A pre-publication decision is about what should happen next to a draft. A grade for a published translation says how far readers can rely on the text they have in hand.",
@@ -854,8 +834,8 @@ export const STRINGS = {
 "ہر رپورٹ یہ بھی بتاتی ہے کہ انحرافات قطعات میں کیسے پھیلے ہوئے ہیں۔ کتنے قطعات میں کوئی انحراف نہیں اور کتنوں میں کم از کم ایک بڑا یا سنگین انحراف ہے۔ یکساں شرح والے دو ترجمے یہاں مختلف ہو سکتے ہیں۔ ایک میں غلطیاں چند جملوں میں سمٹی ہوں اور دوسرے میں تقریباً ہر جملے میں۔ یہ اعداد صرف بیانیہ ہیں اور اسکور میں شامل نہیں ہوتے۔"
 ],
 "m.score.p4": [
-"Reading the score. The formula comes to 100 minus the penalty points per 100 source words. It is not a percentage of sentences or words got right, and it should not be read like a school mark: one major deviation every hundred words already costs five points. Professional MQM practice usually sets its pass mark somewhere around 95 to 99. This site therefore always gives the score with its band (A to E, below), so that a score of 86 reads as what it is, band D · Deficient.",
-"اسکور کیسے پڑھیں۔ کلیہ سو میں سے فی سو ماخذ الفاظ منفی نمبر نکالنے کے برابر ہے۔ یہ درست جملوں یا الفاظ کا فیصد نہیں اور اسے اسکول کے نمبروں کی طرح نہیں پڑھنا چاہیے۔ ہر سو الفاظ میں ایک بڑا انحراف ہی پانچ نمبر کاٹ لیتا ہے۔ MQM کے پیشہ ورانہ معمول میں کامیابی کی حد عموماً 95 سے 99 کے درمیان رکھی جاتی ہے۔ اسی لیے یہ سائٹ اسکور ہمیشہ اس کے بینڈ (A سے E، نیچے) کے ساتھ دیتی ہے تاکہ 86 کا اسکور ویسا ہی پڑھا جائے جیسا وہ ہے یعنی بینڈ D · ناقص۔"
+"Reading the score. The formula comes to 100 minus the penalty points per 100 source words. It is not a percentage of sentences or words got right, and it should not be read like a school mark: one major deviation every hundred words already costs five points. Professional MQM practice usually sets its pass mark somewhere around 95 to 99. This site therefore always gives the score with its band (A to D, below), so that a score of 86 reads as what it is, band D · Deficient.",
+"اسکور کیسے پڑھیں۔ کلیہ سو میں سے فی سو ماخذ الفاظ منفی نمبر نکالنے کے برابر ہے۔ یہ درست جملوں یا الفاظ کا فیصد نہیں اور اسے اسکول کے نمبروں کی طرح نہیں پڑھنا چاہیے۔ ہر سو الفاظ میں ایک بڑا انحراف ہی پانچ نمبر کاٹ لیتا ہے۔ MQM کے پیشہ ورانہ معمول میں کامیابی کی حد عموماً 95 سے 99 کے درمیان رکھی جاتی ہے۔ اسی لیے یہ سائٹ اسکور ہمیشہ اس کے بینڈ (A سے D، نیچے) کے ساتھ دیتی ہے تاکہ 86 کا اسکور ویسا ہی پڑھا جائے جیسا وہ ہے یعنی بینڈ D · ناقص۔"
 ],
 "m.score.p5": [
 "The score is a summary, not the verdict. It counts segment-level deviations only. Work-level findings, such as a method that carries source syntax across wholesale, are not in the count; they are judged alongside it and can move the outcome away from the band.",
@@ -874,16 +854,16 @@ export const STRINGS = {
 "ادارتی فیصلہ (قبل از اشاعت)"
 ],
 "m.decision.li1": [
-"The decision starts from the default for the score band (the same bands as for grades, below): A points to Accept, B to Accept (minor revisions), C to Extensive revisions required, and D or E to one of the two rejections.",
-"فیصلے کا آغاز اسکور بینڈ کے طے شدہ فیصلے سے ہوتا ہے (وہی بینڈ جو نیچے گریڈ کے لیے ہیں)۔ A منظور کی طرف اشارہ کرتا ہے، B منظور (معمولی ترامیم) کی طرف، C کثیر ترامیم درکار کی طرف اور D یا E استرداد کی دو صورتوں میں سے کسی ایک کی طرف۔"
+"The decision starts from the default for the score band (the same four bands as for grades, below): A points to Accept, B to Accept (minor revisions), C to Extensive revisions required, and D to Retranslation required.",
+"فیصلے کا آغاز اسکور بینڈ کے طے شدہ فیصلے سے ہوتا ہے (وہی چار بینڈ جو نیچے گریڈ کے لیے ہیں)۔ A منظور کی طرف اشارہ کرتا ہے، B منظور (معمولی ترامیم) کی طرف، C کثیر ترامیم درکار کی طرف اور D ازسرِنو ترجمہ درکار کی طرف۔"
 ],
 "m.decision.li2": [
 "Work-level findings may move the decision from that default, and the report says why. At Literary and Canonical stakes, a critical work-level finding rules out the first three steps, however good the score.",
 "کلی سطح کے نتائج فیصلے کو اس طے شدہ نقطے سے ہٹا سکتے ہیں اور رپورٹ اس کی وجہ بتاتی ہے۔ ادبی اور کلاسیکی سطح پر کلی سطح کا ایک سنگین نتیجہ پہلے تین درجوں کو خارج کر دیتا ہے خواہ اسکور کتنا ہی اچھا ہو۔"
 ],
 "m.decision.li3": [
-"The choice between the two rejections rests on the evidence about the translator's competence.",
-"استرداد کی دو صورتوں میں سے انتخاب کا انحصار مترجم کی اہلیت کے بارے میں شواہد پر ہے۔"
+"For a retranslation, the note for the publisher says whether the same translator could undertake it, on the evidence about the translator's competence.",
+"ازسرِنو ترجمے کی صورت میں ناشر کے لیے نوٹ بتاتا ہے کہ آیا وہی مترجم یہ کام کر سکتا ہے، اور یہ بات مترجم کی اہلیت کے شواہد کی بنیاد پر کہی جاتی ہے۔"
 ],
 "m.grade.h": [
 "Grade (published translations)",

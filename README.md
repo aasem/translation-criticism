@@ -39,7 +39,7 @@ Figures that don't come from the deviations (for example, semicolons per 100 wor
 
 ## Two kinds of report
 
-A **pre-publication** report assesses a draft for a publisher and ends in an editorial decision. A **published** report assesses a translation in print, records its publication details, and ends in a grade from A to E, banded by weighted penalty points per 100 source words. The method is the same for both; the Method page sets out the scales and the sample assumption.
+A **pre-publication** report assesses a draft for a publisher and ends in an editorial decision. A **published** report assesses a translation in print, records its publication details, and ends in a grade from A to D, banded by weighted penalty points per 100 source words. The method is the same for both; the Method page sets out the scales and the sample assumption.
 
 ## Adding a report
 
