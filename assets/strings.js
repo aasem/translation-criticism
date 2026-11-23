@@ -1079,7 +1079,7 @@ export const STRINGS = {
 ],
 "prox.scoreLabel": [
 "Proximity score",
-"قربت اسکور"
+"نزدیکی"
 ],
 "prox.axisY": [
 "Quality score",
