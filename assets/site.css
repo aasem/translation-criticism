@@ -467,3 +467,16 @@ html[lang="ur"] .prox-hint { font-family: var(--urdu); font-size: 15px; line-hei
 .rc-prox.mim .rc-prox-mark { background: #9a3b33; box-shadow: 0 0 0 1px #9a3b33; }
 .rc-prox-ends { display: flex; justify-content: space-between; font: 600 10.5px var(--sans); margin-top: 4px; }
 .rc-prox-ends span:first-child { color: #2f5d7c; } .rc-prox-ends span:last-child { color: #9a3b33; }
+
+/* grid hover card (replaces the browser's native tooltip) */
+.pgrid-svg .tip { opacity: 0; pointer-events: none; transition: opacity .12s; }
+.pgrid-svg .tip rect { fill: #fff; stroke: #cfc4b8; filter: drop-shadow(0 2px 4px rgba(0,0,0,.12)); }
+.pgrid-svg .tip text { stroke: none; }
+.pgrid-svg .tip-h { font-size: 12.5px; font-weight: 800; fill: #2b2621; }
+.pgrid-svg .tip-k { font-size: 12px; font-weight: 600; fill: #4a443e; }
+.pgrid-svg .tip-v { font-size: 12.5px; font-weight: 800; fill: #2b2621; }
+.pgrid-svg .tip-v.gA, .pgrid-svg .tip-v.gB { fill: #23642a; }
+.pgrid-svg .tip-v.gC { fill: #7a5a06; }
+.pgrid-svg .tip-v.gD { fill: #8f1f1f; }
+.pgrid-svg .pg { cursor: default; }
+.pgrid-svg .pg a { cursor: pointer; }

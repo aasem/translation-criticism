@@ -222,6 +222,23 @@ export function gridSVG(points) {
   // above it if free, else below, else to a side; never overlapping.
   const boxes = points.map((p) => [X(p.x) - 9, Y(p.y) - 9, X(p.x) + 9, Y(p.y) + 9]);
   const LH = 13;
+  // Hover card: name (if any), then proximity and quality score with its band.
+  const tips = [];
+  const tip = (p, lines) => {
+    const g = bandFor(100 - p.y);
+    const rows = [[t('h.prox'), String(Math.round(p.x))], [t('prox.axisY'), `${p.y.toFixed(1)} · ${g[0]}`]];
+    const head = lines.join(' · ');
+    const w = Math.max(head.length * 7, ...rows.map(([k, v]) => (k.length + v.length) * 6.6 + 18)) + 20;
+    const h = 14 + (head ? 18 : 0) + rows.length * 17;
+    const px = X(p.x), py = Y(p.y);
+    const x0 = px + 14 + w > W - 2 ? px - 14 - w : px + 14;
+    const y0 = Math.min(Math.max(py - h / 2, 2), H - h - 2);
+    let o = `<g class="tip" data-for="${tips.length}" transform="translate(${x0} ${y0})"><rect width="${w}" height="${h}" rx="6"/>`;
+    let y = 19;
+    if (head) { o += `<text class="tip-h" x="10" y="${y}">${e(head)}</text>`; y += 18; }
+    for (const [k, v] of rows) { o += `<text class="tip-k" x="10" y="${y}">${e(k)}</text><text class="tip-v g${g[0]}" x="${w - 10}" y="${y}" text-anchor="end">${e(v)}</text>`; y += 17; }
+    return o + '</g>';
+  };
   const place = (px, py, lines) => {
     const w = Math.max(...lines.map((l) => l.length)) * 6.6 + 4, h = lines.length * LH;
     const cands = [[px - w / 2, py - 12 - h, 'middle'], [px - w / 2, py + 12, 'middle'], [px + 12, py - h / 2, 'start'], [px - 12 - w, py - h / 2, 'end']];
@@ -242,10 +259,12 @@ export function gridSVG(points) {
       const q = place(X(p.x), Y(p.y), lines);
       lab = `<text class="pl${m}" x="${q.x}" y="${q.y}" text-anchor="${q.anchor}">` + lines.map((l, i) => `<tspan x="${q.x}" dy="${i ? LH : 0}">${e(l)}</tspan>`).join('') + '</text>';
     }
-    const dot = `<circle class="pt${m}" cx="${X(p.x)}" cy="${Y(p.y)}" r="7"><title>${e(lines.join(' · '))} · ${Math.round(p.x)} / ${p.y.toFixed(1)}</title></circle>`;
-    s += p.href ? `<a href="${e(p.href)}">${dot}${lab}</a>` : dot + lab;
+    const dot = `<circle class="pt${m}" cx="${X(p.x)}" cy="${Y(p.y)}" r="7"/>`;
+    tips.push(tip(p, lines));
+    s += `<g class="pg" data-i="${tips.length - 1}">${p.href ? `<a href="${e(p.href)}">${dot}${lab}</a>` : dot + lab}</g>`;
   }
-  return s + '</svg>';
+  const css = tips.map((_, i) => `.pgrid-svg:has(.pg[data-i="${i}"]:hover) .tip[data-for="${i}"]`).join(',');
+  return s + tips.join('') + (css ? `<style>${css}{opacity:1}</style>` : '') + '</svg>';
 }
 
 // Legend shown under every grid.
