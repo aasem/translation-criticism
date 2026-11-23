@@ -437,7 +437,7 @@ html.lang-ur .eyebrow { font-size: 15px; }
 .pgrid-svg .pl { font-size: 12px; font-weight: 700; fill: #2f5d7c; }
 .pgrid-svg .pl.mim { fill: #9a3b33; }
 .pgrid-svg a:hover .pt { stroke: #2b2621; }
-.pgrid-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 6px 0 0; font: 600 12px var(--sans); color: #4a443e; }
+.pgrid-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 10px 0 0; font: 600 12px var(--sans); color: #4a443e; }
 .pgrid-legend span { display: inline-flex; align-items: center; gap: 6px; }
 .pgrid-legend .dot { width: 10px; height: 10px; border-radius: 50%; background: #2f5d7c; display: inline-block; }
 .pgrid-legend .dot.mim { background: #9a3b33; }

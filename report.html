@@ -186,10 +186,9 @@ function proximitySection() {
     <td class="num">${x.counted ? Math.round(x.pct) : `<span class="muted">${tt('prox.few')}</span>`}</td></tr>`).join('');
   const note = isMimicry(P.score, q) ? `<div class="mimic">${icon('info')}<p dir="auto">${tt('prox.mimic')}</p></div>` : '';
   return `${H2('chart', tt('h.prox'))}
-    <div class="prox-wrap"><div class="prox-grid">${gridSVG([{ x: P.score, y: q }])}${gridLegend()}</div>
+    <div class="prox-wrap"><div class="prox-grid">${gridSVG([{ x: P.score, y: q }])}<p class="prox-hint">${tt('prox.hint')}</p>${gridLegend()}</div>
     <div class="prox-side"><table class="prox-t"><thead><tr><th>${tt('prox.th.comp')}</th><th class="num">${tt('prox.th.count')}</th><th class="num">%</th></tr></thead>
-    <tbody>${rows}<tr class="total"><td>${tt('h.prox')}</td><td></td><td class="num"><strong>${Math.round(P.score)}</strong></td></tr></tbody></table>${note}</div></div>
-    <p class="prox-hint">${tt('prox.hint')}</p>`;
+    <tbody>${rows}<tr class="total"><td>${tt('h.prox')}</td><td></td><td class="num"><strong>${Math.round(P.score)}</strong></td></tr></tbody></table>${note}</div></div>`;
 }
 
 function devExtras(d) {

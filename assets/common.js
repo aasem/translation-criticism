@@ -218,20 +218,32 @@ export function gridSVG(points) {
   s += `<text class="axe left" x="${L}" y="${H - 10}">← ${e(t('prox.left'))}</text><text class="axe right" x="${X(100)}" y="${H - 10}" text-anchor="end">${e(t('prox.right'))} →</text>`;
   s += `<text class="axt" x="${(L + X(100)) / 2}" y="${H - 10}" text-anchor="middle">${e(t('prox.axisX'))}</text>`;
   s += `<text class="axt" transform="translate(16 ${(Y(100) + Y(yMin)) / 2}) rotate(-90)" text-anchor="middle">${e(t('prox.axisY'))}</text>`;
-  const boxes = []; // placed label boxes, to keep labels from overlapping
-  const place = (px, py, w0) => { const w = w0 * 1.08;
-    for (const [dx, dy, anchor] of [[9, -9, 'start'], [-9, -9, 'end'], [9, 17, 'start'], [-9, 17, 'end'], [9, 31, 'start'], [-9, 31, 'end']]) {
-      const x0 = anchor === 'start' ? px + dx : px + dx - w; const b = [x0, py + dy - 11, x0 + w, py + dy + 2];
-      if (x0 < L || b[2] > W - 2) continue;
-      if (!boxes.some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1])) { boxes.push(b); return [px + dx, py + dy, anchor]; }
+  // Labels: one line per part (author, translator), centred on the dot,
+  // above it if free, else below, else to a side; never overlapping.
+  const boxes = points.map((p) => [X(p.x) - 9, Y(p.y) - 9, X(p.x) + 9, Y(p.y) + 9]);
+  const LH = 13;
+  const place = (px, py, lines) => {
+    const w = Math.max(...lines.map((l) => l.length)) * 6.6 + 4, h = lines.length * LH;
+    const cands = [[px - w / 2, py - 12 - h, 'middle'], [px - w / 2, py + 12, 'middle'], [px + 12, py - h / 2, 'start'], [px - 12 - w, py - h / 2, 'end']];
+    for (const [x0, y0, anchor] of cands) {
+      const b = [x0, y0, x0 + w, y0 + h];
+      if (b[0] < L + 2 || b[2] > W - 2 || b[1] < 0 || b[3] > Y(yMin) - 2) continue;
+      if (!boxes.some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1])) {
+        boxes.push(b); return { x: anchor === 'middle' ? px : anchor === 'start' ? x0 : x0 + w, y: y0 + LH - 3, anchor };
+      }
     }
-    return [px + 9, py - 9, 'start'];
+    return { x: px, y: py - 12 - h + LH - 3, anchor: 'middle' };
   };
   for (const p of points) {
-    const [lx, ly, la] = p.label ? place(X(p.x), Y(p.y), p.label.length * 6.2) : [0, 0, 'start'];
-    const dot = `<circle class="pt${isMimicry(p.x, p.y) ? ' mim' : ''}" cx="${X(p.x)}" cy="${Y(p.y)}" r="7"><title>${e(p.label || '')} · ${Math.round(p.x)} / ${p.y.toFixed(1)}</title></circle>`
-      + (p.label ? `<text class="pl${isMimicry(p.x, p.y) ? ' mim' : ''}" x="${lx}" y="${ly}" text-anchor="${la}">${e(p.label)}</text>` : '');
-    s += p.href ? `<a href="${e(p.href)}">${dot}</a>` : dot;
+    const m = isMimicry(p.x, p.y) ? ' mim' : '';
+    const lines = p.label ? (Array.isArray(p.label) ? p.label : [p.label]) : [];
+    let lab = '';
+    if (lines.length) {
+      const q = place(X(p.x), Y(p.y), lines);
+      lab = `<text class="pl${m}" x="${q.x}" y="${q.y}" text-anchor="${q.anchor}">` + lines.map((l, i) => `<tspan x="${q.x}" dy="${i ? LH : 0}">${e(l)}</tspan>`).join('') + '</text>';
+    }
+    const dot = `<circle class="pt${m}" cx="${X(p.x)}" cy="${Y(p.y)}" r="7"><title>${e(lines.join(' · '))} · ${Math.round(p.x)} / ${p.y.toFixed(1)}</title></circle>`;
+    s += p.href ? `<a href="${e(p.href)}">${dot}${lab}</a>` : dot + lab;
   }
   return s + '</svg>';
 }
