@@ -226,7 +226,7 @@ export function gridSVG(points) {
   const tips = [];
   const tip = (p, lines) => {
     const g = bandFor(100 - p.y);
-    const rows = [[t('h.prox'), String(Math.round(p.x))], [t('prox.axisY'), `${p.y.toFixed(1)} · ${g[0]}`]];
+    const rows = [[t('prox.scoreLabel'), String(Math.round(p.x))], [t('prox.axisY'), `${p.y.toFixed(1)} · ${g[0]}`]];
     const head = lines.join(' · ');
     const w = Math.max(head.length * 7, ...rows.map(([k, v]) => (k.length + v.length) * 6.6 + 18)) + 20;
     const h = 14 + (head ? 18 : 0) + rows.length * 17;
