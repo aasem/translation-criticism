@@ -177,7 +177,7 @@ function details() {
 function proximitySection() {
   const P = proximity(R); const q = tally(R).score;
   if (editing) return `${H2('chart', tt('h.art'))}
-    <p class="hint">Count each component within the pair: all cases, cases kept, and of those kept, cases forced (kept against Urdu syntax, punctuation or idiom). Fewer than ${PROX_MIN} cases (kept cases, for artificiality): shown but left out of the average.</p>
+    <p class="hint">Count each component within the pair: all cases, cases kept, and of those kept, cases forced (kept against Urdu syntax, punctuation or idiom). Fewer than ${PROX_MIN} cases (kept cases, for mimicry): shown but left out of the average.</p>
     <table class="kv"><tbody>${PROX_KEYS.map((k) => `<tr><th>${tt('prox.' + k)}<div class="hint">${tt('prox.' + k + '.d')}</div></th>
       <td>${I(`proximity.${k}.kept`, 'kept')} / ${I(`proximity.${k}.total`, 'all')} · ${I(`proximity.${k}.forced`, 'forced')}<br>${I(`proximity.${k}.note`, 'note on kept (optional)')}<br>${I(`proximity.${k}.forcedNote`, 'note on forced (optional)')}</td></tr>`).join('')}</tbody></table>`;
   if (P.score == null && P.art == null) return '';

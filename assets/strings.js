@@ -1094,16 +1094,16 @@ export const STRINGS = {
 "موزونیت"
 ],
 "prox.zone": [
-"possible mimicry",
-"ممکنہ نقالی"
+"possible mechanical mimicry",
+"ممکنہ میکانکی نقالی"
 ],
 "prox.hint": [
 "Proximity describes strategy. It never enters the score or the outcome, and both ends of the axis are legitimate.",
 "قربت حکمتِ عملی کا بیان ہے۔ یہ کبھی اسکور یا نتیجے میں شامل نہیں ہوتی، اور محور کے دونوں سرے جائز ہیں۔"
 ],
 "prox.mimic": [
-"This translation keeps much of the source's form against the grain of Urdu while departing often from its sense. The pattern can be read as mechanical mimicry. Whether by a human translator or a machine, this assessment cannot tell.",
-"یہ ترجمہ ماخذ کی ہیئت کا بڑا حصہ اردو کے مزاج کے خلاف برقرار رکھتا ہے مگر اکثر اس کے معنی سے ہٹ جاتا ہے۔ اس صورت کو میکانکی نقالی پڑھا جا سکتا ہے۔ یہ نقالی کسی انسانی مترجم کی ہے یا مشین کی، یہ جائزہ اس کا فیصلہ نہیں کر سکتا۔"
+"This translation imitates much of the source's form against the grain of Urdu while departing often from its sense. The pattern can be read as mechanical mimicry. Whether by a human translator or a machine, this assessment cannot tell.",
+"یہ ترجمہ ماخذ کی ہیئت کے بڑے حصے کی اردو کے مزاج کے خلاف نقل کرتا ہے مگر اکثر اس کے معنی سے ہٹ جاتا ہے۔ اس صورت کو میکانکی نقالی پڑھا جا سکتا ہے۔ یہ نقالی کسی انسانی مترجم کی ہے یا مشین کی، یہ جائزہ اس کا فیصلہ نہیں کر سکتا۔"
 ],
 "check.source": [
 "Source check",
@@ -1114,20 +1114,20 @@ export const STRINGS = {
 "متعلقاتِ متن"
 ],
 "grid.head": [
-"Artificiality and quality",
-"تصنع اور معیار"
+"Mimicry and quality",
+"نقالی اور معیار"
 ],
 "grid.hint": [
-"Each point is a report: artificiality across, quality score up. Click a point to open the report.",
-"ہر نقطہ ایک رپورٹ ہے: افقی محور پر تصنع، عمودی محور پر معیار اسکور۔ رپورٹ کھولنے کے لیے نقطے پر کلک کیجیے۔"
+"Each point is a report: mimicry across, quality score up. Click a point to open the report.",
+"ہر نقطہ ایک رپورٹ ہے: افقی محور پر نقالی، عمودی محور پر معیار اسکور۔ رپورٹ کھولنے کے لیے نقطے پر کلک کیجیے۔"
 ],
 "grid.unnamed": [
 "unnamed",
 "گمنام"
 ],
 "m.mimic.p": [
-"Read together, artificiality and the quality score can show a pattern the score alone hides: a translation that keeps the source's form against the grain of the language while departing often from its sense. Such a pattern can be read as mechanical mimicry. Whether the mimicry is a human translator's or a machine's, the assessment cannot tell, and it makes no claim either way. The thresholds for this corner will be set once enough reports have been marked. Until then no report is placed in it.",
-"تصنع اور معیار اسکور ساتھ پڑھے جائیں تو ایک ایسی صورت نظر آ سکتی ہے جو اکیلا اسکور چھپا دیتا ہے: ایسا ترجمہ جو ماخذ کی ہیئت زبان کے مزاج کے خلاف برقرار رکھتا ہے مگر اکثر اس کے معنی سے ہٹ جاتا ہے۔ ایسی صورت کو میکانکی نقالی پڑھا جا سکتا ہے۔ یہ نقالی کسی انسانی مترجم کی ہے یا مشین کی، جائزہ اس کا فیصلہ نہیں کر سکتا اور نہ کسی جانب کوئی دعویٰ کرتا ہے۔ اس گوشے کی حدیں اس وقت طے کی جائیں گی جب کافی رپورٹوں پر نشان لگ چکے ہوں۔ تب تک کوئی رپورٹ اس میں نہیں رکھی جاتی۔"
+"Read together, mimicry and the quality score can show a pattern the score alone hides: a translation that imitates the source's form against the grain of the language while departing often from its sense. Such a pattern can be read as mechanical mimicry, form copied without the sense that should carry it. Whether the mimicry is a human translator's or a machine's, the assessment cannot tell, and it makes no claim either way. The thresholds for this corner will be set once enough reports have been marked. Until then no report is placed in it.",
+"نقالی اور معیار اسکور ساتھ پڑھے جائیں تو ایک ایسی صورت نظر آ سکتی ہے جو اکیلا اسکور چھپا دیتا ہے: ایسا ترجمہ جو زبان کے مزاج کے خلاف ماخذ کی ہیئت کی نقل کرتا ہے مگر اکثر اس کے معنی سے ہٹ جاتا ہے۔ ایسی صورت کو میکانکی نقالی پڑھا جا سکتا ہے، یعنی ہیئت کی نقل اس معنی کے بغیر جسے اس ہیئت کو اٹھانا تھا۔ یہ نقالی کسی انسانی مترجم کی ہے یا مشین کی، جائزہ اس کا فیصلہ نہیں کر سکتا اور نہ کسی جانب کوئی دعویٰ کرتا ہے۔ اس گوشے کی حدیں اس وقت طے کی جائیں گی جب کافی رپورٹوں پر نشان لگ چکے ہوں۔ تب تک کوئی رپورٹ اس میں نہیں رکھی جاتی۔"
 ],
 "m.checks.p": [
 "Two optional notes record what the sample alone may not show: a source check (signs that the translator worked from a text other than the designated source) and paratext (titles, epigraphs, prefaces and notes kept, dropped or added). They are written by the assessor, who has the whole translation, and they never enter the score.",
@@ -1138,28 +1138,28 @@ export const STRINGS = {
 "ترجمہ"
 ],
 "prox.legendIn": [
-"translation in the mimicry corner",
-"نقالی کے گوشے میں ترجمہ"
+"translation in the mechanical-mimicry corner",
+"میکانکی نقالی کے گوشے میں ترجمہ"
 ],
 "prox.legendZone": [
-"artificiality {art}+ and quality score below {score}",
-"تصنع {art} یا زیادہ اور معیار اسکور {score} سے کم"
+"mimicry {art}+ and quality score below {score}",
+"نقالی {art} یا زیادہ اور معیار اسکور {score} سے کم"
 ],
 "h.art": [
-"Artificiality",
-"تصنع"
+"Mimicry",
+"نقالی"
 ],
 "art.axisX": [
-"Artificiality",
-"تصنع"
+"Mimicry",
+"نقالی"
 ],
 "art.left": [
 "natural",
 "بے ساختگی"
 ],
 "art.right": [
-"artificial",
-"تصنع"
+"mimicking",
+"نقالی"
 ],
 "art.forced": [
 "Forced",
@@ -1174,20 +1174,20 @@ export const STRINGS = {
 "اوسط"
 ],
 "art.hint": [
-"Artificiality is the assessor's judgement: how much of the form kept from the source reads against the grain of Urdu. It never enters the score or the outcome.",
-"تصنع جائزہ کار کی رائے ہے: ماخذ سے برقرار رکھی گئی ہیئت کا کتنا حصہ اردو کے مزاج کے خلاف پڑھا جاتا ہے۔ یہ کبھی اسکور یا نتیجے میں شامل نہیں ہوتا۔"
+"Mimicry is the assessor's judgement: how much of the form kept from the source imitates it against the grain of Urdu. It never enters the score or the outcome.",
+"نقالی جائزہ کار کی رائے ہے: ماخذ سے برقرار رکھی گئی ہیئت کا کتنا حصہ اردو کے مزاج کے خلاف اس کی نقل ہے۔ یہ کبھی اسکور یا نتیجے میں شامل نہیں ہوتی۔"
 ],
 "art.tableHint": [
-"Proximity (kept ÷ all) shows how much of the source's form the translation keeps, and makes no judgement. Artificiality (forced ÷ kept) is the share of that kept form which is kept against Urdu syntax, punctuation or idiom.",
-"نزدیکی (برقرار ÷ کل) بتاتی ہے کہ ترجمہ ماخذ کی ہیئت کا کتنا حصہ برقرار رکھتا ہے، اور کوئی فیصلہ نہیں دیتی۔ تصنع (غیر فطری ÷ برقرار) اس برقرار ہیئت کا وہ حصہ ہے جو اردو نحو، رموزِ اوقاف یا محاورے کے خلاف برقرار رکھا گیا۔"
+"Proximity (kept ÷ all) shows how much of the source's form the translation keeps, and makes no judgement. Mimicry (forced ÷ kept) is the share of that kept form which is kept against Urdu syntax, punctuation or idiom.",
+"نزدیکی (برقرار ÷ کل) بتاتی ہے کہ ترجمہ ماخذ کی ہیئت کا کتنا حصہ برقرار رکھتا ہے، اور کوئی فیصلہ نہیں دیتی۔ نقالی (غیر فطری ÷ برقرار) اس برقرار ہیئت کا وہ حصہ ہے جو اردو نحو، رموزِ اوقاف یا محاورے کے خلاف برقرار رکھا گیا۔"
 ],
 "m.art.h": [
-"Artificiality",
-"تصنع"
+"Mimicry",
+"نقالی"
 ],
 "m.art.p1": [
-"Beside the quality score, each report places the translation on a second, independent axis: artificiality, how much of the form the translation keeps from the source is kept against the grain of the target language, from 0 to 100. Its two ends are natural (بے ساختگی), where whatever form is kept still reads as the target language, and artificial (تصنع), where the kept form makes the prose stiff, awkward or unidiomatic.",
-"معیار اسکور کے ساتھ ساتھ ہر رپورٹ ترجمے کو ایک دوسرے، الگ محور پر بھی رکھتی ہے: تصنع، یعنی ترجمہ ماخذ کی جو ہیئت برقرار رکھتا ہے اس کا کتنا حصہ ہدف زبان کے مزاج کے خلاف برقرار رکھا گیا، صفر سے سو تک۔ اس کے دو سرے بے ساختگی اور تصنع ہیں۔ بے ساختگی سے مراد یہ ہے کہ جو ہیئت بھی برقرار رہے وہ ہدف زبان ہی کی طرح پڑھی جائے، اور تصنع سے مراد یہ کہ برقرار رکھی گئی ہیئت نثر کو اکڑا ہوا، بے ڈھنگا یا خلافِ محاورہ بنا دے۔"
+"Beside the quality score, each report places the translation on a second, independent axis: mimicry, how much of the form the translation keeps from the source is kept against the grain of the target language, from 0 to 100. Its two ends are natural (بے ساختگی), where whatever form is kept still reads as the target language, and mimicking (نقالی), where the kept form imitates the source at the target language's expense and makes the prose stiff, awkward or unidiomatic.",
+"معیار اسکور کے ساتھ ساتھ ہر رپورٹ ترجمے کو ایک دوسرے، الگ محور پر بھی رکھتی ہے: نقالی، یعنی ترجمہ ماخذ کی جو ہیئت برقرار رکھتا ہے اس کا کتنا حصہ ہدف زبان کے مزاج کے خلاف برقرار رکھا گیا، صفر سے سو تک۔ اس کے دو سرے بے ساختگی اور نقالی ہیں۔ بے ساختگی سے مراد یہ ہے کہ جو ہیئت بھی برقرار رہے وہ ہدف زبان ہی کی طرح پڑھی جائے، اور نقالی سے مراد یہ کہ برقرار رکھی گئی ہیئت ہدف زبان کی قیمت پر ماخذ کی نقل کرے اور نثر کو اکڑا ہوا، بے ڈھنگا یا خلافِ محاورہ بنا دے۔"
 ],
 "m.art.h3a": [
 "How it is counted",
@@ -1218,20 +1218,20 @@ export const STRINGS = {
 "ثقافتی اشیا اور نام: جوں کے توں رکھے گئے، نہ کہ بدلے، سمجھائے یا حذف کیے گئے"
 ],
 "m.art.p3": [
-"Each component gets two counts. Proximity (نزدیکی) is the share of cases kept: how much of the source's form survives. Of the kept cases, the assessor marks those that are forced: kept against the target language's syntax, punctuation or idiom, so that the sentence reads awkwardly. Artificiality is the share of kept cases that are forced, averaged over the components. A component with fewer than three cases, or for artificiality fewer than three kept cases, is shown but left out of the average.",
-"ہر جزو کی دو گنتیاں ہوتی ہیں۔ نزدیکی برقرار رکھی گئی مثالوں کا تناسب ہے، یعنی ماخذ کی ہیئت کا کتنا حصہ باقی رہا۔ برقرار مثالوں میں سے جائزہ کار ان پر نشان لگاتا ہے جو غیر فطری ہیں، یعنی ہدف زبان کی نحو، رموزِ اوقاف یا محاورے کے خلاف برقرار رکھی گئیں اور جملہ بے ڈھنگا پڑھا جاتا ہے۔ تصنع برقرار مثالوں میں غیر فطری مثالوں کا تناسب ہے، جس کا اجزا پر اوسط لیا جاتا ہے۔ جس جزو کی تین سے کم مثالیں ہوں، یا تصنع کے لیے تین سے کم برقرار مثالیں، وہ دکھایا تو جاتا ہے مگر اوسط میں شامل نہیں ہوتا۔"
+"Each component gets two counts. Proximity (نزدیکی) is the share of cases kept: how much of the source's form survives. Of the kept cases, the assessor marks those that are forced: kept against the target language's syntax, punctuation or idiom, so that the sentence reads awkwardly. Mimicry is the share of kept cases that are forced, averaged over the components. A component with fewer than three cases, or for mimicry fewer than three kept cases, is shown but left out of the average.",
+"ہر جزو کی دو گنتیاں ہوتی ہیں۔ نزدیکی برقرار رکھی گئی مثالوں کا تناسب ہے، یعنی ماخذ کی ہیئت کا کتنا حصہ باقی رہا۔ برقرار مثالوں میں سے جائزہ کار ان پر نشان لگاتا ہے جو غیر فطری ہیں، یعنی ہدف زبان کی نحو، رموزِ اوقاف یا محاورے کے خلاف برقرار رکھی گئیں اور جملہ بے ڈھنگا پڑھا جاتا ہے۔ نقالی برقرار مثالوں میں غیر فطری مثالوں کا تناسب ہے، جس کا اجزا پر اوسط لیا جاتا ہے۔ جس جزو کی تین سے کم مثالیں ہوں، یا نقالی کے لیے تین سے کم برقرار مثالیں، وہ دکھایا تو جاتا ہے مگر اوسط میں شامل نہیں ہوتا۔"
 ],
 "m.art.h3b": [
 "What it is and is not",
 "یہ کیا ہے اور کیا نہیں"
 ],
 "m.art.p4": [
-"Proximity makes no judgement: keeping the source's form is a choice, and a close translation and a free one are both legitimate. Artificiality is a judgement, the assessor's, made like the coding of deviations, and each forced case is named in the report. Neither enters the score or the outcome.",
-"نزدیکی کوئی فیصلہ نہیں دیتی: ماخذ کی ہیئت برقرار رکھنا ایک انتخاب ہے، اور قریبی اور آزاد دونوں ترجمے جائز ہیں۔ تصنع ایک فیصلہ ہے، جائزہ کار کا، جو انحرافات کی درجہ بندی کی طرح کیا جاتا ہے، اور ہر غیر فطری مثال رپورٹ میں نام لے کر درج ہوتی ہے۔ ان میں سے کوئی بھی اسکور یا نتیجے میں شامل نہیں ہوتا۔"
+"Proximity makes no judgement: keeping the source's form is a choice, and a close translation and a free one are both legitimate. Mimicry is a judgement, the assessor's, made like the coding of deviations, and each forced case is named in the report. Neither enters the score or the outcome.",
+"نزدیکی کوئی فیصلہ نہیں دیتی: ماخذ کی ہیئت برقرار رکھنا ایک انتخاب ہے، اور قریبی اور آزاد دونوں ترجمے جائز ہیں۔ نقالی ایک فیصلہ ہے، جائزہ کار کا، جو انحرافات کی درجہ بندی کی طرح کیا جاتا ہے، اور ہر غیر فطری مثال رپورٹ میں نام لے کر درج ہوتی ہے۔ ان میں سے کوئی بھی اسکور یا نتیجے میں شامل نہیں ہوتا۔"
 ],
 "m.art.h3c": [
-"The mimicry corner",
-"نقالی کا گوشہ"
+"The mechanical-mimicry corner",
+"میکانکی نقالی کا گوشہ"
 ],
 "m.checks.h": [
 "Notes beyond the sample",

@@ -190,11 +190,11 @@ export const icon = (name, cls = '') =>
 // How much of the source's form survives, counted within the pair only (no outside norm).
 // It describes strategy and never enters the score or the outcome.
 export const PROX_KEYS = ['sentences', 'clauses', 'grammar', 'punctuation', 'culture'];
-export const PROX_MIN = 3; // a component needs at least this many cases (kept cases, for artificiality) to enter an average
-// The mimicry corner: artificiality at or above `art` with a quality score below `score`.
+export const PROX_MIN = 3; // a component needs at least this many cases (kept cases, for mimicry) to enter an average
+// The mechanical-mimicry corner: mimicry at or above `art` with a quality score below `score`.
 // Left unset until enough reports have been marked to place the threshold.
 export const MIMIC = null;
-// For each component: proximity = kept / all (descriptive), artificiality = forced / kept (the assessor's judgement).
+// For each component: proximity = kept / all (descriptive), mimicry = forced / kept (the assessor's judgement).
 export function proximity(r) {
   const comps = PROX_KEYS.map((k) => {
     const x = r.proximity?.[k] || {}; const total = +x.total || 0; const kept = +x.kept || 0;
@@ -207,7 +207,7 @@ export function proximity(r) {
   return { comps, score: avg(comps.filter((x) => x.counted).map((x) => x.pct)), art: avg(comps.filter((x) => x.artCounted).map((x) => x.artPct)) };
 }
 export const isMimicry = (art, score) => !!MIMIC && art != null && art >= MIMIC.art && score < MIMIC.score;
-// Artificiality across, quality score up. points: [{x, y, label?, href?}]
+// Mimicry across, quality score up. points: [{x, y, label?, href?}]
 export function gridSVG(points) {
   const W = 560, H = 360, L = 58, Rm = 18, Tp = 14, B = 56, yMin = 40;
   const X = (v) => L + (Math.min(Math.max(v, 0), 100) / 100) * (W - L - Rm);
@@ -277,7 +277,7 @@ export function gridSVG(points) {
 
 // Legend shown under every grid (the corner entries only once a threshold is set).
 export const gridLegend = () => `<div class="pgrid-legend"><span><i class="dot"></i>${t('prox.legendOut')}</span>${MIMIC ? `<span><i class="dot mim"></i>${t('prox.legendIn')}</span><span><i class="sw"></i>${t('prox.legendZone', { art: MIMIC.art, score: MIMIC.score })}</span>` : ''}</div>`;
-// A compact artificiality bar for report cards.
+// A compact mimicry bar for report cards.
 export function proxBar(r, quality) {
   const p = proximity(r).art; if (p == null) return '';
   const m = isMimicry(p, quality);
