@@ -44,7 +44,7 @@
 
 <script type="module">
 import { t as tt, tr, label, UR } from './assets/i18n.js';
-import { PROX_KEYS, PROX_MIN, proximity, isMimicry, gridSVG, SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide } from './assets/common.js';
+import { gridLegend, PROX_KEYS, PROX_MIN, proximity, isMimicry, gridSVG, SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide } from './assets/common.js';
 const H2 = (ic, t) => `<h2>${icon(ic)}${t}</h2>`;
 // "Basis." followed by report prose: inline in English; in Urdu the prose gets its own block,
 // so English prose keeps its own direction.
@@ -186,10 +186,10 @@ function proximitySection() {
     <td class="num">${x.counted ? Math.round(x.pct) : `<span class="muted">${tt('prox.few')}</span>`}</td></tr>`).join('');
   const note = isMimicry(P.score, q) ? `<div class="mimic">${icon('info')}<p dir="auto">${tt('prox.mimic')}</p></div>` : '';
   return `${H2('chart', tt('h.prox'))}
-    <div class="prox-wrap"><div class="prox-grid">${gridSVG([{ x: P.score, y: q }])}</div>
+    <div class="prox-wrap"><div class="prox-grid">${gridSVG([{ x: P.score, y: q }])}${gridLegend()}</div>
     <div class="prox-side"><table class="prox-t"><thead><tr><th>${tt('prox.th.comp')}</th><th class="num">${tt('prox.th.count')}</th><th class="num">%</th></tr></thead>
     <tbody>${rows}<tr class="total"><td>${tt('h.prox')}</td><td></td><td class="num"><strong>${Math.round(P.score)}</strong></td></tr></tbody></table>${note}</div></div>
-    <p class="hint">${tt('prox.hint')}</p>`;
+    <p class="prox-hint">${tt('prox.hint')}</p>`;
 }
 
 function devExtras(d) {

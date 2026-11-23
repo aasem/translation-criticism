@@ -36,7 +36,7 @@
       <p class="privacy" data-i18n="index.privacy">If a translation is sent to me privately by email, the translator's name is published only with their permission.</p>
       <section class="pgrid-front"><h2 data-i18n="grid.head">Proximity and quality</h2>
         <div id="pgrid"></div>
-        <p class="hint" data-i18n="grid.hint">Each point is a report: proximity to the source's form across, quality score up. Click a point to open the report.</p>
+        <p class="prox-hint" data-i18n="grid.hint">Each point is a report: proximity to the source's form across, quality score up. Click a point to open the report.</p>
       </section>
       <p class="signature"><em data-i18n="index.signature">Asim Bakhshi</em> · <a href="https://mechanomorph.substack.com/p/published-works" rel="noopener" data-i18n="index.works">Published works on Mechanomorph →</a></p>
     </div>
@@ -64,7 +64,7 @@ for (const a of document.querySelectorAll('a.mail')) {
 </script>
 <script type="module">
 import { t, tr, label, UR } from './assets/i18n.js';
-import { proximity, gridSVG, loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon, isPublished, GRADES, gradeName, gradeClass, scoreRange, outcomeMoved, scoreGuide } from './assets/common.js';
+import { proxBar, gridLegend, proximity, gridSVG, loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon, isPublished, GRADES, gradeName, gradeClass, scoreRange, outcomeMoved, scoreGuide } from './assets/common.js';
 
 const $ = (id) => document.getElementById(id);
 let reports = [];
@@ -144,6 +144,7 @@ function render() {
         <div><b>${t.total.Critical}<i>·</i>${t.total.Major}</b><span>${T('card.critMaj')}</span></div>
         <div><b>${esc(label('textTypeShort', r.textType))}</b><span>${T('card.type')}</span></div>
       </div>
+      ${proxBar(r, t.score)}
       <div class="rc-foot">
         <span>${icon('calendar')}${esc(r.date)}</span>
         ${pub ? `<span>${icon('book')}${esc(pub)}</span>` : ''}
@@ -171,7 +172,7 @@ try {
     x: p, y: tally(r).score, href: `report.html?id=${encodeURIComponent(r.id)}`,
     label: `${String(r.author || '').split(' ').pop()} · ${String(r.submission?.translator || T('grid.unnamed')).split(' ').pop()}`,
   }));
-  $('pgrid').innerHTML = pts.length ? gridSVG(pts) : '';
+  $('pgrid').innerHTML = pts.length ? gridSVG(pts) + gridLegend() : '';
   const qs = new URLSearchParams(location.search).get('q');
   if (qs) $('q').value = qs;
   render();

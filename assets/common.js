@@ -213,13 +213,13 @@ export function gridSVG(points) {
   for (const v of [0, 25, 50, 75, 100]) s += `<line class="gl" x1="${X(v)}" y1="${Y(100)}" x2="${X(v)}" y2="${Y(yMin)}"/><text class="tk" x="${X(v)}" y="${Y(yMin) + 16}" text-anchor="middle">${v}</text>`;
   for (const v of [40, 60, 80, 100]) s += `<text class="tk" x="${L - 8}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`;
   for (const v of [90, 95, 98]) s += `<line class="band" x1="${L}" y1="${Y(v)}" x2="${X(100)}" y2="${Y(v)}"/>`;
-  for (const [g, v] of [['A', 99], ['B', 96.5], ['C', 92.5], ['D', 86]]) s += `<text class="band-l" x="${L + 6}" y="${Y(v) + 4}">${g}</text>`;
+  for (const [g, v] of [['A', 99], ['B', 96.5], ['C', 92.5], ['D', 86]]) s += `<text class="band-l g${g}" x="${L + 6}" y="${Y(v) + 4}">${g}</text>`;
   s += `<line class="ax" x1="${L}" y1="${Y(yMin)}" x2="${X(100)}" y2="${Y(yMin)}"/><line class="ax" x1="${L}" y1="${Y(100)}" x2="${L}" y2="${Y(yMin)}"/>`;
-  s += `<text class="axl" x="${L}" y="${H - 8}">← ${e(t('prox.left'))}</text><text class="axl" x="${X(100)}" y="${H - 8}" text-anchor="end">${e(t('prox.right'))} →</text>`;
-  s += `<text class="axl" x="${(L + X(100)) / 2}" y="${H - 8}" text-anchor="middle">${e(t('prox.axisX'))}</text>`;
-  s += `<text class="axl" transform="translate(16 ${(Y(100) + Y(yMin)) / 2}) rotate(-90)" text-anchor="middle">${e(t('prox.axisY'))}</text>`;
+  s += `<text class="axe left" x="${L}" y="${H - 10}">← ${e(t('prox.left'))}</text><text class="axe right" x="${X(100)}" y="${H - 10}" text-anchor="end">${e(t('prox.right'))} →</text>`;
+  s += `<text class="axt" x="${(L + X(100)) / 2}" y="${H - 10}" text-anchor="middle">${e(t('prox.axisX'))}</text>`;
+  s += `<text class="axt" transform="translate(16 ${(Y(100) + Y(yMin)) / 2}) rotate(-90)" text-anchor="middle">${e(t('prox.axisY'))}</text>`;
   const boxes = []; // placed label boxes, to keep labels from overlapping
-  const place = (px, py, w) => {
+  const place = (px, py, w0) => { const w = w0 * 1.08;
     for (const [dx, dy, anchor] of [[9, -9, 'start'], [-9, -9, 'end'], [9, 17, 'start'], [-9, 17, 'end'], [9, 31, 'start'], [-9, 31, 'end']]) {
       const x0 = anchor === 'start' ? px + dx : px + dx - w; const b = [x0, py + dy - 11, x0 + w, py + dy + 2];
       if (x0 < L || b[2] > W - 2) continue;
@@ -229,11 +229,22 @@ export function gridSVG(points) {
   };
   for (const p of points) {
     const [lx, ly, la] = p.label ? place(X(p.x), Y(p.y), p.label.length * 6.2) : [0, 0, 'start'];
-    const dot = `<circle class="pt${isMimicry(p.x, p.y) ? ' mim' : ''}" cx="${X(p.x)}" cy="${Y(p.y)}" r="6"><title>${e(p.label || '')} · ${Math.round(p.x)} / ${p.y.toFixed(1)}</title></circle>`
-      + (p.label ? `<text class="pl" x="${lx}" y="${ly}" text-anchor="${la}">${e(p.label)}</text>` : '');
+    const dot = `<circle class="pt${isMimicry(p.x, p.y) ? ' mim' : ''}" cx="${X(p.x)}" cy="${Y(p.y)}" r="7"><title>${e(p.label || '')} · ${Math.round(p.x)} / ${p.y.toFixed(1)}</title></circle>`
+      + (p.label ? `<text class="pl${isMimicry(p.x, p.y) ? ' mim' : ''}" x="${lx}" y="${ly}" text-anchor="${la}">${e(p.label)}</text>` : '');
     s += p.href ? `<a href="${e(p.href)}">${dot}</a>` : dot;
   }
   return s + '</svg>';
+}
+
+// Legend shown under every grid.
+export const gridLegend = () => `<div class="pgrid-legend"><span><i class="dot"></i>${t('prox.legendOut')}</span><span><i class="dot mim"></i>${t('prox.legendIn')}</span><span><i class="sw"></i>${t('prox.legendZone')}</span></div>`;
+// A compact proximity bar for report cards.
+export function proxBar(r, quality) {
+  const p = proximity(r).score; if (p == null) return '';
+  const m = isMimicry(p, quality);
+  return `<div class="rc-prox${m ? ' mim' : ''}"><div class="rc-prox-head"><span>${t('h.prox')} <b>${Math.round(p)}</b></span>${m ? `<span class="rc-mim">${t('prox.zone')}</span>` : ''}</div>
+    <div class="rc-prox-track" dir="ltr"><span class="rc-prox-zone" style="left:${MIMIC.prox}%"></span><span class="rc-prox-mark" style="left:${p}%"></span></div>
+    <div class="rc-prox-ends" dir="ltr"><span>${t('prox.left')}</span><span>${t('prox.right')}</span></div></div>`;
 }
 
 export const REPO = 'aasem/translation-criticism';

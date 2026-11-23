@@ -1136,5 +1136,17 @@ export const STRINGS = {
 "m.checks.p": [
 "Two optional notes record what the sample alone may not show: a source check (signs that the translator worked from a text other than the designated source) and paratext (titles, epigraphs, prefaces and notes kept, dropped or added). They are written by the assessor, who has the whole translation, and they never enter the score.",
 "دو اختیاری نوٹ وہ باتیں درج کرتے ہیں جو صرف نمونے سے شاید ظاہر نہ ہوں: ماخذ کی جانچ (اس بات کے آثار کہ مترجم نے نامزد ماخذ کے علاوہ کسی اور متن سے کام لیا) اور متعلقاتِ متن (عنوان، سرنامے، دیباچے اور حواشی، جو برقرار رہے، حذف ہوئے یا بڑھائے گئے)۔ یہ نوٹ جائزہ کار لکھتا ہے جس کے پاس پورا ترجمہ ہوتا ہے، اور یہ کبھی اسکور میں شامل نہیں ہوتے۔"
+],
+"prox.legendOut": [
+"translation",
+"ترجمہ"
+],
+"prox.legendIn": [
+"translation in the mimicry corner",
+"نقالی کے گوشے میں ترجمہ"
+],
+"prox.legendZone": [
+"proximity 70+ and quality score below 90",
+"قربت ستر یا زیادہ اور معیار اسکور نوے سے کم"
 ]
 };
