@@ -68,5 +68,36 @@
     "model": "",
     "date": ""
   },
-  "textType": "Expressive"
+  "textType": "Expressive",
+  "proximity": {
+    "sentences": {
+      "kept": 0,
+      "total": 0,
+      "note": ""
+    },
+    "clauses": {
+      "kept": 0,
+      "total": 0,
+      "note": ""
+    },
+    "grammar": {
+      "kept": 0,
+      "total": 0,
+      "note": ""
+    },
+    "punctuation": {
+      "kept": 0,
+      "total": 0,
+      "note": ""
+    },
+    "culture": {
+      "kept": 0,
+      "total": 0,
+      "note": ""
+    }
+  },
+  "checks": {
+    "source": "",
+    "paratext": ""
+  }
 }

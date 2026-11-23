@@ -44,7 +44,7 @@
 
 <script type="module">
 import { t as tt, tr, label, UR } from './assets/i18n.js';
-import { SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide } from './assets/common.js';
+import { PROX_KEYS, PROX_MIN, proximity, isMimicry, gridSVG, SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide } from './assets/common.js';
 const H2 = (ic, t) => `<h2>${icon(ic)}${t}</h2>`;
 // "Basis." followed by report prose: inline in English; in Urdu the prose gets its own block,
 // so English prose keeps its own direction.
@@ -156,7 +156,9 @@ function details() {
   const nr = `<span class="muted">${tt('pub.none')}</span>`;
   const pv = (v) => (v ? urduWrap(esc(v)) : nr);
   if (editing) return `${H2('info', tt('det.head'))}
-    <p class="hint">Notes on the texts: report-specific only (transcription, misprints, segmentation). Everything general belongs on the Method page.</p>${T('textNotes', { md: true, rows: 4 })}`;
+    <p class="hint">Notes on the texts: report-specific only (transcription, misprints, segmentation). Everything general belongs on the Method page.</p>${T('textNotes', { md: true, rows: 4 })}
+    <p class="hint">${tt('check.source')}: optional. Signs that the translator worked from a text other than the designated source. Never scored.</p>${T('checks.source', { md: true, rows: 2 })}
+    <p class="hint">${tt('check.paratext')}: optional. Titles, epigraphs, prefaces and notes kept, dropped or added. Never scored.</p>${T('checks.paratext', { md: true, rows: 2 })}`;
   const sample = tt('det.sampleUr', { words: F.words, segments: F.segments, loc: loc ? ` · ${urduWrap(esc(loc))}` : '' });
   const rows = [
     row(tt('det.kind'), `${esc(label('stage', R.stage || 'Pre-publication'))} · ${esc(tt('report.typeChip', { type: label('textType', R.textType) }))}`),
@@ -165,8 +167,29 @@ function details() {
   if (isPublished(R)) rows.push(row(tt('det.publication'),
     `${pv(pub.publisher)} · ${pv(pub.place)} · ${pv(pub.year)} · ${tt('pub.edition')}: ${pv(pub.edition)} · ${tt('pub.isbn')}: ${pv(pub.isbn)} · ${tt('pub.pages')}: ${pv(pub.pages)}`));
   if (R.textNotes?.trim()) rows.push(row(tt('det.notes'), md(fill(R.textNotes, F))));
+  if (R.checks?.source?.trim()) rows.push(row(tt('check.source'), md(fill(R.checks.source, F))));
+  if (R.checks?.paratext?.trim()) rows.push(row(tt('check.paratext'), md(fill(R.checks.paratext, F))));
   return `<table class="kv details"><tbody>${rows.join('')}</tbody></table>
     <p class="hint">${tt('det.method', { link: `<a href="about.html">${tt('nav.method')}</a>` })}</p>`;
+}
+
+// Proximity: a second axis beside the quality score. Describes strategy; never scored.
+function proximitySection() {
+  const P = proximity(R); const q = tally(R).score;
+  if (editing) return `${H2('chart', tt('h.prox'))}
+    <p class="hint">Count each component within the pair: cases kept and all cases. Fewer than ${PROX_MIN} cases: shown but left out of the average.</p>
+    <table class="kv"><tbody>${PROX_KEYS.map((k) => `<tr><th>${tt('prox.' + k)}<div class="hint">${tt('prox.' + k + '.d')}</div></th>
+      <td>${I(`proximity.${k}.kept`, 'kept')} / ${I(`proximity.${k}.total`, 'all')}<br>${I(`proximity.${k}.note`, 'note (optional)')}</td></tr>`).join('')}</tbody></table>`;
+  if (P.score == null) return '';
+  const rows = P.comps.map((x) => `<tr><td>${tt('prox.' + x.key)}<div class="hint">${tt('prox.' + x.key + '.d')}</div>${x.note ? `<div class="hint" dir="auto">${urduWrap(esc(x.note))}</div>` : ''}</td>
+    <td class="num"><span dir="ltr">${x.total ? `${x.kept} / ${x.total}` : '–'}</span></td>
+    <td class="num">${x.counted ? Math.round(x.pct) : `<span class="muted">${tt('prox.few')}</span>`}</td></tr>`).join('');
+  const note = isMimicry(P.score, q) ? `<div class="mimic">${icon('info')}<p dir="auto">${tt('prox.mimic')}</p></div>` : '';
+  return `${H2('chart', tt('h.prox'))}
+    <div class="prox-wrap"><div class="prox-grid">${gridSVG([{ x: P.score, y: q }])}</div>
+    <div class="prox-side"><table class="prox-t"><thead><tr><th>${tt('prox.th.comp')}</th><th class="num">${tt('prox.th.count')}</th><th class="num">%</th></tr></thead>
+    <tbody>${rows}<tr class="total"><td>${tt('h.prox')}</td><td></td><td class="num"><strong>${Math.round(P.score)}</strong></td></tr></tbody></table>${note}</div></div>
+    <p class="hint">${tt('prox.hint')}</p>`;
 }
 
 function devExtras(d) {
@@ -292,7 +315,7 @@ function render() {
   $('root').innerHTML = [
     header(), passages(),
     editing ? `${H2('pen', 'Conclusions (Accuracy, Language, Style)')}${T('lead', { md: true })}${tokenHint()}` : `<div class="lead">${icon('target', 'lead-ico')}<div dir="auto">${md(fill(R.lead, F))}</div></div>`,
-    details(), sideBySide(), counts(),
+    details(), sideBySide(), counts(), proximitySection(),
     `${H2('wave', tt('h.tendencies'))}${T('tendencies', { md: true, rows: 14 })}`,
     `${H2('user', tt('h.profile'))}${T('translatorProfile', { md: true, rows: 10 })}`,
     isPublished(R) ? grade() : decision(),

@@ -406,5 +406,36 @@
     "date": "2026-11-22"
   },
   "textNotes": "- The supplied source reads \"strike though the mask\" (#4). It is read as the standard \"through\", as the translation does.\n- Four sentences are split at a semicolon (#9–10, #11–12, #13–14, #15–16). The translation's added opening sentence is shown with #1. The translation joins #14 and #15; #15's deviations are recorded under #15.",
-  "textType": "Expressive"
+  "textType": "Expressive",
+  "proximity": {
+    "sentences": {
+      "kept": 11,
+      "total": 18,
+      "note": "12 source sentences, 18 Urdu: 11 sentence ends shared."
+    },
+    "clauses": {
+      "kept": 10,
+      "total": 11,
+      "note": "Only #14 reverses its clauses (the if-clause moved before the main clause)."
+    },
+    "grammar": {
+      "kept": 3,
+      "total": 4,
+      "note": "Articles 1 of 2, possessive 1 of 1, passive 1 of 1."
+    },
+    "punctuation": {
+      "kept": 2,
+      "total": 8,
+      "note": "5 semicolons dropped; 2 of 3 dashes kept (#3)."
+    },
+    "culture": {
+      "kept": 1,
+      "total": 1,
+      "note": "The white whale (سفید ویل)."
+    }
+  },
+  "checks": {
+    "source": "",
+    "paratext": ""
+  }
 }

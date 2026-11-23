@@ -6,15 +6,17 @@ export const CODES = {
   A1: ['Mistranslation', "The sense differs from the source's (a word's meaning, a changed subject or referent)"],
   A2: ['Addition', "Says something the source doesn't"],
   A3: ['Omission', 'Drops something the source says'],
-  A4: ['Grammatical meaning', 'Tense, aspect, mood, modality or number changed'],
+  A4: ['Grammatical meaning', 'Tense, aspect, mood, modality, number or voice changed'],
   A5: ['Distinction', 'Two source words merged into one target word, or one split into two that diverge'],
   A6: ['Logic', 'The relation between clauses changed'],
+  A7: ['Reading closed', 'Settles a reading the source deliberately leaves open (a choice forced by Urdu grammar is not counted)'],
   B1: ['Grammar', 'Agreement, gender, case or syntax error'],
   B2: ['Non-word or spelling', 'Not a word of the target language, or misspelt'],
   B3: ['Ambiguity', "Allows a reading the source doesn't"],
   C1: ['Register', 'More formal, colloquial, religious or technical than the source'],
   C2: ['Word choice', 'Right basic meaning, wrong connotation or collocation'],
   C3: ['Imagery', 'A metaphor, simile or image altered or weakened'],
+  C5: ['Effect', 'Irony, humour, suspense, emphasis or mood the passage is built to produce is lost or altered'],
   C4: ['Interference', 'Source syntax, punctuation or calques showing through (reported as a pattern under Stylistic tendencies)'],
 };
 if (UR) for (const c in CODES) CODES[c] = [t(`code.${c}`), t(`code.${c}.t`)];
@@ -183,6 +185,56 @@ const P = {
 };
 export const icon = (name, cls = '') =>
   `<svg class="ico ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[name] || ''}</svg>`;
+
+// ---------- proximity: a second, independent axis ----------
+// How much of the source's form survives, counted within the pair only (no outside norm).
+// It describes strategy and never enters the score or the outcome.
+export const PROX_KEYS = ['sentences', 'clauses', 'grammar', 'punctuation', 'culture'];
+export const PROX_MIN = 3; // a component needs at least this many cases to enter the average
+export const MIMIC = { prox: 70, score: 90 }; // the corner where the mimicry note is shown
+export function proximity(r) {
+  const comps = PROX_KEYS.map((k) => {
+    const x = r.proximity?.[k] || {}; const total = +x.total || 0; const kept = +x.kept || 0;
+    return { key: k, kept, total, note: x.note || '', counted: total >= PROX_MIN, pct: total ? (100 * kept) / total : null };
+  });
+  const used = comps.filter((x) => x.counted);
+  return { comps, score: used.length ? used.reduce((a, x) => a + x.pct, 0) / used.length : null };
+}
+export const isMimicry = (prox, score) => prox != null && prox >= MIMIC.prox && score < MIMIC.score;
+// Proximity across, quality score up. points: [{x, y, label?, href?}]
+export function gridSVG(points) {
+  const W = 560, H = 360, L = 58, Rm = 18, Tp = 14, B = 56, yMin = 40;
+  const X = (v) => L + (Math.min(Math.max(v, 0), 100) / 100) * (W - L - Rm);
+  const Y = (v) => Tp + (1 - (Math.min(Math.max(v, yMin), 100) - yMin) / (100 - yMin)) * (H - Tp - B);
+  const e = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  let s = `<svg class="pgrid-svg" viewBox="0 0 ${W} ${H}" direction="ltr" role="img" aria-label="${e(t('prox.axisX'))} / ${e(t('prox.axisY'))}">`;
+  s += `<rect class="zone" x="${X(MIMIC.prox)}" y="${Y(MIMIC.score)}" width="${X(100) - X(MIMIC.prox)}" height="${Y(yMin) - Y(MIMIC.score)}"/>`;
+  s += `<text class="zone-l" x="${X(100) - 6}" y="${Y(yMin) - 8}" text-anchor="end">${e(t('prox.zone'))}</text>`;
+  for (const v of [0, 25, 50, 75, 100]) s += `<line class="gl" x1="${X(v)}" y1="${Y(100)}" x2="${X(v)}" y2="${Y(yMin)}"/><text class="tk" x="${X(v)}" y="${Y(yMin) + 16}" text-anchor="middle">${v}</text>`;
+  for (const v of [40, 60, 80, 100]) s += `<text class="tk" x="${L - 8}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`;
+  for (const v of [90, 95, 98]) s += `<line class="band" x1="${L}" y1="${Y(v)}" x2="${X(100)}" y2="${Y(v)}"/>`;
+  for (const [g, v] of [['A', 99], ['B', 96.5], ['C', 92.5], ['D', 86]]) s += `<text class="band-l" x="${L + 6}" y="${Y(v) + 4}">${g}</text>`;
+  s += `<line class="ax" x1="${L}" y1="${Y(yMin)}" x2="${X(100)}" y2="${Y(yMin)}"/><line class="ax" x1="${L}" y1="${Y(100)}" x2="${L}" y2="${Y(yMin)}"/>`;
+  s += `<text class="axl" x="${L}" y="${H - 8}">← ${e(t('prox.left'))}</text><text class="axl" x="${X(100)}" y="${H - 8}" text-anchor="end">${e(t('prox.right'))} →</text>`;
+  s += `<text class="axl" x="${(L + X(100)) / 2}" y="${H - 8}" text-anchor="middle">${e(t('prox.axisX'))}</text>`;
+  s += `<text class="axl" transform="translate(16 ${(Y(100) + Y(yMin)) / 2}) rotate(-90)" text-anchor="middle">${e(t('prox.axisY'))}</text>`;
+  const boxes = []; // placed label boxes, to keep labels from overlapping
+  const place = (px, py, w) => {
+    for (const [dx, dy, anchor] of [[9, -9, 'start'], [-9, -9, 'end'], [9, 17, 'start'], [-9, 17, 'end'], [9, 31, 'start'], [-9, 31, 'end']]) {
+      const x0 = anchor === 'start' ? px + dx : px + dx - w; const b = [x0, py + dy - 11, x0 + w, py + dy + 2];
+      if (x0 < L || b[2] > W - 2) continue;
+      if (!boxes.some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1])) { boxes.push(b); return [px + dx, py + dy, anchor]; }
+    }
+    return [px + 9, py - 9, 'start'];
+  };
+  for (const p of points) {
+    const [lx, ly, la] = p.label ? place(X(p.x), Y(p.y), p.label.length * 6.2) : [0, 0, 'start'];
+    const dot = `<circle class="pt${isMimicry(p.x, p.y) ? ' mim' : ''}" cx="${X(p.x)}" cy="${Y(p.y)}" r="6"><title>${e(p.label || '')} · ${Math.round(p.x)} / ${p.y.toFixed(1)}</title></circle>`
+      + (p.label ? `<text class="pl" x="${lx}" y="${ly}" text-anchor="${la}">${e(p.label)}</text>` : '');
+    s += p.href ? `<a href="${e(p.href)}">${dot}</a>` : dot;
+  }
+  return s + '</svg>';
+}
 
 export const REPO = 'aasem/translation-criticism';
 export const BRANCH = 'main';

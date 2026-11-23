@@ -699,5 +699,36 @@
     "date": "2026-11-22"
   },
   "textNotes": "- Source: C. K. Scott Moncrieff's English rendering of the closing pages of *Swann's Way* (the Bois de Boulogne coda).\n- Short exclamations are joined to the sentence that follows (#2, #4). The long Bois sentence is split at its semicolons and at \"and helped me\" (#18–21), and the final sentence at its first semicolon (#25–26).",
-  "textType": "Expressive"
+  "textType": "Expressive",
+  "proximity": {
+    "sentences": {
+      "kept": 23,
+      "total": 24,
+      "note": "24 source sentences, 23 Urdu: \"I dare say.\" is joined to the next."
+    },
+    "clauses": {
+      "kept": 70,
+      "total": 74,
+      "note": "Four relative clauses are moved before their nouns as Urdu participles (#3, #5, #8, #21)."
+    },
+    "grammar": {
+      "kept": 28,
+      "total": 49,
+      "note": "Articles 19 of 23 (ایک or کسی), possessives 8 of 13, passives 1 of 13."
+    },
+    "punctuation": {
+      "kept": 6,
+      "total": 10,
+      "note": "Colon and all 5 semicolons kept; all 4 dashes dropped."
+    },
+    "culture": {
+      "kept": 6,
+      "total": 9,
+      "note": "Kept: Mme Swann, Louis XVI, Paris, Virgil, Dodona, the acacia-avenue. Changed: carriage-and-pair (بگھیاں), the Bois (جنگل), the Grand Lac (بڑی جھیل). Items coded as deviations (Elysian, Druidical, myrtle, country house) are left out."
+    }
+  },
+  "checks": {
+    "source": "Several readings appear to follow Proust's French rather than Moncrieff's English: قلعے for \"a country house\" (#13, French *château*), the added chrysanthemum clause (#13), the French spelling Dodone (#20), and the claim in #24 that places do not belong *only* to the world of space, which is what the French says and the English reverses. The deviations are still coded against the designated English source.",
+    "paratext": ""
+  }
 }

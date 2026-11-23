@@ -180,7 +180,7 @@
           "note": "\"We were all going direct\", the whole society in motion, becomes two fixed landmarks: جنت کا دروازہ (the gate of Heaven) and دوزخ کا دہانا (the mouth of Hell). It is no longer said who goes, or that everyone goes at once."
         },
         {
-          "code": "C3",
+          "code": "C5",
           "severity": "Minor",
           "note": "دوزخ (\"Hell\") names what the source leaves as the euphemism \"the other way\", and the understatement is lost.",
           "functions": [
@@ -243,5 +243,36 @@
     "date": "2026-11-22"
   },
   "textNotes": "- The translation is transcribed from a scanned page.\n- The source is one sentence, split at its seven antithetical pairs and at the em dash. The translation merges #3 and #4.\n- Changes of sentence shape are not counted segment by segment. The loss of the one-sentence form is described under Stylistic tendencies.",
-  "textType": "Expressive"
+  "textType": "Expressive",
+  "proximity": {
+    "sentences": {
+      "kept": 1,
+      "total": 11,
+      "note": "One source sentence becomes 11 Urdu sentences; only the final end is shared."
+    },
+    "clauses": {
+      "kept": 15,
+      "total": 15,
+      "note": "The antithetical pairs keep their order throughout, though several are merged."
+    },
+    "grammar": {
+      "kept": 0,
+      "total": 3,
+      "note": "\"its\" twice and the passive \"being received\" are not rendered."
+    },
+    "punctuation": {
+      "kept": 0,
+      "total": 1,
+      "note": "The single dash is dropped."
+    },
+    "culture": {
+      "kept": 1,
+      "total": 1,
+      "note": "Heaven (جنت); \"the other way\" is coded as a deviation and left out."
+    }
+  },
+  "checks": {
+    "source": "",
+    "paratext": ""
+  }
 }

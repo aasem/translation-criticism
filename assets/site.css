@@ -413,3 +413,26 @@ html.lang-ur .eyebrow { font-size: 15px; }
 .muted { color: #8a8178; font-style: italic; }
 
 .lead p + p { margin-top: .45em; }
+
+/* proximity grid */
+.pgrid-svg { width: 100%; height: auto; display: block; font-family: var(--sans); }
+.pgrid-svg .zone { fill: #f6e3e1; }
+.pgrid-svg .zone-l { font-size: 11px; fill: #9a3b33; font-style: normal; }
+.pgrid-svg .gl { stroke: #ece8e2; }
+.pgrid-svg .band { stroke: #d9cfc4; stroke-dasharray: 4 3; }
+.pgrid-svg .band-l { fill: #8a8178; font-size: 10px; font-weight: 600; }
+.pgrid-svg .ax { stroke: #8a8178; }
+.pgrid-svg .tk { font-size: 11px; fill: #8a8178; }
+.pgrid-svg .axl { font-size: 12px; fill: #4a443e; }
+.pgrid-svg .pt { fill: #2f5d7c; stroke: #fff; stroke-width: 2; }
+.pgrid-svg .pt.mim { fill: #9a3b33; }
+.pgrid-svg .pl { font-size: 11px; fill: #2b2621; }
+.pgrid-svg a:hover .pt { r: 8; }
+.prox-wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+@media (max-width: 860px) { .prox-wrap { grid-template-columns: 1fr; } }
+.prox-t { width: 100%; }
+.prox-t td .hint { margin: 2px 0 0; font-size: .82rem; }
+.mimic { display: flex; gap: 10px; margin-top: 14px; padding: 12px 14px; border-inline-start: 3px solid #9a3b33; background: #fbf1f0; }
+.mimic p { margin: 0; }
+.pgrid-front { margin-top: 28px; }
+.pgrid-front h2 { font-size: 1.15rem; margin: 0 0 8px; }

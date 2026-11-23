@@ -301,5 +301,36 @@
     "date": "2026-11-22"
   },
   "textNotes": "- Source: C. K. Scott Moncrieff's English translation of the madeleine paragraph. The French original is deliberately left out.\n- The submission is by an unnamed translator, from a chapter manuscript (pp. 40–42).\n- The first sentence is split at \"when one day…\" (#1–2), and the seventh at its em dash (#8–9).",
-  "textType": "Expressive"
+  "textType": "Expressive",
+  "proximity": {
+    "sentences": {
+      "kept": 13,
+      "total": 13,
+      "note": "All 13 sentence ends shared."
+    },
+    "clauses": {
+      "kept": 22,
+      "total": 23,
+      "note": "Only the \"save what…\" clause in #1 moves after its main clause."
+    },
+    "grammar": {
+      "kept": 18,
+      "total": 23,
+      "note": "Articles 7 of 9 (ایک or کسی), possessives 10 of 10, passives 1 of 4."
+    },
+    "punctuation": {
+      "kept": 1,
+      "total": 2,
+      "note": "1 semicolon and 1 dash in the source; the Urdu adds 5 semicolons of its own (not counted)."
+    },
+    "culture": {
+      "kept": 3,
+      "total": 3,
+      "note": "Combray, petites madeleines, the pilgrim's scallop shell."
+    }
+  },
+  "checks": {
+    "source": "",
+    "paratext": ""
+  }
 }

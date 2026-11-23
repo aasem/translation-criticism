@@ -610,8 +610,8 @@ export const STRINGS = {
 "نحوی معنی"
 ],
 "code.A4.t": [
-"Tense, aspect, mood, modality or number changed",
-"زمانہ، صورتِ فعل، طور، امکانی کیفیت یا عدد بدل گیا"
+"Tense, aspect, mood, modality, number or voice changed",
+"زمانہ، صورتِ فعل، طور، امکانی کیفیت، عدد یا معروف و مجہول کی صورت بدل گئی"
 ],
 "code.A5": [
 "Distinction",
@@ -1000,5 +1000,141 @@ export const STRINGS = {
 "textTypeShort.Informative": [
 "Scientific",
 "سائنسی"
+],
+"code.A7": [
+"Reading closed",
+"ابہام کا ازالہ"
+],
+"code.A7.t": [
+"Settles a reading the source deliberately leaves open (a choice forced by Urdu grammar is not counted)",
+"ماخذ جو قرأت دانستہ کھلی چھوڑتا ہے، ترجمہ اسے ایک معنی میں طے کر دیتا ہے (اردو قواعد کا لازمی انتخاب شمار نہیں ہوتا)"
+],
+"code.C5": [
+"Effect",
+"اثر"
+],
+"code.C5.t": [
+"Irony, humour, suspense, emphasis or mood the passage is built to produce is lost or altered",
+"طنز، مزاح، تجسس، زور یا کیفیت، جس کے لیے اقتباس بنا ہے، کھو جاتی ہے یا بدل جاتی ہے"
+],
+"h.prox": [
+"Proximity",
+"قربت"
+],
+"prox.sentences": [
+"Sentence boundaries",
+"جملوں کی حدود"
+],
+"prox.sentences.d": [
+"Shared sentence ends, out of the larger of the two sentence counts",
+"مشترک جملہ اختتام، دونوں میں سے بڑی تعداد کے مقابل"
+],
+"prox.clauses": [
+"Clause order",
+"شقوں کی ترتیب"
+],
+"prox.clauses.d": [
+"Adjacent clause pairs kept in the source's order",
+"متصل شقوں کے وہ جوڑے جن کی ترتیب ماخذ جیسی رہی"
+],
+"prox.grammar": [
+"Grammatical tracking",
+"قواعدی پیروی"
+],
+"prox.grammar.d": [
+"English articles, possessives and passives rendered overtly",
+"انگریزی کے حرفِ تنکیر، ضمائرِ ملکی اور مجہول صیغے جو ترجمے میں ظاہر رکھے گئے"
+],
+"prox.punctuation": [
+"Punctuation",
+"رموزِ اوقاف"
+],
+"prox.punctuation.d": [
+"Source semicolons, colons and dashes reproduced",
+"ماخذ کے سیمی کولن، کولن اور ڈیش جو برقرار رہے"
+],
+"prox.culture": [
+"Culture-specific items and names",
+"ثقافتی اشیا اور نام"
+],
+"prox.culture.d": [
+"Kept rather than adapted, explained or dropped (items coded as deviations are left out)",
+"جوں کے توں رکھے گئے، نہ کہ بدلے، سمجھائے یا حذف کیے گئے (جو انحراف کے طور پر درج ہیں وہ شامل نہیں)"
+],
+"prox.few": [
+"too few in sample",
+"نمونے میں بہت کم"
+],
+"prox.th.comp": [
+"Component",
+"جزو"
+],
+"prox.th.count": [
+"Kept / all",
+"برقرار / کل"
+],
+"prox.axisX": [
+"Proximity",
+"قربت"
+],
+"prox.axisY": [
+"Quality score",
+"معیار اسکور"
+],
+"prox.left": [
+"acceptability",
+"قبولیت"
+],
+"prox.right": [
+"adequacy",
+"موزونیت"
+],
+"prox.zone": [
+"possible mimicry",
+"ممکنہ نقالی"
+],
+"prox.hint": [
+"Proximity describes strategy. It never enters the score or the outcome, and both ends of the axis are legitimate.",
+"قربت حکمتِ عملی کا بیان ہے۔ یہ کبھی اسکور یا نتیجے میں شامل نہیں ہوتی، اور محور کے دونوں سرے جائز ہیں۔"
+],
+"prox.mimic": [
+"This translation keeps much of the source's form while departing often from its sense. The pattern can be read as mechanical mimicry. Whether by a human translator or a machine, this assessment cannot tell.",
+"یہ ترجمہ ماخذ کی ہیئت کا بڑا حصہ برقرار رکھتا ہے مگر اکثر اس کے معنی سے ہٹ جاتا ہے۔ اس صورت کو میکانکی نقالی پڑھا جا سکتا ہے۔ یہ نقالی کسی انسانی مترجم کی ہے یا مشین کی، یہ جائزہ اس کا فیصلہ نہیں کر سکتا۔"
+],
+"check.source": [
+"Source check",
+"ماخذ کی جانچ"
+],
+"check.paratext": [
+"Paratext",
+"متعلقاتِ متن"
+],
+"grid.head": [
+"Proximity and quality",
+"قربت اور معیار"
+],
+"grid.hint": [
+"Each point is a report: proximity to the source's form across, quality score up. Click a point to open the report.",
+"ہر نقطہ ایک رپورٹ ہے: افقی محور پر ماخذ کی ہیئت سے قربت، عمودی محور پر معیار اسکور۔ رپورٹ کھولنے کے لیے نقطے پر کلک کیجیے۔"
+],
+"grid.unnamed": [
+"unnamed",
+"گمنام"
+],
+"m.prox.h": [
+"Proximity",
+"قربت"
+],
+"m.prox.p": [
+"Beside the quality score, each report places the translation on a second, independent axis: proximity, how much of the source's form survives, from 0 to 100. Its two ends are adequacy (موزونیت), the translation that keeps the source's form, and acceptability (قبولیت), the translation that rebuilds it in the target language's own forms. Proximity is the average of five components, each counted within the pair of source and translation, with no outside norm: sentence boundaries, clause order, grammatical tracking (articles, possessives and passives rendered overtly), punctuation reproduced, and culture-specific items and names kept. A component with fewer than three cases in the sample is shown but left out of the average. None of these features is a deviation in itself, and proximity never enters the score or the outcome. It describes strategy, and both ends of the axis are legitimate.",
+"معیار اسکور کے ساتھ ساتھ ہر رپورٹ ترجمے کو ایک دوسرے، الگ محور پر بھی رکھتی ہے: قربت، یعنی ماخذ کی ہیئت کا کتنا حصہ ترجمے میں باقی رہا، صفر سے سو تک۔ اس کے دو سرے موزونیت اور قبولیت ہیں۔ موزونیت سے مراد وہ ترجمہ ہے جو ماخذ کی ہیئت برقرار رکھے اور قبولیت سے مراد وہ ترجمہ جو اسے ہدف زبان کی اپنی صورتوں میں ازسرِنو ڈھالے۔ قربت پانچ اجزا کا اوسط ہے اور ہر جزو صرف ماخذ اور ترجمے کے باہمی موازنے سے گنا جاتا ہے، کسی بیرونی معیار کے بغیر: جملوں کی حدود، شقوں کی ترتیب، قواعدی پیروی (حرفِ تنکیر، ضمائرِ ملکی اور مجہول صیغے جو ظاہر رکھے گئے)، رموزِ اوقاف کی برقراری، اور ثقافتی اشیا اور نام جو جوں کے توں رہے۔ جس جزو کی نمونے میں تین سے کم مثالیں ہوں وہ دکھایا تو جاتا ہے مگر اوسط میں شامل نہیں ہوتا۔ ان میں سے کوئی خصوصیت بذاتِ خود انحراف نہیں، اور قربت کبھی اسکور یا نتیجے میں شامل نہیں ہوتی۔ یہ حکمتِ عملی کا بیان ہے اور محور کے دونوں سرے جائز ہیں۔"
+],
+"m.mimic.p": [
+"Read together, the two axes can show a pattern the score alone hides. When proximity is 70 or more and the quality score is below 90, the translation keeps much of the source's form while departing often from its sense. The report then says that the pattern can be read as mechanical mimicry. Whether the mimicry is a human translator's or a machine's, the assessment cannot tell, and it makes no claim either way.",
+"دونوں محور ساتھ پڑھے جائیں تو ایک ایسی صورت نظر آ سکتی ہے جو اکیلا اسکور چھپا دیتا ہے۔ جب قربت ستر یا اس سے زیادہ ہو اور معیار اسکور نوے سے کم، تو ترجمہ ماخذ کی ہیئت کا بڑا حصہ برقرار رکھتے ہوئے اکثر اس کے معنی سے ہٹ جاتا ہے۔ ایسی صورت میں رپورٹ کہتی ہے کہ اس صورت کو میکانکی نقالی پڑھا جا سکتا ہے۔ یہ نقالی کسی انسانی مترجم کی ہے یا مشین کی، جائزہ اس کا فیصلہ نہیں کر سکتا اور نہ کسی جانب کوئی دعویٰ کرتا ہے۔"
+],
+"m.checks.p": [
+"Two optional notes record what the sample alone may not show: a source check (signs that the translator worked from a text other than the designated source) and paratext (titles, epigraphs, prefaces and notes kept, dropped or added). They are written by the assessor, who has the whole translation, and they never enter the score.",
+"دو اختیاری نوٹ وہ باتیں درج کرتے ہیں جو صرف نمونے سے شاید ظاہر نہ ہوں: ماخذ کی جانچ (اس بات کے آثار کہ مترجم نے نامزد ماخذ کے علاوہ کسی اور متن سے کام لیا) اور متعلقاتِ متن (عنوان، سرنامے، دیباچے اور حواشی، جو برقرار رہے، حذف ہوئے یا بڑھائے گئے)۔ یہ نوٹ جائزہ کار لکھتا ہے جس کے پاس پورا ترجمہ ہوتا ہے، اور یہ کبھی اسکور میں شامل نہیں ہوتے۔"
 ]
 };

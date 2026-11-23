@@ -63,6 +63,8 @@ A **pre-publication** report assesses a draft for a publisher and ends in an edi
 | `grade`, `gradeBasis`, `readerNote` | Published: `A`–`E`, and its reasoning |
 | `lead` | Conclusions: three short paragraphs on Accuracy, Language and Style, for a general reader |
 | `profileSummary`, `tendencies`, `translatorProfile` | Prose (light markdown) |
+| `proximity` | `{sentences, clauses, grammar, punctuation, culture}`, each `{kept, total, note}`: counts within the pair for the Proximity axis (fewer than 3 cases: shown, not averaged). Never scored |
+| `checks` | `{source, paratext}`: optional assessor's notes, shown in Details. Never scored |
 | `textNotes` | Report-specific notes on the texts only (transcription, misprints, segmentation). Everything general is on the Method page |
 | `aiSuggestions` | `{model, date}` of the AI suggestions |
 | `segments[]` | `{n, source, submission, deviations: [{code, severity, note, functions, gain, compensatedBy}], suggestion: {ai, state, human}}`. Severity is Critical, Major, Minor or Neutral (weight 0). `functions` is the function test `[{fn, kept}]`; `gain` is what a transposition adds (never scored). the second suggestion column is Asim Bakhshi's; `suggestion.state` is `Not reviewed`, `Agrees with AI` or `Own suggestion`; the AI text is kept as generated |
