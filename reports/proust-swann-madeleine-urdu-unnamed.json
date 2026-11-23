@@ -306,27 +306,37 @@
     "sentences": {
       "kept": 13,
       "total": 13,
-      "note": "All 13 sentence ends shared."
+      "note": "All 13 sentence ends shared.",
+      "forced": 6,
+      "forcedNote": "The long English periods are held whole, with tails trailing after the verb: #1–2 (joined by ؛ and کہ), #4, #5, #6, #7, #8–9."
     },
     "clauses": {
       "kept": 22,
       "total": 23,
-      "note": "Only the \"save what…\" clause in #1 moves after its main clause."
+      "note": "Only the \"save what…\" clause in #1 moves after its main clause.",
+      "forced": 7,
+      "forcedNote": "Relative and participial clauses kept after the verb: جو میں عموماً نہیں پیتا تھا (#2), جنہیں … کہتے ہیں and اور جو یوں لگتی ہیں (#4), جس میں میں نے … بھگو رکھا تھا (#5), ان غیر معمولی تبدیلیوں پر متوجہ جو … (#6), اپنی اصل کا کوئی اشارہ دیے بغیر (#7), یعنی مجھے … بھر دینا (#9)."
     },
     "grammar": {
       "kept": 18,
       "total": 23,
-      "note": "Articles 7 of 9 (ایک or کسی), possessives 10 of 10, passives 1 of 4."
+      "note": "Articles 7 of 9 (ایک or کسی), possessives 10 of 10, passives 1 of 4.",
+      "forced": 2,
+      "forcedNote": "ایک بے رنگ دن for \"a dull day\" (#5) and اپنے ہونٹوں تک for \"to my lips\" (#5)."
     },
     "punctuation": {
       "kept": 1,
       "total": 2,
-      "note": "1 semicolon and 1 dash in the source; the Urdu adds 5 semicolons of its own (not counted)."
+      "note": "1 semicolon and 1 dash in the source; the Urdu adds 5 semicolons of its own (not counted).",
+      "forced": 1,
+      "forcedNote": "The semicolon kept in #9."
     },
     "culture": {
       "kept": 3,
       "total": 3,
-      "note": "Combray, petites madeleines, the pilgrim's scallop shell."
+      "note": "Combray, petites madeleines, the pilgrim's scallop shell.",
+      "forced": 0,
+      "forcedNote": "None: Combray, the madeleines and the pilgrim's shell read clearly."
     }
   },
   "checks": {

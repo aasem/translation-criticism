@@ -34,7 +34,7 @@
       <p data-i18n="index.p4">The verdict is an informal editorial decision for drafts and a grade for books in print. The assessments are offered as a public service: to readers deciding what to trust, to publishers deciding what to print, and to translators who want their work read with the care it asks for.</p>
       <p class="contact" data-i18n="index.contact">If you want to get your translation graded, or disagree with a verdict or the review behind it, please reach me at <a class="mail" data-slot="email" data-u="asembuxi" data-d="gmail.com" href="#">asembuxi [at] gmail [dot] com</a>.</p>
       <p class="privacy" data-i18n="index.privacy">If a translation is sent to me privately by email, the translator's name is published only with their permission.</p>
-      <section class="pgrid-front"><h2 data-i18n="grid.head">Proximity and quality</h2>
+      <section class="pgrid-front"><h2 data-i18n="grid.head">Artificiality and quality</h2>
         <div id="pgrid"></div>
       </section>
       <p class="signature"><em data-i18n="index.signature">Asim Bakhshi</em> · <a href="https://mechanomorph.substack.com/p/published-works" rel="noopener" data-i18n="index.works">Published works on Mechanomorph →</a></p>
@@ -167,7 +167,7 @@ try {
   const present = new Set(reports.map((r) => (isPublished(r) ? 'Grade ' + r.grade : r.decision)));
   fill($('f-decision'), [...DECISIONS.map((d) => d[0]), ...GRADES.map((g) => 'Grade ' + g[0])].filter((d) => present.has(d)), outcomeText);
   fill($('f-type'), [...new Set(reports.map((r) => r.textType).filter(Boolean))], (v) => label('textType', v));
-  const pts = reports.map((r) => ({ r, p: proximity(r).score })).filter((o) => o.p != null).map(({ r, p }) => ({
+  const pts = reports.map((r) => ({ r, p: proximity(r).art })).filter((o) => o.p != null).map(({ r, p }) => ({
     x: p, y: tally(r).score, href: `report.html?id=${encodeURIComponent(r.id)}`,
     label: [String(r.author || '').split(' ').pop(), String(r.submission?.translator || T('grid.unnamed')).split(' ').pop()],
   }));

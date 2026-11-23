@@ -176,19 +176,25 @@ function details() {
 // Proximity: a second axis beside the quality score. Describes strategy; never scored.
 function proximitySection() {
   const P = proximity(R); const q = tally(R).score;
-  if (editing) return `${H2('chart', tt('h.prox'))}
-    <p class="hint">Count each component within the pair: cases kept and all cases. Fewer than ${PROX_MIN} cases: shown but left out of the average.</p>
+  if (editing) return `${H2('chart', tt('h.art'))}
+    <p class="hint">Count each component within the pair: all cases, cases kept, and of those kept, cases forced (kept against Urdu syntax, punctuation or idiom). Fewer than ${PROX_MIN} cases (kept cases, for artificiality): shown but left out of the average.</p>
     <table class="kv"><tbody>${PROX_KEYS.map((k) => `<tr><th>${tt('prox.' + k)}<div class="hint">${tt('prox.' + k + '.d')}</div></th>
-      <td>${I(`proximity.${k}.kept`, 'kept')} / ${I(`proximity.${k}.total`, 'all')}<br>${I(`proximity.${k}.note`, 'note (optional)')}</td></tr>`).join('')}</tbody></table>`;
-  if (P.score == null) return '';
-  const rows = P.comps.map((x) => `<tr><td>${tt('prox.' + x.key)}<div class="hint">${tt('prox.' + x.key + '.d')}</div>${x.note ? `<div class="hint" dir="auto">${urduWrap(esc(x.note))}</div>` : ''}</td>
-    <td class="num"><span dir="ltr">${x.total ? `${x.kept} / ${x.total}` : '–'}</span></td>
-    <td class="num">${x.counted ? Math.round(x.pct) : `<span class="muted">${tt('prox.few')}</span>`}</td></tr>`).join('');
-  const note = isMimicry(P.score, q) ? `<div class="mimic">${icon('info')}<p dir="auto">${tt('prox.mimic')}</p></div>` : '';
-  return `${H2('chart', tt('h.prox'))}
-    <div class="prox-wrap"><div class="prox-grid">${gridSVG([{ x: P.score, y: q }])}<p class="prox-hint">${tt('prox.hint')}</p>${gridLegend()}</div>
-    <div class="prox-side"><table class="prox-t"><thead><tr><th>${tt('prox.th.comp')}</th><th class="num">${tt('prox.th.count')}</th><th class="num">%</th></tr></thead>
-    <tbody>${rows}<tr class="total"><td>${tt('h.prox')}</td><td></td><td class="num"><strong>${Math.round(P.score)}</strong></td></tr></tbody></table>${note}</div></div>`;
+      <td>${I(`proximity.${k}.kept`, 'kept')} / ${I(`proximity.${k}.total`, 'all')} · ${I(`proximity.${k}.forced`, 'forced')}<br>${I(`proximity.${k}.note`, 'note on kept (optional)')}<br>${I(`proximity.${k}.forcedNote`, 'note on forced (optional)')}</td></tr>`).join('')}</tbody></table>`;
+  if (P.score == null && P.art == null) return '';
+  const few = `<span class="muted">${tt('prox.few')}</span>`;
+  const n = (v) => `<span dir="ltr">${v}</span>`;
+  const rows = P.comps.map((x) => `<tr><td>${tt('prox.' + x.key)}<div class="hint">${tt('prox.' + x.key + '.d')}</div>${x.note ? `<div class="hint" dir="auto">${urduWrap(esc(x.note))}</div>` : ''}${x.forcedNote ? `<div class="hint forced-note"><b>${tt('art.forced')}:</b> <span dir="auto" style="unicode-bidi:isolate">${urduWrap(esc(x.forcedNote))}</span></div>` : ''}</td>
+    <td class="num">${n(x.total ? `${x.kept} / ${x.total}` : '–')}</td>
+    <td class="num">${x.total ? (x.counted ? Math.round(x.pct) : few) : '–'}</td>
+    <td class="num art">${n(x.forced != null && x.kept ? `${x.forced} / ${x.kept}` : '–')}</td>
+    <td class="num art">${x.forced != null && x.kept ? (x.artCounted ? `<b>${Math.round(x.artPct)}</b>` : few) : '–'}</td></tr>`).join('');
+  const note = isMimicry(P.art, q) ? `<div class="mimic">${icon('info')}<p dir="auto">${tt('prox.mimic')}</p></div>` : '';
+  const grid = P.art != null ? `<div class="prox-grid">${gridSVG([{ x: P.art, y: q }])}<p class="prox-hint">${tt('art.hint')}</p>${gridLegend()}</div>` : '';
+  return `${H2('chart', tt('h.art'))}
+    <div class="prox-wrap">${grid}${note}
+    <table class="prox-t"><thead><tr><th>${tt('prox.th.comp')}</th><th class="num">${tt('prox.th.count')}</th><th class="num">${tt('h.prox')}</th><th class="num art">${tt('art.th.count')}</th><th class="num art">${tt('art.axisX')}</th></tr></thead>
+    <tbody>${rows}<tr class="total"><td>${tt('art.th.avg')}</td><td></td><td class="num"><strong>${P.score == null ? '–' : Math.round(P.score)}</strong></td><td></td><td class="num art"><strong>${P.art == null ? '–' : Math.round(P.art)}</strong></td></tr></tbody></table>
+    <p class="hint">${tt('art.tableHint')}</p></div>`;
 }
 
 function devExtras(d) {

@@ -248,27 +248,37 @@
     "sentences": {
       "kept": 1,
       "total": 11,
-      "note": "One source sentence becomes 11 Urdu sentences; only the final end is shared."
+      "note": "One source sentence becomes 11 Urdu sentences; only the final end is shared.",
+      "forced": 0,
+      "forcedNote": ""
     },
     "clauses": {
       "kept": 15,
       "total": 15,
-      "note": "The antithetical pairs keep their order throughout, though several are merged."
+      "note": "The antithetical pairs keep their order throughout, though several are merged.",
+      "forced": 0,
+      "forcedNote": "None: the antithetical pairs keep their order in Urdu's own balance."
     },
     "grammar": {
       "kept": 0,
       "total": 3,
-      "note": "\"its\" twice and the passive \"being received\" are not rendered."
+      "note": "\"its\" twice and the passive \"being received\" are not rendered.",
+      "forced": 0,
+      "forcedNote": ""
     },
     "punctuation": {
       "kept": 0,
       "total": 1,
-      "note": "The single dash is dropped."
+      "note": "The single dash is dropped.",
+      "forced": 0,
+      "forcedNote": ""
     },
     "culture": {
       "kept": 1,
       "total": 1,
-      "note": "Heaven (جنت); \"the other way\" is coded as a deviation and left out."
+      "note": "Heaven (جنت); \"the other way\" is coded as a deviation and left out.",
+      "forced": 0,
+      "forcedNote": ""
     }
   },
   "checks": {

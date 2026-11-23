@@ -63,7 +63,7 @@ A **pre-publication** report assesses a draft for a publisher and ends in an edi
 | `grade`, `gradeBasis`, `readerNote` | Published: `A`–`E`, and its reasoning |
 | `lead` | Conclusions: three short paragraphs on Accuracy, Language and Style, for a general reader |
 | `profileSummary`, `tendencies`, `translatorProfile` | Prose (light markdown) |
-| `proximity` | `{sentences, clauses, grammar, punctuation, culture}`, each `{kept, total, note}`: counts within the pair for the Proximity axis (fewer than 3 cases: shown, not averaged). Never scored |
+| `proximity` | `{sentences, clauses, grammar, punctuation, culture}`, each `{kept, total, forced, note, forcedNote}`, counted within the pair. Proximity = kept ÷ total (descriptive, shown in the table). Artificiality = forced ÷ kept, the assessor's mark of kept form that goes against Urdu syntax, punctuation or idiom; its average is the plotted axis. A component with fewer than 3 cases (3 kept cases, for artificiality) is shown but not averaged. The mimicry corner (`MIMIC` in `assets/common.js`) stays unset until a threshold is chosen. Never scored |
 | `checks` | `{source, paratext}`: optional assessor's notes, shown in Details. Never scored |
 | `textNotes` | Report-specific notes on the texts only (transcription, misprints, segmentation). Everything general is on the Method page |
 | `aiSuggestions` | `{model, date}` of the AI suggestions |

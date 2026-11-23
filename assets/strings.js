@@ -1019,7 +1019,7 @@ export const STRINGS = {
 ],
 "h.prox": [
 "Proximity",
-"قربت"
+"نزدیکی"
 ],
 "prox.sentences": [
 "Sentence boundaries",
@@ -1102,8 +1102,8 @@ export const STRINGS = {
 "قربت حکمتِ عملی کا بیان ہے۔ یہ کبھی اسکور یا نتیجے میں شامل نہیں ہوتی، اور محور کے دونوں سرے جائز ہیں۔"
 ],
 "prox.mimic": [
-"This translation keeps much of the source's form while departing often from its sense. The pattern can be read as mechanical mimicry. Whether by a human translator or a machine, this assessment cannot tell.",
-"یہ ترجمہ ماخذ کی ہیئت کا بڑا حصہ برقرار رکھتا ہے مگر اکثر اس کے معنی سے ہٹ جاتا ہے۔ اس صورت کو میکانکی نقالی پڑھا جا سکتا ہے۔ یہ نقالی کسی انسانی مترجم کی ہے یا مشین کی، یہ جائزہ اس کا فیصلہ نہیں کر سکتا۔"
+"This translation keeps much of the source's form against the grain of Urdu while departing often from its sense. The pattern can be read as mechanical mimicry. Whether by a human translator or a machine, this assessment cannot tell.",
+"یہ ترجمہ ماخذ کی ہیئت کا بڑا حصہ اردو کے مزاج کے خلاف برقرار رکھتا ہے مگر اکثر اس کے معنی سے ہٹ جاتا ہے۔ اس صورت کو میکانکی نقالی پڑھا جا سکتا ہے۔ یہ نقالی کسی انسانی مترجم کی ہے یا مشین کی، یہ جائزہ اس کا فیصلہ نہیں کر سکتا۔"
 ],
 "check.source": [
 "Source check",
@@ -1114,28 +1114,20 @@ export const STRINGS = {
 "متعلقاتِ متن"
 ],
 "grid.head": [
-"Proximity and quality",
-"قربت اور معیار"
+"Artificiality and quality",
+"تصنع اور معیار"
 ],
 "grid.hint": [
-"Each point is a report: proximity to the source's form across, quality score up. Click a point to open the report.",
-"ہر نقطہ ایک رپورٹ ہے: افقی محور پر ماخذ کی ہیئت سے قربت، عمودی محور پر معیار اسکور۔ رپورٹ کھولنے کے لیے نقطے پر کلک کیجیے۔"
+"Each point is a report: artificiality across, quality score up. Click a point to open the report.",
+"ہر نقطہ ایک رپورٹ ہے: افقی محور پر تصنع، عمودی محور پر معیار اسکور۔ رپورٹ کھولنے کے لیے نقطے پر کلک کیجیے۔"
 ],
 "grid.unnamed": [
 "unnamed",
 "گمنام"
 ],
-"m.prox.h": [
-"Proximity",
-"قربت"
-],
-"m.prox.p": [
-"Beside the quality score, each report places the translation on a second, independent axis: proximity, how much of the source's form survives, from 0 to 100. Its two ends are adequacy (موزونیت), the translation that keeps the source's form, and acceptability (قبولیت), the translation that rebuilds it in the target language's own forms. Proximity is the average of five components, each counted within the pair of source and translation, with no outside norm: sentence boundaries, clause order, grammatical tracking (articles, possessives and passives rendered overtly), punctuation reproduced, and culture-specific items and names kept. A component with fewer than three cases in the sample is shown but left out of the average. None of these features is a deviation in itself, and proximity never enters the score or the outcome. It describes strategy, and both ends of the axis are legitimate.",
-"معیار اسکور کے ساتھ ساتھ ہر رپورٹ ترجمے کو ایک دوسرے، الگ محور پر بھی رکھتی ہے: قربت، یعنی ماخذ کی ہیئت کا کتنا حصہ ترجمے میں باقی رہا، صفر سے سو تک۔ اس کے دو سرے موزونیت اور قبولیت ہیں۔ موزونیت سے مراد وہ ترجمہ ہے جو ماخذ کی ہیئت برقرار رکھے اور قبولیت سے مراد وہ ترجمہ جو اسے ہدف زبان کی اپنی صورتوں میں ازسرِنو ڈھالے۔ قربت پانچ اجزا کا اوسط ہے اور ہر جزو صرف ماخذ اور ترجمے کے باہمی موازنے سے گنا جاتا ہے، کسی بیرونی معیار کے بغیر: جملوں کی حدود، شقوں کی ترتیب، قواعدی پیروی (حرفِ تنکیر، ضمائرِ ملکی اور مجہول صیغے جو ظاہر رکھے گئے)، رموزِ اوقاف کی برقراری، اور ثقافتی اشیا اور نام جو جوں کے توں رہے۔ جس جزو کی نمونے میں تین سے کم مثالیں ہوں وہ دکھایا تو جاتا ہے مگر اوسط میں شامل نہیں ہوتا۔ ان میں سے کوئی خصوصیت بذاتِ خود انحراف نہیں، اور قربت کبھی اسکور یا نتیجے میں شامل نہیں ہوتی۔ یہ حکمتِ عملی کا بیان ہے اور محور کے دونوں سرے جائز ہیں۔"
-],
 "m.mimic.p": [
-"Read together, the two axes can show a pattern the score alone hides. When proximity is 70 or more and the quality score is below 90, the translation keeps much of the source's form while departing often from its sense. The report then says that the pattern can be read as mechanical mimicry. Whether the mimicry is a human translator's or a machine's, the assessment cannot tell, and it makes no claim either way.",
-"دونوں محور ساتھ پڑھے جائیں تو ایک ایسی صورت نظر آ سکتی ہے جو اکیلا اسکور چھپا دیتا ہے۔ جب قربت ستر یا اس سے زیادہ ہو اور معیار اسکور نوے سے کم، تو ترجمہ ماخذ کی ہیئت کا بڑا حصہ برقرار رکھتے ہوئے اکثر اس کے معنی سے ہٹ جاتا ہے۔ ایسی صورت میں رپورٹ کہتی ہے کہ اس صورت کو میکانکی نقالی پڑھا جا سکتا ہے۔ یہ نقالی کسی انسانی مترجم کی ہے یا مشین کی، جائزہ اس کا فیصلہ نہیں کر سکتا اور نہ کسی جانب کوئی دعویٰ کرتا ہے۔"
+"Read together, artificiality and the quality score can show a pattern the score alone hides: a translation that keeps the source's form against the grain of the language while departing often from its sense. Such a pattern can be read as mechanical mimicry. Whether the mimicry is a human translator's or a machine's, the assessment cannot tell, and it makes no claim either way. The thresholds for this corner will be set once enough reports have been marked. Until then no report is placed in it.",
+"تصنع اور معیار اسکور ساتھ پڑھے جائیں تو ایک ایسی صورت نظر آ سکتی ہے جو اکیلا اسکور چھپا دیتا ہے: ایسا ترجمہ جو ماخذ کی ہیئت زبان کے مزاج کے خلاف برقرار رکھتا ہے مگر اکثر اس کے معنی سے ہٹ جاتا ہے۔ ایسی صورت کو میکانکی نقالی پڑھا جا سکتا ہے۔ یہ نقالی کسی انسانی مترجم کی ہے یا مشین کی، جائزہ اس کا فیصلہ نہیں کر سکتا اور نہ کسی جانب کوئی دعویٰ کرتا ہے۔ اس گوشے کی حدیں اس وقت طے کی جائیں گی جب کافی رپورٹوں پر نشان لگ چکے ہوں۔ تب تک کوئی رپورٹ اس میں نہیں رکھی جاتی۔"
 ],
 "m.checks.p": [
 "Two optional notes record what the sample alone may not show: a source check (signs that the translator worked from a text other than the designated source) and paratext (titles, epigraphs, prefaces and notes kept, dropped or added). They are written by the assessor, who has the whole translation, and they never enter the score.",
@@ -1150,7 +1142,99 @@ export const STRINGS = {
 "نقالی کے گوشے میں ترجمہ"
 ],
 "prox.legendZone": [
-"proximity 70+ and quality score below 90",
-"قربت ستر یا زیادہ اور معیار اسکور نوے سے کم"
+"artificiality {art}+ and quality score below {score}",
+"تصنع {art} یا زیادہ اور معیار اسکور {score} سے کم"
+],
+"h.art": [
+"Artificiality",
+"تصنع"
+],
+"art.axisX": [
+"Artificiality",
+"تصنع"
+],
+"art.left": [
+"natural",
+"بے ساختگی"
+],
+"art.right": [
+"artificial",
+"تصنع"
+],
+"art.forced": [
+"Forced",
+"غیر فطری"
+],
+"art.th.count": [
+"Forced / kept",
+"غیر فطری / برقرار"
+],
+"art.th.avg": [
+"Average",
+"اوسط"
+],
+"art.hint": [
+"Artificiality is the assessor's judgement: how much of the form kept from the source reads against the grain of Urdu. It never enters the score or the outcome.",
+"تصنع جائزہ کار کی رائے ہے: ماخذ سے برقرار رکھی گئی ہیئت کا کتنا حصہ اردو کے مزاج کے خلاف پڑھا جاتا ہے۔ یہ کبھی اسکور یا نتیجے میں شامل نہیں ہوتا۔"
+],
+"art.tableHint": [
+"Proximity (kept ÷ all) shows how much of the source's form the translation keeps, and makes no judgement. Artificiality (forced ÷ kept) is the share of that kept form which is kept against Urdu syntax, punctuation or idiom.",
+"نزدیکی (برقرار ÷ کل) بتاتی ہے کہ ترجمہ ماخذ کی ہیئت کا کتنا حصہ برقرار رکھتا ہے، اور کوئی فیصلہ نہیں دیتی۔ تصنع (غیر فطری ÷ برقرار) اس برقرار ہیئت کا وہ حصہ ہے جو اردو نحو، رموزِ اوقاف یا محاورے کے خلاف برقرار رکھا گیا۔"
+],
+"m.art.h": [
+"Artificiality",
+"تصنع"
+],
+"m.art.p1": [
+"Beside the quality score, each report places the translation on a second, independent axis: artificiality, how much of the form the translation keeps from the source is kept against the grain of the target language, from 0 to 100. Its two ends are natural (بے ساختگی), where whatever form is kept still reads as the target language, and artificial (تصنع), where the kept form makes the prose stiff, awkward or unidiomatic.",
+"معیار اسکور کے ساتھ ساتھ ہر رپورٹ ترجمے کو ایک دوسرے، الگ محور پر بھی رکھتی ہے: تصنع، یعنی ترجمہ ماخذ کی جو ہیئت برقرار رکھتا ہے اس کا کتنا حصہ ہدف زبان کے مزاج کے خلاف برقرار رکھا گیا، صفر سے سو تک۔ اس کے دو سرے بے ساختگی اور تصنع ہیں۔ بے ساختگی سے مراد یہ ہے کہ جو ہیئت بھی برقرار رہے وہ ہدف زبان ہی کی طرح پڑھی جائے، اور تصنع سے مراد یہ کہ برقرار رکھی گئی ہیئت نثر کو اکڑا ہوا، بے ڈھنگا یا خلافِ محاورہ بنا دے۔"
+],
+"m.art.h3a": [
+"How it is counted",
+"گنتی کیسے ہوتی ہے"
+],
+"m.art.p2": [
+"Five components of form are counted within the pair of source and translation, with no outside norm:",
+"ہیئت کے پانچ اجزا صرف ماخذ اور ترجمے کے باہمی موازنے سے گنے جاتے ہیں، کسی بیرونی معیار کے بغیر:"
+],
+"m.art.li1": [
+"Sentence boundaries: shared sentence ends, out of the larger of the two sentence counts",
+"جملوں کی حدود: مشترک جملہ اختتام، دونوں میں سے بڑی تعداد کے مقابل"
+],
+"m.art.li2": [
+"Clause order: adjacent clause pairs kept in the source's order",
+"شقوں کی ترتیب: متصل شقوں کے وہ جوڑے جن کی ترتیب ماخذ جیسی رہی"
+],
+"m.art.li3": [
+"Grammatical tracking: articles, possessives and passives rendered overtly",
+"قواعدی پیروی: حرفِ تنکیر، ضمائرِ ملکی اور مجہول صیغے جو ترجمے میں ظاہر رکھے گئے"
+],
+"m.art.li4": [
+"Punctuation: source semicolons, colons and dashes reproduced",
+"رموزِ اوقاف: ماخذ کے سیمی کولن، کولن اور ڈیش جو برقرار رہے"
+],
+"m.art.li5": [
+"Culture-specific items and names: kept rather than adapted, explained or dropped",
+"ثقافتی اشیا اور نام: جوں کے توں رکھے گئے، نہ کہ بدلے، سمجھائے یا حذف کیے گئے"
+],
+"m.art.p3": [
+"Each component gets two counts. Proximity (نزدیکی) is the share of cases kept: how much of the source's form survives. Of the kept cases, the assessor marks those that are forced: kept against the target language's syntax, punctuation or idiom, so that the sentence reads awkwardly. Artificiality is the share of kept cases that are forced, averaged over the components. A component with fewer than three cases, or for artificiality fewer than three kept cases, is shown but left out of the average.",
+"ہر جزو کی دو گنتیاں ہوتی ہیں۔ نزدیکی برقرار رکھی گئی مثالوں کا تناسب ہے، یعنی ماخذ کی ہیئت کا کتنا حصہ باقی رہا۔ برقرار مثالوں میں سے جائزہ کار ان پر نشان لگاتا ہے جو غیر فطری ہیں، یعنی ہدف زبان کی نحو، رموزِ اوقاف یا محاورے کے خلاف برقرار رکھی گئیں اور جملہ بے ڈھنگا پڑھا جاتا ہے۔ تصنع برقرار مثالوں میں غیر فطری مثالوں کا تناسب ہے، جس کا اجزا پر اوسط لیا جاتا ہے۔ جس جزو کی تین سے کم مثالیں ہوں، یا تصنع کے لیے تین سے کم برقرار مثالیں، وہ دکھایا تو جاتا ہے مگر اوسط میں شامل نہیں ہوتا۔"
+],
+"m.art.h3b": [
+"What it is and is not",
+"یہ کیا ہے اور کیا نہیں"
+],
+"m.art.p4": [
+"Proximity makes no judgement: keeping the source's form is a choice, and a close translation and a free one are both legitimate. Artificiality is a judgement, the assessor's, made like the coding of deviations, and each forced case is named in the report. Neither enters the score or the outcome.",
+"نزدیکی کوئی فیصلہ نہیں دیتی: ماخذ کی ہیئت برقرار رکھنا ایک انتخاب ہے، اور قریبی اور آزاد دونوں ترجمے جائز ہیں۔ تصنع ایک فیصلہ ہے، جائزہ کار کا، جو انحرافات کی درجہ بندی کی طرح کیا جاتا ہے، اور ہر غیر فطری مثال رپورٹ میں نام لے کر درج ہوتی ہے۔ ان میں سے کوئی بھی اسکور یا نتیجے میں شامل نہیں ہوتا۔"
+],
+"m.art.h3c": [
+"The mimicry corner",
+"نقالی کا گوشہ"
+],
+"m.checks.h": [
+"Notes beyond the sample",
+"نمونے سے آگے کے نوٹ"
 ]
 };

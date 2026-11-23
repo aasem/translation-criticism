@@ -190,33 +190,41 @@ export const icon = (name, cls = '') =>
 // How much of the source's form survives, counted within the pair only (no outside norm).
 // It describes strategy and never enters the score or the outcome.
 export const PROX_KEYS = ['sentences', 'clauses', 'grammar', 'punctuation', 'culture'];
-export const PROX_MIN = 3; // a component needs at least this many cases to enter the average
-export const MIMIC = { prox: 70, score: 90 }; // the corner where the mimicry note is shown
+export const PROX_MIN = 3; // a component needs at least this many cases (kept cases, for artificiality) to enter an average
+// The mimicry corner: artificiality at or above `art` with a quality score below `score`.
+// Left unset until enough reports have been marked to place the threshold.
+export const MIMIC = null;
+// For each component: proximity = kept / all (descriptive), artificiality = forced / kept (the assessor's judgement).
 export function proximity(r) {
   const comps = PROX_KEYS.map((k) => {
     const x = r.proximity?.[k] || {}; const total = +x.total || 0; const kept = +x.kept || 0;
-    return { key: k, kept, total, note: x.note || '', counted: total >= PROX_MIN, pct: total ? (100 * kept) / total : null };
+    const forced = x.forced == null || x.forced === '' ? null : +x.forced;
+    return { key: k, kept, total, forced, note: x.note || '', forcedNote: x.forcedNote || '',
+      counted: total >= PROX_MIN, pct: total ? (100 * kept) / total : null,
+      artCounted: forced != null && kept >= PROX_MIN, artPct: forced != null && kept ? (100 * forced) / kept : null };
   });
-  const used = comps.filter((x) => x.counted);
-  return { comps, score: used.length ? used.reduce((a, x) => a + x.pct, 0) / used.length : null };
+  const avg = (xs) => (xs.length ? xs.reduce((a, v) => a + v, 0) / xs.length : null);
+  return { comps, score: avg(comps.filter((x) => x.counted).map((x) => x.pct)), art: avg(comps.filter((x) => x.artCounted).map((x) => x.artPct)) };
 }
-export const isMimicry = (prox, score) => prox != null && prox >= MIMIC.prox && score < MIMIC.score;
-// Proximity across, quality score up. points: [{x, y, label?, href?}]
+export const isMimicry = (art, score) => !!MIMIC && art != null && art >= MIMIC.art && score < MIMIC.score;
+// Artificiality across, quality score up. points: [{x, y, label?, href?}]
 export function gridSVG(points) {
   const W = 560, H = 360, L = 58, Rm = 18, Tp = 14, B = 56, yMin = 40;
   const X = (v) => L + (Math.min(Math.max(v, 0), 100) / 100) * (W - L - Rm);
   const Y = (v) => Tp + (1 - (Math.min(Math.max(v, yMin), 100) - yMin) / (100 - yMin)) * (H - Tp - B);
   const e = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
-  let s = `<svg class="pgrid-svg" viewBox="0 0 ${W} ${H}" direction="ltr" role="img" aria-label="${e(t('prox.axisX'))} / ${e(t('prox.axisY'))}">`;
-  s += `<rect class="zone" x="${X(MIMIC.prox)}" y="${Y(MIMIC.score)}" width="${X(100) - X(MIMIC.prox)}" height="${Y(yMin) - Y(MIMIC.score)}"/>`;
-  s += `<text class="zone-l" x="${X(100) - 6}" y="${Y(yMin) - 8}" text-anchor="end">${e(t('prox.zone'))}</text>`;
+  let s = `<svg class="pgrid-svg" viewBox="0 0 ${W} ${H}" direction="ltr" role="img" aria-label="${e(t('art.axisX'))} / ${e(t('prox.axisY'))}">`;
+  if (MIMIC) {
+    s += `<rect class="zone" x="${X(MIMIC.art)}" y="${Y(MIMIC.score)}" width="${X(100) - X(MIMIC.art)}" height="${Y(yMin) - Y(MIMIC.score)}"/>`;
+    s += `<text class="zone-l" x="${X(100) - 6}" y="${Y(yMin) - 8}" text-anchor="end">${e(t('prox.zone'))}</text>`;
+  }
   for (const v of [0, 25, 50, 75, 100]) s += `<line class="gl" x1="${X(v)}" y1="${Y(100)}" x2="${X(v)}" y2="${Y(yMin)}"/><text class="tk" x="${X(v)}" y="${Y(yMin) + 16}" text-anchor="middle">${v}</text>`;
   for (const v of [40, 60, 80, 100]) s += `<text class="tk" x="${L - 8}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`;
   for (const v of [90, 95, 98]) s += `<line class="band" x1="${L}" y1="${Y(v)}" x2="${X(100)}" y2="${Y(v)}"/>`;
   for (const [g, v] of [['A', 99], ['B', 96.5], ['C', 92.5], ['D', 86]]) s += `<text class="band-l g${g}" x="${L + 6}" y="${Y(v) + 4}">${g}</text>`;
   s += `<line class="ax" x1="${L}" y1="${Y(yMin)}" x2="${X(100)}" y2="${Y(yMin)}"/><line class="ax" x1="${L}" y1="${Y(100)}" x2="${L}" y2="${Y(yMin)}"/>`;
-  s += `<text class="axe left" x="${L}" y="${H - 10}">← ${e(t('prox.left'))}</text><text class="axe right" x="${X(100)}" y="${H - 10}" text-anchor="end">${e(t('prox.right'))} →</text>`;
-  s += `<text class="axt" x="${(L + X(100)) / 2}" y="${H - 10}" text-anchor="middle">${e(t('prox.axisX'))}</text>`;
+  s += `<text class="axe left" x="${L}" y="${H - 10}">← ${e(t('art.left'))}</text><text class="axe right" x="${X(100)}" y="${H - 10}" text-anchor="end">${e(t('art.right'))} →</text>`;
+  s += `<text class="axt" x="${(L + X(100)) / 2}" y="${H - 10}" text-anchor="middle">${e(t('art.axisX'))}</text>`;
   s += `<text class="axt" transform="translate(16 ${(Y(100) + Y(yMin)) / 2}) rotate(-90)" text-anchor="middle">${e(t('prox.axisY'))}</text>`;
   // Labels: one line per part (author, translator), centred on the dot,
   // above it if free, else below, else to a side; never overlapping.
@@ -226,7 +234,7 @@ export function gridSVG(points) {
   const tips = [];
   const tip = (p, lines) => {
     const g = bandFor(100 - p.y);
-    const rows = [[t('prox.scoreLabel'), String(Math.round(p.x))], [t('prox.axisY'), `${p.y.toFixed(1)} · ${g[0]}`]];
+    const rows = [[t('art.axisX'), String(Math.round(p.x))], [t('prox.axisY'), `${p.y.toFixed(1)} · ${g[0]}`]];
     const head = lines.join(' · ');
     const w = Math.max(head.length * 7, ...rows.map(([k, v]) => (k.length + v.length) * 6.6 + 18)) + 20;
     const h = 14 + (head ? 18 : 0) + rows.length * 17;
@@ -267,15 +275,15 @@ export function gridSVG(points) {
   return s + tips.join('') + (css ? `<style>${css}{opacity:1}</style>` : '') + '</svg>';
 }
 
-// Legend shown under every grid.
-export const gridLegend = () => `<div class="pgrid-legend"><span><i class="dot"></i>${t('prox.legendOut')}</span><span><i class="dot mim"></i>${t('prox.legendIn')}</span><span><i class="sw"></i>${t('prox.legendZone')}</span></div>`;
-// A compact proximity bar for report cards.
+// Legend shown under every grid (the corner entries only once a threshold is set).
+export const gridLegend = () => `<div class="pgrid-legend"><span><i class="dot"></i>${t('prox.legendOut')}</span>${MIMIC ? `<span><i class="dot mim"></i>${t('prox.legendIn')}</span><span><i class="sw"></i>${t('prox.legendZone', { art: MIMIC.art, score: MIMIC.score })}</span>` : ''}</div>`;
+// A compact artificiality bar for report cards.
 export function proxBar(r, quality) {
-  const p = proximity(r).score; if (p == null) return '';
+  const p = proximity(r).art; if (p == null) return '';
   const m = isMimicry(p, quality);
-  return `<div class="rc-prox${m ? ' mim' : ''}"><div class="rc-prox-head"><span>${t('h.prox')} <b>${Math.round(p)}</b></span>${m ? `<span class="rc-mim">${t('prox.zone')}</span>` : ''}</div>
-    <div class="rc-prox-track" dir="ltr"><span class="rc-prox-zone" style="left:${MIMIC.prox}%"></span><span class="rc-prox-mark" style="left:${p}%"></span></div>
-    <div class="rc-prox-ends" dir="ltr"><span>${t('prox.left')}</span><span>${t('prox.right')}</span></div></div>`;
+  return `<div class="rc-prox${m ? ' mim' : ''}"><div class="rc-prox-head"><span>${t('art.axisX')} <b>${Math.round(p)}</b></span>${m ? `<span class="rc-mim">${t('prox.zone')}</span>` : ''}</div>
+    <div class="rc-prox-track" dir="ltr">${MIMIC ? `<span class="rc-prox-zone" style="left:${MIMIC.art}%"></span>` : ''}<span class="rc-prox-mark" style="left:${p}%"></span></div>
+    <div class="rc-prox-ends" dir="ltr"><span>${t('art.left')}</span><span>${t('art.right')}</span></div></div>`;
 }
 
 export const REPO = 'aasem/translation-criticism';

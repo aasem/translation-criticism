@@ -444,8 +444,11 @@ html.lang-ur .eyebrow { font-size: 15px; }
 .pgrid-legend .sw { width: 14px; height: 10px; background: #f5dedb; border: 1px solid #e4bdb8; display: inline-block; }
 .prox-hint { font: 500 13px/1.55 var(--sans); color: #4a443e; margin: 12px 0 0; padding: 8px 12px; border-inline-start: 3px solid #cfc4b8; background: #f6f3ee; }
 html[lang="ur"] .prox-hint { font-family: var(--urdu); font-size: 15px; line-height: 2; }
-.prox-wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 22px; align-items: start; }
-@media (max-width: 860px) { .prox-wrap { grid-template-columns: 1fr; } }
+.prox-wrap { display: block; }
+.prox-wrap .prox-grid { max-width: 660px; margin: 0 0 18px; }
+.prox-t th.art, .prox-t td.art { background: #fbf4ef; }
+.prox-t td.art b { color: #9a3b33; }
+.prox-t .forced-note b { color: #9a3b33; }
 .prox-t { width: 100%; }
 .prox-t td:first-child { font-weight: 600; }
 .prox-t td .hint { margin: 2px 0 0; font-size: .82rem; font-weight: 400; }
@@ -480,3 +483,4 @@ html[lang="ur"] .prox-hint { font-family: var(--urdu); font-size: 15px; line-hei
 .pgrid-svg .tip-v.gD { fill: #8f1f1f; }
 .pgrid-svg .pg { cursor: default; }
 .pgrid-svg .pg a { cursor: pointer; }
+.prox-t .hint .ur { white-space: nowrap; }

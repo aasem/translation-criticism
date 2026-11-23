@@ -73,27 +73,37 @@
     "sentences": {
       "kept": 0,
       "total": 0,
-      "note": ""
+      "forced": 0,
+      "note": "",
+      "forcedNote": ""
     },
     "clauses": {
       "kept": 0,
       "total": 0,
-      "note": ""
+      "forced": 0,
+      "note": "",
+      "forcedNote": ""
     },
     "grammar": {
       "kept": 0,
       "total": 0,
-      "note": ""
+      "forced": 0,
+      "note": "",
+      "forcedNote": ""
     },
     "punctuation": {
       "kept": 0,
       "total": 0,
-      "note": ""
+      "forced": 0,
+      "note": "",
+      "forcedNote": ""
     },
     "culture": {
       "kept": 0,
       "total": 0,
-      "note": ""
+      "forced": 0,
+      "note": "",
+      "forcedNote": ""
     }
   },
   "checks": {

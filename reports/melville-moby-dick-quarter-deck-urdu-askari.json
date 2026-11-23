@@ -411,27 +411,37 @@
     "sentences": {
       "kept": 11,
       "total": 18,
-      "note": "12 source sentences, 18 Urdu: 11 sentence ends shared."
+      "note": "12 source sentences, 18 Urdu: 11 sentence ends shared.",
+      "forced": 0,
+      "forcedNote": "None: every kept sentence reads as Urdu."
     },
     "clauses": {
       "kept": 10,
       "total": 11,
-      "note": "Only #14 reverses its clauses (the if-clause moved before the main clause)."
+      "note": "Only #14 reverses its clauses (the if-clause moved before the main clause).",
+      "forced": 0,
+      "forcedNote": "None: the kept orders, including the relative clause in #6, sit naturally in Urdu."
     },
     "grammar": {
       "kept": 3,
       "total": 4,
-      "note": "Articles 1 of 2, possessive 1 of 1, passive 1 of 1."
+      "note": "Articles 1 of 2, possessive 1 of 1, passive 1 of 1.",
+      "forced": 0,
+      "forcedNote": "None: the passive in #6 (پہنچا دی گئی ہے) and the article in #16 are idiomatic."
     },
     "punctuation": {
       "kept": 2,
       "total": 8,
-      "note": "5 semicolons dropped; 2 of 3 dashes kept (#3)."
+      "note": "5 semicolons dropped; 2 of 3 dashes kept (#3).",
+      "forced": 0,
+      "forcedNote": "The paired dashes in #3 read as a natural aside."
     },
     "culture": {
       "kept": 1,
       "total": 1,
-      "note": "The white whale (سفید ویل)."
+      "note": "The white whale (سفید ویل).",
+      "forced": 0,
+      "forcedNote": ""
     }
   },
   "checks": {

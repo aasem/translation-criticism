@@ -704,27 +704,37 @@
     "sentences": {
       "kept": 23,
       "total": 24,
-      "note": "24 source sentences, 23 Urdu: \"I dare say.\" is joined to the next."
+      "note": "24 source sentences, 23 Urdu: \"I dare say.\" is joined to the next.",
+      "forced": 6,
+      "forcedNote": "Long periods held whole with tails after the verb: #6, #8, #13, #15, #18–21 (one sentence across four segments, held by ؛), #25–26."
     },
     "clauses": {
       "kept": 70,
       "total": 74,
-      "note": "Four relative clauses are moved before their nouns as Urdu participles (#3, #5, #8, #21)."
+      "note": "Four relative clauses are moved before their nouns as Urdu participles (#3, #5, #8, #21).",
+      "forced": 22,
+      "forcedNote": "Relative, conditional and participial clauses kept after the verb or stacked: #2 (1), #4 آج جبکہ (1), #6 (5), #8 (4), #13 (3), #14 کیونکہ، جس زمانے میں (1), #15 (2), #16 (1), #20 (1), #21 (1), #23 (1), #25 (1)."
     },
     "grammar": {
       "kept": 28,
       "total": 49,
-      "note": "Articles 19 of 23 (ایک or کسی), possessives 8 of 13, passives 1 of 13."
+      "note": "Articles 19 of 23 (ایک or کسی), possessives 8 of 13, passives 1 of 13.",
+      "forced": 4,
+      "forcedNote": "ایک انسانی فضا (#6), ایک ایسے اجتماع (#8), اپنے قدیم پروہتوں جیسے تاج (#20), and the passive دیکھا جائے (#5)."
     },
     "punctuation": {
       "kept": 6,
       "total": 10,
-      "note": "Colon and all 5 semicolons kept; all 4 dashes dropped."
+      "note": "Colon and all 5 semicolons kept; all 4 dashes dropped.",
+      "forced": 5,
+      "forcedNote": "All five semicolons kept (#18, #19 twice, #25, #26). The colon in #1 is natural."
     },
     "culture": {
       "kept": 6,
       "total": 9,
-      "note": "Kept: Mme Swann, Louis XVI, Paris, Virgil, Dodona, the acacia-avenue. Changed: carriage-and-pair (بگھیاں), the Bois (جنگل), the Grand Lac (بڑی جھیل). Items coded as deviations (Elysian, Druidical, myrtle, country house) are left out."
+      "note": "Kept: Mme Swann, Louis XVI, Paris, Virgil, Dodona, the acacia-avenue. Changed: carriage-and-pair (بگھیاں), the Bois (جنگل), the Grand Lac (بڑی جھیل). Items coded as deviations (Elysian, Druidical, myrtle, country house) are left out.",
+      "forced": 1,
+      "forcedNote": "دودونا (Dodone) with the Latin-script name in brackets (#20)."
     }
   },
   "checks": {
