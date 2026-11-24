@@ -1049,6 +1049,22 @@ export const STRINGS = {
 "Each dot is one translation of the same passage.",
 "ہر نقطہ اسی اقتباس کا ایک ترجمہ ہے۔"
 ],
+"m.cmp.h": [
+"Comparing translations",
+"تراجم کا تقابل"
+],
+"m.cmp.p1": [
+"Many works now reach Urdu readers in more than one translation, and a reader or a publisher often needs to know not only how far a translation can be relied on but which of several to choose. A comparison answers this without changing the method. Each translation has its own report, judged only against the source, and the comparison sets the reports side by side. One translation is never the yardstick for another.",
+"اب بہت سی تصانیف اردو قاری تک ایک سے زیادہ تراجم میں پہنچتی ہیں، اور قاری یا ناشر کو اکثر صرف یہ نہیں جاننا ہوتا کہ کسی ترجمے پر کتنا بھروسا کیا جا سکتا ہے بلکہ یہ بھی کہ کئی تراجم میں سے کون سا چنا جائے۔ تقابل اس سوال کا جواب طریقۂ کار بدلے بغیر دیتا ہے۔ ہر ترجمے کی اپنی رپورٹ ہوتی ہے جس میں اسے صرف ماخذ کے مقابل پرکھا جاتا ہے، اور تقابل ان رپورٹوں کو آمنے سامنے رکھ دیتا ہے۔ کوئی ترجمہ کبھی دوسرے ترجمے کا پیمانہ نہیں بنتا۔"
+],
+"m.cmp.p2": [
+"All the translations in a comparison are cut into the same segments. Where a translation already has a report here, its segments are kept and the others are aligned onto them. For each segment the comparison shows which translation carries the lowest weighted penalty. It also marks the hard segments, those where every translation has a scored deviation. A deviation that all of them share at the same point says more about the source than about any one translator.",
+"تقابل میں شامل تمام تراجم ایک ہی طرح قطعات میں بانٹے جاتے ہیں۔ جس ترجمے کی رپورٹ یہاں پہلے سے موجود ہو، اس کے قطعات برقرار رکھے جاتے ہیں اور باقی تراجم انھی پر منطبق کیے جاتے ہیں۔ ہر قطعے کے لیے تقابل دکھاتا ہے کہ کس ترجمے کا وزنی جرمانہ سب سے کم ہے۔ یہ دشوار قطعات کی نشان دہی بھی کرتا ہے، یعنی وہ قطعات جن میں ہر ترجمے کا کوئی قابلِ شمار انحراف موجود ہو۔ جو انحراف ایک ہی مقام پر سب تراجم میں مشترک ہو، وہ کسی ایک مترجم سے زیادہ خود ماخذ کے بارے میں بتاتا ہے۔"
+],
+"m.cmp.p3": [
+"A comparison ends in a preferred translation. The preference starts from the highest quality score. The assessor may prefer another translation only if it stands in the same band, and the comparison says why. Drafts and published translations can be compared together, so that a publisher can ask whether a new translation improves on one already in print. Each translation keeps its own decision or grade. There is no limit to how many translations are compared: adding one changes no one's score.",
+"تقابل کا اختتام ایک ترجیحی ترجمے پر ہوتا ہے۔ ترجیح سب سے زیادہ معیار اسکور سے شروع ہوتی ہے۔ جائزہ نگار کسی دوسرے ترجمے کو صرف اسی صورت ترجیح دے سکتا ہے جب وہ اسی بینڈ میں ہو، اور تقابل میں اس کی وجہ درج ہوتی ہے۔ مسودوں اور شائع شدہ تراجم کا تقابل ایک ساتھ ہو سکتا ہے، تاکہ ناشر یہ دیکھ سکے کہ کوئی نیا ترجمہ چھپے ہوئے ترجمے سے بہتر ہے یا نہیں۔ ہر ترجمے کا اپنا فیصلہ یا گریڈ برقرار رہتا ہے۔ تقابل میں شامل تراجم کی تعداد کی کوئی حد نہیں: ایک ترجمے کے اضافے سے کسی کا اسکور نہیں بدلتا۔"
+],
 "sbs.merged": [
 "(merged into #{n})",
 "(#{n} میں ضم)"
