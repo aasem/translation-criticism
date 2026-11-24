@@ -1258,8 +1258,8 @@ export const STRINGS = {
 "متعلقاتِ متن"
 ],
 "grid.head": [
-"Mimicry and quality",
-"نقالی اور معیار"
+"Structural mimicry and quality",
+"ہیئتی نقالی اور معیار"
 ],
 "grid.hint": [
 "Each point is a report: mimicry across, quality score up. Click a point to open the report.",
@@ -1290,12 +1290,12 @@ export const STRINGS = {
 "نقالی {art} یا زیادہ اور معیار اسکور {score} سے کم"
 ],
 "h.art": [
-"Mimicry",
-"نقالی"
+"Structural mimicry",
+"ہیئتی نقالی"
 ],
 "art.axisX": [
-"Mimicry",
-"نقالی"
+"Structural mimicry",
+"ہیئتی نقالی"
 ],
 "art.left": [
 "natural",
@@ -1318,20 +1318,20 @@ export const STRINGS = {
 "اوسط"
 ],
 "art.hint": [
-"Mimicry is the assessor's judgement: how much of the form kept from the source imitates it against the grain of Urdu. It never enters the score or the outcome.",
-"نقالی جائزہ کار کی رائے ہے: ماخذ سے برقرار رکھی گئی ہیئت کا کتنا حصہ اردو کے مزاج کے خلاف اس کی نقل ہے۔ یہ کبھی اسکور یا نتیجے میں شامل نہیں ہوتی۔"
+"Structural mimicry is the assessor's judgement: how much of the form kept from the source imitates it against the grain of Urdu. It never enters the score or the outcome.",
+"ہیئتی نقالی جائزہ کار کی رائے ہے: ماخذ سے برقرار رکھی گئی ہیئت کا کتنا حصہ اردو کے مزاج کے خلاف اس کی نقل ہے۔ یہ کبھی اسکور یا نتیجے میں شامل نہیں ہوتی۔"
 ],
 "art.tableHint": [
-"Proximity (kept ÷ all) shows how much of the source's form the translation keeps, and makes no judgement. Mimicry (forced ÷ kept) is the share of that kept form which is kept against Urdu syntax, punctuation or idiom.",
-"نزدیکی (برقرار ÷ کل) بتاتی ہے کہ ترجمہ ماخذ کی ہیئت کا کتنا حصہ برقرار رکھتا ہے، اور کوئی فیصلہ نہیں دیتی۔ نقالی (غیر فطری ÷ برقرار) اس برقرار ہیئت کا وہ حصہ ہے جو اردو نحو، رموزِ اوقاف یا محاورے کے خلاف برقرار رکھا گیا۔"
+"Proximity (kept ÷ all) shows how much of the source's form the translation keeps, and makes no judgement. Structural mimicry (forced ÷ kept) is the share of that kept form which is kept against Urdu syntax, punctuation or idiom.",
+"نزدیکی (برقرار ÷ کل) بتاتی ہے کہ ترجمہ ماخذ کی ہیئت کا کتنا حصہ برقرار رکھتا ہے، اور کوئی فیصلہ نہیں دیتی۔ ہیئتی نقالی (غیر فطری ÷ برقرار) اس برقرار ہیئت کا وہ حصہ ہے جو اردو نحو، رموزِ اوقاف یا محاورے کے خلاف برقرار رکھا گیا۔"
 ],
 "m.art.h": [
-"Mimicry",
-"نقالی"
+"Structural mimicry",
+"ہیئتی نقالی"
 ],
 "m.art.p1": [
-"Beside the quality score, each report places the translation on a second, independent axis: mimicry, how much of the form the translation keeps from the source is kept against the grain of the target language, from 0 to 100. Its two ends are natural (بے ساختگی), where whatever form is kept still reads as the target language, and mimicking (نقالی), where the kept form imitates the source at the target language's expense and makes the prose stiff, awkward or unidiomatic.",
-"معیار اسکور کے ساتھ ساتھ ہر رپورٹ ترجمے کو ایک دوسرے، الگ محور پر بھی رکھتی ہے: نقالی، یعنی ترجمہ ماخذ کی جو ہیئت برقرار رکھتا ہے اس کا کتنا حصہ ہدف زبان کے مزاج کے خلاف برقرار رکھا گیا، صفر سے سو تک۔ اس کے دو سرے بے ساختگی اور نقالی ہیں۔ بے ساختگی سے مراد یہ ہے کہ جو ہیئت بھی برقرار رہے وہ ہدف زبان ہی کی طرح پڑھی جائے، اور نقالی سے مراد یہ کہ برقرار رکھی گئی ہیئت ہدف زبان کی قیمت پر ماخذ کی نقل کرے اور نثر کو اکڑا ہوا، بے ڈھنگا یا خلافِ محاورہ بنا دے۔"
+"Beside the quality score, each report places the translation on a second, independent axis: structural mimicry, how much of the form the translation keeps from the source is kept against the grain of the target language, from 0 to 100. Its two ends are natural (بے ساختگی), where whatever form is kept still reads as the target language, and mimicking (نقالی), where the kept form imitates the source at the target language's expense and makes the prose stiff, awkward or unidiomatic.",
+"معیار اسکور کے ساتھ ساتھ ہر رپورٹ ترجمے کو ایک دوسرے، الگ محور پر بھی رکھتی ہے: ہیئتی نقالی، یعنی ترجمہ ماخذ کی جو ہیئت برقرار رکھتا ہے اس کا کتنا حصہ ہدف زبان کے مزاج کے خلاف برقرار رکھا گیا، صفر سے سو تک۔ اس کے دو سرے بے ساختگی اور نقالی ہیں۔ بے ساختگی سے مراد یہ ہے کہ جو ہیئت بھی برقرار رہے وہ ہدف زبان ہی کی طرح پڑھی جائے، اور نقالی سے مراد یہ کہ برقرار رکھی گئی ہیئت ہدف زبان کی قیمت پر ماخذ کی نقل کرے اور نثر کو اکڑا ہوا، بے ڈھنگا یا خلافِ محاورہ بنا دے۔"
 ],
 "m.art.h3a": [
 "How it is counted",
