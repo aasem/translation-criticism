@@ -56,7 +56,7 @@ const $ = (id) => document.getElementById(id);
 const id = new URLSearchParams(location.search).get('id');
 const DRAFT = `tc-draft:${id}`;
 const path = `reports/${id}.json`;
-let R, original, editing = false, F = {};
+let R, original, editing = false, F = {}, CMPS = [];
 
 // ---------- state helpers ----------
 const getAt = (o, p) => p.split('.').reduce((a, k) => a?.[k], o);
@@ -138,6 +138,7 @@ function header() {
       <span class="chip">${icon('layers')}${esc(tt('report.typeChip', { type: label('textType', r.textType) }))}</span>
       <span class="chip">${icon('globe')}${esc(r.source?.language)} → ${esc(r.submission?.language)}</span>
       ${(r.tags || []).map((t) => `<a class="chip tag" href="./?q=${encodeURIComponent(t)}">${esc(t)}</a>`).join('')}
+      ${CMPS.map((c) => `<a class="chip" href="compare.html?id=${encodeURIComponent(c.id)}">${icon('columns')}${esc(tt('cmp.alsoIn'))}: ${esc(c.passage || c.title)}</a>`).join('')}
     </div>`;
 }
 
@@ -437,6 +438,13 @@ try {
   if (d) { try { R = normalize(JSON.parse(d)); } catch {} }
   $('b-gh').href = `https://github.com/${REPO}/blob/${BRANCH}/${path}`;
   render();
+  // Comparisons this report belongs to (shown as links in the header).
+  try {
+    const { comparisons: cids } = await loadJSON('comparisons/index.json');
+    const cs = await Promise.allSettled(cids.map((c) => loadJSON(`comparisons/${c}.json`)));
+    CMPS = cs.filter((x) => x.status === 'fulfilled' && (x.value.members || []).some((m) => m.id === id)).map((x) => x.value);
+    if (CMPS.length && !editing) render();
+  } catch {}
 } catch (e) {
   $('root').innerHTML = `<p class="empty">${esc(tt('report.loadError', { error: e.message }))} <a href="./">${tt('report.back')}</a></p>`;
 }

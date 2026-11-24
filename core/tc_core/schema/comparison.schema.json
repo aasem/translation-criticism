@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aasem.github.io/translation-criticism/schema/comparison.schema.json",
+  "title": "Comparison of translations",
+  "description": "Lines up two or more reports of the same source passage. All figures come from the member reports; this file holds only the members and the comparative prose.",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "member": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "default": "",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "label": {
+          "type": "string",
+          "default": "",
+          "description": "Display label; empty means the translator's name, else the submission label, else 'Translation k'."
+        }
+      },
+      "required": [
+        "id",
+        "label"
+      ],
+      "default": {}
+    }
+  },
+  "properties": {
+    "schema": {
+      "const": 1,
+      "default": 1
+    },
+    "id": {
+      "type": "string",
+      "default": "",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "default": "",
+      "minLength": 1
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "",
+      "minLength": 1
+    },
+    "date": {
+      "type": "string",
+      "default": "",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "author": {
+      "type": "string",
+      "default": "",
+      "minLength": 1
+    },
+    "work": {
+      "type": "string",
+      "default": "",
+      "minLength": 1
+    },
+    "originalWork": {
+      "type": "string",
+      "default": ""
+    },
+    "passage": {
+      "type": "string",
+      "default": ""
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/member"
+      },
+      "minItems": 2,
+      "default": []
+    },
+    "textNotes": {
+      "type": "string",
+      "default": ""
+    },
+    "lead": {
+      "type": "string",
+      "default": ""
+    },
+    "tendencies": {
+      "type": "string",
+      "default": ""
+    },
+    "preferred": {
+      "type": "string",
+      "default": "",
+      "description": "id of the preferred member"
+    },
+    "preferredBasis": {
+      "type": "string",
+      "default": ""
+    },
+    "note": {
+      "type": "string",
+      "default": "",
+      "description": "One line for readers and publishers"
+    }
+  },
+  "required": [
+    "schema",
+    "id",
+    "title",
+    "subtitle",
+    "date",
+    "author",
+    "work",
+    "originalWork",
+    "passage",
+    "tags",
+    "members",
+    "textNotes",
+    "lead",
+    "tendencies",
+    "preferred",
+    "preferredBasis",
+    "note"
+  ]
+}

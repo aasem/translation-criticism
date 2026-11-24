@@ -925,6 +925,130 @@ export const STRINGS = {
 "Codes, severities, weights, bands, the sample assumption and the suggestion columns are explained in the {link}.",
 "کوڈ، شدتیں، اوزان، بینڈ، نمونے کا مفروضہ اور رائے کے کالم {link} میں سمجھائے گئے ہیں۔"
 ],
+"cmp.kind": [
+"Comparison",
+"تقابل"
+],
+"cmp.translationN": [
+"Translation {k}",
+"ترجمہ {k}"
+],
+"cmp.chip": [
+"{n} translations compared",
+"{n} تراجم کا تقابل"
+],
+"cmp.card": [
+"{n} translations of the same passage",
+"ایک ہی اقتباس کے {n} تراجم"
+],
+"cmp.h.summary": [
+"The translations at a glance",
+"تراجم ایک نظر میں"
+],
+"cmp.th.translation": [
+"Translation",
+"ترجمہ"
+],
+"cmp.th.kind": [
+"Kind",
+"نوعیت"
+],
+"cmp.th.score": [
+"Quality score",
+"معیار اسکور"
+],
+"cmp.th.outcome": [
+"Decision or grade",
+"فیصلہ یا گریڈ"
+],
+"cmp.th.severe": [
+"Critical · major",
+"سنگین · بڑے"
+],
+"cmp.th.lowest": [
+"Lowest penalty",
+"کم ترین جرمانہ"
+],
+"cmp.th.penalty": [
+"Penalty",
+"جرمانہ"
+],
+"cmp.tie": [
+"Tie",
+"برابر"
+],
+"cmp.summary.hint": [
+"Each translation is scored only against the source, in its own report. Lowest penalty counts the segments where a translation carries the lowest weighted penalty, alone or shared, short of a full tie.",
+"ہر ترجمے کو اس کی اپنی رپورٹ میں صرف ماخذ کے مقابل جانچا گیا ہے۔ کم ترین جرمانہ ان قطعات کی تعداد ہے جن میں کسی ترجمے کا وزنی جرمانہ سب سے کم ہو، اکیلے یا کسی کے ساتھ، جب تک سب برابر نہ ہوں۔"
+],
+"cmp.sbs.hint": [
+"Cell colour shows the worst severity. Penalty is the weighted sum for the segment (Minor 1, Major 5, Critical 25). Suggestions are in the separate reports.",
+"خانے کا رنگ شدید ترین شدت ظاہر کرتا ہے۔ جرمانہ قطعے کا وزنی مجموعہ ہے (معمولی 1، بڑا 5، سنگین 25)۔ تجاویز الگ الگ رپورٹوں میں ہیں۔"
+],
+"cmp.h.hard": [
+"Hard segments",
+"دشوار قطعات"
+],
+"cmp.hard.p": [
+"Segments where every translation has a scored deviation: {list}. A code shared by all at the same segment marks where the source itself resists translation, rather than where one translator falls short.",
+"وہ قطعات جن میں ہر ترجمے میں کم از کم ایک قابلِ شمار انحراف ہے: {list}۔ ایک ہی قطعے پر سب میں مشترک کوڈ اس جگہ کی نشان دہی کرتا ہے جہاں ماخذ خود ترجمے کی مزاحمت کرتا ہے، نہ کہ کسی ایک مترجم کی کمی کی۔"
+],
+"cmp.hard.none": [
+"No segment has a scored deviation in every translation.",
+"کسی قطعے میں ہر ترجمے کا قابلِ شمار انحراف موجود نہیں۔"
+],
+"cmp.hard.shared": [
+"shared: {codes}",
+"مشترک: {codes}"
+],
+"cmp.h.tendencies": [
+"Comparative tendencies",
+"تقابلی رجحانات"
+],
+"cmp.h.preferred": [
+"Preferred translation",
+"ترجیحی ترجمہ"
+],
+"cmp.preferred.line": [
+"Preferred: {label}",
+"ترجیح: {label}"
+],
+"cmp.preferred.hint": [
+"Highest quality score: {label} ({score}, band {band}). Another translation may be preferred only within the same band, with the reason in the basis.",
+"سب سے زیادہ معیار اسکور: {label} ({score}، بینڈ {band})۔ کسی دوسرے ترجمے کو صرف اسی بینڈ کے اندر ترجیح دی جا سکتی ہے، اور اس کی وجہ بنیاد میں درج ہوتی ہے۔"
+],
+"cmp.moved": [
+"Preferred over a higher score within the same band.",
+"اسی بینڈ میں زیادہ اسکور والے ترجمے پر ترجیح۔"
+],
+"cmp.note": [
+"Note for readers and publishers.",
+"قارئین اور ناشرین کے لیے۔"
+],
+"cmp.ack": [
+"Any translation can be reworked. This preference concerns the translations as sampled here, not the possibility of a good translation of this work.",
+"ہر ترجمے پر دوبارہ کام ہو سکتا ہے۔ یہ ترجیح یہاں نمونے کے طور پر لیے گئے تراجم سے متعلق ہے، اس تصنیف کے کسی اچھے ترجمے کے امکان سے نہیں۔"
+],
+"cmp.h.reports": [
+"The separate reports",
+"الگ الگ رپورٹیں"
+],
+"cmp.alsoIn": [
+"Compared in",
+"تقابل میں شامل"
+],
+"cmp.mismatch": [
+"These reports do not share the same source segmentation, so they cannot be lined up ({error}).",
+"ان رپورٹوں میں ماخذ کی قطعہ بندی یکساں نہیں، اس لیے ان کا تقابل نہیں ہو سکتا ({error})۔"
+],
+"cmp.loadError": [
+"Could not load this comparison ({error}).",
+"یہ تقابل لوڈ نہیں ہو سکا ({error})۔"
+],
+"cmp.grid.hint": [
+"Each dot is one translation of the same passage.",
+"ہر نقطہ اسی اقتباس کا ایک ترجمہ ہے۔"
+],
 "sbs.merged": [
 "(merged into #{n})",
 "(#{n} میں ضم)"

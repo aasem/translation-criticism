@@ -484,3 +484,27 @@ html[lang="ur"] .prox-hint { font-family: var(--urdu); font-size: 15px; line-hei
 .pgrid-svg .pg { cursor: default; }
 .pgrid-svg .pg a { cursor: pointer; }
 .prox-t .hint .ur { white-space: nowrap; }
+
+/* ---------- comparisons ---------- */
+.cmp-sum td, .cmp-sum th { vertical-align: top; }
+.cmp-sum tr.cmp-pref td { background: #f3f7ee; }
+.cmp-sum .badge { display: inline-flex; vertical-align: middle; color: #3f7a3a; }
+.cmp-sbs.two col, .cmp-sbs.two th:first-child { width: 3.2em; }
+.cmp-sbs td.lowest { font: 500 13px/1.5 var(--sans); }
+.cmp-sbs p.pen { font: 500 12px var(--sans); color: var(--muted); margin-top: .6em; }
+.cmp-sbs.stack tbody.seg { border-top: 2px solid var(--rule); }
+.cmp-sbs.stack tr.src td { background: var(--card); }
+.cmp-sbs.stack td.sub .who { font: 600 11px var(--sans); color: var(--muted); display: block; margin-bottom: 4px; direction: ltr; text-align: left; }
+html.lang-ur .cmp-sbs.stack td.sub .who { direction: rtl; text-align: right; }
+.cmp-sbs.stack td.pen { width: 5em; }
+.cmp-sbs.stack td.pen.lo { color: #3f7a3a; }
+.cmp-sbs.stack td.pen .ico { width: 14px; height: 14px; vertical-align: -2px; margin-inline-end: 3px; }
+details.cmp-passage { margin: 1em 0; }
+details.cmp-passage > summary { cursor: pointer; }
+details.cmp-passage > summary h3 { display: inline; }
+.cmp-reports li { margin: .3em 0; }
+.rc-members { display: grid; gap: 4px; margin: 8px 0; }
+.rc-member { display: flex; justify-content: space-between; gap: 8px; font: 500 13px var(--sans); }
+.rc-member.pref { font-weight: 700; }
+.rc-member .ico { width: 13px; height: 13px; vertical-align: -2px; color: #3f7a3a; }
+.cmp-grid { max-width: 640px; }

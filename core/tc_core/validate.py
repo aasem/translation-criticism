@@ -194,6 +194,29 @@ def validate_repo(root: str | Path) -> dict[str, list[Issue]]:
         p = reports / f"{stem}.json"
         text = p.read_text(encoding="utf-8")
         result[f"reports/{stem}.json"] = validate_report(json.loads(text), text=text, stem=stem)
+
+    cdir = root / "comparisons"
+    if cdir.exists():
+        from .compare import validate_comparison
+        from .normalize import normalize_comparison
+        cidx_path = cdir / "index.json"
+        cids = json.loads(cidx_path.read_text(encoding="utf-8")).get("comparisons", []) if cidx_path.exists() else []
+        cfiles = {p.stem for p in cdir.glob("*.json") if p.stem not in ("index", "_template")}
+        ci = [Issue("error", "comparisons", f"{i!r} is listed but comparisons/{i}.json does not exist") for i in cids if i not in cfiles]
+        ci += [Issue("warning", "comparisons", f"comparisons/{f}.json is not listed") for f in sorted(cfiles - set(cids))]
+        if len(cids) != len(set(cids)):
+            ci.append(Issue("error", "comparisons", "duplicate ids in index.json"))
+        result["comparisons/index.json"] = ci
+        by_id = {s: canonical(json.loads((reports / f"{s}.json").read_text(encoding="utf-8")))[0] for s in files}
+        for stem in sorted(cfiles):
+            p = cdir / f"{stem}.json"
+            text = p.read_text(encoding="utf-8")
+            result[f"comparisons/{stem}.json"] = validate_comparison(json.loads(text), by_id, text=text, stem=stem)
+        tpl = cdir / "_template.json"
+        if tpl.exists():
+            t = tpl.read_text(encoding="utf-8")
+            result["comparisons/_template.json"] = ([] if dumps(normalize_comparison(json.loads(t))) == t
+                                                    else [Issue("error", "", "template is not in canonical form")])
     return result
 
 

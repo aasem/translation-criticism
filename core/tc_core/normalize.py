@@ -11,7 +11,7 @@ import copy
 import json
 import re
 
-from .spec import report_schema
+from .spec import comparison_schema, report_schema
 
 SCHEMA_VERSION = 2
 _MISSING = object()
@@ -82,9 +82,13 @@ def upgrade(report: dict) -> tuple[dict, list[str]]:
     return r, notes
 
 
-def normalize(report: dict) -> dict:
-    root = report_schema()
+def normalize(report: dict, schema: dict | None = None) -> dict:
+    root = schema or report_schema()
     return _norm(report, root, root)
+
+
+def normalize_comparison(c: dict) -> dict:
+    return normalize(c, comparison_schema())
 
 
 def canonical(report: dict) -> tuple[dict, list[str]]:

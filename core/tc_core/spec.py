@@ -13,6 +13,7 @@ from pathlib import Path
 HERE = Path(__file__).parent
 METHOD_PATH = HERE / "method.json"
 SCHEMA_PATH = HERE / "schema" / "report.schema.json"
+CMP_SCHEMA_PATH = HERE / "schema" / "comparison.schema.json"
 
 
 @lru_cache(maxsize=None)
@@ -23,6 +24,11 @@ def method() -> dict:
 @lru_cache(maxsize=None)
 def report_schema() -> dict:
     return json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+
+
+@lru_cache(maxsize=None)
+def comparison_schema() -> dict:
+    return json.loads(CMP_SCHEMA_PATH.read_text(encoding="utf-8"))
 
 
 def codes() -> dict[str, dict]:

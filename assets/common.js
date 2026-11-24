@@ -1,8 +1,8 @@
 // Shared helpers for the translation-criticism site.
 // Reports live as JSON in /reports; this file renders them.
 import { t, UR } from './i18n.js';
-import { METHOD, SCHEMA } from './method.js';
-export { METHOD, SCHEMA };
+import { METHOD, SCHEMA, CMP_SCHEMA } from './method.js';
+export { METHOD, SCHEMA, CMP_SCHEMA };
 
 // The method itself (codes, weights, bands, decisions, states) comes from
 // core/tc_core/method.json through the generated assets/method.js, shared with the Python core.
@@ -346,20 +346,20 @@ export function htmlToMd(root) {
 // The same rules as core/tc_core/normalize.py, driven by the same schema: upgrade an older
 // report, fill every missing field from the schema's defaults, keep schema key order.
 // Unknown keys are kept at the end so nothing is lost; the validator reports them.
-const resolve = (s) => { while (s && s.$ref) s = SCHEMA.$defs[s.$ref.split('/').pop()]; return s; };
+const resolve = (s, root) => { while (s && s.$ref) s = root.$defs[s.$ref.split('/').pop()]; return s; };
 const types = (s) => [].concat(s?.type ?? []);
-function norm(v, s) {
-  s = resolve(s); const ty = types(s);
+function norm(v, s, root = s) {
+  s = resolve(s, root); const ty = types(s);
   if (v === undefined || (v === null && !ty.includes('null'))) {
     if (ty.includes('object')) v = {}; else return structuredClone(s?.default ?? null);
   }
   if (ty.includes('object') && v && typeof v === 'object' && !Array.isArray(v)) {
     const props = s.properties || {}; const out = {};
-    for (const k of Object.keys(props)) out[k] = norm(v[k], props[k]);
+    for (const k of Object.keys(props)) out[k] = norm(v[k], props[k], root);
     for (const k of Object.keys(v)) if (!(k in props)) out[k] = v[k];
     return out;
   }
-  if (ty.includes('array') && Array.isArray(v)) return s.items ? v.map((x) => norm(x, s.items)) : v;
+  if (ty.includes('array') && Array.isArray(v)) return s.items ? v.map((x) => norm(x, s.items, root)) : v;
   if (ty.includes('integer')) {
     if (typeof v === 'string') { const x = v.trim(); if (x === '' && ty.includes('null')) return null; if (/^\d+$/.test(x)) return +x; }
   }
@@ -379,3 +379,47 @@ export function upgrade(r) {
   return r;
 }
 export const normalize = (r) => norm(upgrade(r), SCHEMA);
+export const normalizeComparison = (c) => norm(c, CMP_SCHEMA);
+
+// ---------- comparisons ----------
+// Mirrors core/tc_core/compare.py (checked by core/tests/test_compare.py). Nothing is re-scored:
+// every figure comes from the member reports, each measured only against the source.
+export const memberLabel = (entry, r, k) =>
+  String(entry?.label || r.submission?.translator || r.submission?.label || `${t('cmp.translationN', { k })}`).trim();
+const scoredDevs = (s) => (s.deviations || []).filter((d) => SCORED.includes(d.severity));
+export function analyse(cmp, reports) {
+  const members = (cmp.members || []).map((e, i) => {
+    const r = reports[i], tl = tally(r), f = figures(r), p = proximity(r);
+    return { id: r.id, label: memberLabel(e, r, i + 1), stage: r.stage, outcome: isPublished(r) ? r.grade : r.decision,
+      score: tl.score, pp100: tl.pp100, penalty: tl.penalty, band: tl.band[0], total: tl.n, severe: tl.total.Critical + tl.total.Major,
+      A: f.A, B: f.B, C: f.C, proximity: p.score, mimicry: p.art, wins: 0 };
+  });
+  const n = Math.min(...reports.map((r) => (r.segments || []).length));
+  const segments = [];
+  for (let i = 0; i < n; i++) {
+    const per = reports.map((r) => r.segments[i]);
+    const pens = per.map((s) => (s.deviations || []).reduce((a, d) => a + WEIGHTS[d.severity], 0));
+    const low = Math.min(...pens);
+    const lowest = pens.map((x, k) => (x === low ? k : -1)).filter((k) => k >= 0);
+    const tie = lowest.length === pens.length;
+    const hard = per.every((s) => scoredDevs(s).length);
+    const sets = per.map((s) => new Set(scoredDevs(s).map((d) => d.code)));
+    const shared = [...sets[0]].filter((c) => sets.every((x) => x.has(c))).sort();
+    if (!tie) for (const k of lowest) members[k].wins++;
+    segments.push({ n: i + 1, penalties: pens, lowest, tie, hard, shared });
+  }
+  return { members, segments, hard: segments.filter((s) => s.hard).map((s) => s.n), ties: segments.filter((s) => s.tie).length,
+    words: reports.length ? tally(reports[0]).words : 0 };
+}
+export function cmpFigures(cmp, reports) {
+  const a = analyse(cmp, reports);
+  const f = { segments: a.segments.length, words: a.words, members: a.members.length, hard: a.hard.length, ties: a.ties };
+  a.members.forEach((m, i) => {
+    const k = i + 1, g = bandFor(m.pp100);
+    Object.assign(f, { [`score.${k}`]: m.score.toFixed(1), [`band.${k}`]: `${g[0]} (${g[1]})`, [`total.${k}`]: m.total,
+      [`severe.${k}`]: m.severe, [`penalty.${k}`]: m.penalty, [`pp100.${k}`]: m.pp100.toFixed(1),
+      [`A.${k}`]: m.A, [`B.${k}`]: m.B, [`C.${k}`]: m.C, [`wins.${k}`]: m.wins });
+  });
+  return f;
+}
+export const fillCmp = (text, f) => String(text ?? '').replace(/\{(\w+(?:\.\d+)?)\}/g, (m, k) => (k in f ? String(f[k]) : m));

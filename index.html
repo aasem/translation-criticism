@@ -43,7 +43,7 @@
       <h2 class="list-head"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg><span data-i18n="list.head">Assessment reports</span></h2>
       <div class="search-wrap"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="q" class="search" type="search" placeholder="Search author, translator, or any phrase…" data-i18n-ph="list.search" autocomplete="off"></div>
       <div class="filters">
-        <select id="f-stage"><option value="" data-i18n="list.allKinds">All kinds</option><option value="Pre-publication" data-i18n="stage.Pre-publication">Pre-publication</option><option value="Published" data-i18n="stage.Published">Published</option></select>
+        <select id="f-stage"><option value="" data-i18n="list.allKinds">All kinds</option><option value="Pre-publication" data-i18n="stage.Pre-publication">Pre-publication</option><option value="Published" data-i18n="stage.Published">Published</option><option value="Comparison" data-i18n="cmp.kind">Comparison</option></select>
         <select id="f-decision"><option value="" data-i18n="list.allOutcomes">All decisions and grades</option></select>
         <select id="f-type"><option value="" data-i18n="list.allTypes">All text types</option></select>
         <span id="count" class="hint" style="align-self:center"></span>
@@ -63,10 +63,10 @@ for (const a of document.querySelectorAll('a.mail')) {
 </script>
 <script type="module">
 import { t, tr, label, UR } from './assets/i18n.js';
-import { proxBar, gridLegend, proximity, gridSVG, loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon, isPublished, GRADES, gradeName, gradeClass, scoreRange, outcomeMoved, scoreGuide } from './assets/common.js';
+import { proxBar, gridLegend, proximity, gridSVG, loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon, isPublished, GRADES, gradeName, gradeClass, scoreRange, outcomeMoved, scoreGuide, analyse, normalize, normalizeComparison } from './assets/common.js';
 
 const $ = (id) => document.getElementById(id);
-let reports = [];
+let reports = [], comparisons = [];
 
 function haystack(r) {
   const segs = (r.segments || []).flatMap((s) => [s.source, s.submission, s.suggestion?.ai, s.suggestion?.human, ...(s.deviations || []).flatMap((d) => [d.note, d.gain])]);
@@ -108,9 +108,13 @@ function render() {
   const list = reports.filter((r) =>
     (!fk || (r.stage || 'Pre-publication') === fk) && (!fd || (isPublished(r) ? 'Grade ' + r.grade : r.decision) === fd) && (!fs || r.textType === fs) &&
     (!q || r._hay.includes(q)));
-  $('count').textContent = UR ? T('list.count', { shown: list.length, total: reports.length }) : `${list.length} of ${reports.length} report${reports.length === 1 ? '' : 's'}`;
-  if (!list.length) { $('cards').innerHTML = `<p class="empty">${T('list.none')}</p>`; return; }
-  $('cards').innerHTML = list.map((r) => {
+  const clist = comparisons.filter((c) => (!fk || fk === 'Comparison') && !fd && (!fs || c._rs[0].textType === fs) && (!q || c._hay.includes(q)));
+  const items = [...list, ...clist].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  const all = reports.length + comparisons.length;
+  $('count').textContent = UR ? T('list.count', { shown: items.length, total: all }) : `${items.length} of ${all} report${all === 1 ? '' : 's'}`;
+  if (!items.length) { $('cards').innerHTML = `<p class="empty">${T('list.none')}</p>`; return; }
+  $('cards').innerHTML = items.map((r) => {
+    if (r._cmp) return cmpCard(r);
     const t = tally(r);
     let ex = '';
     if (q) {
@@ -154,6 +158,28 @@ function render() {
   }).join('');
 }
 
+// A comparison card: the members with their scores and outcomes, the preferred one marked.
+function cmpCard(c) {
+  const a = c._a;
+  const rows = a.members.map((m, k) => {
+    const r = c._rs[k];
+    const out = isPublished(r) ? T('card.grade', { grade: r.grade }) : label('decision', r.decision);
+    return `<div class="rc-member${r.id === c.preferred ? ' pref' : ''}"><span dir="auto">${r.id === c.preferred ? icon('check') : ''}${urduWrap(esc(m.label))}</span><span><span class="${gradeClass(m.band)}">${m.score.toFixed(1)} · ${m.band}</span> · ${esc(out)}</span></div>`;
+  }).join('');
+  return `<a class="card rcard" href="compare.html?id=${encodeURIComponent(c.id)}">
+    <div class="rc-top">
+      <span class="badge author">${icon('feather')}${esc(c.author)}</span>
+      <span class="badge kind">${icon('columns')}${esc(T('cmp.kind'))}</span>
+      <span class="rc-go">${icon('arrow')}</span>
+    </div>
+    <h2 class="rc-title">${esc(c.passage || c.work)}</h2>
+    ${c.passage && c.work ? `<div class="rc-work">${esc(c.work)}</div>` : ''}
+    <div class="rc-work">${esc(T('cmp.card', { n: a.members.length }))}</div>
+    <div class="rc-members">${rows}</div>
+    <div class="rc-foot"><span>${icon('calendar')}${esc(c.date)}</span>${(c.tags || []).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}</div>
+  </a>`;
+}
+
 function fill(sel, values, text = (v) => v) {
   for (const v of values) { const o = document.createElement('option'); o.value = v; o.textContent = text(v); sel.append(o); }
 }
@@ -164,6 +190,16 @@ try {
   const loaded = await Promise.allSettled(ids.map((id) => loadJSON(`reports/${id}.json`)));
   reports = loaded.filter((x) => x.status === 'fulfilled').map((x) => ({ ...x.value, _hay: haystack(x.value) }));
   reports.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  try {
+    const byId = Object.fromEntries(reports.map((r) => [r.id, normalize(r)]));
+    const { comparisons: cids } = await loadJSON('comparisons/index.json');
+    const cs = await Promise.allSettled(cids.map((c) => loadJSON(`comparisons/${c}.json`)));
+    comparisons = cs.filter((x) => x.status === 'fulfilled').map((x) => normalizeComparison(x.value))
+      .filter((c) => c.members.every((m) => byId[m.id])).map((c) => {
+        const rs = c.members.map((m) => byId[m.id]); const a = analyse(c, rs);
+        return { ...c, _cmp: true, _rs: rs, _a: a, _hay: [c.title, c.author, c.work, c.originalWork, c.passage, ...(c.tags || []), ...a.members.map((m) => m.label), c.lead, c.tendencies].filter(Boolean).join('   ').toLowerCase() };
+      });
+  } catch { comparisons = []; }
   const present = new Set(reports.map((r) => (isPublished(r) ? 'Grade ' + r.grade : r.decision)));
   fill($('f-decision'), [...DECISIONS.map((d) => d[0]), ...GRADES.map((g) => 'Grade ' + g[0])].filter((d) => present.has(d)), outcomeText);
   fill($('f-type'), [...new Set(reports.map((r) => r.textType).filter(Boolean))], (v) => label('textType', v));

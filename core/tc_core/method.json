@@ -198,7 +198,8 @@
   },
   "acknowledgements": {
     "Pre-publication": "Any translation can be reworked. This decision concerns the submitted draft, not the possibility of a good translation of this work.",
-    "Published": "Any translation can be reworked. This grade concerns the published translation as sampled here, not the possibility of a good translation of this work."
+    "Published": "Any translation can be reworked. This grade concerns the published translation as sampled here, not the possibility of a good translation of this work.",
+    "Comparison": "Any translation can be reworked. This preference concerns the translations as sampled here, not the possibility of a good translation of this work."
   },
   "tokens": {
     "total": "all deviations",
@@ -229,5 +230,27 @@
   "forbiddenInAISuggestions": [
     ";",
     "؛"
-  ]
+  ],
+  "comparison": {
+    "minMembers": 2,
+    "preferredWithinBand": true,
+    "about": "A comparison lines up separate reports of the same source passage. Each translation is still scored only against the source. The preferred translation starts from the highest score; another may be preferred only if it is in the same band as the highest, with the reason in the basis."
+  },
+  "comparisonTokens": {
+    "segments": "segments",
+    "words": "source words",
+    "members": "translations compared",
+    "hard": "segments where every translation has a scored deviation",
+    "ties": "segments where all translations carry the same penalty",
+    "score.N": "quality score of translation N",
+    "band.N": "band of translation N",
+    "total.N": "scored deviations of translation N",
+    "severe.N": "major + critical of translation N",
+    "penalty.N": "penalty points of translation N",
+    "pp100.N": "penalty points per 100 words of translation N",
+    "A.N": "accuracy (A) deviations of translation N",
+    "B.N": "language (B) deviations of translation N",
+    "C.N": "style (C) deviations of translation N",
+    "wins.N": "segments where translation N has the lowest penalty, alone or shared, short of a full tie"
+  }
 }

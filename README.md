@@ -101,6 +101,20 @@ To change the method, edit `method.json` (and the schema if the format changes),
 
 Deviation codes A1–A7, B1–B3 and C1–C5 are defined in `core/tc_core/method.json` and explained on the Method page. C4 (Interference) is a pattern reported under Stylistic tendencies and is never recorded on a segment.
 
+## Comparisons
+
+A comparison lines up two or more reports of the same source passage (`compare.html?id=<id>`). It never re-scores anything: each translation keeps its own report, scored only against the source, and the comparison reads every figure from those reports.
+
+- **Files.** `comparisons/<id>.json` lists the member reports and holds the comparative prose; `comparisons/index.json` lists the comparisons; `comparisons/_template.json` is the starting point. The format is `core/tc_core/schema/comparison.schema.json`.
+- **Same segmentation.** All members must share the source passage and its segmentation. When a translation already has a report on the site, its segments are reused and new translations are aligned onto them; earlier reports are never re-segmented. The validator rejects members that differ.
+- **What the page shows.** Conclusions, a summary table (outcome, score and band, A · B · C, critical · major, segments with the lowest penalty, proximity, mimicry), every member on one grid, the segments side by side (two translations in columns, three or more stacked) with each segment's weighted penalty and the lowest, the hard segments (a scored deviation in every translation, with the codes all share), comparative tendencies, the preferred translation, and links to the separate reports. Each member report links back to its comparisons.
+- **Preferred translation.** `preferred` names a member. It starts from the highest score; another member may be preferred only if it is in the same band as the highest, with the reason in `preferredBasis` (the validator rejects anything else and warns on a move within the band). `note` is one line for readers and publishers.
+- **Consistency.** Where the same code appears at the same segment in several translations with different severities, the validator warns, so the assessor can check that the departures really differ.
+- **Live figures.** Comparative prose takes `{segments}`, `{words}`, `{members}`, `{hard}`, `{ties}`, and per member (numbered from 1 in the order of `members`) `{score.N}`, `{band.N}`, `{total.N}`, `{severe.N}`, `{penalty.N}`, `{pp100.N}`, `{A.N}`, `{B.N}`, `{C.N}`, `{wins.N}`. Write a score as `{score.1}, in band {band.1}`.
+- **Command line.** `python -m tc_core compare <id>` prints the analysis as JSON; `python -m tc_core validate` checks comparisons with the reports.
+
+Comparisons are edited as JSON (on GitHub or locally); the browser editor covers reports only.
+
 ## Urdu interface
 
 Every page has an English / اردو switch in the header. The choice is remembered in the browser, and `?lang=ur` or `?lang=en` in an address sets it too. The interface strings (headings, labels, the Method page, scoring sentences, codes, decisions and grades) are in `assets/strings.js` as `[English, Urdu]` pairs; edit the Urdu there. In the pages, elements marked `data-i18n="key"` take their Urdu from that file, and `{name}` in a string is filled in by the site.

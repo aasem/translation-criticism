@@ -11,5 +11,7 @@ const run = {
     return { figures: c.figures(r), pp100: t.pp100, score: t.score, band: t.band[0], proximity: p.score, mimicry: p.art }; }),
   normalize: (rs) => rs.map((r) => JSON.stringify(c.normalize(r), null, 2) + '\n'),
   words: (ts) => ts.map((t) => c.words(t)),
+  analyse: (xs) => xs.map(({ cmp, reports }) => ({ a: c.analyse(cmp, reports), f: c.cmpFigures(cmp, reports) })),
+  normalizeComparison: (cs) => cs.map((x) => JSON.stringify(c.normalizeComparison(x), null, 2) + '\n'),
 };
 process.stdout.write(JSON.stringify(run[op](input)));

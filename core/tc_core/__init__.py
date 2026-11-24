@@ -6,9 +6,11 @@ package, so the method is defined and enforced in one place.
     from tc_core import load, figures, summary, validate_report
 """
 from .spec import method, report_schema
-from .normalize import SCHEMA_VERSION, canonical, dumps, normalize, upgrade
+from .normalize import SCHEMA_VERSION, canonical, dumps, normalize, normalize_comparison, upgrade
 from .scoring import agreement, figures, fill, proximity, summary, tally, words
 from .validate import Issue, validate_repo, validate_report
+from .compare import analyse, consistency, validate_comparison
+from .compare import figures as comparison_figures
 
 __version__ = "2.0.0"
 
