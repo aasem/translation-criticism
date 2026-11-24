@@ -44,7 +44,7 @@
 
 <script type="module">
 import { t as tt, tr, label, UR } from './assets/i18n.js';
-import { gridLegend, PROX_KEYS, PROX_MIN, proximity, isMimicry, gridSVG, SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide, normalize, TEXT_TYPES } from './assets/common.js';
+import { gridLegend, PROX_KEYS, PROX_MIN, proximity, isMimicry, gridSVG, SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide, normalize, TEXT_TYPES, labels } from './assets/common.js';
 const H2 = (ic, t) => `<h2>${icon(ic)}${t}</h2>`;
 // "Basis." followed by report prose: inline in English; in Urdu the prose gets its own block,
 // so English prose keeps its own direction.
@@ -203,7 +203,7 @@ function devExtras(d) {
   let h = '';
   if ((d.functions || []).length) h += `<div class="fn-head">${tt('fn.head')}</div><ul class="fn-test">${d.functions.map((x) => `<li class="${x.kept ? '' : 'lost'}" dir="auto">${urduWrap(esc(x.fn))}</li>`).join('')}</ul>`;
   if (d.gain?.trim()) h += `<p class="gain" dir="auto"><b>${tt('gain.head')}</b> ${md(d.gain).replace(/^<p>|<\/p>$/g, '')}</p>`;
-  if (d.compensatedBy) h += `<p class="gain"><b>${tt('comp.head', { n: d.compensatedBy })}</b></p>`;
+  if (d.compensatedBy) h += `<p class="gain"><b>${tt('comp.head', { n: labelOf(d.compensatedBy) })}</b></p>`;
   return h;
 }
 function devCell(s, i) {
@@ -222,7 +222,7 @@ function devCell(s, i) {
       <div class="hint">Function test (optional, for transpositions): one function per line, "+ kept" or "- lost"</div>
       <textarea data-fn="${i}.${j}" rows="2">${esc(fnToText(d.functions))}</textarea>
       <div class="hint">Gain (optional): what the departure adds. Never scored.</div>${T(`segments.${i}.deviations.${j}.gain`, { rows: 2 })}
-      <div class="hint">Compensated in segment # (optional)</div>${I(`segments.${i}.deviations.${j}.compensatedBy`, 'e.g. 7')}
+      <div class="hint">Compensated in row number (optional)</div>${I(`segments.${i}.deviations.${j}.compensatedBy`, 'e.g. 7')}
     </div>`).join('');
   return ds + `<button class="small" data-act="add-dev" data-i="${i}">+ Deviation</button>`;
 }
@@ -241,18 +241,22 @@ function humanCell(s, i) {
   return g.ai?.trim() ? `<span class="muted">${tt('sug.unreviewed')}</span>` : '';
 }
 
+// Row label for row number n ('3' or '3.1'), used wherever a row is referred to.
+const labelOf = (n) => labels(R)[n - 1] ?? String(n);
+
 function sideBySide() {
   const segs = R.segments || [];
+  const LAB = labels(R);
   const rows = segs.map((s, i) => {
     const w = worst(s.deviations);
     return `<tr>
-      <td class="num">${i + 1}${editing ? `<div style="margin-top:6px;display:grid;gap:4px">
+      <td class="num">${editing ? `<div class="hint">row ${i + 1}</div><label class="hint">sentence <input type="text" inputmode="numeric" size="2" data-path="segments.${i}.sentence" data-rerender value="${esc(s.sentence ?? '')}" title="The source sentence this row belongs to. Rows of one sentence share its number and show as 3.1, 3.2"></label>` : esc(LAB[i])}${editing ? `<div style="margin-top:6px;display:grid;gap:4px">
         <button class="small" data-act="add-seg" data-i="${i}" title="Insert a segment after this one">+</button>
         <button class="small danger" data-act="del-seg" data-i="${i}" title="Delete this segment">×</button></div>` : ''}</td>
       <td dir="auto">${editing ? T(`segments.${i}.source`, { rows: 5 }) : urduWrap(esc(s.source))}</td>
       <td class="${editing ? '' : 'sub'}" ${editing ? '' : 'lang="ur" dir="rtl"'}>${editing
-        ? `${s.mergedInto && !String(s.submission || '').trim() ? '' : T(`segments.${i}.submission`, { rows: 5, ur: true })}<label class="hint">Merged into # <input type="text" inputmode="numeric" size="3" data-path="segments.${i}.mergedInto" data-rerender value="${esc(s.mergedInto ?? '')}" placeholder="–" title="Set when this source sentence sits inside an earlier segment's translation"></label>`
-        : s.mergedInto ? `<span class="muted">${esc(tt('sbs.merged', { n: s.mergedInto }))}</span>` : esc(s.submission)}</td>
+        ? `${s.mergedInto && !String(s.submission || '').trim() ? '' : T(`segments.${i}.submission`, { rows: 5, ur: true })}<label class="hint">Merged into # <input type="text" inputmode="numeric" size="3" data-path="segments.${i}.mergedInto" data-rerender value="${esc(s.mergedInto ?? '')}" placeholder="–" title="Row number (not the label) of the earlier row whose translation also renders this source text"></label>`
+        : s.mergedInto ? `<span class="muted">${esc(tt('sbs.merged', { n: labelOf(s.mergedInto) }))}</span>` : esc(s.submission)}</td>
       <td class="devs ${sevClass(w)}">${devCell(s, i)}</td>
       <td class="sug">${aiCell(s)}</td>
       <td class="sug">${humanCell(s, i)}</td>
@@ -370,9 +374,9 @@ $('root').addEventListener('click', (e) => {
   switch (b.dataset.act) {
     case 'add-dev': (segs[i].deviations ??= []).push({ code: 'A1', severity: 'Minor', note: '' }); break;
     case 'del-dev': segs[i].deviations.splice(j, 1); break;
-    case 'add-seg': segs.splice(i + 1, 0, { source: '', submission: '', deviations: [], suggestion: { ai: '', state: 'Not reviewed', human: '' } }); break;
+    case 'add-seg': segs.splice(i + 1, 0, { sentence: i >= 0 ? segs[i].sentence : 1, source: '', submission: '', deviations: [], suggestion: { ai: '', state: 'Not reviewed', human: '' } }); break;
     case 'copy-ai': { const g = (segs[i].suggestion ??= {}); g.human = g.ai || ''; g.state = 'Own suggestion'; break; }
-    case 'del-seg': if (!confirm(`Delete segment ${i + 1}?`)) return; segs.splice(i, 1); break;
+    case 'del-seg': if (!confirm(`Delete row ${i + 1}?`)) return; segs.splice(i, 1); break;
   }
   segs.forEach((s, k) => (s.n = k + 1));
   saveDraft(); render();

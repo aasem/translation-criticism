@@ -508,3 +508,4 @@ details.cmp-passage > summary h3 { display: inline; }
 .rc-member.pref { font-weight: 700; }
 .rc-member .ico { width: 13px; height: 13px; vertical-align: -2px; color: #3f7a3a; }
 .cmp-grid { max-width: 640px; }
+.cmp-sbs p.row-lab { font: 600 11px var(--sans); color: var(--muted); margin: .5em 0 0; }

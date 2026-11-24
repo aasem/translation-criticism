@@ -1,5 +1,5 @@
 {
-  "schema": 3,
+  "schema": 4,
   "id": "proust-swann-bois-urdu-hussaini",
   "title": "Translation Assessment: Proust's Closing Passage of Swann's Way in Urdu",
   "subtitle": "An editorial assessment report for interested readers and publishers. Segment-level deviation analysis on an error typology adapted from Multidimensional Quality Metrics, the translation industry's standard framework, for an expressive (literary) text, with a descriptive translation-studies profile of the translator.",
@@ -38,8 +38,9 @@
   "segments": [
     {
       "n": 1,
-      "source": "“Oh, horrible!” I exclaimed to myself: “Does anyone really imagine that these motor-cars are as smart as the old carriage-and-pair?",
-      "submission": "\"کیسی وحشت ناک بات ہے!\" میں خود سے کہہ رہا تھا: \"کیا کوئی ان موٹر گاڑیوں کو اتنا وضع دار پا سکتا ہے جتنی کہ پرانی بگھیاں تھیں؟",
+      "sentence": 1,
+      "source": "“Oh, horrible!”",
+      "submission": "\"کیسی وحشت ناک بات ہے!\"",
       "mergedInto": null,
       "deviations": [
         {
@@ -49,7 +50,21 @@
           "functions": [],
           "gain": "",
           "compensatedBy": null
-        },
+        }
+      ],
+      "suggestion": {
+        "ai": "\"اُف، کتنا برا!\"",
+        "state": "Not reviewed",
+        "human": ""
+      }
+    },
+    {
+      "n": 2,
+      "sentence": 2,
+      "source": "I exclaimed to myself: “Does anyone really imagine that these motor-cars are as smart as the old carriage-and-pair?",
+      "submission": "میں خود سے کہہ رہا تھا: \"کیا کوئی ان موٹر گاڑیوں کو اتنا وضع دار پا سکتا ہے جتنی کہ پرانی بگھیاں تھیں؟",
+      "mergedInto": null,
+      "deviations": [
         {
           "code": "A1",
           "severity": "Minor",
@@ -76,15 +91,16 @@
         }
       ],
       "suggestion": {
-        "ai": "\"اُف، کتنا برا!\" میں نے دل ہی دل میں کہا: \"کیا واقعی کوئی یہ تصور کرتا ہے کہ یہ موٹر گاڑیاں اتنی ہی سجیلی ہیں جتنی پرانی جوڑی والی بگھی تھی؟",
+        "ai": "میں نے دل ہی دل میں کہا: \"کیا واقعی کوئی یہ تصور کرتا ہے کہ یہ موٹر گاڑیاں اتنی ہی سجیلی ہیں جتنی پرانی جوڑی والی بگھی تھی؟",
         "state": "Not reviewed",
         "human": ""
       }
     },
     {
-      "n": 2,
-      "source": "I dare say. I am too old now — but I was not intended for a world in which women shackle themselves in garments that are not even made of cloth.",
-      "submission": "بلاشبہ میں پہلے ہی بہت بوڑھا ہو چکا ہوں، مگر میں ایک ایسی دنیا کے لیے نہیں بنا جہاں عورتیں ایسے ملبوسات میں خود کو الجھا لیتی ہیں جو کپڑے کے بنے ہوئے تک نہیں ہیں۔",
+      "n": 3,
+      "sentence": 3,
+      "source": "I dare say.",
+      "submission": "بلاشبہ",
       "mergedInto": null,
       "deviations": [
         {
@@ -94,7 +110,21 @@
           "functions": [],
           "gain": "",
           "compensatedBy": null
-        },
+        }
+      ],
+      "suggestion": {
+        "ai": "ہو گا۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
+    },
+    {
+      "n": 4,
+      "sentence": 4,
+      "source": "I am too old now — but I was not intended for a world in which women shackle themselves in garments that are not even made of cloth.",
+      "submission": "میں پہلے ہی بہت بوڑھا ہو چکا ہوں، مگر میں ایک ایسی دنیا کے لیے نہیں بنا جہاں عورتیں ایسے ملبوسات میں خود کو الجھا لیتی ہیں جو کپڑے کے بنے ہوئے تک نہیں ہیں۔",
+      "mergedInto": null,
+      "deviations": [
         {
           "code": "A1",
           "severity": "Minor",
@@ -129,13 +159,14 @@
         }
       ],
       "suggestion": {
-        "ai": "ہو گا۔ اب میری عمر بہت ہو چکی ہے —— مگر میں اس دنیا کے لیے بنایا ہی نہیں گیا تھا جس میں عورتیں خود کو ایسے ملبوسات میں جکڑ لیتی ہیں جو کپڑے کے بھی نہیں ہوتے۔",
+        "ai": "اب میری عمر بہت ہو چکی ہے —— مگر میں اس دنیا کے لیے بنایا ہی نہیں گیا تھا جس میں عورتیں خود کو ایسے ملبوسات میں جکڑ لیتی ہیں جو کپڑے کے بھی نہیں ہوتے۔",
         "state": "Not reviewed",
         "human": ""
       }
     },
     {
-      "n": 3,
+      "n": 5,
+      "sentence": 5,
       "source": "To what purpose shall I walk among these trees if there is nothing left now of the assembly that used to meet beneath the delicate tracery of reddening leaves, if vulgarity and fatuity have supplanted the exquisite thing that once their branches framed?",
       "submission": "ان درختوں کے نیچے آنے کا کیا فائدہ، اگر ان نازک سرخی مائل پتوں تلے جمع ہونے والی کوئی بھی شے اب باقی نہیں رہی، اور اگر عامیانہ پن اور پاگل پن نے اس نفیس شے کی جگہ لے لی ہے جس کا یہ چوکھٹا بنے ہوئے تھے؟",
       "mergedInto": null,
@@ -188,9 +219,32 @@
       }
     },
     {
-      "n": 4,
-      "source": "Oh, horrible! My consolation is to think of the women whom I have known, in the past, now that there is no standard left of elegance.",
-      "submission": "کیسی وحشت ناک بات ہے! میری تسلی محض ان عورتوں کے بارے میں سوچنا ہے جنہیں میں نے جانا تھا، آج جبکہ وضع داری باقی نہیں رہی۔",
+      "n": 6,
+      "sentence": 6,
+      "source": "Oh, horrible!",
+      "submission": "کیسی وحشت ناک بات ہے!",
+      "mergedInto": null,
+      "deviations": [
+        {
+          "code": "A1",
+          "severity": "Major",
+          "note": "Horrible is a quite softer exclamation than وحشت ناک and no one can exclaim وحشت ناک in Urdu. ",
+          "functions": [],
+          "gain": "",
+          "compensatedBy": null
+        }
+      ],
+      "suggestion": {
+        "ai": "اُف، کتنا برا!",
+        "state": "Not reviewed",
+        "human": ""
+      }
+    },
+    {
+      "n": 7,
+      "sentence": 7,
+      "source": "My consolation is to think of the women whom I have known, in the past, now that there is no standard left of elegance.",
+      "submission": "میری تسلی محض ان عورتوں کے بارے میں سوچنا ہے جنہیں میں نے جانا تھا، آج جبکہ وضع داری باقی نہیں رہی۔",
       "mergedInto": null,
       "deviations": [
         {
@@ -208,24 +262,17 @@
           "functions": [],
           "gain": "",
           "compensatedBy": null
-        },
-        {
-          "code": "A1",
-          "severity": "Major",
-          "note": "Horrible is a quite softer exclamation than وحشت ناک and no one can exclaim وحشت ناک in Urdu. ",
-          "functions": [],
-          "gain": "",
-          "compensatedBy": null
         }
       ],
       "suggestion": {
-        "ai": "اُف، کتنا برا! میری تسلی ان عورتوں کا خیال ہے جنہیں میں نے ماضی میں جانا تھا، اب جبکہ نفاست کا کوئی معیار باقی نہیں رہا۔",
+        "ai": "میری تسلی ان عورتوں کا خیال ہے جنہیں میں نے ماضی میں جانا تھا، اب جبکہ نفاست کا کوئی معیار باقی نہیں رہا۔",
         "state": "Not reviewed",
         "human": ""
       }
     },
     {
-      "n": 5,
+      "n": 8,
+      "sentence": 8,
       "source": "But how can the people who watch these dreadful creatures hobble by, beneath hats on which have been heaped the spoils of aviary or garden-bed, — how can they imagine the charm that there was in the sight of Mme. Swann, crowned with a close-fitting lilac bonnet, or with a tiny hat from which rose stiffly above her head a single iris?”",
       "submission": "لیکن بھلا وہ لوگ جو اپنے سروں پر پرندوں کا پنجرہ یا سبزیوں کا باغ سجائے ان خوفناک مخلوقات کو تکتے ہیں، اس بات کی دلکشی کیسے محسوس کر سکتے ہیں کہ مادام سوان کو ایک سادہ سی ارغوانی ٹوپی یا ایک ایسی چھوٹی ٹوپی پہنے دیکھا جائے جس سے اوپر سوسن کا محض ایک سیدھا پھول نکلا ہوا ہو؟",
       "mergedInto": null,
@@ -241,7 +288,7 @@
         {
           "code": "A3",
           "severity": "Minor",
-          "note": "\"hobble by\" is dropped, and with it the echo of \"shackle\" in #2.",
+          "note": "\"hobble by\" is dropped, and with it the echo of \"shackle\" in #4.",
           "functions": [],
           "gain": "",
           "compensatedBy": null
@@ -286,7 +333,8 @@
       }
     },
     {
-      "n": 6,
+      "n": 9,
+      "sentence": 9,
       "source": "Could I ever have made them understand the emotion that I used to feel on winter mornings, when I met Mme. Swann on foot, in an otter-skin coat, with a woollen cap from which stuck out two blade-like partridge-feathers, but enveloped also in the deliberate, artificial warmth of her own house, which was suggested by nothing more than the bunch of violets crushed into her bosom, whose flowering, vivid and blue against the grey sky, the freezing air, the naked boughs, had the same charming effect of using the season and the weather merely as a setting, and of living actually in a human atmosphere, in the atmosphere of this woman, as had in the vases and beaupots of her drawingroom, beside the blazing fire, in front of the silk-covered sofa, the flowers that looked out through closed windows at the falling snow?",
       "submission": "کیا میں انہیں اس جذبے کا احساس بھی دلا پاتا جو مجھے سردیوں کی صبحوں میں مادام سوان سے پیدل ملتے وقت ہوتا تھا جب وہ اودبلاؤ کی کھال کا اوور کوٹ اور ایک سادہ سی ٹوپی پہنے ہوتیں جس سے اوپر تیتر کے پروں کی دو نوکیں نکلی ہوتیں، مگر جن کے اردگرد ان کے فلیٹ کی مصنوعی گرمی محض بنفشہ کے اس گلدستے سے بیدار ہو جاتی تھی جو ان کی چولی پر دبا ہوتا تھا اور جس کا جیتا جاگتا اور نیلا کھلنا سرمئی آسمان، یخ بستہ ہوا، اور برہنہ شاخوں والے درختوں کے روبرو وہی دلکشی رکھتا تھا___موسم اور وقت کو محض ایک چوکھٹے کے طور پر لیتے ہوئے اور ایک انسانی فضا، یعنی اسی عورت کی فضا میں سانس لیتے ہوئے____جو ان کے دیوان خانے کے گلدانوں اور گملوں میں، دہکتی آگ کے قریب، ریشمی صوفے کے سامنے رکھے ان پھولوں کو حاصل تھی جو بند کھڑکی سے برف کو گرتے ہوئے دیکھتے تھے؟\"",
       "mergedInto": null,
@@ -294,7 +342,7 @@
         {
           "code": "A1",
           "severity": "Minor",
-          "note": "The closing quotation mark after دیکھتے تھے؟ pulls the narrator's retrospective question inside the quoted outburst; the source closes the speech after #5.",
+          "note": "The closing quotation mark after دیکھتے تھے؟ pulls the narrator's retrospective question inside the quoted outburst; the source closes the speech after #8.",
           "functions": [],
           "gain": "",
           "compensatedBy": null
@@ -355,7 +403,8 @@
       }
     },
     {
-      "n": 7,
+      "n": 10,
+      "sentence": 10,
       "source": "But it would not have sufficed me that the costumes alone should still have been the same as in those distant years.",
       "submission": "ویسے بھی میرے لیے محض اتنا کافی نہ ہوتا کہ ملبوسات عین انہی برسوں جیسے ہوتے۔",
       "mergedInto": null,
@@ -384,7 +433,8 @@
       }
     },
     {
-      "n": 8,
+      "n": 11,
+      "sentence": 11,
       "source": "Because of the solidarity that binds together the different parts of a general impression, parts that our memory keeps in a balanced whole, of which we are not permitted to subtract or to decline any fraction, I should have liked to be able to pass the rest of the day with one of those women, over a cup of tea, in a little house with dark-painted walls (as Mme. Swann’s were still in the year after that in which the first part of this story ends) against which would glow the orange flame, the red combustion, the pink and white flickering of her chrysanthemums in the twilight of a November evening, in moments similar to those in which (as we shall see) I had not managed to discover the pleasures for which I longed.",
       "submission": "کسی یاد کے مختلف حصوں کے درمیان پائے جانے والے باہمی ربط کے باعث، جسے ہماری یادداشت ایک ایسے اجتماع میں متوازن رکھتی ہے جہاں ہمیں کسی شے کو الگ کرنے یا مسترد کرنے کی اجازت نہیں ہوتی، میری خواہش ہوتی کہ میں ان عورتوں میں سے کسی ایک کے گھر جا کر دن ختم کر سکوں، چائے کی پیالی کے سامنے، گہرے رنگوں میں رنگی دیواروں والے ایک ایسے فلیٹ میں جیسا کہ ابھی تک مادام سوان کا فلیٹ تھا (اس سال سے اگلے سال جس پر اس داستان کا پہلا حصہ ختم ہوتا ہے) اور جہاں نومبر کے جھٹپٹے میں گلِ داؤدی کے نارنجی شعلے، سرخ دہک، اور گلابی و سفید لو چمکتی ہو، ان لمحوں کے دوران جو ان لمحوں سے مشابہ ہوں جن میں (جیسا کہ بعد میں دیکھا جائے گا) میں اپنی مطلوبہ مسرتیں دریافت نہیں کر پایا تھا۔",
       "mergedInto": null,
@@ -408,7 +458,7 @@
         {
           "code": "A5",
           "severity": "Minor",
-          "note": "فلیٹ for \"a little house\" is the same word used for the modern \"flats\" of #11 (and for \"house\" in #6), erasing the contrast between Mme. Swann's home and what replaced it; \"little\" is also lost.",
+          "note": "فلیٹ for \"a little house\" is the same word used for the modern \"flats\" of #14 (and for \"house\" in #9), erasing the contrast between Mme. Swann's home and what replaced it; \"little\" is also lost.",
           "functions": [],
           "gain": "",
           "compensatedBy": null
@@ -437,7 +487,8 @@
       }
     },
     {
-      "n": 9,
+      "n": 12,
+      "sentence": 12,
       "source": "But now, albeit they had led to nothing, those moments struck me as having been charming enough in themselves.",
       "submission": "لیکن اب، چاہے وہ مجھے کہیں نہ بھی لے جاتے، خود ان لمحوں میں مجھے خاصی دلکشی محسوس ہوتی تھی۔",
       "mergedInto": null,
@@ -466,7 +517,8 @@
       }
     },
     {
-      "n": 10,
+      "n": 13,
+      "sentence": 13,
       "source": "I sought to find them again as I remembered them.",
       "submission": "میں انہیں ویسا ہی دوبارہ پانا چاہتا تھا جیسا میں انہیں یاد کرتا تھا۔",
       "mergedInto": null,
@@ -487,7 +539,8 @@
       }
     },
     {
-      "n": 11,
+      "n": 14,
+      "sentence": 14,
       "source": "Alas! there was nothing now but flats decorated in the Louis XVI style, all white paint, with hortensias in blue enamel.",
       "submission": "افسوس! اب وہاں صرف لوئی شانزدہم کے طرز کے مکمل سفید فلیٹ ہی رہ گئے تھے، جن پر نیلے ہائیڈرینجیا کے پھول سجے تھے۔",
       "mergedInto": null,
@@ -508,7 +561,8 @@
       }
     },
     {
-      "n": 12,
+      "n": 15,
+      "sentence": 15,
       "source": "Moreover, people did not return to Paris, now, until much later.",
       "submission": "ویسے بھی اب لوگ بہت دیر سے پیرس واپس لوٹتے تھے۔",
       "mergedInto": null,
@@ -520,7 +574,8 @@
       }
     },
     {
-      "n": 13,
+      "n": 16,
+      "sentence": 16,
       "source": "Mme. Swann would have written to me, from a country house, that she would not be in town before February, had I asked her to reconstruct for me the elements of that memory which I felt to belong to a distant era, to a date in time towards which it was forbidden me to ascend again the fatal slope, the elements of that longing which had become, itself, as inaccessible as the pleasure that it had once vainly pursued.",
       "submission": "مادام سوان کسی قلعے سے مجھے یہ جواب دیتیں کہ وہ فروری سے پہلے واپس نہیں آئیں گی، گلِ داؤدی کے موسم گزر جانے کے بہت بعد، اگر میں نے ان سے اس یاد کے عناصر کو میرے لیے دوبارہ ترتیب دینے کی درخواست کی ہوتی جسے میں کسی دور دراز سال، کسی ایسے سن سے جڑا ہوا محسوس کرتا تھا جس کی طرف واپس پلٹنے کی مجھے اجازت نہیں تھی______اس تمنا کے عناصر جو خود بھی اس مسرت کی طرح ناقابلِ رسائی ہو چکی تھی جس کا اس نے ماضی میں بے سود تعاقب کیا تھا۔",
       "mergedInto": null,
@@ -557,7 +612,8 @@
       }
     },
     {
-      "n": 14,
+      "n": 17,
+      "sentence": 17,
       "source": "And I should have required also that they be the same women, those whose costume interested me because, at a time when I still had faith, my imagination had individualised them and had provided each of them with a legend.",
       "submission": "اور مجھے اس بات کی بھی ضرورت ہوتی کہ وہی عورتیں ہوں، وہی جن کے لباس مجھے اس لیے دلچسپ لگتے تھے کیونکہ، جس زمانے میں میں ابھی ایمان رکھتا تھا، میرے تخیل نے انہیں انفرادیت بخشی تھی اور انہیں ایک داستان عطا کی تھی۔",
       "mergedInto": null,
@@ -586,7 +642,8 @@
       }
     },
     {
-      "n": 15,
+      "n": 18,
+      "sentence": 18,
       "source": "Alas! in the acacia-avenue — the myrtle-alley — I did see some of them again, grown old, no more now than grim spectres of what once they had been, wandering to and fro, in desperate search of heaven knew what, through the Virgilian groves.",
       "submission": "افسوس! کیکر کی روش یعنی مہندی کی روش میں مجھے ان میں سے چند ایک دوبارہ نظر آئیں، بوڑھی، اور جو اب ماضی میں جو کچھ وہ رہی تھیں اس کے محض خوفناک سائے رہ گئی تھیں، ورجل کے جھنڈوں میں بھٹکتی ہوئی، اور مایوسی سے نجانے کس شے کو تلاش کرتی ہوئی۔",
       "mergedInto": null,
@@ -607,7 +664,8 @@
       }
     },
     {
-      "n": 16,
+      "n": 19,
+      "sentence": 19,
       "source": "They had long fled, and still I stood vainly questioning the deserted paths.",
       "submission": "انہیں بھاگے ہوئے بہت دیر ہو چکی تھی، جب میں ابھی تک ویران راستوں سے بے سود سوال کر رہا تھا۔",
       "mergedInto": null,
@@ -628,7 +686,8 @@
       }
     },
     {
-      "n": 17,
+      "n": 20,
+      "sentence": 20,
       "source": "The sun’s face was hidden.",
       "submission": "سورج چھپ چکا تھا۔",
       "mergedInto": null,
@@ -657,7 +716,8 @@
       }
     },
     {
-      "n": 18,
+      "n": 21,
+      "sentence": 21,
       "source": "Nature began again to reign over the Bois, from which had vanished all trace of the idea that it was the Elysian Garden of Woman;",
       "submission": "فطرت اس جنگل پر حکمرانی کرنے لگی تھی جہاں سے یہ تصور اڑ چکا تھا کہ یہ عورت کا جنتی باغ ہے؛",
       "mergedInto": null,
@@ -695,7 +755,8 @@
       }
     },
     {
-      "n": 19,
+      "n": 22,
+      "sentence": 21,
       "source": "above the gimcrack windmill the real sky was grey; the wind wrinkled the surface of the Grand Lac in little wavelets, like a real lake;",
       "submission": "نقلی پن چکی کے اوپر حقیقی آسمان سرمئی تھا؛ ہوا بڑی جھیل پر چھوٹی چھوٹی لہروں کی سلوٹیں ڈال رہی تھی، بالکل کسی عام جھیل کی طرح؛",
       "mergedInto": null,
@@ -716,7 +777,8 @@
       }
     },
     {
-      "n": 20,
+      "n": 23,
+      "sentence": 21,
       "source": "large birds passed swiftly over the Bois, as over a real wood, and with shrill cries perched, one after another, on the great oaks which, beneath their Druidical crown, and with Dodonaic majesty, seemed to proclaim the unpeopled vacancy of this estranged forest,",
       "submission": "بڑے پرندے تیزی سے جنگل کے آر پار اڑ رہے تھے، بالکل کسی عام جنگل کی طرح، اور تیز چیخیں مارتے ہوئے ایک کے بعد ایک شاہ بلوط کے بڑے درختوں پر بیٹھ رہے تھے جو، اپنے قدیم پروہتوں جیسے تاج تلے اور دودونا (Dodone) کے معبد جیسی شان و شوکت کے ساتھ، گویا اس متروک جنگل کے غیر انسانی خلا کا اعلان کر رہے تھے،",
       "mergedInto": null,
@@ -724,7 +786,7 @@
         {
           "code": "A5",
           "severity": "Minor",
-          "note": "کسی عام جنگل (\"an ordinary forest\") continues the split of \"real\" from #19.",
+          "note": "کسی عام جنگل (\"an ordinary forest\") continues the split of \"real\" from #21.2.",
           "functions": [],
           "gain": "",
           "compensatedBy": null
@@ -778,7 +840,8 @@
       }
     },
     {
-      "n": 21,
+      "n": 24,
+      "sentence": 21,
       "source": "and helped me to understand how paradoxical it is to seek in reality for the pictures that are stored in one’s memory, which must inevitably lose the charm that comes to them from memory itself and from their not being apprehended by the senses.",
       "submission": "اور مجھے اس تضاد کو زیادہ بہتر طور پر سمجھنے میں مدد دے رہے تھے جو حقیقت میں یادداشت کی تصویروں کو تلاش کرنے میں پوشیدہ ہے، جن میں ہمیشہ اس دلکشی کی کمی رہے گی جو انہیں خود یادداشت سے ملتی ہے اور حواس کے ذریعے محسوس نہ کیے جانے سے حاصل ہوتی ہے۔",
       "mergedInto": null,
@@ -815,7 +878,8 @@
       }
     },
     {
-      "n": 22,
+      "n": 25,
+      "sentence": 22,
       "source": "The reality that I had known no longer existed.",
       "submission": "جس حقیقت کو میں نے جانا تھا وہ اب وجود نہیں رکھتی تھی۔",
       "mergedInto": null,
@@ -827,7 +891,8 @@
       }
     },
     {
-      "n": 23,
+      "n": 26,
+      "sentence": 23,
       "source": "It sufficed that Mme. Swann did not appear, in the same attire and at the same moment, for the whole avenue to be altered.",
       "submission": "محض اتنا ہی کافی تھا کہ مادام سوان عین اسی لمحے بالکل ویسی ہی بن کر نہ آتیں، کہ پوری روش بدل جاتی۔",
       "mergedInto": null,
@@ -856,7 +921,8 @@
       }
     },
     {
-      "n": 24,
+      "n": 27,
+      "sentence": 24,
       "source": "The places that we have known belong now only to the little world of space on which we map them for our own convenience.",
       "submission": "جن مقامات کو ہم نے جانا ہے ان کا تعلق محض مکان کی اس دنیا سے نہیں ہوتا جہاں ہم زیادہ آسانی کے لیے انہیں رکھ دیتے ہیں۔",
       "mergedInto": null,
@@ -864,7 +930,7 @@
         {
           "code": "A1",
           "severity": "Critical",
-          "note": "نہیں ہوتا … محض reverses the source. The source says the places \"belong now only to\" the world of space; the submission says they do *not* belong merely to it. (The submission's reading sits more easily with #25, but against this source it inverts the passage's key claim.)",
+          "note": "نہیں ہوتا … محض reverses the source. The source says the places \"belong now only to\" the world of space; the submission says they do *not* belong merely to it. (The submission's reading sits more easily with #25.1, but against this source it inverts the passage's key claim.)",
           "functions": [],
           "gain": "",
           "compensatedBy": null
@@ -872,7 +938,7 @@
         {
           "code": "B3",
           "severity": "Minor",
-          "note": "مکان (\"space\") is also the everyday word for \"house\", which #26 uses (مکانات).",
+          "note": "مکان (\"space\") is also the everyday word for \"house\", which #25.2 uses (مکانات).",
           "functions": [],
           "gain": "",
           "compensatedBy": null
@@ -885,7 +951,8 @@
       }
     },
     {
-      "n": 25,
+      "n": 28,
+      "sentence": 25,
       "source": "None of them was ever more than a thin slice, held between the contiguous impressions that composed our life at that time;",
       "submission": "وہ محض متصل تاثرات کے درمیان ایک باریک سا تراشہ تھے جو اس وقت کی ہماری زندگی تشکیل دیتے تھے؛",
       "mergedInto": null,
@@ -897,7 +964,8 @@
       }
     },
     {
-      "n": 26,
+      "n": 29,
+      "sentence": 25,
       "source": "remembrance of a particular form is but regret for a particular moment; and houses, roads, avenues are as fugitive, alas, as the years.",
       "submission": "کسی مخصوص شبیہ کی یاد محض کسی مخصوص لمحے کی حسرت ہوتی ہے؛ اور مکانات، سڑکیں، اور روشیں، افسوس کہ برسوں ہی کی طرح ناپائیدار اور لمحاتی ہیں۔",
       "mergedInto": null,
@@ -920,60 +988,60 @@
   ],
   "segmentation": {
     "rule": "sentence-v1",
-    "exceptions": "Segmented before rule sentence-v1 and kept as held: #18, #19, #20, #25 end inside a sentence; #1, #2, #4 run across a sentence end."
+    "exceptions": ""
   },
   "aiSuggestions": {
     "model": "Claude Opus 5.5",
     "date": "2026-11-22"
   },
-  "textNotes": "- Source: C. K. Scott Moncrieff's English rendering of the closing pages of *Swann's Way* (the Bois de Boulogne coda).\n- Short exclamations are joined to the sentence that follows (#2, #4). The long Bois sentence is split at its semicolons and at \"and helped me\" (#18–21), and the final sentence at its first semicolon (#25–26).",
+  "textNotes": "- Source: C. K. Scott Moncrieff's English rendering of the closing pages of *Swann's Way* (the Bois de Boulogne coda).\n- The long Bois sentence is split at its semicolons and at \"and helped me\" (#21.1–#21.4), and the final sentence at its first semicolon (#25.1–#25.2).",
   "lead": "**Accuracy ({A}).** Losses of sense run through the whole passage and are heaviest at its turns. In several places the draft follows a text other than the designated source, and at the end it reverses the passage's key claim.\n\n**Language ({B}).** The Urdu is grammatical throughout. Its language deviations are ambiguities that allow readings the source does not.\n\n**Style ({C}).** Images are steadily thinned, and classical allusions lose their network or take on a religious colour.",
-  "profileSummary": "Accuracy codes make up {A} of the {total}, led by A1 ({A1}). The deviations are spread rather than bunched: only {clean} of {segments} segments are free of them, and {severeSegs} ({severePct}%) carry a major or critical one. The major and critical deviations sit at the two ends of the passage: the satirical opening (#2, #3, #5) and the closing meditation on memory and place (#20, #21, #24), with #11 and #15 at the hinge where the women's world gives way to the empty Bois. There are no B1 or B2 errors; every language deviation is an ambiguity (B3), and imagery losses (C3) recur steadily through #2–#17.",
+  "profileSummary": "Accuracy codes make up {A} of the {total}, led by A1 ({A1}). The deviations are spread rather than bunched: only {clean} of {segments} segments are free of them, and {severeSegs} ({severePct}%) carry a major or critical one. The major and critical deviations sit at the two ends of the passage: the satirical opening (#3, #5, #8) and the closing meditation on memory and place (#21.3, #21.4, #24), with #14 and #18 at the hinge where the women's world gives way to the empty Bois. There are no B1 or B2 errors; every language deviation is an ambiguity (B3), and imagery losses (C3) recur steadily through #5–#21.3.",
   "proximity": {
     "sentences": {
       "kept": 23,
       "total": 24,
       "forced": 6,
       "note": "24 source sentences, 23 Urdu: \"I dare say.\" is joined to the next.",
-      "forcedNote": "Long periods held whole with tails after the verb: #6, #8, #13, #15, #18–21 (one sentence across four segments, held by ؛), #25–26."
+      "forcedNote": "Long periods held whole with tails after the verb: #9, #11, #16, #18, #21.1–#21.4 (one sentence across four segments, held by ؛), #25.1–#25.2."
     },
     "clauses": {
       "kept": 70,
       "total": 74,
       "forced": 22,
-      "note": "Four relative clauses are moved before their nouns as Urdu participles (#3, #5, #8, #21).",
-      "forcedNote": "Relative, conditional and participial clauses kept after the verb or stacked: #2 (1), #4 آج جبکہ (1), #6 (5), #8 (4), #13 (3), #14 کیونکہ، جس زمانے میں (1), #15 (2), #16 (1), #20 (1), #21 (1), #23 (1), #25 (1)."
+      "note": "Four relative clauses are moved before their nouns as Urdu participles (#5, #8, #11, #21.4).",
+      "forcedNote": "Relative, conditional and participial clauses kept after the verb or stacked: #4 (1), #7 آج جبکہ (1), #9 (5), #11 (4), #16 (3), #17 کیونکہ، جس زمانے میں (1), #18 (2), #19 (1), #21.3 (1), #21.4 (1), #23 (1), #25.1 (1)."
     },
     "grammar": {
       "kept": 28,
       "total": 49,
       "forced": 4,
       "note": "Articles 19 of 23 (ایک or کسی), possessives 8 of 13, passives 1 of 13.",
-      "forcedNote": "ایک انسانی فضا (#6), ایک ایسے اجتماع (#8), اپنے قدیم پروہتوں جیسے تاج (#20), and the passive دیکھا جائے (#5)."
+      "forcedNote": "ایک انسانی فضا (#9), ایک ایسے اجتماع (#11), اپنے قدیم پروہتوں جیسے تاج (#21.3), and the passive دیکھا جائے (#8)."
     },
     "punctuation": {
       "kept": 6,
       "total": 10,
       "forced": 5,
       "note": "Colon and all 5 semicolons kept; all 4 dashes dropped.",
-      "forcedNote": "All five semicolons kept (#18, #19 twice, #25, #26). The colon in #1 is natural."
+      "forcedNote": "All five semicolons kept (#21.1, #21.2 twice, #25.1, #25.2). The colon in #2 is natural."
     },
     "culture": {
       "kept": 6,
       "total": 9,
       "forced": 1,
       "note": "Kept: Mme Swann, Louis XVI, Paris, Virgil, Dodona, the acacia-avenue. Changed: carriage-and-pair (بگھیاں), the Bois (جنگل), the Grand Lac (بڑی جھیل). Items coded as deviations (Elysian, Druidical, myrtle, country house) are left out.",
-      "forcedNote": "دودونا (Dodone) with the Latin-script name in brackets (#20)."
+      "forcedNote": "دودونا (Dodone) with the Latin-script name in brackets (#21.3)."
     }
   },
   "checks": {
-    "source": "Several readings appear to follow Proust's French rather than Moncrieff's English: قلعے for \"a country house\" (#13, French *château*), the added chrysanthemum clause (#13), the French spelling Dodone (#20), and the claim in #24 that places do not belong *only* to the world of space, which is what the French says and the English reverses. The deviations are still coded against the designated English source.",
+    "source": "Several readings appear to follow Proust's French rather than Moncrieff's English: قلعے for \"a country house\" (#16, French *château*), the added chrysanthemum clause (#16), the French spelling Dodone (#21.3), and the claim in #24 that places do not belong *only* to the world of space, which is what the French says and the English reverses. The deviations are still coded against the designated English source.",
     "paratext": ""
   },
-  "tendencies": "The submission keeps the source's sentence architecture almost intact, and with it some of the source's punctuation and phrasing (C4 interference).\n\n- **Sentence boundaries kept one for one.** All 26 source units come through as 26 Urdu units, with no merges or splits. The three longest periods (#6 at 143 words, #8 at 134, #13 at 79) are carried as single sentences, clause after clause in source order, with only the verb-final reordering Urdu requires inside each clause. The reader gets Proust's long breath, but has to hold long chains of relative clauses (جو … جس … جن …) before each main verb arrives.\n- **Punctuation carried over.** All 5 of the source's semicolons reappear as ؛ in #18–#19 and #25–#26 (0.5 per 100 words), so the coda reads as a run of English-style semicolon clauses. Both parentheses in #8 are kept in place. Where the submission builds its own parenthesis, it uses runs of underscores (\\_\\_\\_, \\_\\_\\_\\_, \\_\\_\\_\\_\\_\\_ in #6 and #13), which are not Urdu punctuation and print as rules.\n- **Calques and set phrasing.** وجود نہیں رکھتی (#22, \"does not possess existence\"), چائے کی پیالی کے سامنے (#8, \"in front of a cup of tea\"), مسرتیں دریافت نہیں کر پایا (#8, \"discover pleasures\") and the doubled کہ … کہ of #23 read as English constructions in Urdu words. They are spread across the passage rather than confined to one stretch.\n- **Intensifiers added.** محض (\"merely\") appears 10 times (1.0 per 100 words), against 4 limiting words in the source (only, merely, alone, nothing more than); بالکل and عین add 5 more. The effect is a steadier, more insistent tone than the source's, and in #4 it shifts the claim (A2).\n- **One word for many.** سادہ سی covers both \"close-fitting\" and \"woollen\" (#5, #6), ویسے بھی covers both \"But\" and \"Moreover\" (#7, #12), and فلیٹ covers both \"house\" and \"flats\" (#6, #8, #11). Distinctions the source draws on purpose are levelled.\n- **Register.** The translation settles into a formal literary register that matches the source's elevation. It departs from it in three places by turning classical or secular words into religious ones (ایمان #14, جنتی #18, پروہت #20).\n- **Logical links.** Concessive and adversative turns are flattened or changed in 4 segments (#2, #7, #9, #16), so the narrator's hedging and self-correction come through as plain assertion.\n\nThe overall effect is a text that follows the source's outline closely and reads as translated: sentence shape, semicolons and set phrases are carried across, while the source's images, contrasts and hedges thin out.",
-  "translatorProfile": "- **Strategy.** A formal-equivalence method (Nida): sentence by sentence and clause by clause, foreignizing in syntax and punctuation but domesticating in culture-bound words (بگھیاں، چولی، پروہت، جنتی), with Toury's interference showing in the carried-over semicolons and calques. Of Berman's deforming tendencies, qualitative impoverishment (#2, #3, #5, #6, #13, #17), the destruction of underlying networks (\"real\" in #19–#20, house and flat in #6, #8, #11) and expansion (محض, معبد, ناپائیدار اور لمحاتی) are the clearest. Several departures (#13's added chrysanthemum clause and قلعے, the French-spelled gloss (Dodone) in #20, the reversed claim in #24) suggest the translator worked from a second text, apparently Proust's French, alongside or instead of this source.\n- **Apparent purpose.** The skopos looks like a complete, faithful-in-outline rendering of a world classic for Urdu literary readers, aiming to carry every clause across rather than to give Proust an Urdu voice.\n- **Level.** Competent. The command of literary Urdu is real: there are no grammar or spelling errors, and the hard comparison in #6, the chrysanthemum fire in #8 and the wrinkled lake in #19 are handled well. But the major deviations look accidental rather than chosen: the hats moved onto the watchers in #5, بلاشبہ for \"I dare say\" in #2, غیر انسانی for \"unpeopled\" in #20, and the inverted key claim in #24.",
+  "tendencies": "The submission keeps the source's sentence architecture almost intact, and with it some of the source's punctuation and phrasing (C4 interference).\n\n- **Sentence boundaries kept one for one.** The source sentences come through one for one, except \"I dare say\" (#3), which is joined to the next sentence (#4). The three longest periods (#9 at 143 words, #11 at 134, #16 at 79) are carried as single sentences, clause after clause in source order, with only the verb-final reordering Urdu requires inside each clause. The reader gets Proust's long breath, but has to hold long chains of relative clauses (جو … جس … جن …) before each main verb arrives.\n- **Punctuation carried over.** All 5 of the source's semicolons reappear as ؛ in #21.1–#21.2 and #25.1–#25.2 (0.5 per 100 words), so the coda reads as a run of English-style semicolon clauses. Both parentheses in #11 are kept in place. Where the submission builds its own parenthesis, it uses runs of underscores (\\_\\_\\_, \\_\\_\\_\\_, \\_\\_\\_\\_\\_\\_ in #9 and #16), which are not Urdu punctuation and print as rules.\n- **Calques and set phrasing.** وجود نہیں رکھتی (#22, \"does not possess existence\"), چائے کی پیالی کے سامنے (#11, \"in front of a cup of tea\"), مسرتیں دریافت نہیں کر پایا (#11, \"discover pleasures\") and the doubled کہ … کہ of #23 read as English constructions in Urdu words. They are spread across the passage rather than confined to one stretch.\n- **Intensifiers added.** محض (\"merely\") appears 10 times (1.0 per 100 words), against 4 limiting words in the source (only, merely, alone, nothing more than); بالکل and عین add 5 more. The effect is a steadier, more insistent tone than the source's, and in #7 it shifts the claim (A2).\n- **One word for many.** سادہ سی covers both \"close-fitting\" and \"woollen\" (#8, #9), ویسے بھی covers both \"But\" and \"Moreover\" (#10, #15), and فلیٹ covers both \"house\" and \"flats\" (#9, #11, #14). Distinctions the source draws on purpose are levelled.\n- **Register.** The translation settles into a formal literary register that matches the source's elevation. It departs from it in three places by turning classical or secular words into religious ones (ایمان #17, جنتی #21.1, پروہت #21.3).\n- **Logical links.** Concessive and adversative turns are flattened or changed in 4 segments (#3, #10, #12, #19), so the narrator's hedging and self-correction come through as plain assertion.\n\nThe overall effect is a text that follows the source's outline closely and reads as translated: sentence shape, semicolons and set phrases are carried across, while the source's images, contrasts and hedges thin out.",
+  "translatorProfile": "- **Strategy.** A formal-equivalence method (Nida): sentence by sentence and clause by clause, foreignizing in syntax and punctuation but domesticating in culture-bound words (بگھیاں، چولی، پروہت، جنتی), with Toury's interference showing in the carried-over semicolons and calques. Of Berman's deforming tendencies, qualitative impoverishment (#4, #5, #8, #9, #16, #20), the destruction of underlying networks (\"real\" in #21.2–#21.3, house and flat in #9, #11, #14) and expansion (محض, معبد, ناپائیدار اور لمحاتی) are the clearest. Several departures (#16's added chrysanthemum clause and قلعے, the French-spelled gloss (Dodone) in #21.3, the reversed claim in #24) suggest the translator worked from a second text, apparently Proust's French, alongside or instead of this source.\n- **Apparent purpose.** The skopos looks like a complete, faithful-in-outline rendering of a world classic for Urdu literary readers, aiming to carry every clause across rather than to give Proust an Urdu voice.\n- **Level.** Competent. The command of literary Urdu is real: there are no grammar or spelling errors, and the hard comparison in #9, the chrysanthemum fire in #11 and the wrinkled lake in #21.2 are handled well. But the major deviations look accidental rather than chosen: the hats moved onto the watchers in #8, بلاشبہ for \"I dare say\" in #3, غیر انسانی for \"unpeopled\" in #21.3, and the inverted key claim in #24.",
   "decision": "Retranslation required",
-  "decisionBasis": "The score of {score}, in band {band}, points to retranslation, and nothing moves it. The {severe} major and critical deviations fall at the passage's turns (#2, #5, #11, #15, #20, #21, #24), several of them where the draft follows a text other than the designated source (#13, #20, #24), while {minor} minor ones thin its images and contrasts. The same translator could undertake the retranslation: the Urdu is correct and often fine (#6, #8, #19), and the failures are of accuracy and source discipline, not of language.",
+  "decisionBasis": "The score of {score}, in band {band}, points to retranslation, and nothing moves it. The {severe} major and critical deviations fall at the passage's turns (#3, #8, #14, #18, #21.3, #21.4, #24), several of them where the draft follows a text other than the designated source (#16, #21.3, #24), while {minor} minor ones thin its images and contrasts. The same translator could undertake the retranslation: the Urdu is correct and often fine (#9, #11, #21.2), and the failures are of accuracy and source discipline, not of language.",
   "publisherNote": "This calls for a fresh translation, which the same translator may undertake, made from one agreed source text and with a brief on voice and allusion.",
   "grade": "",
   "gradeBasis": "",

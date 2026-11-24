@@ -270,20 +270,31 @@ export const BRANCH = 'main';
 // Tokens such as {total} or {A1} in any prose field are replaced with figures
 // computed from the deviations, so the prose always matches the count table.
 export const TOKENS = { ...METHOD.tokens, A1: '…and so on for any single code' };
+// Rows grouped by source sentence; labels '3' (one row) or '3.1', '3.2' (several).
+export function groups(report) {
+  const out = [];
+  for (const s of report.segments || []) {
+    if (out.length && out[out.length - 1][0].sentence === s.sentence) out[out.length - 1].push(s); else out.push([s]);
+  }
+  return out;
+}
+export function labels(report) {
+  return groups(report).flatMap((g) => g.map((s, j) => (g.length === 1 ? String(s.sentence) : `${s.sentence}.${j + 1}`)));
+}
 export function figures(report) {
   const t = tally(report);
   const f = {
     total: t.n, critical: t.total.Critical, major: t.total.Major, minor: t.total.Minor,
     severe: t.total.Critical + t.total.Major, per100: t.per100(t.n), words: t.words,
-    segments: (report.segments || []).length, penalty: t.penalty, pp100: t.pp100.toFixed(1),
+    segments: groups(report).length, rows: (report.segments || []).length, penalty: t.penalty, pp100: t.pp100.toFixed(1),
     score: t.score.toFixed(1), band: `${t.band[0]} (${t.band[1]})`, A: 0, B: 0, C: 0, neutral: t.neutral,
   };
-  // Spread across segments: descriptive only, never part of the score or grade.
-  const segs = report.segments || [];
-  const pct = (n) => (segs.length ? Math.round((100 * n) / segs.length) : 0);
-  const scored = (x) => (x.deviations || []).filter((d) => SCORED.includes(d.severity));
-  f.clean = segs.filter((x) => !scored(x).length).length;
-  f.severeSegs = segs.filter((x) => scored(x).some((d) => d.severity !== 'Minor')).length;
+  // Spread across segments (source sentences): descriptive only, never part of the score or grade.
+  const sents = groups(report);
+  const pct = (n) => (sents.length ? Math.round((100 * n) / sents.length) : 0);
+  const scored = (g) => g.flatMap((x) => x.deviations || []).filter((d) => SCORED.includes(d.severity));
+  f.clean = sents.filter((g) => !scored(g).length).length;
+  f.severeSegs = sents.filter((g) => scored(g).some((d) => d.severity !== 'Minor')).length;
   const ag = agreement(report); Object.assign(f, ag);
   f.cleanPct = pct(f.clean); f.severePct = pct(f.severeSegs);
   for (const c of Object.keys(CODES)) {
@@ -375,6 +386,7 @@ export function upgrade(r) {
     delete r._comment; r.schema = 2;
   }
   if (r.schema < 3) { r.segmentation ??= { rule: 'sentence-v1', exceptions: '' }; r.schema = 3; }
+  if (r.schema < 4) { for (const s of r.segments || []) s.sentence ??= s.n || 1; r.schema = 4; }
   const other = r.stage === 'Published' ? ['decision', 'decisionBasis', 'publisherNote'] : ['grade', 'gradeBasis', 'readerNote'];
   if (r[other[0]] && !other.slice(1).some((k) => String(r[k] || '').trim())) r[other[0]] = '';
   return r;
@@ -387,7 +399,6 @@ export const normalizeComparison = (c) => norm(c, CMP_SCHEMA);
 // every figure comes from the member reports, each measured only against the source.
 export const memberLabel = (entry, r, k) =>
   String(entry?.label || r.submission?.translator || r.submission?.label || `${t('cmp.translationN', { k })}`).trim();
-const scoredDevs = (s) => (s.deviations || []).filter((d) => SCORED.includes(d.severity));
 export function analyse(cmp, reports) {
   const members = (cmp.members || []).map((e, i) => {
     const r = reports[i], tl = tally(r), f = figures(r), p = proximity(r);
@@ -395,16 +406,17 @@ export function analyse(cmp, reports) {
       score: tl.score, pp100: tl.pp100, penalty: tl.penalty, band: tl.band[0], total: tl.n, severe: tl.total.Critical + tl.total.Major,
       A: f.A, B: f.B, C: f.C, proximity: p.score, mimicry: p.art, wins: 0 };
   });
-  const n = Math.min(...reports.map((r) => (r.segments || []).length));
+  const gs = reports.map(groups);
+  const n = Math.min(...gs.map((g) => g.length));
   const segments = [];
   for (let i = 0; i < n; i++) {
-    const per = reports.map((r) => r.segments[i]);
-    const pens = per.map((s) => (s.deviations || []).reduce((a, d) => a + WEIGHTS[d.severity], 0));
+    const devs = gs.map((g) => g[i].flatMap((s) => s.deviations || []));
+    const pens = devs.map((ds) => ds.reduce((a, d) => a + WEIGHTS[d.severity], 0));
     const low = Math.min(...pens);
     const lowest = pens.map((x, k) => (x === low ? k : -1)).filter((k) => k >= 0);
     const tie = lowest.length === pens.length;
-    const hard = per.every((s) => scoredDevs(s).length);
-    const sets = per.map((s) => new Set(scoredDevs(s).map((d) => d.code)));
+    const sets = devs.map((ds) => new Set(ds.filter((d) => SCORED.includes(d.severity)).map((d) => d.code)));
+    const hard = sets.every((x) => x.size);
     const shared = [...sets[0]].filter((c) => sets.every((x) => x.has(c))).sort();
     if (!tie) for (const k of lowest) members[k].wins++;
     segments.push({ n: i + 1, penalties: pens, lowest, tie, hard, shared });

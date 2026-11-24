@@ -172,6 +172,12 @@
           "minimum": 1,
           "default": 1
         },
+        "sentence": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1,
+          "description": "The source sentence (by the segmentation rule) this row belongs to. Rows within a sentence are shown as 3.1, 3.2; a sentence with one row as 3. Figures per segment are counted per sentence."
+        },
         "source": {
           "type": "string",
           "default": ""
@@ -228,6 +234,7 @@
       },
       "required": [
         "n",
+        "sentence",
         "source",
         "submission",
         "mergedInto",
@@ -239,8 +246,8 @@
   },
   "properties": {
     "schema": {
-      "const": 3,
-      "default": 3
+      "const": 4,
+      "default": 4
     },
     "id": {
       "type": "string",

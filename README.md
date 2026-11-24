@@ -76,11 +76,11 @@ pytest core/tests
 
 To change the method, edit `method.json` (and the schema if the format changes), run `build-js`, then re-run every report under the new method.
 
-## Report format (schema 3)
+## Report format (schema 4)
 
 | Field | Meaning |
 | --- | --- |
-| `schema` | Format version, `3` |
+| `schema` | Format version, `4` |
 | `id`, `title`, `subtitle`, `date` | Identity and heading; `id` is the file name, `date` is YYYY-MM-DD |
 | `author`, `work`, `originalWork`, `passage`, `tags` | Catalogue details (all searchable); `work` is the title shown on cards, `originalWork` the title in the original language |
 | `source`, `submission` | `{language, label, translator, text}` |
@@ -96,8 +96,8 @@ To change the method, edit `method.json` (and the schema if the format changes),
 | `checks` | `{source, paratext}`: optional assessor's notes, shown in Details. Never scored |
 | `textNotes` | Report-specific notes on the texts only (transcription, misprints, segmentation). Everything general is on the Method page |
 | `aiSuggestions` | `{model, date}` of the AI suggestions |
-| `segments[]` | `{n, source, submission, mergedInto, deviations, suggestion}`. `n` runs 1, 2, 3…; the segment texts joined must equal the passages. `mergedInto` is the earlier segment whose target sentence also renders this source sentence (its `submission` is then empty), otherwise `null` |
-| `segmentation` | `{rule, exceptions}`. `rule` is `sentence-v1`: one source sentence is one segment, with no length cap (defined in `method.json`; `python -m tc_core segment FILE` gives the segments). `exceptions` says in a line where and why the segments depart from the rule; the validator rejects undeclared departures. Reports segmented before the rule keep their segments and state the departures |
+| `segments[]` | Rows of the side-by-side table: `{n, sentence, source, submission, mergedInto, deviations, suggestion}`. `n` is the row number (1, 2, 3…; `mergedInto` and `compensatedBy` refer to it). `sentence` is the source sentence the row belongs to, by the segmentation rule: a segment is a sentence, and a long sentence may be shown in several rows, labelled 3.1, 3.2 (a one-row sentence is labelled 3). Prose refers to rows by label (#3.2). Everything counted per segment (clean and severe segments, comparisons, consistency) is counted per sentence; rows change no figure. `n` runs 1, 2, 3…; the segment texts joined must equal the passages. `mergedInto` is the earlier segment whose target sentence also renders this source sentence (its `submission` is then empty), otherwise `null` |
+| `segmentation` | `{rule, exceptions}`. `rule` is `sentence-v1`: one source sentence is one segment, with no length cap (rows within it are free) (defined in `method.json`; `python -m tc_core segment FILE` gives the segments). `exceptions` says in a line where and why the segments depart from the rule; the validator rejects undeclared departures. |
 | `deviations[]` | `{code, severity, note, functions, gain, compensatedBy}`. Severity is Critical, Major, Minor or Neutral (weight 0). `functions` is the function test `[{fn, kept}]`; `gain` is what a transposition adds (never scored); `compensatedBy` is the segment that makes good a Neutral loss, otherwise `null` |
 | `suggestion` | `{ai, state, human}`. An AI rendering for every segment with a deviation and only for those. The second suggestion column is Asim Bakhshi's; `state` is `Not reviewed`, `Agrees with AI` or `Own suggestion`; the AI text is kept as generated |
 

@@ -1,5 +1,5 @@
 {
-  "schema": 3,
+  "schema": 4,
   "id": "author-work-target-translator",
   "title": "Translation Assessment: ",
   "subtitle": "An editorial assessment report for interested readers and publishers. Segment-level deviation analysis on an error typology adapted from Multidimensional Quality Metrics, the translation industry's standard framework, for an <expressive (literary) | informative (scientific, technical)> text, with a descriptive translation-studies profile of the translator.",
@@ -35,6 +35,7 @@
   "segments": [
     {
       "n": 1,
+      "sentence": 1,
       "source": "",
       "submission": "",
       "mergedInto": null,

@@ -55,6 +55,13 @@ def rule_issues(r: dict) -> list[Issue]:
     for i, s in enumerate(segs):
         if s.get("n") != i + 1:
             E(f"segments/{i}/n", f"is {s.get('n')}, expected {i + 1}")
+    prev = 0
+    for i, s in enumerate(segs):
+        k = s.get("sentence")
+        if not isinstance(k, int) or k not in (prev, prev + 1) or (i == 0 and k != 1):
+            E(f"segments/{i}/sentence", f"is {k}; sentence numbers start at 1 and rise by one, rows of one sentence share it")
+            break
+        prev = k
     if _squash("".join(s.get("source", "") for s in segs)) != _squash((r.get("source") or {}).get("text")):
         E("segments", "source segments joined do not equal source.text (ignoring whitespace)")
     if _squash("".join(s.get("submission", "") for s in segs)) != _squash((r.get("submission") or {}).get("text")):

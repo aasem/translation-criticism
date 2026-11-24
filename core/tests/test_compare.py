@@ -134,18 +134,32 @@ def test_rejected(name, c):
     assert errors(c()), name
 
 
-def test_different_segmentation_is_rejected():
+def test_different_sentences_are_rejected():
     d = copy.deepcopy(B)
     d["id"] = "proust-test-d"
-    s0, s1 = d["segments"][0], d["segments"][1]
-    s0["source"] += " " + s1["source"]
-    s0["submission"] += " " + s1["submission"]
-    s0["deviations"] += s1["deviations"]
+    for s in d["segments"][2:]:  # sentence 2 joined to sentence 1
+        s["sentence"] -= 1
+    BY_ID[d["id"]] = d
+    assert any("sentence" in i.message for i in errors(cmp(A["id"], d["id"], preferred=best(A, d))))
+
+
+def test_different_rows_within_the_same_sentences_are_fine():
+    d = copy.deepcopy(B)
+    d["id"] = "proust-test-e"
+    first, second = d["segments"][0], d["segments"][1]
+    assert first["sentence"] == second["sentence"]  # 1.1 and 1.2 in the Madeleine report
+    first["source"] += " " + second["source"]
+    first["submission"] += " " + second["submission"]
+    first["deviations"] += second["deviations"]
+    first["suggestion"]["ai"] = (first["suggestion"]["ai"] + " " + second["suggestion"]["ai"]).strip()
     del d["segments"][1]
     for i, s in enumerate(d["segments"]):
         s["n"] = i + 1
     BY_ID[d["id"]] = d
-    assert any("segmentation" in i.message for i in errors(cmp(A["id"], d["id"], preferred=best(A, d))))
+    c = cmp(A["id"], d["id"], preferred=best(A, d))
+    assert not [i for i in errors(c) if i.path == "members"]
+    a = analyse(c, [A, d])
+    assert len(a["segments"]) == 13 and a["members"][1]["score"] == pytest.approx(tally(B)["score"])
 
 
 def test_tokens_fill():

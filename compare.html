@@ -25,7 +25,7 @@
 
 <script type="module">
 import { t as tt, tr, label, UR } from './assets/i18n.js';
-import { analyse, cmpFigures, fillCmp, memberLabel, normalize, normalizeComparison, loadJSON, esc, md, urduWrap, icon, worst, sevClass,
+import { analyse, cmpFigures, groups, labels, fillCmp, memberLabel, normalize, normalizeComparison, loadJSON, esc, md, urduWrap, icon, worst, sevClass,
   gradeClass, decisionClass, gradeName, isPublished, gridSVG, gridLegend, REPO, BRANCH, METHOD } from './assets/common.js';
 
 const $ = (id) => document.getElementById(id);
@@ -51,7 +51,13 @@ function devHtml(s) {
   }).join('');
   return ds || `<p>${tt('sbs.none')}</p>`;
 }
-const textCell = (s) => (s.mergedInto && !s.submission?.trim() ? `<span class="muted">${esc(tt('sbs.merged', { n: s.mergedInto }))}</span>` : ur(s.submission));
+// A comparison works by sentence: each cell joins the rows of that sentence.
+const sent = (r, i) => groups(r)[i];
+const srcOf = (i) => sent(RS[0], i).map((s) => s.source).join(' ');
+const subOf = (r, i) => sent(r, i).map((s) => (s.mergedInto && !s.submission?.trim() ? '' : s.submission)).filter(Boolean).join(' ');
+const devsOf = (r, i) => { const g = sent(r, i); const lab = labels(r); const first = (r.segments || []).indexOf(g[0]);
+  return g.map((s, j) => (g.length > 1 && (s.deviations || []).length ? `<p class="row-lab">${esc(lab[first + j])}</p>` : '') + devHtml(s)).join(''); };
+const worstOf = (r, i) => worst(sent(r, i).flatMap((s) => s.deviations || []));
 const lowestText = (seg) => (seg.tie ? `<span class="muted">${tt('cmp.tie')}</span>` : `<strong>${seg.lowest.map((k) => esc(A.members[k].label)).join(' · ')}</strong>`);
 
 function header() {
@@ -110,14 +116,14 @@ function sideBySide() {
   let body = '';
   if (N === 2) {
     body = `<table class="sbs cmp-sbs two"><colgroup><col class="c-n"><col style="width:17%"><col style="width:17%"><col><col style="width:17%"><col><col style="width:8em"></colgroup><thead><tr><th>#</th><th>${tt('h.source')}</th>${A.members.map((m) => `<th dir="auto">${urduWrap(esc(m.label))}</th><th>${tt('th.deviations')}</th>`).join('')}<th>${tt('cmp.th.lowest')}</th></tr></thead><tbody>${
-      A.segments.map((seg, i) => `<tr><td class="num">${seg.n}</td><td dir="auto">${urduWrap(esc(RS[0].segments[i].source))}</td>${
-        RS.map((r, k) => { const s = r.segments[i]; return `<td class="sub" lang="ur" dir="rtl">${textCell(s)}</td><td class="devs ${sevClass(worst(s.deviations))}">${devHtml(s)}<p class="pen">${tt('cmp.th.penalty')}: <b>${seg.penalties[k]}</b></p></td>`; }).join('')
+      A.segments.map((seg, i) => `<tr><td class="num">${seg.n}</td><td dir="auto">${urduWrap(esc(srcOf(i)))}</td>${
+        RS.map((r, k) => `<td class="sub" lang="ur" dir="rtl">${esc(subOf(r, i))}</td><td class="devs ${sevClass(worstOf(r, i))}">${devsOf(r, i)}<p class="pen">${tt('cmp.th.penalty')}: <b>${seg.penalties[k]}</b></p></td>`).join('')
       }<td class="lowest">${lowestText(seg)}</td></tr>`).join('')}</tbody></table>`;
   } else {
     body = `<table class="sbs cmp-sbs stack"><colgroup><col class="c-n"><col style="width:42%"><col><col style="width:6.5em"></colgroup><thead><tr><th>#</th><th>${tt('h.source')} / ${tt('cmp.th.translation')}</th><th>${tt('th.deviations')}</th><th class="num">${tt('cmp.th.penalty')}</th></tr></thead>${
-      A.segments.map((seg, i) => `<tbody class="seg"><tr class="src"><td class="num" rowspan="${N + 1}">${seg.n}</td><td dir="auto">${urduWrap(esc(RS[0].segments[i].source))}</td><td class="lowest" colspan="2">${tt('cmp.th.lowest')}: ${lowestText(seg)}</td></tr>${
-        RS.map((r, k) => { const s = r.segments[i]; const lo = !seg.tie && seg.lowest.includes(k);
-          return `<tr><td class="sub"><div class="who" dir="auto">${urduWrap(esc(A.members[k].label))}</div><div lang="ur" dir="rtl">${textCell(s)}</div></td><td class="devs ${sevClass(worst(s.deviations))}">${devHtml(s)}</td><td class="num pen ${lo ? 'lo' : ''}">${lo ? icon('check') : ''}<b>${seg.penalties[k]}</b></td></tr>`; }).join('')
+      A.segments.map((seg, i) => `<tbody class="seg"><tr class="src"><td class="num" rowspan="${N + 1}">${seg.n}</td><td dir="auto">${urduWrap(esc(srcOf(i)))}</td><td class="lowest" colspan="2">${tt('cmp.th.lowest')}: ${lowestText(seg)}</td></tr>${
+        RS.map((r, k) => { const lo = !seg.tie && seg.lowest.includes(k);
+          return `<tr><td class="sub"><div class="who" dir="auto">${urduWrap(esc(A.members[k].label))}</div><div lang="ur" dir="rtl">${esc(subOf(r, i))}</div></td><td class="devs ${sevClass(worstOf(r, i))}">${devsOf(r, i)}</td><td class="num pen ${lo ? 'lo' : ''}">${lo ? icon('check') : ''}<b>${seg.penalties[k]}</b></td></tr>`; }).join('')
       }</tbody>`).join('')}</table>`;
   }
   return `${H2('columns', tt('h.sbs'))}${body}<p class="hint">${tt('cmp.sbs.hint')}</p>`;
@@ -163,7 +169,8 @@ try {
   if (!id) throw new Error('No comparison id in the address.');
   C = normalizeComparison(await loadJSON(`comparisons/${id}.json`));
   RS = (await Promise.all(C.members.map((m) => loadJSON(`reports/${m.id}.json`)))).map(normalize);
-  const bad = RS.find((r) => r.segments.length !== RS[0].segments.length || r.segments.some((s, i) => sq(s.source) !== sq(RS[0].segments[i].source)));
+  const sj = (r) => groups(r).map((g) => sq(g.map((s) => s.source).join('')));
+  const bad = RS.find((r) => sj(r).length !== sj(RS[0]).length || sj(r).some((x, i) => x !== sj(RS[0])[i]));
   if (bad) throw Object.assign(new Error(bad.id), { mismatch: true });
   A = analyse(C, RS); F = cmpFigures(C, RS);
   $('b-gh').href = `https://github.com/${REPO}/blob/${BRANCH}/comparisons/${id}.json`;

@@ -698,8 +698,8 @@ export const STRINGS = {
 "طریقِ کار"
 ],
 "m.intro": [
-"Each report judges a translation by how it departs from its source, not by how the assessor would have translated it. The source is split into sentence-level segments, and the translation is set beside it, segment by segment. Every departure gets one code and one severity.",
-"ہر رپورٹ ترجمے کو اس بات سے پرکھتی ہے کہ وہ اپنے ماخذ سے کہاں ہٹتا ہے۔ اس بات سے نہیں کہ جائزہ لینے والا خود اسے کیسے ترجمہ کرتا۔ ماخذ کو جملوں کی سطح کے قطعات میں بانٹا جاتا ہے اور ترجمہ قطعہ بہ قطعہ اس کے مقابل رکھا جاتا ہے۔ ہر انحراف کو ایک کوڈ اور ایک شدت دی جاتی ہے۔"
+"Each report judges a translation by how it departs from its source, not by how the assessor would have translated it. The source is split into sentence-level segments, and the translation is set beside it, segment by segment. A segment is one source sentence, found by a fixed rule so that the same passage is always cut the same way. A long sentence may be shown in several rows, numbered 3.1, 3.2 and so on, for ease of reading; the rows change no figure. Every departure gets one code and one severity.",
+"ہر رپورٹ ترجمے کو اس بات سے پرکھتی ہے کہ وہ اپنے ماخذ سے کہاں ہٹتا ہے۔ اس بات سے نہیں کہ جائزہ لینے والا خود اسے کیسے ترجمہ کرتا۔ ماخذ کو جملوں کی سطح کے قطعات میں بانٹا جاتا ہے اور ترجمہ قطعہ بہ قطعہ اس کے مقابل رکھا جاتا ہے۔ ایک قطعہ ماخذ کا ایک جملہ ہے، جسے ایک مقررہ اصول سے الگ کیا جاتا ہے تاکہ ایک ہی اقتباس ہمیشہ ایک ہی طرح تقسیم ہو۔ کسی طویل جملے کو پڑھنے میں آسانی کے لیے کئی سطروں میں دکھایا جا سکتا ہے، جن پر 3.1، 3.2 وغیرہ نمبر ہوتے ہیں۔ ان سطروں سے کوئی عدد نہیں بدلتا۔ ہر انحراف کو ایک کوڈ اور ایک شدت دی جاتی ہے۔"
 ],
 "m.kinds.h": [
 "Two kinds of assessment",

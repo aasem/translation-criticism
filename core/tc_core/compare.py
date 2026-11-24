@@ -15,7 +15,7 @@ from jsonschema import Draft202012Validator
 
 from . import spec as M
 from .normalize import dumps, normalize_comparison
-from .scoring import band_for, fixed, proximity, tally
+from .scoring import band_for, fixed, groups, proximity, tally
 from .scoring import figures as report_figures
 from .validate import _SPACE, Issue
 
@@ -52,16 +52,19 @@ def analyse(cmp: dict, reports: list[dict]) -> dict:
             "total": t["n"], "severe": t["total"]["Critical"] + t["total"]["Major"],
             "A": f["A"], "B": f["B"], "C": f["C"], "proximity": p["score"], "mimicry": p["mimicry"], "wins": 0,
         })
-    n = min((len(r.get("segments") or []) for r in reports), default=0)
+    gs = [groups(r) for r in reports]
+    n = min((len(g) for g in gs), default=0)
     segs = []
     for i in range(n):
-        per = [r["segments"][i] for r in reports]
-        pens = [sum(w[d["severity"]] for d in seg.get("deviations") or []) for seg in per]
+        per = [g[i] for g in gs]  # each: the rows of sentence i+1 in one translation
+        devs = [[d for s in rows for d in s.get("deviations") or []] for rows in per]
+        pens = [sum(w[d["severity"]] for d in ds) for ds in devs]
         low = min(pens) if pens else 0
         lowest = [k for k, x in enumerate(pens) if x == low]
         tie = len(lowest) == len(pens)
-        hard = all(_scored(seg) for seg in per)
-        codesets = [{d["code"] for d in _scored(seg)} for seg in per]
+        scored = set(M.scored_severities())
+        codesets = [{d["code"] for d in ds if d["severity"] in scored} for ds in devs]
+        hard = all(codesets)
         shared = sorted(set.intersection(*codesets)) if codesets else []
         if not tie:
             for k in lowest:
@@ -93,12 +96,13 @@ def consistency(cmp: dict, reports: list[dict]) -> list[dict]:
     Not always wrong (the departures may differ), so these are flagged for the assessor."""
     out = []
     labels = [member_label(e, r, k) for k, (e, r) in enumerate(zip(cmp.get("members") or [], reports), start=1)]
-    n = min((len(r.get("segments") or []) for r in reports), default=0)
-    for i in range(n):
+    gs = [groups(r) for r in reports]
+    for i in range(min((len(g) for g in gs), default=0)):
         by_code: dict[str, dict[str, set]] = {}
-        for lab, r in zip(labels, reports):
-            for d in r["segments"][i].get("deviations") or []:
-                by_code.setdefault(d["code"], {}).setdefault(lab, set()).add(d["severity"])
+        for lab, g in zip(labels, gs):
+            for s in g[i]:
+                for d in s.get("deviations") or []:
+                    by_code.setdefault(d["code"], {}).setdefault(lab, set()).add(d["severity"])
         for code, who in by_code.items():
             if len(who) >= 2 and len(set().union(*who.values())) > 1:
                 out.append({"n": i + 1, "code": code, "severities": {k: sorted(v) for k, v in who.items()}})
@@ -117,13 +121,14 @@ def alignment_issues(reports: list[dict], ids: list[str]) -> list[Issue]:
             out.append(Issue("error", "members", f"{rid}: target language differs from {bid}"))
         if _squash((r.get("source") or {}).get("text")) != _squash((base.get("source") or {}).get("text")):
             out.append(Issue("error", "members", f"{rid}: source passage differs from {bid}"))
-        a, b = r.get("segments") or [], base.get("segments") or []
+        a = [" ".join(s.get("source", "") for s in g) for g in groups(r)]
+        b = [" ".join(s.get("source", "") for s in g) for g in groups(base)]
         if len(a) != len(b):
-            out.append(Issue("error", "members", f"{rid}: {len(a)} segments, {bid} has {len(b)}; reuse the held segmentation"))
+            out.append(Issue("error", "members", f"{rid}: {len(a)} sentences, {bid} has {len(b)}; reuse the held segmentation"))
         else:
-            for x, y in zip(a, b):
-                if _squash(x.get("source")) != _squash(y.get("source")):
-                    out.append(Issue("error", "members", f"{rid}: source of segment {x.get('n')} differs from {bid}; reuse the held segmentation"))
+            for k, (x, y) in enumerate(zip(a, b), start=1):
+                if _squash(x) != _squash(y):
+                    out.append(Issue("error", "members", f"{rid}: source of sentence {k} differs from {bid}; reuse the held segmentation"))
                     break
     return out
 
@@ -183,5 +188,5 @@ def validate_comparison(c: dict, reports_by_id: dict[str, dict], *, text: str | 
                 W(field, f"write the score as '{{score.{m.group(1)}}}, in band {{band.{m.group(1)}}}'")
     for x in consistency(c, reports):
         sv = "; ".join(f"{who}: {', '.join(s)}" for who, s in x["severities"].items())
-        W(f"segment {x['n']}", f"{x['code']} carries different severities ({sv}); check the departures differ")
+        W(f"sentence {x['n']}", f"{x['code']} carries different severities ({sv}); check the departures differ")
     return issues

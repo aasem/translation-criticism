@@ -70,9 +70,10 @@ def _cuts(parts: list[str]) -> list[int]:
 
 
 def departures(report: dict) -> dict:
-    """Where a report's source segments differ from the rule: cuts the rule makes that the report
-    does not ('joined'), and cuts the report makes that the rule does not ('split'), as segment numbers."""
-    held = [s.get("source", "") for s in report.get("segments") or []]
+    """Where a report's sentences (row groups) differ from the rule: cuts the rule makes that the report
+    does not ('joined'), and cuts the report makes that the rule does not ('split'), as sentence numbers."""
+    from .scoring import groups
+    held = [" ".join(s.get("source", "") for s in g) for g in groups(report)]
     rule = segment((report.get("source") or {}).get("text", ""))
     hc, rc = _cuts(held), _cuts(rule)
     rset = set(rc[:-1])

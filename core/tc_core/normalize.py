@@ -13,7 +13,7 @@ import re
 
 from .spec import comparison_schema, report_schema
 
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 _MISSING = object()
 _MERGED = re.compile(r"^\(merged into #(\d+)\)$")
 
@@ -77,6 +77,11 @@ def upgrade(report: dict) -> tuple[dict, list[str]]:
         r.setdefault("segmentation", {"rule": "sentence-v1", "exceptions": ""})
         r["schema"] = 3
         notes.append("schema 2 -> 3 (segmentation field)")
+    if r.get("schema", 1) < 4:
+        for seg in r.get("segments") or []:
+            seg.setdefault("sentence", seg.get("n") or 1)
+        r["schema"] = 4
+        notes.append("schema 3 -> 4 (sentence number on each row; check with the segmentation rule)")
     # Outcome fields of the other stage: clear leftovers only when nothing was written for them.
     other = (("decision", "decisionBasis", "publisherNote") if r.get("stage") == "Published"
              else ("grade", "gradeBasis", "readerNote"))

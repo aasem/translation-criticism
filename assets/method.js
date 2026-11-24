@@ -211,23 +211,24 @@ export const METHOD = {
     "severe": "major + critical",
     "per100": "deviations per 100 source words",
     "words": "source words",
-    "segments": "segments",
+    "segments": "segments (source sentences)",
     "penalty": "weighted penalty points",
     "pp100": "penalty points per 100 words",
     "score": "MQM quality score",
     "band": "grade band from the score",
     "neutral": "neutral (unscored) deviations",
-    "clean": "segments without deviation",
-    "cleanPct": "% of segments without deviation",
-    "severeSegs": "segments with a major or critical deviation",
+    "clean": "segments (sentences) without a scored deviation",
+    "cleanPct": "% of segments without a scored deviation",
+    "severeSegs": "segments (sentences) with a major or critical deviation",
     "severePct": "% of segments with one",
     "A": "accuracy (A) codes",
     "B": "language (B) codes",
     "C": "style (C) codes",
-    "aiSugg": "segments with an AI suggestion",
+    "aiSugg": "rows with an AI suggestion",
     "agree": "human agrees with AI",
     "differ": "human gives own suggestion",
-    "unreviewed": "not yet reviewed"
+    "unreviewed": "not yet reviewed",
+    "rows": "rows of the side-by-side table"
   },
   "forbiddenInAISuggestions": [
     ";",
@@ -257,7 +258,7 @@ export const METHOD = {
   },
   "segmentation": {
     "rule": "sentence-v1",
-    "about": "One source sentence is one segment, with no length cap. A sentence ends at . ? ! or … (with any closing quotes or brackets) followed by a space and then a capital letter or an opening quote or bracket, except after a listed abbreviation. The source is segmented once and the segmentation is frozen: a held report's segments are never redrawn.",
+    "about": "One source sentence is one segment, with no length cap. A sentence ends at . ? ! or … (with any closing quotes or brackets) followed by a space and then a capital letter or an opening quote or bracket, except after a listed abbreviation. A segment may be shown in several rows (3.1, 3.2 …) for reading and coding; rows never change a figure. The source is segmented once and the segmentation is frozen.",
     "maxWords": null,
     "splitOrder": [
       ";",
@@ -473,6 +474,12 @@ export const SCHEMA = {
           "minimum": 1,
           "default": 1
         },
+        "sentence": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1,
+          "description": "The source sentence (by the segmentation rule) this row belongs to. Rows within a sentence are shown as 3.1, 3.2; a sentence with one row as 3. Figures per segment are counted per sentence."
+        },
         "source": {
           "type": "string",
           "default": ""
@@ -529,6 +536,7 @@ export const SCHEMA = {
       },
       "required": [
         "n",
+        "sentence",
         "source",
         "submission",
         "mergedInto",
@@ -540,8 +548,8 @@ export const SCHEMA = {
   },
   "properties": {
     "schema": {
-      "const": 3,
-      "default": 3
+      "const": 4,
+      "default": 4
     },
     "id": {
       "type": "string",

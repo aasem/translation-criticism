@@ -39,6 +39,26 @@ def band_for(pp100: float) -> dict:
     return M.grades()[-1]
 
 
+def groups(report: dict) -> list[list[dict]]:
+    """Rows grouped by source sentence, in order."""
+    out: list[list[dict]] = []
+    for seg in report.get("segments") or []:
+        if out and out[-1][0].get("sentence") == seg.get("sentence"):
+            out[-1].append(seg)
+        else:
+            out.append([seg])
+    return out
+
+
+def labels(report: dict) -> list[str]:
+    """Display label of each row: '3' for a one-row sentence, '3.1', '3.2' … otherwise."""
+    out = []
+    for g in groups(report):
+        for j, seg in enumerate(g, start=1):
+            out.append(str(seg.get("sentence")) if len(g) == 1 else f"{seg.get('sentence')}.{j}")
+    return out
+
+
 def tally(report: dict) -> dict:
     sev = M.severities()
     total = {s: 0 for s in sev}
@@ -75,21 +95,22 @@ def agreement(report: dict) -> dict:
 def figures(report: dict) -> dict:
     """Every figure a prose token can refer to, formatted as the site shows it."""
     t = tally(report)
-    segs = report.get("segments") or []
+    sents = groups(report)
     scored = set(M.scored_severities())
     per100 = lambda x: fixed(100 * x / t["words"]) if t["words"] else "–"
-    pct = lambda k: math.floor(100 * k / len(segs) + 0.5) if segs else 0  # Math.round
-    seg_scored = lambda s: [d for d in s.get("deviations") or [] if d["severity"] in scored]
+    pct = lambda k: math.floor(100 * k / len(sents) + 0.5) if sents else 0  # Math.round
+    sent_scored = lambda g: [d for s in g for d in s.get("deviations") or [] if d["severity"] in scored]
     f = {
         "total": t["n"], "critical": t["total"]["Critical"], "major": t["total"]["Major"],
         "minor": t["total"]["Minor"], "severe": t["total"]["Critical"] + t["total"]["Major"],
-        "per100": per100(t["n"]), "words": t["words"], "segments": len(segs),
+        "per100": per100(t["n"]), "words": t["words"], "segments": len(sents),
+        "rows": len(report.get("segments") or []),
         "penalty": t["penalty"], "pp100": fixed(t["pp100"]), "score": fixed(t["score"]),
         "band": f'{t["band"]["letter"]} ({t["band"]["name"]})', "A": 0, "B": 0, "C": 0,
         "neutral": t["neutral"],
     }
-    f["clean"] = sum(1 for s in segs if not seg_scored(s))
-    f["severeSegs"] = sum(1 for s in segs if any(d["severity"] != "Minor" for d in seg_scored(s)))
+    f["clean"] = sum(1 for g in sents if not sent_scored(g))
+    f["severeSegs"] = sum(1 for g in sents if any(d["severity"] != "Minor" for d in sent_scored(g)))
     f.update(agreement(report))
     f["cleanPct"] = pct(f["clean"])
     f["severePct"] = pct(f["severeSegs"])
