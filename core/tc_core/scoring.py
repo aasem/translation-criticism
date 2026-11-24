@@ -112,6 +112,9 @@ def figures(report: dict) -> dict:
     f["clean"] = sum(1 for g in sents if not sent_scored(g))
     f["severeSegs"] = sum(1 for g in sents if any(d["severity"] != "Minor" for d in sent_scored(g)))
     f.update(agreement(report))
+    pr = proximity(report)
+    rnd = lambda x: "–" if x is None else math.floor(x + 0.5)  # Math.round
+    f["proximity"], f["mimicry"] = rnd(pr["score"]), rnd(pr["mimicry"])
     f["cleanPct"] = pct(f["clean"])
     f["severePct"] = pct(f["severeSegs"])
     for code in M.codes():

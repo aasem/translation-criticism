@@ -1065,6 +1065,50 @@ export const STRINGS = {
 "A comparison ends in a preferred translation. The preference starts from the highest quality score. The assessor may prefer another translation only if it stands in the same band, and the comparison says why. Drafts and published translations can be compared together, so that a publisher can ask whether a new translation improves on one already in print. Each translation keeps its own decision or grade. There is no limit to how many translations are compared: adding one changes no one's score.",
 "تقابل کا اختتام ایک ترجیحی ترجمے پر ہوتا ہے۔ ترجیح سب سے زیادہ معیار اسکور سے شروع ہوتی ہے۔ جائزہ نگار کسی دوسرے ترجمے کو صرف اسی صورت ترجیح دے سکتا ہے جب وہ اسی بینڈ میں ہو، اور تقابل میں اس کی وجہ درج ہوتی ہے۔ مسودوں اور شائع شدہ تراجم کا تقابل ایک ساتھ ہو سکتا ہے، تاکہ ناشر یہ دیکھ سکے کہ کوئی نیا ترجمہ چھپے ہوئے ترجمے سے بہتر ہے یا نہیں۔ ہر ترجمے کا اپنا فیصلہ یا گریڈ برقرار رہتا ہے۔ تقابل میں شامل تراجم کی تعداد کی کوئی حد نہیں: ایک ترجمے کے اضافے سے کسی کا اسکور نہیں بدلتا۔"
 ],
+"m.prof.h": [
+"Translator profile",
+"مترجم کا خاکہ"
+],
+"m.prof.p1": [
+"The translator profile says in plain words what a translation does, and every statement in it rests on something the report measures. Strategy is read from the passage's form and from the codes: how much of the source's form the translation keeps (proximity), how much of what it keeps is forced against Urdu (structural mimicry), which family of deviations dominates, and which way the register moves. Strategy is described, never ranked: a close translation and a free one are both legitimate.",
+"مترجم کا خاکہ سادہ لفظوں میں بتاتا ہے کہ کوئی ترجمہ کیا کرتا ہے، اور اس کا ہر بیان کسی ایسی چیز پر قائم ہوتا ہے جسے رپورٹ ناپتی ہے۔ حکمتِ عملی اقتباس کی ہیئت اور کوڈز سے پڑھی جاتی ہے: ترجمہ ماخذ کی ہیئت کا کتنا حصہ برقرار رکھتا ہے (نزدیکی)، جو برقرار رکھتا ہے اس میں سے کتنا اردو کے خلاف زبردستی برقرار رکھا گیا ہے (ہیئتی نقالی)، انحرافات کا کون سا خاندان غالب ہے، اور سطحِ کلام کس سمت جاتی ہے۔ حکمتِ عملی بیان کی جاتی ہے، اس کی درجہ بندی نہیں کی جاتی: ماخذ کے قریب رہنے والا ترجمہ اور آزاد ترجمہ، دونوں جائز ہیں۔"
+],
+"m.prof.p2": [
+"Translation studies has names for these choices, and they are given here once rather than in each report. A translation that keeps the source's form, with high proximity, is what Nida calls formal equivalence; one that rebuilds the sentence in the target language, with low proximity, is his dynamic equivalence. Toury's adequacy and acceptability name the same pull, towards the norms of the source or of the target language. Venuti's foreignizing and domesticating describe a translation's cultural and political stance as a whole, so a single sample can at most point towards one or the other.",
+"ترجمے کے مطالعات میں ان انتخابات کے نام موجود ہیں، اور وہ ہر رپورٹ میں دہرانے کے بجائے یہاں ایک بار دیے جاتے ہیں۔ جو ترجمہ ماخذ کی ہیئت برقرار رکھے اور جس کی نزدیکی زیادہ ہو، اسے نائڈا ہیئتی مساوات (formal equivalence) کہتا ہے، اور جو جملے کو ہدف زبان میں نئے سرے سے تعمیر کرے اور جس کی نزدیکی کم ہو، وہ اس کے نزدیک حرکی مساوات (dynamic equivalence) ہے۔ ٹوری کی کفایت (adequacy) اور قبولیت (acceptability) اسی کھنچاؤ کے نام ہیں: ماخذ کے معیارات کی طرف یا ہدف زبان کے معیارات کی طرف۔ وینوٹی کی اجنبیت کاری (foreignizing) اور مانوس کاری (domesticating) کسی ترجمے کے مجموعی ثقافتی اور سیاسی رویے کو بیان کرتی ہیں، اس لیے ایک نمونہ زیادہ سے زیادہ ان میں سے کسی ایک کی طرف اشارہ کر سکتا ہے۔"
+],
+"m.prof.p3": [
+"Antoine Berman listed the ways a translation deforms its source. The profile names one of these tendencies only where coded deviations show it, and cites the segments where they do:",
+"آنتوان برمان نے وہ طریقے گنوائے ہیں جن سے کوئی ترجمہ اپنے ماخذ کی صورت بگاڑتا ہے۔ خاکہ ان میں سے کسی رجحان کا نام صرف وہیں لیتا ہے جہاں کوڈ شدہ انحرافات اسے ظاہر کرتے ہوں، اور ان قطعات کا حوالہ دیتا ہے:"
+],
+"m.prof.li1": [
+"Expansion and clarification: additions (A2) and readings closed (A7)",
+"پھیلاؤ اور وضاحت: اضافے (A2) اور بند کی گئی قرأتیں (A7)"
+],
+"m.prof.li2": [
+"Rationalization: changed links between clauses (A6)",
+"عقلیت کاری: فقروں کے باہمی ربط میں تبدیلی (A6)"
+],
+"m.prof.li3": [
+"Ennoblement, and its opposite, popularization: register raised or lowered (C1)",
+"تشریف، اور اس کی ضد عامیانہ پن: سطحِ کلام کا بلند یا پست ہونا (C1)"
+],
+"m.prof.li4": [
+"Qualitative impoverishment: weaker connotation or imagery (C2, C3)",
+"کیفی افلاس: معنوی رنگ یا پیکر کا کمزور پڑنا (C2، C3)"
+],
+"m.prof.li5": [
+"Quantitative impoverishment: omissions and merged distinctions (A3, A5)",
+"کمی افلاس: حذف اور مٹائے گئے امتیازات (A3، A5)"
+],
+"m.prof.li6": [
+"Destruction of underlying networks of signification: a recurring word or image broken up across the passage (A5, C3)",
+"معنی کے زیریں جال کی شکست: کسی بار بار آنے والے لفظ یا پیکر کا پورے اقتباس میں بکھر جانا (A5، C3)"
+],
+"m.prof.p4": [
+"Rhythm and the shape of sentences are described under Stylistic tendencies and count only through the deviations they cause. The translator's apparent purpose and level of skill are the assessor's judgement. They are useful to a publisher deciding whom to commission, but they are not measurements, and the profile grounds them in the segments where they show.",
+"آہنگ اور جملوں کی ساخت اسلوبی رجحانات کے تحت بیان کی جاتی ہے، اور صرف انھی انحرافات کے ذریعے شمار ہوتی ہے جو وہ پیدا کرتی ہے۔ مترجم کا ظاہری مقصد اور اس کی مہارت کی سطح جائزہ نگار کی رائے ہے۔ یہ کسی ناشر کے لیے مفید ہے جو طے کر رہا ہو کہ ترجمہ کس سے کروائے، لیکن یہ پیمائش نہیں، اور خاکہ انھیں ان قطعات پر قائم کرتا ہے جہاں یہ ظاہر ہوتی ہیں۔"
+],
 "sbs.merged": [
 "(merged into #{n})",
 "(#{n} میں ضم)"

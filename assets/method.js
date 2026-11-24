@@ -228,7 +228,9 @@ export const METHOD = {
     "agree": "human agrees with AI",
     "differ": "human gives own suggestion",
     "unreviewed": "not yet reviewed",
-    "rows": "rows of the side-by-side table"
+    "rows": "rows of the side-by-side table",
+    "proximity": "proximity: share of the source form kept (0–100, – if too few cases)",
+    "mimicry": "structural mimicry: share of kept form that is forced (0–100, – if unmarked)"
   },
   "forbiddenInAISuggestions": [
     ";",

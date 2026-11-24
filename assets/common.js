@@ -296,6 +296,7 @@ export function figures(report) {
   f.clean = sents.filter((g) => !scored(g).length).length;
   f.severeSegs = sents.filter((g) => scored(g).some((d) => d.severity !== 'Minor')).length;
   const ag = agreement(report); Object.assign(f, ag);
+  { const pr = proximity(report); const rnd = (x) => (x == null ? '–' : Math.round(x)); f.proximity = rnd(pr.score); f.mimicry = rnd(pr.art); }
   f.cleanPct = pct(f.clean); f.severePct = pct(f.severeSegs);
   for (const c of Object.keys(CODES)) {
     const x = t.byCode[c]; const n = x ? x.Critical + x.Major + x.Minor : 0;
