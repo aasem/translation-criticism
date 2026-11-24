@@ -44,7 +44,7 @@
 
 <script type="module">
 import { t as tt, tr, label, UR } from './assets/i18n.js';
-import { gridLegend, PROX_KEYS, PROX_MIN, proximity, isMimicry, gridSVG, SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide, normalize, TEXT_TYPES, labels, localize, editPath, tagLabel, langName } from './assets/common.js';
+import { gridLegend, PROX_KEYS, PROX_MIN, proximity, isMimicry, gridSVG, SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, fnToTextUr, textToFnUr, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide, normalize, TEXT_TYPES, labels, localize, editPath, tagLabel, langName } from './assets/common.js';
 const H2 = (ic, t) => `<h2>${icon(ic)}${t}</h2>`;
 // "Basis." followed by report prose: inline in English; in Urdu the prose gets its own block,
 // so English prose keeps its own direction.
@@ -162,7 +162,8 @@ function details() {
   if (editing) return `${H2('info', tt('det.head'))}
     <p class="hint">Notes on the texts: report-specific only (transcription, misprints, segmentation). Everything general belongs on the Method page.</p>${T('textNotes', { md: true, rows: 4 })}
     <p class="hint">${tt('check.source')}: optional. Signs that the translator worked from a text other than the designated source. Never scored.</p>${T('checks.source', { md: true, rows: 2 })}
-    <p class="hint">${tt('check.paratext')}: optional. Titles, epigraphs, prefaces and notes kept, dropped or added. Never scored.</p>${T('checks.paratext', { md: true, rows: 2 })}`;
+    <p class="hint">${tt('check.paratext')}: optional. Titles, epigraphs, prefaces and notes kept, dropped or added. Never scored.</p>${T('checks.paratext', { md: true, rows: 2 })}
+    <p class="hint">Segmentation exceptions: only where the segments depart from rule ${esc(R.segmentation?.rule || '')}; one line on where and why. Usually empty.</p>${T('segmentation.exceptions', { rows: 2 })}`;
   const sample = tt('det.sampleUr', { words: F.words, segments: F.segments, loc: loc ? ` · ${urduWrap(esc(loc))}` : '' });
   const rows = [
     row(tt('det.kind'), `${esc(label('stage', R.stage || 'Pre-publication'))} · ${esc(tt('report.typeChip', { type: label('textType', R.textType) }))}`),
@@ -222,7 +223,7 @@ function devCell(s, i) {
       </div>
       ${T(`segments.${i}.deviations.${j}.note`, { rows: 3 })}
       <div class="hint">Function test (optional, for transpositions): one function per line, "+ kept" or "- lost"</div>
-      <textarea data-fn="${i}.${j}" rows="2">${esc(fnToText(d.functions))}</textarea>
+      <textarea data-fn="${i}.${j}" rows="2" ${UR ? 'dir="rtl" lang="ur"' : ''}>${esc(UR ? fnToTextUr(d.functions) : fnToText(d.functions))}</textarea>
       <div class="hint">Gain (optional): what the departure adds. Never scored.</div>${T(`segments.${i}.deviations.${j}.gain`, { rows: 2 })}
       <div class="hint">Compensated in row number (optional)</div>${I(`segments.${i}.deviations.${j}.compensatedBy`, 'e.g. 7')}
     </div>`).join('');
@@ -353,7 +354,7 @@ $('root').addEventListener('input', (e) => {
   const el = e.target;
   if (el.dataset.path) { setAt(R, el.dataset.path, el.value); if (el.tagName === 'TEXTAREA') grow(el); }
   else if (el.dataset.fn) { const [i, j] = el.dataset.fn.split('.'); const d = R.segments[+i].deviations[+j];
-    const a = textToFn(el.value); if (a.length) d.functions = a; else delete d.functions; grow(el); }
+    const a = UR ? textToFnUr(el.value, d.functions) : textToFn(el.value); d.functions = a; grow(el); }
   else if ('tags' in el.dataset) R.tags = el.value.split(',').map((s) => s.trim()).filter(Boolean);
   if ('rerender' in el.dataset && el.tagName === 'SELECT') render(); else saveDraft();
 });

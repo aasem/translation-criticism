@@ -337,6 +337,16 @@ export function agreement(report) {
 export const fnToText = (a) => (a || []).map((x) => `${x.kept ? '+' : '-'} ${x.fn}`).join('\n');
 export const textToFn = (s) => String(s || '').split('\n').map((l) => l.trim()).filter(Boolean)
   .map((l) => ({ kept: !l.startsWith('-'), fn: l.replace(/^[+-]\s*/, '') }));
+// The function test in the Urdu editor: the same list, showing and saving the Urdu lines (fnUr);
+// kept/lost marks are shared by both languages. Extra lines become new entries (English filled from
+// the Urdu until edited); fewer lines remove entries from the end.
+export const fnToTextUr = (a) => (a || []).map((x) => `${x.kept ? '+' : '-'} ${x.fnUr || x.fn}`).join('\n');
+export function textToFnUr(text, prev) {
+  return textToFn(text).map((x, k) => {
+    const old = (prev || [])[k];
+    return old ? { ...old, kept: x.kept, fnUr: x.fn } : { fn: x.fn, fnUr: x.fn, kept: x.kept };
+  });
+}
 export const fill = (text, f) => String(text ?? '').replace(/\{(\w+)\}/g, (m, k) => (k in f ? String(f[k]) : m));
 
 // ---------- rich-text editing ----------
