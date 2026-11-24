@@ -19,19 +19,25 @@
           "type": "string",
           "default": "",
           "description": "Display label; empty means the translator's name, else the submission label, else 'Translation k'."
+        },
+        "labelUr": {
+          "type": "string",
+          "default": "",
+          "description": "Urdu twin of label"
         }
       },
       "required": [
         "id",
-        "label"
+        "label",
+        "labelUr"
       ],
       "default": {}
     }
   },
   "properties": {
     "schema": {
-      "const": 1,
-      "default": 1
+      "const": 2,
+      "default": 2
     },
     "id": {
       "type": "string",
@@ -43,10 +49,20 @@
       "default": "",
       "minLength": 1
     },
+    "titleUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of title"
+    },
     "subtitle": {
       "type": "string",
       "default": "",
       "minLength": 1
+    },
+    "subtitleUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of subtitle"
     },
     "date": {
       "type": "string",
@@ -58,10 +74,20 @@
       "default": "",
       "minLength": 1
     },
+    "authorUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of author"
+    },
     "work": {
       "type": "string",
       "default": "",
       "minLength": 1
+    },
+    "workUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of work"
     },
     "originalWork": {
       "type": "string",
@@ -70,6 +96,11 @@
     "passage": {
       "type": "string",
       "default": ""
+    },
+    "passageUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of passage"
     },
     "tags": {
       "type": "array",
@@ -91,13 +122,28 @@
       "type": "string",
       "default": ""
     },
+    "textNotesUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of textNotes"
+    },
     "lead": {
       "type": "string",
       "default": ""
     },
+    "leadUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of lead"
+    },
     "tendencies": {
       "type": "string",
       "default": ""
+    },
+    "tendenciesUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of tendencies"
     },
     "preferred": {
       "type": "string",
@@ -108,29 +154,49 @@
       "type": "string",
       "default": ""
     },
+    "preferredBasisUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of preferredBasis"
+    },
     "note": {
       "type": "string",
       "default": "",
       "description": "One line for readers and publishers"
+    },
+    "noteUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of note"
     }
   },
   "required": [
     "schema",
     "id",
     "title",
+    "titleUr",
     "subtitle",
+    "subtitleUr",
     "date",
     "author",
+    "authorUr",
     "work",
+    "workUr",
     "originalWork",
     "passage",
+    "passageUr",
     "tags",
     "members",
     "textNotes",
+    "textNotesUr",
     "lead",
+    "leadUr",
     "tendencies",
+    "tendenciesUr",
     "preferred",
     "preferredBasis",
-    "note"
+    "preferredBasisUr",
+    "note",
+    "noteUr"
   ]
 }

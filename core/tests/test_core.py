@@ -101,7 +101,7 @@ def test_files_are_canonical(p):
 
 def test_upgrade_moves_merge_marker():
     r, notes = canonical({"schema": 1, "segments": [{"n": 2, "submission": "(merged into #1)"}]})
-    assert r["segments"][0]["mergedInto"] == 1 and r["segments"][0]["submission"] == "" and r["schema"] == 4
+    assert r["segments"][0]["mergedInto"] == 1 and r["segments"][0]["submission"] == "" and r["schema"] == 5
 
 
 # ---- the validator catches mistakes ----
@@ -147,3 +147,49 @@ def test_validator_rejects(name):
 
 def test_base_report_is_valid():
     assert not broken(lambda r: None)
+
+
+# ---- Urdu twins ----
+
+def js_lang(op, payload, lang):
+    out = subprocess.run([NODE, str(Path(__file__).with_name("js_eval.mjs"))],
+                         input=json.dumps({"op": op, "input": payload, "lang": lang}),
+                         capture_output=True, text=True, check=True, cwd=ROOT)
+    return json.loads(out.stdout)
+
+
+def with_urdu():
+    from tc_core import normalize_comparison
+    r = canonical(load(REPORTS[0]))[0]
+    r["leadUr"] = "اردو خلاصہ"
+    r["segments"][0]["deviations"][0]["noteUr"] = "اردو نوٹ" if r["segments"][0]["deviations"] else ""
+    r["proximity"]["sentences"]["noteUr"] = "جملے"
+    r["submission"]["translatorUr"] = "مترجم"
+    c = normalize_comparison({"members": [{"id": "a", "label": "A", "labelUr": "الف"}], "lead": "x", "leadUr": "ل"})
+    return r, c
+
+
+@needs_node
+def test_localize_matches_the_site():
+    from tc_core import localize
+    r, c = with_urdu()
+    payload = [{"doc": r, "kind": "report"}, {"doc": c, "kind": "comparison"}]
+    assert js_lang("localize", payload, "ur") == [localize(r, "ur"), localize(c, "ur", "comparison")]
+    assert js_lang("localize", payload, "") == [r, c]  # English page: unchanged
+
+
+def test_localize_uses_twins_and_falls_back():
+    from tc_core import localize
+    r, _ = with_urdu()
+    u = localize(r, "ur")
+    assert u["lead"] == "اردو خلاصہ" and u["submission"]["translator"] == "مترجم"
+    assert u["tendencies"] == r["tendencies"]  # no twin yet: English stays
+    assert u["source"]["text"] == r["source"]["text"]  # never twinned
+
+
+def test_missing_urdu_is_a_warning_not_an_error():
+    from tc_core import missing
+    r, _ = with_urdu()
+    assert "lead" not in missing(r) and "tendencies" in missing(r)
+    ws = [i for i in validate_report(r) if "no Urdu" in i.message]
+    assert ws and all(i.level == "warning" for i in ws)

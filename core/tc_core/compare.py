@@ -186,6 +186,10 @@ def validate_comparison(c: dict, reports_by_id: dict[str, dict], *, text: str | 
         for m in re.finditer(r"\{score\.(\d+)\}", t):
             if not t[m.end():].startswith(f", in band {{band.{m.group(1)}}}"):
                 W(field, f"write the score as '{{score.{m.group(1)}}}, in band {{band.{m.group(1)}}}'")
+    from .localize import missing
+    gaps = missing(c, "comparison")
+    if gaps:
+        W("", f"{len(gaps)} field(s) have no Urdu yet: " + ", ".join(sorted(set(gaps))))
     for x in consistency(c, reports):
         sv = "; ".join(f"{who}: {', '.join(s)}" for who, s in x["severities"].items())
         W(f"sentence {x['n']}", f"{x['code']} carries different severities ({sv}); check the departures differ")

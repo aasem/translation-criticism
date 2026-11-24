@@ -1,12 +1,15 @@
 {
-  "schema": 4,
+  "schema": 5,
   "id": "dickens-two-cities-opening-urdu-rahman",
   "title": "Translation Assessment: Dickens's Opening Sentence of A Tale of Two Cities in Urdu",
+  "titleUr": "",
   "subtitle": "An editorial assessment report for interested readers and publishers. Segment-level deviation analysis on an error typology adapted from Multidimensional Quality Metrics, the translation industry's standard framework, for an expressive (literary) text, with a descriptive translation-studies profile of the translator.",
+  "subtitleUr": "",
   "date": "2026-11-22",
   "stage": "Published",
   "textType": "Expressive",
   "sampleLocation": "opening sentence of Book the First, Chapter I (\"The Period\")",
+  "sampleLocationUr": "",
   "publication": {
     "publisher": "Publications Division, Government of India",
     "place": "",
@@ -16,9 +19,12 @@
     "pages": ""
   },
   "author": "Charles Dickens",
+  "authorUr": "",
   "work": "A Tale of Two Cities",
+  "workUr": "",
   "originalWork": "A Tale of Two Cities",
   "passage": "Opening sentence: \"It was the best of times…\"",
+  "passageUr": "",
   "tags": [
     "Dickens",
     "English"
@@ -26,13 +32,17 @@
   "source": {
     "language": "English",
     "label": "Dickens",
+    "labelUr": "",
     "translator": "",
+    "translatorUr": "",
     "text": "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way—in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only."
   },
   "submission": {
     "language": "Urdu",
     "label": "Fazlur Rahman",
+    "labelUr": "",
     "translator": "Fazlur Rahman",
+    "translatorUr": "",
     "text": "عجب تضادات کا دور تھا۔ ایک طرف وہ بہترین زمانہ تھا۔ دوسری طرف بدترین زمانہ۔ ایک لحاظ سے عقل و دانش کا دور۔ دوسرے اعتبار سے جہل و نادانی کا عہد۔ بیک وقت اعتقاد اور بے اعتقادی کی فضا جہاں روشنی کے پہلو بہ پہلو اندھیرا چھایا ہوا تھا۔ امیدوں کی بہاریں بھی تھیں اور مایوسیوں کی خزائیں بھی۔ سب کچھ ہوتے ہوئے بھی کچھ نہ تھا۔ ایک سمت جنت کا دروازہ تھا تو دوسری سمت دوزخ کا دہانا۔ سامنے منزل بھی تھی اور گمراہی بھی۔ مختصر یہ کہ وہ زمانہ ہمارے زمانے سے اس قدر مشابہ تھا کہ ہمارے بعض ہم عصر جنھوں نے اس زمانے کی تاریخ لکھی ہے، بڑے زور شور سے دونوں زمانوں کے حسن و قبح کا مقابلہ کرتے ہیں۔"
   },
   "segments": [
@@ -47,16 +57,20 @@
           "code": "A2",
           "severity": "Minor",
           "note": "The opening sentence عجب تضادات کا دور تھا (\"it was an age of strange contradictions\") has no counterpart in the source. It names the device in advance, so the antitheses that follow illustrate a stated thesis instead of making the point themselves.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         },
         {
           "code": "A6",
           "severity": "Minor",
           "note": "ایک طرف … دوسری طرف (\"on one side … on the other\") divides the period into two sides. The source asserts both superlatives of the same time, with nothing to separate them.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -77,8 +91,10 @@
           "code": "A6",
           "severity": "Minor",
           "note": "ایک لحاظ سے … دوسرے اعتبار سے (\"in one respect … in another\") makes the paradox relative. The source says the age was wise and foolish without qualification, and the qualifier makes the contradiction reasonable.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -99,16 +115,20 @@
           "code": "A1",
           "severity": "Minor",
           "note": "فضا (\"atmosphere\") turns \"epoch\", the source's third word for time, into a climate of opinion.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         },
         {
           "code": "A6",
           "severity": "Minor",
           "note": "Two separate antitheses are merged into one sentence, and the light-and-darkness pair becomes a relative clause (جہاں …) describing the atmosphere of belief. The source sets the pairs side by side, with neither subordinate to the other.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -129,8 +149,10 @@
           "code": "A3",
           "severity": "Minor",
           "note": "\"Season\" is dropped with the merge. The source's time-words shrink from times to age, epoch and season, and \"season\" is the hinge into the spring and winter of the next pair.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -151,17 +173,21 @@
           "code": "C3",
           "severity": "Minor",
           "note": "خزائیں (\"autumns\") replaces \"winter\". The image of decline replaces the image of the dead season.",
+          "noteUr": "",
           "functions": [
             {
               "fn": "the season set against spring",
+              "fnUr": "",
               "kept": true
             },
             {
               "fn": "the dead season, the year's end, which gives despair its finality",
+              "fnUr": "",
               "kept": false
             }
           ],
           "gain": "بہار and خزاں are the canonical opposition of Urdu poetry, so the antithesis lands with idiomatic force.",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -182,24 +208,30 @@
           "code": "A3",
           "severity": "Major",
           "note": "\"We\" is dropped. The source's collective first person takes in the narrator, the people of 1775 and the 1859 reader, and the closing claim that the period was like the present depends on it.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         },
         {
           "code": "A1",
           "severity": "Major",
           "note": "\"Before us\" (what lay ahead) becomes possession in the present: سب کچھ ہوتے ہوئے (\"despite having everything\"). The source speaks of prospects, the translation of a state.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         },
         {
           "code": "A6",
           "severity": "Minor",
           "note": "Two parallel assertions become a concessive (ہوتے ہوئے بھی … کچھ نہ تھا, \"despite having everything, there was nothing\"). The source states both without relating them.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -220,33 +252,41 @@
           "code": "A1",
           "severity": "Major",
           "note": "\"We were all going direct\", the whole society in motion, becomes two fixed landmarks: جنت کا دروازہ (the gate of Heaven) and دوزخ کا دہانا (the mouth of Hell). It is no longer said who goes, or that everyone goes at once.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         },
         {
           "code": "C5",
           "severity": "Minor",
           "note": "دوزخ (\"Hell\") names what the source leaves as the euphemism \"the other way\", and the understatement is lost.",
+          "noteUr": "",
           "functions": [
             {
               "fn": "points to the opposite of Heaven",
+              "fnUr": "",
               "kept": true
             },
             {
               "fn": "comic understatement: the destination is not named",
+              "fnUr": "",
               "kept": false
             }
           ],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         },
         {
           "code": "A2",
           "severity": "Minor",
           "note": "سامنے منزل بھی تھی اور گمراہی بھی (\"ahead lay both the destination and the going astray\") adds a pair the source does not have.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -267,16 +307,20 @@
           "code": "A1",
           "severity": "Critical",
           "note": "The closing proposition is replaced. The source says the period's loudest voices insisted it be received only in the superlative degree of comparison, for good or for evil. The translation says that some of our contemporaries loudly compare the merits and faults (حسن و قبح) of the two periods. The superlative insistence that the whole sentence has enacted, and that this clause names, is gone.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         },
         {
           "code": "A1",
           "severity": "Major",
           "note": "\"Its noisiest authorities\" become ہمارے بعض ہم عصر جنھوں نے اس زمانے کی تاریخ لکھی ہے (\"some of our contemporaries who have written that period's history\"). If \"its\" refers to the period being described, as the sentence's grammar suggests, the speakers move from that period to the narrator's present and from public voices to historians. \"Noisiest\" also loses its superlative and survives only as the manner بڑے زور شور سے.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -289,62 +333,84 @@
   ],
   "segmentation": {
     "rule": "sentence-v2",
-    "exceptions": ""
+    "exceptions": "",
+    "exceptionsUr": ""
   },
   "aiSuggestions": {
     "model": "Claude Opus 5.5",
     "date": "2026-11-22"
   },
   "textNotes": "- The translation is transcribed from a scanned page.\n- The source is one sentence, split at its seven antithetical pairs and at the em dash. The translation merges #1.3 and #1.4.\n- Changes of sentence shape are not counted segment by segment. The loss of the one-sentence form is described under Stylistic tendencies.",
+  "textNotesUr": "",
   "lead": "**Accuracy ({A}).** The antitheses survive, but the translation relates their halves differently from the source, drops the collective voice that speaks them, and replaces the closing statement with a different one.\n\n**Language ({B}).** The Urdu is correct and fluent throughout.\n\n**Style ({C}).** Two images are exchanged for familiar Urdu ones. Beyond the count, the single accumulating sentence becomes eleven short ones, so the passage states its contradictions instead of enacting them.",
+  "leadUr": "",
   "profileSummary": "Accuracy codes make up {A} of the {total} deviations, led by A1 ({A1}) and A6 ({A6}). Every segment carries at least one deviation. The {severe} major and critical deviations gather in the last three segments (#1.6–#1.8), where the source moves from paired abstractions to \"we\" and then to its closing self-description. The first five segments carry only minor deviations, mostly A6: the translation keeps each antithesis but adds a frame (sides, respects, an atmosphere) that relates its halves differently. There are no B-code errors.",
+  "profileSummaryUr": "",
   "proximity": {
     "sentences": {
       "kept": 1,
       "total": 11,
       "forced": 0,
       "note": "One source sentence becomes 11 Urdu sentences; only the final end is shared.",
-      "forcedNote": ""
+      "noteUr": "",
+      "forcedNote": "",
+      "forcedNoteUr": ""
     },
     "clauses": {
       "kept": 15,
       "total": 15,
       "forced": 0,
       "note": "The antithetical pairs keep their order throughout, though several are merged.",
-      "forcedNote": "None: the antithetical pairs keep their order in Urdu's own balance."
+      "noteUr": "",
+      "forcedNote": "None: the antithetical pairs keep their order in Urdu's own balance.",
+      "forcedNoteUr": ""
     },
     "grammar": {
       "kept": 0,
       "total": 3,
       "forced": 0,
       "note": "\"its\" twice and the passive \"being received\" are not rendered.",
-      "forcedNote": ""
+      "noteUr": "",
+      "forcedNote": "",
+      "forcedNoteUr": ""
     },
     "punctuation": {
       "kept": 0,
       "total": 1,
       "forced": 0,
       "note": "The single dash is dropped.",
-      "forcedNote": ""
+      "noteUr": "",
+      "forcedNote": "",
+      "forcedNoteUr": ""
     },
     "culture": {
       "kept": 1,
       "total": 1,
       "forced": 0,
       "note": "Heaven (جنت); \"the other way\" is coded as a deviation and left out.",
-      "forcedNote": ""
+      "noteUr": "",
+      "forcedNote": "",
+      "forcedNoteUr": ""
     }
   },
   "checks": {
     "source": "",
-    "paratext": ""
+    "sourceUr": "",
+    "paratext": "",
+    "paratextUr": ""
   },
   "tendencies": "The translation rebuilds the sentence in the balanced, full-stopped periods of mid-century Urdu prose. This is a target-language norm, not interference: there is no C4 pattern.\n\n- **Sentence architecture rebuilt.** One source sentence of {words} words becomes 11 Urdu sentences, three of them verbless nominal fragments (دوسری طرف بدترین زمانہ، ایک لحاظ سے عقل و دانش کا دور، دوسرے اعتبار سے جہل و نادانی کا عہد). The source's accumulation, a single period with no full stop until the end, is broken at every pair.\n- **Anaphora replaced by varied connectives.** The source repeats its frame 14 times (\"it was\" ten times, \"we had\" twice, \"we were all going\" twice). The translation repeats none of them and uses four different framing devices instead: ایک طرف / دوسری طرف، ایک لحاظ سے / دوسرے اعتبار سے، بیک وقت، ایک سمت / دوسری سمت. Urdu's verb-final order would have turned the repeated frame into a sentence-final refrain (تھا … تھا), and the translation does not use it.\n- **Binomial doublets.** Single source words become paired doublets: عقل و دانش، جہل و نادانی، حسن و قبح، زور شور. This lifts the register above Dickens's mostly plain vocabulary.\n- **Explicitation.** The translation names what the source leaves implicit: the device (عجب تضادات, #1.1), Hell (#1.7), and an added destination-and-straying pair (#1.7).\n\n**Effect on the reader.** The Urdu reader is told about an age of contradictions instead of being carried through one. Dickens's sentence performs the hyperbole it mocks, and its last clause names that performance (\"the superlative degree of comparison\"). Without the unbroken accumulation, the last clause has nothing to point back to. The reader meets well-made Urdu prose that states the theme but loses the joke.",
+  "tendenciesUr": "",
   "translatorProfile": "- **Strategy.** Dynamic equivalence (Nida) under a domesticating norm (Venuti): the message is taken to be detachable from its form and is rebuilt in fluent target-language periods. In Toury's terms the translation chooses acceptability over adequacy, in line with the standardizing norms of its period. Of Berman's deforming tendencies, rationalization (the sentence recast into ordered units, #1.1–#1.3), clarification and expansion (#1.1, #1.7), ennoblement (the paired doublets), and the destruction of rhythms and of underlying networks of signification (the dropped \"we\", #1.6–#1.7) are all visible. Blum-Kulka's explicitation hypothesis fits the added opening sentence. Where the poetic function dominates, as Jakobson puts it, the form is part of the message, and this strategy does not allow for that.\n- **Apparent purpose.** The skopos appears to be a readable Urdu novel for a general readership, conveying the sense and atmosphere of the opening without asking the reader to follow an English rhetorical structure.\n- **Level.** A skilled prose stylist working to a domesticating brief. The deviations in #1.1–#1.5 are consistent and look chosen rather than accidental, and there are no language errors. The critical and major deviations at #1.6–#1.8, however, change what the text says, and #1.8 is a misreading of the closing proposition, not a restructuring of it.",
+  "translatorProfileUr": "",
   "decision": "",
   "decisionBasis": "",
+  "decisionBasisUr": "",
   "publisherNote": "",
+  "publisherNoteUr": "",
   "grade": "D",
   "gradeBasis": "The score of {score}, in band {band}, sets the grade, and nothing moves it. The {severe} major and critical deviations, all in #1.6–#1.8, change what the closing segments say. The first five segments carry only minor deviations, which follow a consistent norm rather than slips.",
-  "readerNote": "Readers get fluent, idiomatic Urdu that carries the antitheses and the mood of the opening, but not Dickens's single accumulating sentence, its \"we\", or the self-mocking point of its last clause."
+  "gradeBasisUr": "",
+  "readerNote": "Readers get fluent, idiomatic Urdu that carries the antitheses and the mood of the opening, but not Dickens's single accumulating sentence, its \"we\", or the self-mocking point of its last clause.",
+  "readerNoteUr": ""
 }

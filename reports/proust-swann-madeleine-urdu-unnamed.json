@@ -1,12 +1,15 @@
 {
-  "schema": 4,
+  "schema": 5,
   "id": "proust-swann-madeleine-urdu-unnamed",
   "title": "Translation Assessment: Proust's Madeleine Passage in Urdu",
+  "titleUr": "",
   "subtitle": "An editorial assessment report for interested readers and publishers. Segment-level deviation analysis on an error typology adapted from Multidimensional Quality Metrics, the translation industry's standard framework, for an expressive (literary) text, with a descriptive translation-studies profile of the translator.",
+  "subtitleUr": "",
   "date": "2026-11-19",
   "stage": "Pre-publication",
   "textType": "Expressive",
   "sampleLocation": "the madeleine episode in the Overture of Swann's Way; chapter manuscript pp. 40–42",
+  "sampleLocationUr": "",
   "publication": {
     "publisher": "",
     "place": "",
@@ -16,9 +19,12 @@
     "pages": ""
   },
   "author": "Marcel Proust",
+  "authorUr": "",
   "work": "Swann's Way",
+  "workUr": "",
   "originalWork": "Du côté de chez Swann",
   "passage": "Overture: the madeleine episode",
+  "passageUr": "",
   "tags": [
     "Proust",
     "French"
@@ -26,13 +32,17 @@
   "source": {
     "language": "English",
     "label": "Moncrieff",
+    "labelUr": "",
     "translator": "C. K. Scott Moncrieff",
+    "translatorUr": "",
     "text": "Many years had elapsed during which nothing of Combray, save what was comprised in the theatre and the drama of my going to bed there, had any existence for me, when one day in winter, as I came home, my mother, seeing that I was cold, offered me some tea, a thing I did not ordinarily take. I declined at first, and then, for no particular reason, changed my mind. She sent out for one of those short, plump little cakes called 'petites madeleines,' which look as though they had been moulded in the fluted scallop of a pilgrim's shell. And soon, mechanically, weary after a dull day with the prospect of a depressing morrow, I raised to my lips a spoonful of the tea in which I had soaked a morsel of the cake. No sooner had the warm liquid, and the crumbs with it, touched my palate than a shudder ran through my whole body, and I stopped, intent upon the extraordinary changes that were taking place. An exquisite pleasure had invaded my senses, but individual, detached, with no suggestion of its origin. And at once the vicissitudes of life had become indifferent to me, its disasters innocuous, its brevity illusory — this new sensation having had on me the effect which love has of filling me with a precious essence; or rather this essence was not in me, it was myself. I had ceased now to feel mediocre, accidental, mortal. Whence could it have come to me, this all-powerful joy? I was conscious that it was connected with the taste of tea and cake, but that it infinitely transcended those savours, could not, indeed, be of the same nature as theirs. Whence did it come? What did it signify? How could I seize upon and define it?"
   },
   "submission": {
     "language": "Urdu",
     "label": "Unnamed translator",
+    "labelUr": "",
     "translator": "",
+    "translatorUr": "",
     "text": "کئی برس گزر چکے تھے، جن میں کومبرے کا کچھ بھی میرے لیے موجود نہ رہا تھا، سوائے اس کے جو وہاں میرے بستر پر جانے کے تھیٹر اور ڈرامے میں شامل تھا؛ کہ ایک دن سردیوں میں، جب میں گھر لوٹا، میری ماں نے مجھے سرد دیکھ کر چائے پیش کی، جو میں عموماً نہیں پیتا تھا۔ پہلے میں نے انکار کیا، پھر کسی خاص سبب کے بغیر اپنا ارادہ بدل لیا۔ انہوں نے ان چھوٹی، موٹی، گول سی کیکوں میں سے ایک منگوائی جنہیں “پتیت مادَلین” کہتے ہیں، اور جو یوں لگتی ہیں جیسے کسی زائر کے صدف کے دندانے دار سانچے میں ڈھالی گئی ہوں۔ جلد ہی، ایک بے رنگ دن کی تھکن اور اداس کل کے امکان کے ساتھ، میں نے تقریباً مشینی انداز میں چائے کا ایک چمچ اپنے ہونٹوں تک اٹھایا، جس میں میں نے کیک کا ایک ٹکڑا بھگو رکھا تھا۔ جونہی وہ گرم مائع، اور اس کے ساتھ کیک کے ریزے، میرے تالو سے لگے، میرے پورے بدن میں ایک لرزش دوڑ گئی؛ اور میں ٹھہر گیا، ان غیر معمولی تبدیلیوں پر متوجہ جو میرے اندر واقع ہو رہی تھیں۔ ایک نفیس لذت نے میرے حواس پر قبضہ کر لیا تھا؛ مگر وہ منفرد تھی، الگ تھلگ، اپنی اصل کا کوئی اشارہ دیے بغیر۔ اور فوراً زندگی کے اتار چڑھاؤ میرے لیے بے معنی ہو گئے، اس کی آفتیں بے ضرر، اس کی مختصری فریب؛ اس نئے احساس نے مجھ پر وہی اثر کیا جو محبت کرتی ہے، یعنی مجھے ایک قیمتی جوہر سے بھر دینا؛ یا یوں کہیے، یہ جوہر مجھ میں نہیں تھا، وہ خود میں تھا۔ اب میں نے اپنے آپ کو معمولی، اتفاقی، فانی محسوس کرنا چھوڑ دیا تھا۔ یہ قادرِ مطلق مسرت میرے پاس کہاں سے آئی تھی؟ مجھے شعور تھا کہ اس کا تعلق چائے اور کیک کے ذائقے سے ہے، لیکن وہ ان ذائقوں سے لامحدود طور پر بڑھ کر تھی؛ بلکہ ان ہی کی نوعیت کی ہو ہی نہیں سکتی تھی۔ یہ کہاں سے آئی؟ اس کا مطلب کیا تھا؟ میں اسے کیسے پکڑوں، کیسے متعین کروں؟"
   },
   "segments": [
@@ -47,8 +57,10 @@
           "code": "A2",
           "severity": "Minor",
           "note": "نہ رہا adds \"no longer\": the source simply says nothing of Combray had any existence for him.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -69,8 +81,10 @@
           "code": "B3",
           "severity": "Minor",
           "note": "سرد دیکھ کر can be read as \"seeing me aloof\", where the source means physically cold.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -104,24 +118,30 @@
           "code": "A2",
           "severity": "Minor",
           "note": "گول (\"round\") is not in the source.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         },
         {
           "code": "C3",
           "severity": "Minor",
           "note": "دندانے دار (\"serrated, toothed\") roughens the source's \"fluted\" scallop.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         },
         {
           "code": "B1",
           "severity": "Minor",
           "note": "کیک is treated as feminine (منگوائی، لگتی ہیں).",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -142,8 +162,10 @@
           "code": "A2",
           "severity": "Minor",
           "note": "تقریباً (\"almost\") hedges a \"mechanically\" the source leaves unqualified.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -164,8 +186,10 @@
           "code": "A2",
           "severity": "Minor",
           "note": "میرے اندر (\"inside me\") locates the changes, which the source leaves unplaced.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -186,8 +210,10 @@
           "code": "A1",
           "severity": "Minor",
           "note": "منفرد means distinctive or unique; the source's \"individual\" means single, standing on its own.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -208,16 +234,20 @@
           "code": "B2",
           "severity": "Major",
           "note": "مختصری is not an Urdu word, so \"its brevity\" is lost from the triad.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         },
         {
           "code": "A1",
           "severity": "Minor",
           "note": "بے معنی (\"meaningless\") is stronger than \"indifferent to me\", which describes the narrator's detachment, not life's lack of meaning.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -238,16 +268,20 @@
           "code": "A1",
           "severity": "Critical",
           "note": "وہ خود میں تھا reads as \"it was in itself\", inverting the source's \"it was myself\", the turn the whole paragraph builds to.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         },
         {
           "code": "B1",
           "severity": "Minor",
           "note": "بھر دینا is left as a dangling infinitive.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -281,16 +315,20 @@
           "code": "C1",
           "severity": "Minor",
           "note": "قادرِ مطلق is a usual title of God, giving the joy a religious weight \"all-powerful\" doesn't carry.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         },
         {
           "code": "A4",
           "severity": "Minor",
           "note": "آئی تھی (\"had come\") drops the wondering \"could it have\".",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -350,8 +388,10 @@
           "code": "A4",
           "severity": "Minor",
           "note": "The present پکڑوں، متعین کروں (\"how shall I\") replaces the source's past conditional \"how could I\", pulling the question out of the narrated past.",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -364,62 +404,84 @@
   ],
   "segmentation": {
     "rule": "sentence-v2",
-    "exceptions": ""
+    "exceptions": "",
+    "exceptionsUr": ""
   },
   "aiSuggestions": {
     "model": "Claude Opus 5.5",
     "date": "2026-11-22"
   },
   "textNotes": "- Source: C. K. Scott Moncrieff's English translation of the madeleine paragraph. The French original is deliberately left out.\n- The submission is by an unnamed translator, from a chapter manuscript (pp. 40–42).\n- The first sentence is split at \"when one day…\" (#1.1–#1.2), and the seventh at its em dash (#7.1–#7.2).",
+  "textNotesUr": "",
   "lead": "**Accuracy ({A}).** The sense is kept almost everywhere, with small additions and shifts of tense. The exception is the central sentence, where the paragraph's key turn is reversed.\n\n**Language ({B}).** Mostly correct, with a few slips of grammar and clarity and one non-word in the central sentence.\n\n**Style ({C}).** Close to the source, with one image roughened and one word given a religious weight.",
+  "leadUr": "",
   "profileSummary": "The minor deviations are small and scattered. Most are single-word additions (A2: #1.1, #3, #4, #5), with small slips in Urdu grammar and clarity (B1, B3: #1.2, #3, #7.2) and in tense or modality (A4: #9, #13). The critical and the major deviation both fall at the passage's philosophical climax: a mistranslated pronoun phrase in #7.2 (A1) and a non-word in #7.1 (B2). Together they change what the key sentence says. There are no omissions (A3) or changes to the logic between clauses (A6), and {clean} of {segments} segments ({cleanPct}%) carry no deviation.",
+  "profileSummaryUr": "",
   "proximity": {
     "sentences": {
       "kept": 13,
       "total": 13,
       "forced": 6,
       "note": "All 13 sentence ends shared.",
-      "forcedNote": "The long English periods are held whole, with tails trailing after the verb: #1.1–#1.2 (joined by ؛ and کہ), #3, #4, #5, #6, #7.1–#7.2."
+      "noteUr": "",
+      "forcedNote": "The long English periods are held whole, with tails trailing after the verb: #1.1–#1.2 (joined by ؛ and کہ), #3, #4, #5, #6, #7.1–#7.2.",
+      "forcedNoteUr": ""
     },
     "clauses": {
       "kept": 22,
       "total": 23,
       "forced": 7,
       "note": "Only the \"save what…\" clause in #1.1 moves after its main clause.",
-      "forcedNote": "Relative and participial clauses kept after the verb: جو میں عموماً نہیں پیتا تھا (#1.2), جنہیں … کہتے ہیں and اور جو یوں لگتی ہیں (#3), جس میں میں نے … بھگو رکھا تھا (#4), ان غیر معمولی تبدیلیوں پر متوجہ جو … (#5), اپنی اصل کا کوئی اشارہ دیے بغیر (#6), یعنی مجھے … بھر دینا (#7.2)."
+      "noteUr": "",
+      "forcedNote": "Relative and participial clauses kept after the verb: جو میں عموماً نہیں پیتا تھا (#1.2), جنہیں … کہتے ہیں and اور جو یوں لگتی ہیں (#3), جس میں میں نے … بھگو رکھا تھا (#4), ان غیر معمولی تبدیلیوں پر متوجہ جو … (#5), اپنی اصل کا کوئی اشارہ دیے بغیر (#6), یعنی مجھے … بھر دینا (#7.2).",
+      "forcedNoteUr": ""
     },
     "grammar": {
       "kept": 18,
       "total": 23,
       "forced": 2,
       "note": "Articles 7 of 9 (ایک or کسی), possessives 10 of 10, passives 1 of 4.",
-      "forcedNote": "ایک بے رنگ دن for \"a dull day\" (#4) and اپنے ہونٹوں تک for \"to my lips\" (#4)."
+      "noteUr": "",
+      "forcedNote": "ایک بے رنگ دن for \"a dull day\" (#4) and اپنے ہونٹوں تک for \"to my lips\" (#4).",
+      "forcedNoteUr": ""
     },
     "punctuation": {
       "kept": 1,
       "total": 2,
       "forced": 1,
       "note": "1 semicolon and 1 dash in the source; the Urdu adds 5 semicolons of its own (not counted).",
-      "forcedNote": "The semicolon kept in #7.2."
+      "noteUr": "",
+      "forcedNote": "The semicolon kept in #7.2.",
+      "forcedNoteUr": ""
     },
     "culture": {
       "kept": 3,
       "total": 3,
       "forced": 0,
       "note": "Combray, petites madeleines, the pilgrim's scallop shell.",
-      "forcedNote": "None: Combray, the madeleines and the pilgrim's shell read clearly."
+      "noteUr": "",
+      "forcedNote": "None: Combray, the madeleines and the pilgrim's shell read clearly.",
+      "forcedNoteUr": ""
     }
   },
   "checks": {
     "source": "",
-    "paratext": ""
+    "sourceUr": "",
+    "paratext": "",
+    "paratextUr": ""
   },
   "tendencies": "The submission keeps the shape of the English sentences in Urdu (C4 interference). This is a habit of the whole sample, not of single words.\n\n- **Sentence architecture.** It keeps the source's sentence boundaries and clause order, and attaches descriptions after the noun with جو as English does (5 times, 1.7 per 100 source words). Proust's long sentences arrive as chains of clauses rather than as a single movement.\n- **Article, possessive and punctuation.** ایک renders the English indefinite article 6 times (2.0 per 100 source words), and میرے appears 8 times against the source's 7 \"my\". The Urdu has 6 semicolons where the source has 1 (2.0 per 100 source words). Across the full chapter manuscript the same habits recur, at about 1.0, 0.7 and 1.3 per 100 Urdu words.\n- **Register.** It follows the source's register, except where one word gives the joy a religious weight (#9, C1).\n- **Logical links.** Links between clauses are kept as the source states them, neither added nor dropped. This is the main reason the deviation count stays low.\n\nThe effect is a close, readable rendering in which the English sentence stays visible beneath the Urdu.",
+  "tendenciesUr": "",
   "translatorProfile": "- **Strategy.** Formal equivalence (Nida), foreignizing in syntax and punctuation (Venuti): the source's sentence boundaries, clause order and links are kept, and Toury's interference shows in the article, possessive and semicolons. Adequacy is chosen over acceptability.\n- **Apparent purpose.** A faithful rendering of Moncrieff for readers who want the content intact, **not a literary Urdu Proust**.\n- **Level.** Competent. The sense is held across the paragraph and the links are kept exactly, but the deviations look accidental rather than chosen, and the worst ones fall exactly where understanding, not diligence, is tested (#7.1, #7.2).",
+  "translatorProfileUr": "",
   "decision": "Retranslation required",
   "decisionBasis": "The score of {score}, in band {band}, points to retranslation by default. The penalty is concentrated: the critical deviation in #7.2 reverses the turn the paragraph builds to, and #7.1 loses a word to a non-word, while the {minor} minor deviations are scattered. Accuracy elsewhere ({clean} segments with no deviation) shows a sound grasp of English, so the same translator could undertake the retranslation.",
+  "decisionBasisUr": "",
   "publisherNote": "A fresh translation is needed; the same translator could undertake it.",
+  "publisherNoteUr": "",
   "grade": "",
   "gradeBasis": "",
-  "readerNote": ""
+  "gradeBasisUr": "",
+  "readerNote": "",
+  "readerNoteUr": ""
 }

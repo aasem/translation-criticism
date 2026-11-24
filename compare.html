@@ -25,7 +25,7 @@
 
 <script type="module">
 import { t as tt, tr, label, UR } from './assets/i18n.js';
-import { analyse, cmpFigures, groups, labels, fillCmp, memberLabel, normalize, normalizeComparison, loadJSON, esc, md, urduWrap, icon, worst, sevClass,
+import { analyse, cmpFigures, groups, labels, localize, fillCmp, memberLabel, normalize, normalizeComparison, loadJSON, esc, md, urduWrap, icon, worst, sevClass,
   gradeClass, decisionClass, gradeName, isPublished, gridSVG, gridLegend, REPO, BRANCH, METHOD } from './assets/common.js';
 
 const $ = (id) => document.getElementById(id);
@@ -167,8 +167,8 @@ function render() {
 const sq = (s) => String(s || '').replace(/\s+/g, '');
 try {
   if (!id) throw new Error('No comparison id in the address.');
-  C = normalizeComparison(await loadJSON(`comparisons/${id}.json`));
-  RS = (await Promise.all(C.members.map((m) => loadJSON(`reports/${m.id}.json`)))).map(normalize);
+  C = localize(normalizeComparison(await loadJSON(`comparisons/${id}.json`)), 'comparison');
+  RS = (await Promise.all(C.members.map((m) => loadJSON(`reports/${m.id}.json`)))).map((r) => localize(normalize(r)));
   const sj = (r) => groups(r).map((g) => sq(g.map((s) => s.source).join('')));
   const bad = RS.find((r) => sj(r).length !== sj(RS[0]).length || sj(r).some((x, i) => x !== sj(RS[0])[i]));
   if (bad) throw Object.assign(new Error(bad.id), { mismatch: true });

@@ -399,6 +399,50 @@ export const METHOD = {
       "wonders",
       "yelled"
     ]
+  },
+  "urduTwins": {
+    "about": "Fields with an Urdu twin (the same name + 'Ur'). The Urdu page shows the twin when it is filled and falls back to English otherwise. The source text, the translation and quoted source phrases are never twinned. '*' stands for any index or key.",
+    "report": [
+      "title",
+      "subtitle",
+      "author",
+      "work",
+      "passage",
+      "sampleLocation",
+      "source.label",
+      "submission.label",
+      "submission.translator",
+      "lead",
+      "textNotes",
+      "profileSummary",
+      "tendencies",
+      "translatorProfile",
+      "decisionBasis",
+      "publisherNote",
+      "gradeBasis",
+      "readerNote",
+      "checks.source",
+      "checks.paratext",
+      "segmentation.exceptions",
+      "proximity.*.note",
+      "proximity.*.forcedNote",
+      "segments.*.deviations.*.note",
+      "segments.*.deviations.*.gain",
+      "segments.*.deviations.*.functions.*.fn"
+    ],
+    "comparison": [
+      "title",
+      "subtitle",
+      "author",
+      "work",
+      "passage",
+      "textNotes",
+      "lead",
+      "tendencies",
+      "preferredBasis",
+      "note",
+      "members.*.label"
+    ]
   }
 };
 
@@ -422,9 +466,19 @@ export const SCHEMA = {
           "type": "string",
           "default": ""
         },
+        "labelUr": {
+          "type": "string",
+          "default": "",
+          "description": "Urdu twin of label"
+        },
         "translator": {
           "type": "string",
           "default": ""
+        },
+        "translatorUr": {
+          "type": "string",
+          "default": "",
+          "description": "Urdu twin of translator"
         },
         "text": {
           "type": "string",
@@ -434,7 +488,9 @@ export const SCHEMA = {
       "required": [
         "language",
         "label",
+        "labelUr",
         "translator",
+        "translatorUr",
         "text"
       ],
       "default": {}
@@ -465,9 +521,19 @@ export const SCHEMA = {
           "type": "string",
           "default": ""
         },
+        "noteUr": {
+          "type": "string",
+          "default": "",
+          "description": "Urdu twin of note"
+        },
         "forcedNote": {
           "type": "string",
           "default": ""
+        },
+        "forcedNoteUr": {
+          "type": "string",
+          "default": "",
+          "description": "Urdu twin of forcedNote"
         }
       },
       "required": [
@@ -475,7 +541,9 @@ export const SCHEMA = {
         "total",
         "forced",
         "note",
-        "forcedNote"
+        "noteUr",
+        "forcedNote",
+        "forcedNoteUr"
       ],
       "default": {}
     },
@@ -488,6 +556,11 @@ export const SCHEMA = {
           "default": "",
           "minLength": 1
         },
+        "fnUr": {
+          "type": "string",
+          "default": "",
+          "description": "Urdu twin of fn"
+        },
         "kept": {
           "type": "boolean",
           "default": true
@@ -495,6 +568,7 @@ export const SCHEMA = {
       },
       "required": [
         "fn",
+        "fnUr",
         "kept"
       ],
       "default": {}
@@ -537,6 +611,11 @@ export const SCHEMA = {
           "type": "string",
           "default": ""
         },
+        "noteUr": {
+          "type": "string",
+          "default": "",
+          "description": "Urdu twin of note"
+        },
         "functions": {
           "type": "array",
           "items": {
@@ -547,6 +626,11 @@ export const SCHEMA = {
         "gain": {
           "type": "string",
           "default": ""
+        },
+        "gainUr": {
+          "type": "string",
+          "default": "",
+          "description": "Urdu twin of gain"
         },
         "compensatedBy": {
           "type": [
@@ -561,8 +645,10 @@ export const SCHEMA = {
         "code",
         "severity",
         "note",
+        "noteUr",
         "functions",
         "gain",
+        "gainUr",
         "compensatedBy"
       ],
       "default": {}
@@ -650,8 +736,8 @@ export const SCHEMA = {
   },
   "properties": {
     "schema": {
-      "const": 4,
-      "default": 4
+      "const": 5,
+      "default": 5
     },
     "id": {
       "type": "string",
@@ -663,10 +749,20 @@ export const SCHEMA = {
       "default": "",
       "minLength": 1
     },
+    "titleUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of title"
+    },
     "subtitle": {
       "type": "string",
       "default": "",
       "minLength": 1
+    },
+    "subtitleUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of subtitle"
     },
     "date": {
       "type": "string",
@@ -692,6 +788,11 @@ export const SCHEMA = {
     "sampleLocation": {
       "type": "string",
       "default": ""
+    },
+    "sampleLocationUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of sampleLocation"
     },
     "publication": {
       "type": "object",
@@ -737,10 +838,20 @@ export const SCHEMA = {
       "default": "",
       "minLength": 1
     },
+    "authorUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of author"
+    },
     "work": {
       "type": "string",
       "default": "",
       "minLength": 1
+    },
+    "workUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of work"
     },
     "originalWork": {
       "type": "string",
@@ -749,6 +860,11 @@ export const SCHEMA = {
     "passage": {
       "type": "string",
       "default": ""
+    },
+    "passageUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of passage"
     },
     "tags": {
       "type": "array",
@@ -784,11 +900,17 @@ export const SCHEMA = {
         "exceptions": {
           "type": "string",
           "default": ""
+        },
+        "exceptionsUr": {
+          "type": "string",
+          "default": "",
+          "description": "Urdu twin of exceptions"
         }
       },
       "required": [
         "rule",
-        "exceptions"
+        "exceptions",
+        "exceptionsUr"
       ]
     },
     "aiSuggestions": {
@@ -814,13 +936,28 @@ export const SCHEMA = {
       "type": "string",
       "default": ""
     },
+    "textNotesUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of textNotes"
+    },
     "lead": {
       "type": "string",
       "default": ""
     },
+    "leadUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of lead"
+    },
     "profileSummary": {
       "type": "string",
       "default": ""
+    },
+    "profileSummaryUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of profileSummary"
     },
     "proximity": {
       "type": "object",
@@ -859,14 +996,26 @@ export const SCHEMA = {
           "type": "string",
           "default": ""
         },
+        "sourceUr": {
+          "type": "string",
+          "default": "",
+          "description": "Urdu twin of source"
+        },
         "paratext": {
           "type": "string",
           "default": ""
+        },
+        "paratextUr": {
+          "type": "string",
+          "default": "",
+          "description": "Urdu twin of paratext"
         }
       },
       "required": [
         "source",
-        "paratext"
+        "sourceUr",
+        "paratext",
+        "paratextUr"
       ],
       "default": {}
     },
@@ -874,9 +1023,19 @@ export const SCHEMA = {
       "type": "string",
       "default": ""
     },
+    "tendenciesUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of tendencies"
+    },
     "translatorProfile": {
       "type": "string",
       "default": ""
+    },
+    "translatorProfileUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of translatorProfile"
     },
     "decision": {
       "type": "string",
@@ -893,9 +1052,19 @@ export const SCHEMA = {
       "type": "string",
       "default": ""
     },
+    "decisionBasisUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of decisionBasis"
+    },
     "publisherNote": {
       "type": "string",
       "default": ""
+    },
+    "publisherNoteUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of publisherNote"
     },
     "grade": {
       "type": "string",
@@ -912,9 +1081,19 @@ export const SCHEMA = {
       "type": "string",
       "default": ""
     },
+    "gradeBasisUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of gradeBasis"
+    },
     "readerNote": {
       "type": "string",
       "default": ""
+    },
+    "readerNoteUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of readerNote"
     }
   },
   "allOf": [
@@ -974,16 +1153,22 @@ export const SCHEMA = {
     "schema",
     "id",
     "title",
+    "titleUr",
     "subtitle",
+    "subtitleUr",
     "date",
     "stage",
     "textType",
     "sampleLocation",
+    "sampleLocationUr",
     "publication",
     "author",
+    "authorUr",
     "work",
+    "workUr",
     "originalWork",
     "passage",
+    "passageUr",
     "tags",
     "source",
     "submission",
@@ -991,18 +1176,27 @@ export const SCHEMA = {
     "segmentation",
     "aiSuggestions",
     "textNotes",
+    "textNotesUr",
     "lead",
+    "leadUr",
     "profileSummary",
+    "profileSummaryUr",
     "proximity",
     "checks",
     "tendencies",
+    "tendenciesUr",
     "translatorProfile",
+    "translatorProfileUr",
     "decision",
     "decisionBasis",
+    "decisionBasisUr",
     "publisherNote",
+    "publisherNoteUr",
     "grade",
     "gradeBasis",
-    "readerNote"
+    "gradeBasisUr",
+    "readerNote",
+    "readerNoteUr"
   ]
 };
 
@@ -1027,19 +1221,25 @@ export const CMP_SCHEMA = {
           "type": "string",
           "default": "",
           "description": "Display label; empty means the translator's name, else the submission label, else 'Translation k'."
+        },
+        "labelUr": {
+          "type": "string",
+          "default": "",
+          "description": "Urdu twin of label"
         }
       },
       "required": [
         "id",
-        "label"
+        "label",
+        "labelUr"
       ],
       "default": {}
     }
   },
   "properties": {
     "schema": {
-      "const": 1,
-      "default": 1
+      "const": 2,
+      "default": 2
     },
     "id": {
       "type": "string",
@@ -1051,10 +1251,20 @@ export const CMP_SCHEMA = {
       "default": "",
       "minLength": 1
     },
+    "titleUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of title"
+    },
     "subtitle": {
       "type": "string",
       "default": "",
       "minLength": 1
+    },
+    "subtitleUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of subtitle"
     },
     "date": {
       "type": "string",
@@ -1066,10 +1276,20 @@ export const CMP_SCHEMA = {
       "default": "",
       "minLength": 1
     },
+    "authorUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of author"
+    },
     "work": {
       "type": "string",
       "default": "",
       "minLength": 1
+    },
+    "workUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of work"
     },
     "originalWork": {
       "type": "string",
@@ -1078,6 +1298,11 @@ export const CMP_SCHEMA = {
     "passage": {
       "type": "string",
       "default": ""
+    },
+    "passageUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of passage"
     },
     "tags": {
       "type": "array",
@@ -1099,13 +1324,28 @@ export const CMP_SCHEMA = {
       "type": "string",
       "default": ""
     },
+    "textNotesUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of textNotes"
+    },
     "lead": {
       "type": "string",
       "default": ""
     },
+    "leadUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of lead"
+    },
     "tendencies": {
       "type": "string",
       "default": ""
+    },
+    "tendenciesUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of tendencies"
     },
     "preferred": {
       "type": "string",
@@ -1116,29 +1356,49 @@ export const CMP_SCHEMA = {
       "type": "string",
       "default": ""
     },
+    "preferredBasisUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of preferredBasis"
+    },
     "note": {
       "type": "string",
       "default": "",
       "description": "One line for readers and publishers"
+    },
+    "noteUr": {
+      "type": "string",
+      "default": "",
+      "description": "Urdu twin of note"
     }
   },
   "required": [
     "schema",
     "id",
     "title",
+    "titleUr",
     "subtitle",
+    "subtitleUr",
     "date",
     "author",
+    "authorUr",
     "work",
+    "workUr",
     "originalWork",
     "passage",
+    "passageUr",
     "tags",
     "members",
     "textNotes",
+    "textNotesUr",
     "lead",
+    "leadUr",
     "tendencies",
+    "tendenciesUr",
     "preferred",
     "preferredBasis",
-    "note"
+    "preferredBasisUr",
+    "note",
+    "noteUr"
   ]
 };

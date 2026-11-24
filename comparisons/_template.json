@@ -1,28 +1,40 @@
 {
-  "schema": 1,
+  "schema": 2,
   "id": "",
   "title": "Comparison: <Author>'s <passage> in <target language>, <N> translations",
+  "titleUr": "",
   "subtitle": "A comparative editorial assessment for interested readers and publishers. Each translation is scored only against the source; this page lines up the separate reports.",
+  "subtitleUr": "",
   "date": "",
   "author": "",
+  "authorUr": "",
   "work": "",
+  "workUr": "",
   "originalWork": "",
   "passage": "",
+  "passageUr": "",
   "tags": [],
   "members": [
     {
       "id": "",
-      "label": ""
+      "label": "",
+      "labelUr": ""
     },
     {
       "id": "",
-      "label": ""
+      "label": "",
+      "labelUr": ""
     }
   ],
   "textNotes": "",
+  "textNotesUr": "",
   "lead": "",
+  "leadUr": "",
   "tendencies": "",
+  "tendenciesUr": "",
   "preferred": "",
   "preferredBasis": "",
-  "note": ""
+  "preferredBasisUr": "",
+  "note": "",
+  "noteUr": ""
 }

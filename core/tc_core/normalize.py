@@ -13,7 +13,7 @@ import re
 
 from .spec import comparison_schema, report_schema
 
-SCHEMA_VERSION = 4
+SCHEMA_VERSION = 5
 _MISSING = object()
 _MERGED = re.compile(r"^\(merged into #(\d+)\)$")
 
@@ -82,6 +82,9 @@ def upgrade(report: dict) -> tuple[dict, list[str]]:
             seg.setdefault("sentence", seg.get("n") or 1)
         r["schema"] = 4
         notes.append("schema 3 -> 4 (sentence number on each row; check with the segmentation rule)")
+    if r.get("schema", 1) < 5:
+        r["schema"] = 5
+        notes.append("schema 4 -> 5 (Urdu twin fields)")
     # Outcome fields of the other stage: clear leftovers only when nothing was written for them.
     other = (("decision", "decisionBasis", "publisherNote") if r.get("stage") == "Published"
              else ("grade", "gradeBasis", "readerNote"))
@@ -97,6 +100,9 @@ def normalize(report: dict, schema: dict | None = None) -> dict:
 
 
 def normalize_comparison(c: dict) -> dict:
+    c = copy.deepcopy(c)
+    if c.get("schema", 1) < 2:
+        c["schema"] = 2  # Urdu twin fields
     return normalize(c, comparison_schema())
 
 

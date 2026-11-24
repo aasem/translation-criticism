@@ -9,6 +9,7 @@ from .spec import method, report_schema
 from .normalize import SCHEMA_VERSION, canonical, dumps, normalize, normalize_comparison, upgrade
 from .scoring import agreement, figures, fill, proximity, summary, tally, words
 from .validate import Issue, validate_repo, validate_report
+from .localize import localize, missing
 from .compare import analyse, consistency, validate_comparison
 from .compare import figures as comparison_figures
 

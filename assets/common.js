@@ -387,12 +387,36 @@ export function upgrade(r) {
   }
   if (r.schema < 3) { r.segmentation ??= { rule: 'sentence-v2', exceptions: '' }; r.schema = 3; }
   if (r.schema < 4) { for (const s of r.segments || []) s.sentence ??= s.n || 1; r.schema = 4; }
+  if (r.schema < 5) r.schema = 5;
   const other = r.stage === 'Published' ? ['decision', 'decisionBasis', 'publisherNote'] : ['grade', 'gradeBasis', 'readerNote'];
   if (r[other[0]] && !other.slice(1).some((k) => String(r[k] || '').trim())) r[other[0]] = '';
   return r;
 }
 export const normalize = (r) => norm(upgrade(r), SCHEMA);
-export const normalizeComparison = (c) => norm(c, CMP_SCHEMA);
+export const normalizeComparison = (c) => { c = structuredClone(c); if ((c.schema ?? 1) < 2) c.schema = 2; return norm(c, CMP_SCHEMA); };
+
+// ---------- Urdu twins ----------
+// Mirrors core/tc_core/localize.py: on the Urdu page a filled '<field>Ur' replaces its English field.
+function walkTwin(o, parts, fn) {
+  if (!parts.length || o == null) return;
+  const [h, ...rest] = parts;
+  if (h === '*') { for (const x of Array.isArray(o) ? o : Object.values(o)) walkTwin(x, rest, fn); }
+  else if (!rest.length) { if (typeof o === 'object') fn(o, h); }
+  else if (typeof o === 'object') walkTwin(o[h], rest, fn);
+}
+export function localize(doc, kind = 'report') {
+  const out = structuredClone(doc);
+  if (!UR) return out;
+  for (const p of METHOD.urduTwins[kind]) walkTwin(out, p.split('.'), (o, k) => { const v = o[k + 'Ur']; if (typeof v === 'string' && v.trim()) o[k] = v; });
+  return out;
+}
+// Whether a dotted edit path (segments.3.deviations.0.note) is a twinned field.
+export function isTwin(path, kind = 'report') {
+  const a = path.split('.').map((x) => (/^\d+$/.test(x) ? '*' : x));
+  return METHOD.urduTwins[kind].some((p) => { const b = p.split('.'); return b.length === a.length && b.every((x, i) => x === '*' || x === a[i] || (a[i] === '*' && x === '*')); });
+}
+// In the Urdu interface the editor writes the twin.
+export const editPath = (path, kind = 'report') => (UR && isTwin(path, kind) ? path + 'Ur' : path);
 
 // ---------- comparisons ----------
 // Mirrors core/tc_core/compare.py (checked by core/tests/test_compare.py). Nothing is re-scored:

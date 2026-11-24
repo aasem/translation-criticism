@@ -44,7 +44,7 @@
 
 <script type="module">
 import { t as tt, tr, label, UR } from './assets/i18n.js';
-import { gridLegend, PROX_KEYS, PROX_MIN, proximity, isMimicry, gridSVG, SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide, normalize, TEXT_TYPES, labels } from './assets/common.js';
+import { gridLegend, PROX_KEYS, PROX_MIN, proximity, isMimicry, gridSVG, SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide, normalize, TEXT_TYPES, labels, localize, editPath } from './assets/common.js';
 const H2 = (ic, t) => `<h2>${icon(ic)}${t}</h2>`;
 // "Basis." followed by report prose: inline in English; in Urdu the prose gets its own block,
 // so English prose keeps its own direction.
@@ -88,7 +88,9 @@ const RICHBAR = `<div class="rich-bar">
   <button type="button" data-cmd="italic" title="Italic (Ctrl+I)"><i>I</i></button>
   <button type="button" data-cmd="insertUnorderedList" title="Bulleted list">• List</button>
 </div>`;
+// In the Urdu interface the editor writes a twinned field's Urdu twin (editPath).
 const T = (p, { ur = false, rows = 2, md: isMd = false } = {}) => {
+  if (editing) p = editPath(p);
   const v = getAt(R, p) ?? '';
   if (editing && isMd) return `<div class="rich-wrap">${RICHBAR}<div class="rich" contenteditable="true" data-rich="${p}">${md(v) || '<p><br></p>'}</div></div>`;
   return editing
@@ -97,7 +99,7 @@ const T = (p, { ur = false, rows = 2, md: isMd = false } = {}) => {
 };
 const tokenHint = () => `<p class="hint">Figures in prose: type a token and it shows the live number. ${
   Object.keys(TOKENS).map((k) => `<code>{${k}}</code>${k === 'A1' ? ' (and any code)' : ' = ' + (F[k] ?? '')}`).join(' · ')}</p>`;
-const I = (p, ph = '') => (editing ? `<input type="text" data-path="${p}" value="${esc(getAt(R, p) ?? '')}" placeholder="${esc(ph)}">` : esc(getAt(R, p) ?? ''));
+const I = (p, ph = '') => { if (editing) p = editPath(p); return editing ? `<input type="text" data-path="${p}" value="${esc(getAt(R, p) ?? '')}" placeholder="${esc(ph)}">` : esc(getAt(R, p) ?? ''); };
 const S = (p, options, cls = '', lab = '') => {
   const v = getAt(R, p);
   return editing
@@ -323,6 +325,13 @@ function grade() {
 function render() {
   const y = scrollY;
   F = figures(R);
+  // The Urdu page reads every filled Urdu twin in place of the English field; the editor works on R itself.
+  const saved = R;
+  if (!editing) R = localize(R);
+  try { renderInner(); } finally { R = saved; }
+  scrollTo(0, y);
+}
+function renderInner() {
   document.title = tt('report.title', { title: R.title });
   $('root').className = 'wrap' + (editing ? ' editing' : '');
   $('root').innerHTML = [
@@ -335,7 +344,6 @@ function render() {
   ].join('');
   if (editing) document.querySelectorAll('textarea').forEach(grow);
   $('b-edit').innerHTML = editing ? icon('check') + 'Done' : icon('pen') + 'Edit';
-  scrollTo(0, y);
   status();
 }
 function grow(t) { t.style.height = 'auto'; t.style.height = t.scrollHeight + 4 + 'px'; }

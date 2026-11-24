@@ -397,5 +397,49 @@
       "wonders",
       "yelled"
     ]
+  },
+  "urduTwins": {
+    "about": "Fields with an Urdu twin (the same name + 'Ur'). The Urdu page shows the twin when it is filled and falls back to English otherwise. The source text, the translation and quoted source phrases are never twinned. '*' stands for any index or key.",
+    "report": [
+      "title",
+      "subtitle",
+      "author",
+      "work",
+      "passage",
+      "sampleLocation",
+      "source.label",
+      "submission.label",
+      "submission.translator",
+      "lead",
+      "textNotes",
+      "profileSummary",
+      "tendencies",
+      "translatorProfile",
+      "decisionBasis",
+      "publisherNote",
+      "gradeBasis",
+      "readerNote",
+      "checks.source",
+      "checks.paratext",
+      "segmentation.exceptions",
+      "proximity.*.note",
+      "proximity.*.forcedNote",
+      "segments.*.deviations.*.note",
+      "segments.*.deviations.*.gain",
+      "segments.*.deviations.*.functions.*.fn"
+    ],
+    "comparison": [
+      "title",
+      "subtitle",
+      "author",
+      "work",
+      "passage",
+      "textNotes",
+      "lead",
+      "tendencies",
+      "preferredBasis",
+      "note",
+      "members.*.label"
+    ]
   }
 }

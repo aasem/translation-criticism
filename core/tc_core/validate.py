@@ -167,6 +167,12 @@ def rule_issues(r: dict) -> list[Issue]:
     elif segs and seg.get("rule") != M.method()["segmentation"]["rule"]:
         E("segmentation/rule", f"unknown rule {seg.get('rule')!r}")
 
+    from .localize import missing
+    gaps = missing(r)
+    if gaps:
+        W("", f"{len(gaps)} field(s) have no Urdu yet, so the Urdu page shows English there: "
+              + ", ".join(sorted(set(gaps))[:6]) + ("…" if len(set(gaps)) > 6 else ""))
+
     if r.get("stage") == "Published" and not any((r.get("publication") or {}).values()):
         W("publication", "published translation with no publication details")
     return out

@@ -1,12 +1,15 @@
 {
-  "schema": 4,
+  "schema": 5,
   "id": "author-work-target-translator",
   "title": "Translation Assessment: ",
+  "titleUr": "",
   "subtitle": "An editorial assessment report for interested readers and publishers. Segment-level deviation analysis on an error typology adapted from Multidimensional Quality Metrics, the translation industry's standard framework, for an <expressive (literary) | informative (scientific, technical)> text, with a descriptive translation-studies profile of the translator.",
+  "subtitleUr": "",
   "date": "",
   "stage": "Pre-publication",
   "textType": "Expressive",
   "sampleLocation": "",
+  "sampleLocationUr": "",
   "publication": {
     "publisher": "",
     "place": "",
@@ -16,20 +19,27 @@
     "pages": ""
   },
   "author": "",
+  "authorUr": "",
   "work": "",
+  "workUr": "",
   "originalWork": "",
   "passage": "",
+  "passageUr": "",
   "tags": [],
   "source": {
     "language": "English",
     "label": "",
+    "labelUr": "",
     "translator": "",
+    "translatorUr": "",
     "text": ""
   },
   "submission": {
     "language": "Urdu",
     "label": "",
+    "labelUr": "",
     "translator": "",
+    "translatorUr": "",
     "text": ""
   },
   "segments": [
@@ -44,8 +54,10 @@
           "code": "A1",
           "severity": "Minor",
           "note": "",
+          "noteUr": "",
           "functions": [],
           "gain": "",
+          "gainUr": "",
           "compensatedBy": null
         }
       ],
@@ -58,62 +70,84 @@
   ],
   "segmentation": {
     "rule": "sentence-v1",
-    "exceptions": ""
+    "exceptions": "",
+    "exceptionsUr": ""
   },
   "aiSuggestions": {
     "model": "",
     "date": ""
   },
   "textNotes": "",
+  "textNotesUr": "",
   "lead": "**Accuracy ({A}).** … **Language ({B}).** … **Style ({C}).** …",
+  "leadUr": "",
   "profileSummary": "",
+  "profileSummaryUr": "",
   "proximity": {
     "sentences": {
       "kept": 0,
       "total": 0,
       "forced": 0,
       "note": "",
-      "forcedNote": ""
+      "noteUr": "",
+      "forcedNote": "",
+      "forcedNoteUr": ""
     },
     "clauses": {
       "kept": 0,
       "total": 0,
       "forced": 0,
       "note": "",
-      "forcedNote": ""
+      "noteUr": "",
+      "forcedNote": "",
+      "forcedNoteUr": ""
     },
     "grammar": {
       "kept": 0,
       "total": 0,
       "forced": 0,
       "note": "",
-      "forcedNote": ""
+      "noteUr": "",
+      "forcedNote": "",
+      "forcedNoteUr": ""
     },
     "punctuation": {
       "kept": 0,
       "total": 0,
       "forced": 0,
       "note": "",
-      "forcedNote": ""
+      "noteUr": "",
+      "forcedNote": "",
+      "forcedNoteUr": ""
     },
     "culture": {
       "kept": 0,
       "total": 0,
       "forced": 0,
       "note": "",
-      "forcedNote": ""
+      "noteUr": "",
+      "forcedNote": "",
+      "forcedNoteUr": ""
     }
   },
   "checks": {
     "source": "",
-    "paratext": ""
+    "sourceUr": "",
+    "paratext": "",
+    "paratextUr": ""
   },
   "tendencies": "",
+  "tendenciesUr": "",
   "translatorProfile": "",
+  "translatorProfileUr": "",
   "decision": "Major revisions",
   "decisionBasis": "",
+  "decisionBasisUr": "",
   "publisherNote": "",
+  "publisherNoteUr": "",
   "grade": "",
   "gradeBasis": "",
-  "readerNote": ""
+  "gradeBasisUr": "",
+  "readerNote": "",
+  "readerNoteUr": ""
 }
