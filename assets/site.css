@@ -357,7 +357,7 @@ html.lang-ur body { font-size: 18px; line-height: 1.85; }
 html.lang-ur h1, html.lang-ur h2, html.lang-ur .headline { line-height: 1.5; letter-spacing: 0; }
 html.lang-ur .headline { font-size: 2.4rem; }
 @media (max-width: 640px) { html.lang-ur .headline { font-size: 1.8rem; } }
-html.lang-ur .headline span:not(.h1a), html.lang-ur .subtitle, html.lang-ur .ack, html.lang-ur .keeps, html.lang-ur .empty { font-style: normal; }
+html.lang-ur .headline span:not(.h1a), html.lang-ur .subtitle, html.lang-ur .ack, html.lang-ur .keeps, html.lang-ur .empty, html.lang-ur .muted { font-style: normal; }
 html.lang-ur h3, html.lang-ur .eyebrow, html.lang-ur header.site .brand, html.lang-ur .card-author { text-transform: none; letter-spacing: 0; }
 html.lang-ur .chip, html.lang-ur .dec, html.lang-ur .badge, html.lang-ur button, html.lang-ur .btn, html.lang-ur select, html.lang-ur th { line-height: 1.6; }
 html.lang-ur .hint, html.lang-ur .byline, html.lang-ur footer.site { line-height: 1.8; }

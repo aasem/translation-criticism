@@ -1,0 +1,575 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aasem.github.io/translation-criticism/schema/report.schema.json",
+  "title": "Translation assessment report",
+  "description": "One assessment of one translation against its source. Enumerations come from method.json (checked by tests). Every property has a default, which tc_core.normalize and the site editor use to fill missing fields, so a normalized report always has every key.",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "textSide": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "language": {
+          "type": "string",
+          "default": ""
+        },
+        "label": {
+          "type": "string",
+          "default": ""
+        },
+        "translator": {
+          "type": "string",
+          "default": ""
+        },
+        "text": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "required": [
+        "language",
+        "label",
+        "translator",
+        "text"
+      ],
+      "default": {}
+    },
+    "proximityComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kept": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 0
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 0
+        },
+        "forced": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "default": null
+        },
+        "note": {
+          "type": "string",
+          "default": ""
+        },
+        "forcedNote": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "required": [
+        "kept",
+        "total",
+        "forced",
+        "note",
+        "forcedNote"
+      ],
+      "default": {}
+    },
+    "function": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fn": {
+          "type": "string",
+          "default": "",
+          "minLength": 1
+        },
+        "kept": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "required": [
+        "fn",
+        "kept"
+      ],
+      "default": {}
+    },
+    "deviation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5",
+            "A6",
+            "A7",
+            "B1",
+            "B2",
+            "B3",
+            "C1",
+            "C2",
+            "C3",
+            "C5"
+          ],
+          "default": "A1"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "Critical",
+            "Major",
+            "Minor",
+            "Neutral"
+          ],
+          "default": "Minor"
+        },
+        "note": {
+          "type": "string",
+          "default": ""
+        },
+        "functions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/function"
+          },
+          "default": []
+        },
+        "gain": {
+          "type": "string",
+          "default": ""
+        },
+        "compensatedBy": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "default": null
+        }
+      },
+      "required": [
+        "code",
+        "severity",
+        "note",
+        "functions",
+        "gain",
+        "compensatedBy"
+      ],
+      "default": {}
+    },
+    "segment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "n": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        },
+        "source": {
+          "type": "string",
+          "default": ""
+        },
+        "submission": {
+          "type": "string",
+          "default": ""
+        },
+        "mergedInto": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "default": null,
+          "description": "Set when this source sentence is merged into an earlier segment's target sentence; submission is then empty."
+        },
+        "deviations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/deviation"
+          },
+          "default": []
+        },
+        "suggestion": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ai": {
+              "type": "string",
+              "default": ""
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "Not reviewed",
+                "Agrees with AI",
+                "Own suggestion"
+              ],
+              "default": "Not reviewed"
+            },
+            "human": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          "required": [
+            "ai",
+            "state",
+            "human"
+          ],
+          "default": {}
+        }
+      },
+      "required": [
+        "n",
+        "source",
+        "submission",
+        "mergedInto",
+        "deviations",
+        "suggestion"
+      ],
+      "default": {}
+    }
+  },
+  "properties": {
+    "schema": {
+      "const": 2,
+      "default": 2
+    },
+    "id": {
+      "type": "string",
+      "default": "",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "default": "",
+      "minLength": 1
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "",
+      "minLength": 1
+    },
+    "date": {
+      "type": "string",
+      "default": "",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "Pre-publication",
+        "Published"
+      ],
+      "default": "Pre-publication"
+    },
+    "textType": {
+      "type": "string",
+      "enum": [
+        "Expressive",
+        "Informative"
+      ],
+      "default": "Expressive"
+    },
+    "sampleLocation": {
+      "type": "string",
+      "default": ""
+    },
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "publisher": {
+          "type": "string",
+          "default": ""
+        },
+        "place": {
+          "type": "string",
+          "default": ""
+        },
+        "year": {
+          "type": "string",
+          "default": ""
+        },
+        "edition": {
+          "type": "string",
+          "default": ""
+        },
+        "isbn": {
+          "type": "string",
+          "default": ""
+        },
+        "pages": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "required": [
+        "publisher",
+        "place",
+        "year",
+        "edition",
+        "isbn",
+        "pages"
+      ],
+      "default": {}
+    },
+    "author": {
+      "type": "string",
+      "default": "",
+      "minLength": 1
+    },
+    "work": {
+      "type": "string",
+      "default": "",
+      "minLength": 1
+    },
+    "originalWork": {
+      "type": "string",
+      "default": ""
+    },
+    "passage": {
+      "type": "string",
+      "default": ""
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "source": {
+      "$ref": "#/$defs/textSide"
+    },
+    "submission": {
+      "$ref": "#/$defs/textSide"
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/segment"
+      },
+      "default": []
+    },
+    "aiSuggestions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "type": "string",
+          "default": ""
+        },
+        "date": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "required": [
+        "model",
+        "date"
+      ],
+      "default": {}
+    },
+    "textNotes": {
+      "type": "string",
+      "default": ""
+    },
+    "lead": {
+      "type": "string",
+      "default": ""
+    },
+    "profileSummary": {
+      "type": "string",
+      "default": ""
+    },
+    "proximity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sentences": {
+          "$ref": "#/$defs/proximityComponent"
+        },
+        "clauses": {
+          "$ref": "#/$defs/proximityComponent"
+        },
+        "grammar": {
+          "$ref": "#/$defs/proximityComponent"
+        },
+        "punctuation": {
+          "$ref": "#/$defs/proximityComponent"
+        },
+        "culture": {
+          "$ref": "#/$defs/proximityComponent"
+        }
+      },
+      "required": [
+        "sentences",
+        "clauses",
+        "grammar",
+        "punctuation",
+        "culture"
+      ],
+      "default": {}
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "type": "string",
+          "default": ""
+        },
+        "paratext": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "required": [
+        "source",
+        "paratext"
+      ],
+      "default": {}
+    },
+    "tendencies": {
+      "type": "string",
+      "default": ""
+    },
+    "translatorProfile": {
+      "type": "string",
+      "default": ""
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "Accept",
+        "Accept with minor revisions",
+        "Major revisions",
+        "Retranslation required",
+        ""
+      ],
+      "default": ""
+    },
+    "decisionBasis": {
+      "type": "string",
+      "default": ""
+    },
+    "publisherNote": {
+      "type": "string",
+      "default": ""
+    },
+    "grade": {
+      "type": "string",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        ""
+      ],
+      "default": ""
+    },
+    "gradeBasis": {
+      "type": "string",
+      "default": ""
+    },
+    "readerNote": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "stage": {
+            "const": "Published"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "grade": {
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          },
+          "decision": {
+            "const": ""
+          },
+          "decisionBasis": {
+            "const": ""
+          },
+          "publisherNote": {
+            "const": ""
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "decision": {
+            "enum": [
+              "Accept",
+              "Accept with minor revisions",
+              "Major revisions",
+              "Retranslation required"
+            ]
+          },
+          "grade": {
+            "const": ""
+          },
+          "gradeBasis": {
+            "const": ""
+          },
+          "readerNote": {
+            "const": ""
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "schema",
+    "id",
+    "title",
+    "subtitle",
+    "date",
+    "stage",
+    "textType",
+    "sampleLocation",
+    "publication",
+    "author",
+    "work",
+    "originalWork",
+    "passage",
+    "tags",
+    "source",
+    "submission",
+    "segments",
+    "aiSuggestions",
+    "textNotes",
+    "lead",
+    "profileSummary",
+    "proximity",
+    "checks",
+    "tendencies",
+    "translatorProfile",
+    "decision",
+    "decisionBasis",
+    "publisherNote",
+    "grade",
+    "gradeBasis",
+    "readerNote"
+  ]
+}

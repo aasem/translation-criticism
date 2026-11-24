@@ -1,0 +1,233 @@
+{
+  "version": 2,
+  "about": "The assessment method as data. Single source of truth for codes, severities, weights, bands, decisions and review states. The site reads it through assets/method.js (generated: python -m tc_core build-js); tc_core reads it directly.",
+  "families": {
+    "A": "Accuracy",
+    "B": "Language",
+    "C": "Style"
+  },
+  "codes": [
+    {
+      "code": "A1",
+      "family": "A",
+      "name": "Mistranslation",
+      "test": "The sense differs from the source's (a word's meaning, a changed subject or referent)"
+    },
+    {
+      "code": "A2",
+      "family": "A",
+      "name": "Addition",
+      "test": "Says something the source doesn't"
+    },
+    {
+      "code": "A3",
+      "family": "A",
+      "name": "Omission",
+      "test": "Drops something the source says"
+    },
+    {
+      "code": "A4",
+      "family": "A",
+      "name": "Grammatical meaning",
+      "test": "Tense, aspect, mood, modality, number or voice changed"
+    },
+    {
+      "code": "A5",
+      "family": "A",
+      "name": "Distinction",
+      "test": "Two source words merged into one target word, or one split into two that diverge"
+    },
+    {
+      "code": "A6",
+      "family": "A",
+      "name": "Logic",
+      "test": "The relation between clauses changed"
+    },
+    {
+      "code": "A7",
+      "family": "A",
+      "name": "Reading closed",
+      "test": "Settles a reading the source deliberately leaves open (a choice forced by Urdu grammar is not counted)"
+    },
+    {
+      "code": "B1",
+      "family": "B",
+      "name": "Grammar",
+      "test": "Agreement, gender, case or syntax error"
+    },
+    {
+      "code": "B2",
+      "family": "B",
+      "name": "Non-word or spelling",
+      "test": "Not a word of the target language, or misspelt"
+    },
+    {
+      "code": "B3",
+      "family": "B",
+      "name": "Ambiguity",
+      "test": "Allows a reading the source doesn't"
+    },
+    {
+      "code": "C1",
+      "family": "C",
+      "name": "Register",
+      "test": "More formal, colloquial, religious or technical than the source"
+    },
+    {
+      "code": "C2",
+      "family": "C",
+      "name": "Word choice",
+      "test": "Right basic meaning, wrong connotation or collocation"
+    },
+    {
+      "code": "C3",
+      "family": "C",
+      "name": "Imagery",
+      "test": "A metaphor, simile or image altered or weakened"
+    },
+    {
+      "code": "C5",
+      "family": "C",
+      "name": "Effect",
+      "test": "Irony, humour, suspense, emphasis or mood the passage is built to produce is lost or altered"
+    },
+    {
+      "code": "C4",
+      "family": "C",
+      "name": "Interference",
+      "test": "Source syntax, punctuation or calques showing through (reported as a pattern under Stylistic tendencies)"
+    }
+  ],
+  "patternCodes": [
+    "C4"
+  ],
+  "severities": [
+    {
+      "name": "Critical",
+      "weight": 25
+    },
+    {
+      "name": "Major",
+      "weight": 5
+    },
+    {
+      "name": "Minor",
+      "weight": 1
+    },
+    {
+      "name": "Neutral",
+      "weight": 0
+    }
+  ],
+  "grades": [
+    {
+      "letter": "A",
+      "name": "Exemplary",
+      "maxPp100": 2,
+      "meaning": "A faithful literary equivalent. Deviations are rare and slight."
+    },
+    {
+      "letter": "B",
+      "name": "Sound",
+      "maxPp100": 5,
+      "meaning": "Reliable throughout. Deviations are mostly minor and do not distort the work."
+    },
+    {
+      "letter": "C",
+      "name": "Serviceable",
+      "maxPp100": 10,
+      "meaning": "Conveys the work, but readers meet recurring losses of sense, image or tone."
+    },
+    {
+      "letter": "D",
+      "name": "Deficient",
+      "maxPp100": null,
+      "meaning": "Frequent or serious deviations. Readers receive a distorted version of the work, which cannot be relied on to represent it."
+    }
+  ],
+  "decisions": [
+    {
+      "key": "Accept",
+      "band": "A",
+      "meaning": "Publish as it is."
+    },
+    {
+      "key": "Accept with minor revisions",
+      "band": "B",
+      "meaning": "A copy-editor can resolve the issues."
+    },
+    {
+      "key": "Major revisions",
+      "band": "C",
+      "meaning": "The draft is sound, and the same translator can revise it into shape."
+    },
+    {
+      "key": "Retranslation required",
+      "band": "D",
+      "meaning": "The deviations are too many or too deep to revise. The work must be translated afresh."
+    }
+  ],
+  "maxOutcomeMove": 1,
+  "targets": {
+    "acceptable": "B",
+    "ideal": "A"
+  },
+  "stages": [
+    "Pre-publication",
+    "Published"
+  ],
+  "textTypes": [
+    "Expressive",
+    "Informative"
+  ],
+  "reviewStates": [
+    "Not reviewed",
+    "Agrees with AI",
+    "Own suggestion"
+  ],
+  "proximity": {
+    "keys": [
+      "sentences",
+      "clauses",
+      "grammar",
+      "punctuation",
+      "culture"
+    ],
+    "min": 3,
+    "mimicThreshold": null
+  },
+  "acknowledgements": {
+    "Pre-publication": "Any translation can be reworked. This decision concerns the submitted draft, not the possibility of a good translation of this work.",
+    "Published": "Any translation can be reworked. This grade concerns the published translation as sampled here, not the possibility of a good translation of this work."
+  },
+  "tokens": {
+    "total": "all deviations",
+    "critical": "critical",
+    "major": "major",
+    "minor": "minor",
+    "severe": "major + critical",
+    "per100": "deviations per 100 source words",
+    "words": "source words",
+    "segments": "segments",
+    "penalty": "weighted penalty points",
+    "pp100": "penalty points per 100 words",
+    "score": "MQM quality score",
+    "band": "grade band from the score",
+    "neutral": "neutral (unscored) deviations",
+    "clean": "segments without deviation",
+    "cleanPct": "% of segments without deviation",
+    "severeSegs": "segments with a major or critical deviation",
+    "severePct": "% of segments with one",
+    "A": "accuracy (A) codes",
+    "B": "language (B) codes",
+    "C": "style (C) codes",
+    "aiSugg": "segments with an AI suggestion",
+    "agree": "human agrees with AI",
+    "differ": "human gives own suggestion",
+    "unreviewed": "not yet reviewed"
+  },
+  "forbiddenInAISuggestions": [
+    ";",
+    "؛"
+  ]
+}

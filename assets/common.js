@@ -1,62 +1,41 @@
 // Shared helpers for the translation-criticism site.
 // Reports live as JSON in /reports; this file renders them.
 import { t, UR } from './i18n.js';
+import { METHOD, SCHEMA } from './method.js';
+export { METHOD, SCHEMA };
 
-export const CODES = {
-  A1: ['Mistranslation', "The sense differs from the source's (a word's meaning, a changed subject or referent)"],
-  A2: ['Addition', "Says something the source doesn't"],
-  A3: ['Omission', 'Drops something the source says'],
-  A4: ['Grammatical meaning', 'Tense, aspect, mood, modality, number or voice changed'],
-  A5: ['Distinction', 'Two source words merged into one target word, or one split into two that diverge'],
-  A6: ['Logic', 'The relation between clauses changed'],
-  A7: ['Reading closed', 'Settles a reading the source deliberately leaves open (a choice forced by Urdu grammar is not counted)'],
-  B1: ['Grammar', 'Agreement, gender, case or syntax error'],
-  B2: ['Non-word or spelling', 'Not a word of the target language, or misspelt'],
-  B3: ['Ambiguity', "Allows a reading the source doesn't"],
-  C1: ['Register', 'More formal, colloquial, religious or technical than the source'],
-  C2: ['Word choice', 'Right basic meaning, wrong connotation or collocation'],
-  C3: ['Imagery', 'A metaphor, simile or image altered or weakened'],
-  C5: ['Effect', 'Irony, humour, suspense, emphasis or mood the passage is built to produce is lost or altered'],
-  C4: ['Interference', 'Source syntax, punctuation or calques showing through (reported as a pattern under Stylistic tendencies)'],
-};
+// The method itself (codes, weights, bands, decisions, states) comes from
+// core/tc_core/method.json through the generated assets/method.js, shared with the Python core.
+export const CODES = Object.fromEntries(METHOD.codes.map((c) => [c.code, [c.name, c.test]]));
 if (UR) for (const c in CODES) CODES[c] = [t(`code.${c}`), t(`code.${c}.t`)];
 
-export const SEVERITIES = ['Critical', 'Major', 'Minor', 'Neutral'];
+export const SEVERITIES = METHOD.severities.map((x) => x.name);
 // Penalised severities. Neutral (MQM's zero-weight level) records a deliberate transposition
 // or a compensated loss: it is shown and counted separately, and never enters the score.
-export const SCORED = ['Critical', 'Major', 'Minor'];
+export const SCORED = METHOD.severities.filter((x) => x.weight > 0).map((x) => x.name);
 export const FINDING_SEVERITIES = SCORED;
 // Human review of the AI suggestion for a segment.
-export const REVIEW = ['Not reviewed', 'Agrees with AI', 'Own suggestion'];
+export const REVIEW = [...METHOD.reviewStates];
 
-export const DECISIONS = [
-  ['Accept', 'Publish as it is.'],
-  ['Accept with minor revisions', 'A copy-editor can resolve the issues.'],
-  ['Major revisions', 'The draft is sound, and the same translator can revise it into shape.'],
-  ['Retranslation required', "The deviations are too many or too deep to revise. The work must be translated afresh."],
-];
+export const DECISIONS = METHOD.decisions.map((d) => [d.key, d.meaning]);
 // The first item is the value stored in reports; only the meaning is shown translated here.
 // Use label('decision', d) from i18n.js to show a decision's name.
 if (UR) for (const d of DECISIONS) d[1] = t(`decision.${d[0]}.m`);
 
-export const ACK = UR ? t('ack.draft') : 'Any translation can be reworked. This decision concerns the submitted draft, not the possibility of a good translation of this work.';
-export const ACK_PUBLISHED = UR ? t('ack.published') : 'Any translation can be reworked. This grade concerns the published translation as sampled here, not the possibility of a good translation of this work.';
+export const ACK = UR ? t('ack.draft') : METHOD.acknowledgements['Pre-publication'];
+export const ACK_PUBLISHED = UR ? t('ack.published') : METHOD.acknowledgements.Published;
 
 // Two kinds of assessment: a draft before publication (editorial decision for a publisher)
 // and a translation already in print (grade for readers).
-export const STAGES = ['Pre-publication', 'Published'];
+export const STAGES = [...METHOD.stages];
+export const TEXT_TYPES = [...METHOD.textTypes];
 export const isPublished = (r) => r.stage === 'Published';
 
 // MQM severity weights, as in MQM 2.0 scoring.
-export const WEIGHTS = { Neutral: 0, Minor: 1, Major: 5, Critical: 25 };
+export const WEIGHTS = Object.fromEntries(METHOD.severities.map((x) => [x.name, x.weight]));
 
 // Grades for published translations, by weighted penalty points per 100 source words.
-export const GRADES = [
-  ['A', 'Exemplary', 2, 'A faithful literary equivalent. Deviations are rare and slight.'],
-  ['B', 'Sound', 5, 'Reliable throughout. Deviations are mostly minor and do not distort the work.'],
-  ['C', 'Serviceable', 10, 'Conveys the work, but readers meet recurring losses of sense, image or tone.'],
-  ['D', 'Deficient', Infinity, 'Frequent or serious deviations. Readers receive a distorted version of the work, which cannot be relied on to represent it.'],
-];
+export const GRADES = METHOD.grades.map((g) => [g.letter, g.name, g.maxPp100 ?? Infinity, g.meaning]);
 if (UR) for (const g of GRADES) { g[1] = t(`grade.${g[0]}`); g[3] = t(`grade.${g[0]}.m`); }
 export const bandFor = (pp100) => GRADES.find((g) => pp100 <= g[2]) || GRADES[GRADES.length - 1];
 // The quality score is 100 minus penalty points per 100 words, so each band has a score range too.
@@ -67,7 +46,7 @@ export const scoreRange = (letter) => {
 };
 
 // Targets for reading a score: acceptable is band B (95+), ideal is band A (98+).
-export const TARGETS = { acceptable: 'B', ideal: 'A' };
+export const TARGETS = { ...METHOD.targets };
 export function scoreGuide(t) {
   const lvl = (letter) => { const g = GRADES.find((x) => x[0] === letter);
     return { letter, name: g[1], score: 100 - g[2], maxPenalty: Math.floor((g[2] * t.words) / 100) }; };
@@ -77,9 +56,7 @@ export function scoreGuide(t) {
 }
 
 // Default editorial decision for each score band. The assessor may move a draft one step off it, with the reason in the basis.
-export const DECISION_ANCHOR = {
-  A: ['Accept'], B: ['Accept with minor revisions'], C: ['Major revisions'], D: ['Retranslation required'],
-};
+export const DECISION_ANCHOR = Object.fromEntries(METHOD.decisions.map((d) => [d.band, [d.key]]));
 export const anchorText = (letter) => (DECISION_ANCHOR[letter] || [''])[0];
 // True when the outcome on record differs from the one the score band points to.
 export const outcomeMoved = (r, t) => (r.stage === 'Published'
@@ -189,11 +166,11 @@ export const icon = (name, cls = '') =>
 // ---------- proximity: a second, independent axis ----------
 // How much of the source's form survives, counted within the pair only (no outside norm).
 // It describes strategy and never enters the score or the outcome.
-export const PROX_KEYS = ['sentences', 'clauses', 'grammar', 'punctuation', 'culture'];
-export const PROX_MIN = 3; // a component needs at least this many cases (kept cases, for mimicry) to enter an average
+export const PROX_KEYS = [...METHOD.proximity.keys];
+export const PROX_MIN = METHOD.proximity.min; // a component needs at least this many cases (kept cases, for mimicry) to enter an average
 // The mechanical-mimicry corner: mimicry at or above `art` with a quality score below `score`.
 // Left unset until enough reports have been marked to place the threshold.
-export const MIMIC = null;
+export const MIMIC = METHOD.proximity.mimicThreshold;
 // For each component: proximity = kept / all (descriptive), mimicry = forced / kept (the assessor's judgement).
 export function proximity(r) {
   const comps = PROX_KEYS.map((k) => {
@@ -292,18 +269,7 @@ export const BRANCH = 'main';
 // ---------- live figures in prose ----------
 // Tokens such as {total} or {A1} in any prose field are replaced with figures
 // computed from the deviations, so the prose always matches the count table.
-export const TOKENS = {
-  total: 'all deviations', critical: 'critical', major: 'major', minor: 'minor',
-  severe: 'major + critical', per100: 'deviations per 100 source words', words: 'source words',
-  segments: 'segments', penalty: 'weighted penalty points', pp100: 'penalty points per 100 words',
-  score: 'MQM quality score', band: 'grade band from the score',
-  neutral: 'neutral (unscored) deviations',
-  clean: 'segments without deviation', cleanPct: '% of segments without deviation',
-  severeSegs: 'segments with a major or critical deviation', severePct: '% of segments with one',
-  A: 'accuracy (A) codes', B: 'language (B) codes', C: 'style (C) codes',
-  aiSugg: 'segments with an AI suggestion', agree: 'human agrees with AI', differ: 'human gives own suggestion', unreviewed: 'not yet reviewed',
-  A1: '…and so on for any single code',
-};
+export const TOKENS = { ...METHOD.tokens, A1: '…and so on for any single code' };
 export function figures(report) {
   const t = tally(report);
   const f = {
@@ -375,3 +341,41 @@ export function htmlToMd(root) {
   flush();
   return blocks.join('\n\n');
 }
+
+// ---------- canonical form ----------
+// The same rules as core/tc_core/normalize.py, driven by the same schema: upgrade an older
+// report, fill every missing field from the schema's defaults, keep schema key order.
+// Unknown keys are kept at the end so nothing is lost; the validator reports them.
+const resolve = (s) => { while (s && s.$ref) s = SCHEMA.$defs[s.$ref.split('/').pop()]; return s; };
+const types = (s) => [].concat(s?.type ?? []);
+function norm(v, s) {
+  s = resolve(s); const ty = types(s);
+  if (v === undefined || (v === null && !ty.includes('null'))) {
+    if (ty.includes('object')) v = {}; else return structuredClone(s?.default ?? null);
+  }
+  if (ty.includes('object') && v && typeof v === 'object' && !Array.isArray(v)) {
+    const props = s.properties || {}; const out = {};
+    for (const k of Object.keys(props)) out[k] = norm(v[k], props[k]);
+    for (const k of Object.keys(v)) if (!(k in props)) out[k] = v[k];
+    return out;
+  }
+  if (ty.includes('array') && Array.isArray(v)) return s.items ? v.map((x) => norm(x, s.items)) : v;
+  if (ty.includes('integer')) {
+    if (typeof v === 'string') { const x = v.trim(); if (x === '' && ty.includes('null')) return null; if (/^\d+$/.test(x)) return +x; }
+  }
+  return v;
+}
+export function upgrade(r) {
+  r = structuredClone(r);
+  if ((r.schema ?? 1) < 2) {
+    for (const s of r.segments || []) {
+      const m = String(s.submission || '').trim().match(/^\(merged into #(\d+)\)$/);
+      if (m) { s.mergedInto = +m[1]; s.submission = ''; }
+    }
+    delete r._comment; r.schema = 2;
+  }
+  const other = r.stage === 'Published' ? ['decision', 'decisionBasis', 'publisherNote'] : ['grade', 'gradeBasis', 'readerNote'];
+  if (r[other[0]] && !other.slice(1).some((k) => String(r[k] || '').trim())) r[other[0]] = '';
+  return r;
+}
+export const normalize = (r) => norm(upgrade(r), SCHEMA);

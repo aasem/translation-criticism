@@ -925,6 +925,10 @@ export const STRINGS = {
 "Codes, severities, weights, bands, the sample assumption and the suggestion columns are explained in the {link}.",
 "کوڈ، شدتیں، اوزان، بینڈ، نمونے کا مفروضہ اور رائے کے کالم {link} میں سمجھائے گئے ہیں۔"
 ],
+"sbs.merged": [
+"(merged into #{n})",
+"(#{n} میں ضم)"
+],
 "sbs.crisp": [
 "Cell colour shows the worst severity. Suggestions are never scored.",
 "خانے کا رنگ شدید ترین شدت ظاہر کرتا ہے۔ رائے کبھی اسکور میں شامل نہیں ہوتی۔"

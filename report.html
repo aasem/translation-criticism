@@ -44,7 +44,7 @@
 
 <script type="module">
 import { t as tt, tr, label, UR } from './assets/i18n.js';
-import { gridLegend, PROX_KEYS, PROX_MIN, proximity, isMimicry, gridSVG, SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide } from './assets/common.js';
+import { gridLegend, PROX_KEYS, PROX_MIN, proximity, isMimicry, gridSVG, SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide, normalize, TEXT_TYPES } from './assets/common.js';
 const H2 = (ic, t) => `<h2>${icon(ic)}${t}</h2>`;
 // "Basis." followed by report prose: inline in English; in Urdu the prose gets its own block,
 // so English prose keeps its own direction.
@@ -65,7 +65,8 @@ function setAt(o, p, v) {
   const t = ks.reduce((a, k) => (a[k] ??= /^\d+$/.test(k) ? [] : {}), o);
   t[last] = v;
 }
-const clean = (r) => JSON.stringify(r, null, 2) + '\n';
+// Always saved in canonical form (schema order, every field present), as tc_core writes it.
+const clean = (r) => JSON.stringify(normalize(r), null, 2) + '\n';
 const isDirty = () => clean(R) !== clean(original);
 function saveDraft() {
   try { isDirty() ? localStorage.setItem(DRAFT, clean(R)) : localStorage.removeItem(DRAFT); } catch {}
@@ -112,7 +113,7 @@ function header() {
     <h3>Subtitle</h3>${T('subtitle', { rows: 3 })}
     <h3>Catalogue details</h3>
     <table><tbody>
-      <tr><th>Kind</th><td>${S('stage', STAGES)}</td><th>Text type</th><td>${S('textType', ['Expressive', 'Informative'], '', 'textType')}</td></tr>
+      <tr><th>Kind</th><td>${S('stage', STAGES)}</td><th>Text type</th><td>${S('textType', TEXT_TYPES, '', 'textType')}</td></tr>
       <tr><th>Date</th><td>${I('date', 'YYYY-MM-DD')}</td><th>Sample location</th><td>${I('sampleLocation', 'e.g. vol. 1, pp. 410–412')}</td></tr>
       <tr><th>Author</th><td>${I('author')}</td><th>Work</th><td>${I('work')}</td></tr>
       <tr><th>Original title</th><td>${I('originalWork', 'e.g. Du côté de chez Swann')}</td><th>Passage</th><td>${I('passage')}</td></tr>
@@ -248,7 +249,9 @@ function sideBySide() {
         <button class="small" data-act="add-seg" data-i="${i}" title="Insert a segment after this one">+</button>
         <button class="small danger" data-act="del-seg" data-i="${i}" title="Delete this segment">×</button></div>` : ''}</td>
       <td dir="auto">${editing ? T(`segments.${i}.source`, { rows: 5 }) : urduWrap(esc(s.source))}</td>
-      <td class="${editing ? '' : 'sub'}" ${editing ? '' : 'lang="ur" dir="rtl"'}>${editing ? T(`segments.${i}.submission`, { rows: 5, ur: true }) : esc(s.submission)}</td>
+      <td class="${editing ? '' : 'sub'}" ${editing ? '' : 'lang="ur" dir="rtl"'}>${editing
+        ? `${s.mergedInto && !String(s.submission || '').trim() ? '' : T(`segments.${i}.submission`, { rows: 5, ur: true })}<label class="hint">Merged into # <input type="text" inputmode="numeric" size="3" data-path="segments.${i}.mergedInto" data-rerender value="${esc(s.mergedInto ?? '')}" placeholder="–" title="Set when this source sentence sits inside an earlier segment's translation"></label>`
+        : s.mergedInto ? `<span class="muted">${esc(tt('sbs.merged', { n: s.mergedInto }))}</span>` : esc(s.submission)}</td>
       <td class="devs ${sevClass(w)}">${devCell(s, i)}</td>
       <td class="sug">${aiCell(s)}</td>
       <td class="sug">${humanCell(s, i)}</td>
@@ -339,7 +342,7 @@ $('root').addEventListener('input', (e) => {
   else if (el.dataset.fn) { const [i, j] = el.dataset.fn.split('.'); const d = R.segments[+i].deviations[+j];
     const a = textToFn(el.value); if (a.length) d.functions = a; else delete d.functions; grow(el); }
   else if ('tags' in el.dataset) R.tags = el.value.split(',').map((s) => s.trim()).filter(Boolean);
-  if ('rerender' in el.dataset) render(); else saveDraft();
+  if ('rerender' in el.dataset && el.tagName === 'SELECT') render(); else saveDraft();
 });
 $('root').addEventListener('input', (e) => {
   const el = e.target.closest?.('[data-rich]');
@@ -428,10 +431,10 @@ $('b-edit').innerHTML = icon('pen') + 'Edit';
 // ---------- load ----------
 try {
   if (!id) throw new Error('No report id in the address.');
-  original = await loadJSON(path);
+  original = normalize(await loadJSON(path));
   R = structuredClone(original);
   const d = localStorage.getItem(DRAFT);
-  if (d) { try { R = JSON.parse(d); } catch {} }
+  if (d) { try { R = normalize(JSON.parse(d)); } catch {} }
   $('b-gh').href = `https://github.com/${REPO}/blob/${BRANCH}/${path}`;
   render();
 } catch (e) {

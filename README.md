@@ -47,29 +47,59 @@ A **pre-publication** report assesses a draft for a publisher and ends in an edi
 
 1. Copy `reports/_template.json` to `reports/<id>.json` and fill it in.
 2. Add the id to `reports/index.json`.
+3. Run `python -m tc_core normalize --write reports/<id>.json`, then `python -m tc_core validate`. Fix every error before committing. Warnings are for the assessor to judge and never block.
 
-## Report format
+## Method, schema and core
+
+The method and its enforcement live in one place, `core/`, a small Python package (`tc_core`) that the site, the skill and any future service share:
+
+| File | Role |
+| --- | --- |
+| `core/tc_core/method.json` | The method as data: codes, severities and weights, grade bands, decisions and their default bands, stages, text types, review states, proximity settings, tokens. The single source of truth |
+| `core/tc_core/schema/report.schema.json` | The strict report format (JSON Schema 2020-12). Every field is required and has a default; unknown fields are errors |
+| `core/tc_core/normalize.py` | Canonical form: upgrades older reports, fills every missing field from the schema, fixes key order |
+| `core/tc_core/scoring.py` | Counts, penalty, quality score, band, spread, proximity and mimicry: the reference implementation |
+| `core/tc_core/validate.py` | The schema plus the rules a schema can't express (segments rebuild the passages, merges, compensation, AI suggestions, semicolons, tokens, outcome within one step of the band, canonical form) |
+| `assets/method.js` | Generated from the two JSON files for the site (`python -m tc_core build-js`). Never edit it by hand |
+
+The site's editor saves in the same canonical form, so a report edited in the browser and one written by the skill or by code come out identical. The tests check that the browser (`assets/common.js`) and the core compute the same figures, word counts and canonical JSON for every report. The GitHub Action in `.github/workflows/validate.yml` runs the validator and the tests on every push, including commits made from the site's editor.
+
+```
+pip install -e "core[test]"
+python -m tc_core validate              # every report; exits 1 on errors
+python -m tc_core normalize FILE --write
+python -m tc_core score FILE            # summary as JSON
+python -m tc_core build-js              # after changing method.json or the schema
+pytest core/tests
+```
+
+To change the method, edit `method.json` (and the schema if the format changes), run `build-js`, then re-run every report under the new method.
+
+## Report format (schema 2)
 
 | Field | Meaning |
 | --- | --- |
-| `id`, `title`, `subtitle`, `date` | Identity and heading |
+| `schema` | Format version, `2` |
+| `id`, `title`, `subtitle`, `date` | Identity and heading; `id` is the file name, `date` is YYYY-MM-DD |
 | `author`, `work`, `originalWork`, `passage`, `tags` | Catalogue details (all searchable); `work` is the title shown on cards, `originalWork` the title in the original language |
 | `source`, `submission` | `{language, label, translator, text}` |
 | `stage` | `Pre-publication` (a draft; ends in an editorial decision) or `Published` (in print; ends in a grade) |
-| `sampleLocation` | Where the sample comes from, e.g. "closing pages of Swann's Way" |
-| `publication` | Published only: `{publisher, place, year, edition, isbn, pages}` |
 | `textType` | `Expressive` (literary: form and register count) or `Informative` (scientific, technical: style codes only where content changes) |
-| `decision`, `decisionBasis`, `publisherNote` | Pre-publication: one of the five steps on the decision scale, and its reasoning |
-| `grade`, `gradeBasis`, `readerNote` | Published: `A`–`E`, and its reasoning |
+| `sampleLocation` | Where the sample comes from, e.g. "closing pages of Swann's Way" |
+| `publication` | `{publisher, place, year, edition, isbn, pages}`; filled for published translations, empty strings otherwise |
+| `decision`, `decisionBasis`, `publisherNote` | Pre-publication: one of the four steps on the decision scale (`Accept`, `Accept with minor revisions`, `Major revisions`, `Retranslation required`), and its reasoning. Empty for published reports |
+| `grade`, `gradeBasis`, `readerNote` | Published: `A`–`D`, and its reasoning. Empty for drafts |
 | `lead` | Conclusions: three short paragraphs on Accuracy, Language and Style, for a general reader |
 | `profileSummary`, `tendencies`, `translatorProfile` | Prose (light markdown) |
-| `proximity` | `{sentences, clauses, grammar, punctuation, culture}`, each `{kept, total, forced, note, forcedNote}`, counted within the pair. Proximity = kept ÷ total (descriptive, shown in the table). Mimicry = forced ÷ kept, the assessor's mark of kept form that goes against Urdu syntax, punctuation or idiom; its average is the plotted axis. A component with fewer than 3 cases (3 kept cases, for mimicry) is shown but not averaged. The mechanical-mimicry corner (`MIMIC` in `assets/common.js`) stays unset until a threshold is chosen. Never scored |
+| `proximity` | `{sentences, clauses, grammar, punctuation, culture}`, each `{kept, total, forced, note, forcedNote}`, counted within the pair. Proximity = kept ÷ total (descriptive, shown in the table). Mimicry = forced ÷ kept, the assessor's mark of kept form that goes against Urdu syntax, punctuation or idiom; its average is the plotted axis. `forced` is `null` until marked. A component with fewer than 3 cases (3 kept cases, for mimicry) is shown but not averaged. The mechanical-mimicry corner (`proximity.mimicThreshold` in `method.json`) stays unset until a threshold is chosen. Never scored |
 | `checks` | `{source, paratext}`: optional assessor's notes, shown in Details. Never scored |
 | `textNotes` | Report-specific notes on the texts only (transcription, misprints, segmentation). Everything general is on the Method page |
 | `aiSuggestions` | `{model, date}` of the AI suggestions |
-| `segments[]` | `{n, source, submission, deviations: [{code, severity, note, functions, gain, compensatedBy}], suggestion: {ai, state, human}}`. Severity is Critical, Major, Minor or Neutral (weight 0). `functions` is the function test `[{fn, kept}]`; `gain` is what a transposition adds (never scored). the second suggestion column is Asim Bakhshi's; `suggestion.state` is `Not reviewed`, `Agrees with AI` or `Own suggestion`; the AI text is kept as generated |
+| `segments[]` | `{n, source, submission, mergedInto, deviations, suggestion}`. `n` runs 1, 2, 3…; the segment texts joined must equal the passages. `mergedInto` is the earlier segment whose target sentence also renders this source sentence (its `submission` is then empty), otherwise `null` |
+| `deviations[]` | `{code, severity, note, functions, gain, compensatedBy}`. Severity is Critical, Major, Minor or Neutral (weight 0). `functions` is the function test `[{fn, kept}]`; `gain` is what a transposition adds (never scored); `compensatedBy` is the segment that makes good a Neutral loss, otherwise `null` |
+| `suggestion` | `{ai, state, human}`. An AI rendering for every segment with a deviation and only for those. The second suggestion column is Asim Bakhshi's; `state` is `Not reviewed`, `Agrees with AI` or `Own suggestion`; the AI text is kept as generated |
 
-Deviation codes A1–A6, B1–B3 and C1–C3 are defined in `assets/common.js` and explained on the Method page.
+Deviation codes A1–A7, B1–B3 and C1–C5 are defined in `core/tc_core/method.json` and explained on the Method page. C4 (Interference) is a pattern reported under Stylistic tendencies and is never recorded on a segment.
 
 ## Urdu interface
 
