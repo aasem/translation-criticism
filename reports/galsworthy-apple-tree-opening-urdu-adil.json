@@ -172,16 +172,6 @@
       "mergedInto": null,
       "deviations": [
         {
-          "code": "B2",
-          "severity": "Minor",
-          "note": "چبل is not an Urdu word for a tree, so the pine is lost. It may be a misprint for چیل (\"chir pine\").",
-          "noteUr": "\"چبل\" کسی درخت کے لیے اردو لفظ نہیں، اس لیے صنوبر غائب ہو جاتا ہے۔ ممکن ہے یہ \"چیل\" (chir pine) کی طباعتی غلطی ہو۔",
-          "functions": [],
-          "gain": "",
-          "gainUr": "",
-          "compensatedBy": null
-        },
-        {
           "code": "A1",
           "severity": "Minor",
           "note": "گھنے جنگل (\"the dense forest\") turns the moor, the open upland of the story's setting, into a forest.",
@@ -193,7 +183,7 @@
         }
       ],
       "suggestion": {
-        "ai": "اور لارچ اور بیچ کے درختوں کا ایک تنگ سا خطہ جس میں کہیں کہیں چیڑ کے درخت اگے ہوئے تھے اس وادی کی طرف پھیلا ہوا تھا جو سڑک اور پورے بیابان کی پہلی اونچی پہاڑی کے درمیان واقع تھی۔",
+        "ai": "اور لارچ اور بیچ کے درختوں کا ایک تنگ سا خطہ جس میں کہیں کہیں چبل کے درخت اگے ہوئے تھے اس وادی کی طرف پھیلا ہوا تھا جو سڑک اور پورے بیابان کی پہلی اونچی پہاڑی کے درمیان واقع تھی۔",
         "state": "Not reviewed",
         "human": ""
       }
@@ -281,12 +271,12 @@
     "model": "claude-opus-5-5",
     "date": "2026-11-24"
   },
-  "textNotes": "- A transcription slip in the supplied copy is corrected: شیلا for سٹیلا (#5.3).\n- چبل in #4.2 may be a misprint for چیل; it is coded as printed in the supplied copy.\n- The epigraph is outside the assessed passage (see the paratext note).",
-  "textNotesUr": "- فراہم کردہ نقل کی ایک کتابتی لغزش درست کر دی گئی ہے: سٹیلا کی جگہ شیلا (#5.3)۔\n- #4.2 میں \"چبل\" ممکن ہے \"چیل\" کی طباعتی غلطی ہو۔ اسے فراہم کردہ نقل کے مطابق کوڈ کیا گیا ہے۔\n- سرنامہ جانچے گئے اقتباس سے باہر ہے (ضمنی متن کا نوٹ دیکھیے)۔",
-  "lead": "**Accuracy ({A}).** The passage comes through almost whole, sentence by sentence and in the source's order. The losses are small: the moor becomes a forest throughout, Stella's age is given as forty-five, and her blue eyes are counted among what she has lost.\n\n**Language ({B}).** Correct, except for one word for a tree that is not Urdu.\n\n**Style ({C}).** Close to the source's images and tone, including its irony, with two images softened: the crowning of the anniversary and the feathery larches.",
-  "leadUr": "**صحت ({A})۔** اقتباس تقریباً پورا کا پورا، جملہ بہ جملہ اور ماخذ کی ترتیب میں پہنچتا ہے۔ نقصانات چھوٹے ہیں: بیابان ہر جگہ جنگل بن جاتا ہے، اسٹیلا کی عمر پینتالیس بتائی گئی ہے، اور اس کی نیلی آنکھیں ان چیزوں میں گنی گئی ہیں جو وہ کھو چکی ہے۔\n\n**زبان ({B})۔** درست، سوائے ایک درخت کے لیے ایک لفظ کے جو اردو نہیں۔\n\n**اسلوب ({C})۔** ماخذ کے پیکروں اور لہجے کے قریب، اس کے طنز سمیت، اور دو پیکر نرم پڑ گئے ہیں: سالگرہ کا تاج اور پروں جیسے لارچ۔",
-  "profileSummary": "{total} minor deviations, spread thinly: {clean} of {segments} segments ({cleanPct}%) are free of them, and none carries a major or critical one. Accuracy codes make up {A}, three of them the same change of the moor into a forest (#1, #4.2, #5.2). The rest are single slips of fact or wording: the age (#3.2), the blue eyes (#3.1), a non-word for the pine (#4.2), and two softened images (#1, #5.2).",
-  "profileSummaryUr": "{total} معمولی انحرافات، ہلکے ہلکے بکھرے ہوئے: {segments} میں سے {clean} قطعات ({cleanPct}%) ان سے خالی ہیں، اور کسی میں کوئی بڑا یا سنگین انحراف نہیں۔ {A} صحت کے کوڈ ہیں، جن میں سے تین بیابان کے جنگل بننے کی ایک ہی تبدیلی ہیں (#1، #4.2، #5.2)۔ باقی حقیقت یا الفاظ کی اکا دکا لغزشیں ہیں: عمر (#3.2)، نیلی آنکھیں (#3.1)، صنوبر کے لیے ایک مہمل لفظ (#4.2)، اور دو نرم پڑے پیکر (#1، #5.2)۔",
+  "textNotes": "- A transcription slip in the supplied copy is corrected: شیلا for سٹیلا (#5.3).\n- The epigraph is outside the assessed passage (see the paratext note).",
+  "textNotesUr": "- فراہم کردہ نقل کی ایک کتابتی لغزش درست کر دی گئی ہے: سٹیلا کی جگہ شیلا (#5.3)۔\n- سرنامہ جانچے گئے اقتباس سے باہر ہے (ضمنی متن کا نوٹ دیکھیے)۔",
+  "lead": "**Accuracy ({A}).** The passage comes through almost whole, sentence by sentence and in the source's order. The losses are small: the moor becomes a forest throughout, Stella's age is given as forty-five, and her blue eyes are counted among what she has lost.\n\n**Language ({B}).** The Urdu is correct throughout.\n\n**Style ({C}).** Close to the source's images and tone, including its irony, with two images softened: the crowning of the anniversary and the feathery larches.",
+  "leadUr": "**صحت ({A})۔** اقتباس تقریباً پورا کا پورا، جملہ بہ جملہ اور ماخذ کی ترتیب میں پہنچتا ہے۔ نقصانات چھوٹے ہیں: بیابان ہر جگہ جنگل بن جاتا ہے، اسٹیلا کی عمر پینتالیس بتائی گئی ہے، اور اس کی نیلی آنکھیں ان چیزوں میں گنی گئی ہیں جو وہ کھو چکی ہے۔\n\n**زبان ({B})۔** اردو شروع سے آخر تک درست ہے۔\n\n**اسلوب ({C})۔** ماخذ کے پیکروں اور لہجے کے قریب، اس کے طنز سمیت، اور دو پیکر نرم پڑ گئے ہیں: سالگرہ کا تاج اور پروں جیسے لارچ۔",
+  "profileSummary": "{total} minor deviations, spread thinly: {clean} of {segments} segments ({cleanPct}%) are free of them, and none carries a major or critical one. Accuracy codes make up {A}, three of them the same change of the moor into a forest (#1, #4.2, #5.2). The rest are single slips of fact or wording: the age (#3.2), the blue eyes (#3.1), and two softened images (#1, #5.2). There are no language errors.",
+  "profileSummaryUr": "{total} معمولی انحرافات، ہلکے ہلکے بکھرے ہوئے: {segments} میں سے {clean} قطعات ({cleanPct}%) ان سے خالی ہیں، اور کسی میں کوئی بڑا یا سنگین انحراف نہیں۔ {A} صحت کے کوڈ ہیں، جن میں سے تین بیابان کے جنگل بننے کی ایک ہی تبدیلی ہیں (#1، #4.2، #5.2)۔ باقی حقیقت یا الفاظ کی اکا دکا لغزشیں ہیں: عمر (#3.2)، نیلی آنکھیں (#3.1)، اور دو نرم پڑے پیکر (#1، #5.2)۔ زبان کی کوئی غلطی نہیں۔",
   "proximity": {
     "sentences": {
       "kept": 6,
@@ -325,11 +315,11 @@
       "forcedNoteUr": "کوئی نہیں: ڈیش ایک فطری وقفے کی طرح پڑھا جاتا ہے۔"
     },
     "culture": {
-      "kept": 7,
-      "total": 7,
+      "kept": 8,
+      "total": 8,
       "forced": 0,
-      "note": "Kept: Ashurst, Stella, Torquay (ٹورکی), furze (فرز), larch (لارچ), beech (بیچ), water-colours (آبی رنگ). Coded and left out: the moor, the pine.",
-      "noteUr": "برقرار: ایشرسٹ، سٹیلا، ٹورکی، فرز، لارچ، بیچ، آبی رنگ۔ کوڈ کیے گئے اور شمار سے باہر: بیابان، صنوبر۔",
+      "note": "Kept: Ashurst, Stella, Torquay (ٹورکی), furze (فرز), larch (لارچ), beech (بیچ), pine (چبل), water-colours (آبی رنگ). Coded and left out: the moor.",
+      "noteUr": "برقرار: ایشرسٹ، سٹیلا، ٹورکی، فرز، لارچ، بیچ، صنوبر (چبل)، آبی رنگ۔ کوڈ کیا گیا اور شمار سے باہر: بیابان۔",
       "forcedNote": "None: فرز، لارچ، بیچ are transliterated plant names, readable though unfamiliar.",
       "forcedNoteUr": "کوئی نہیں: فرز، لارچ، بیچ صوتی املا میں پودوں کے نام ہیں، اجنبی سہی مگر پڑھے جا سکتے ہیں۔"
     }
@@ -340,8 +330,8 @@
     "paratext": "The epigraph is given as ’’سیب کا درخت، موسیقی اور سنہرے شگوفے‘‘ (ہیپالٹس): \"singing\" becomes music, \"the gold\" becomes golden blossoms, and Murray and Euripides are dropped from the attribution.",
     "paratextUr": "سرنامہ ’’سیب کا درخت، موسیقی اور سنہرے شگوفے‘‘ (ہیپالٹس) کی صورت میں دیا گیا ہے: \"singing\" موسیقی بن جاتا ہے، \"the gold\" سنہرے شگوفے، اور حوالے سے مرے اور یوری پیڈیز گرا دیے گئے ہیں۔"
   },
-  "tendencies": "The translation follows the source clause by clause and in order, keeping its observations, its English names and plants, and its closing irony.\n\n- **Sentence architecture.** The source's 6 sentences become 11 Urdu sentences, but the breaks fall at the source's own joints (#3.1 after \"If she had long lost…\", #5.3 before \"who sketched\"), and the order of clauses is kept throughout (14 of 14 pairs).\n- **Long periods held.** #4 and #5 are carried as single long sentences with relative clauses after the verb, and in #5.3 a relative clause (اور جو …) stands as a sentence of its own.\n- **Article and punctuation.** ایک renders the English article 4 times out of 7 (1.8 per 100 source words). The source's dash in #5.2 is kept (––); its semicolon in #5.1 becomes a comma.\n- **Names and plants.** Names and English plants are kept by transliteration (فرز، لارچ، بیچ). Only the moor is changed, into جنگل, three times.\n- **Register.** A literary Urdu close to the source's level, neither raised nor lowered.\n\nThe effect is that the reader follows Galsworthy's own sequence of observations, with the ironic turn of #5.3 intact, at the cost of a few long Urdu periods.",
-  "tendenciesUr": "ترجمہ ماخذ کی شق بہ شق اور ترتیب وار پیروی کرتا ہے، اور اس کے مشاہدات، اس کے انگریزی نام اور پودے، اور اس کا اختتامی طنز برقرار رکھتا ہے۔\n\n- **جملوں کی ساخت۔** ماخذ کے 6 جملے 11 اردو جملے بن جاتے ہیں، مگر وقفے ماخذ کے اپنے جوڑوں پر آتے ہیں (#3.1 میں \"If she had long lost…\" کے بعد، #5.3 میں \"who sketched\" سے پہلے)، اور شقوں کی ترتیب شروع سے آخر تک برقرار ہے (14 میں سے 14 جوڑے)۔\n- **طویل جملے برقرار۔** #4 اور #5 اکیلے طویل جملوں کی صورت میں لائے گئے ہیں جن میں موصولی شقیں فعل کے بعد آتی ہیں، اور #5.3 میں ایک موصولی شق (اور جو …) الگ جملے کی صورت کھڑی ہے۔\n- **حرفِ تنکیر اور رموزِ اوقاف۔** \"ایک\" انگریزی حرفِ تنکیر کا ترجمہ 7 میں سے 4 بار کرتا ہے (ماخذ کے فی 100 الفاظ 1.8)۔ #5.2 میں ماخذ کا ڈیش برقرار ہے (––)، اور #5.1 کا سیمی کولن کاما بن جاتا ہے۔\n- **نام اور پودے۔** نام اور انگریزی پودے صوتی املا سے برقرار رکھے گئے ہیں (فرز، لارچ، بیچ)۔ صرف بیابان بدلا گیا ہے، تین بار جنگل میں۔\n- **سطحِ کلام۔** ماخذ کی سطح کے قریب ایک ادبی اردو، نہ بلند کی گئی نہ پست۔\n\nنتیجہ یہ ہے کہ قاری گالزورتھی کے اپنے مشاہدات کے سلسلے کی پیروی کرتا ہے، اور #5.3 کا طنزیہ موڑ بھی سلامت رہتا ہے، اس قیمت پر کہ چند اردو جملے طویل ہو جاتے ہیں۔",
+  "tendencies": "The translation follows the source clause by clause and in order, keeping its observations, its English names and plants, and its closing irony.\n\n- **Sentence architecture.** The source's 6 sentences become 11 Urdu sentences, but the breaks fall at the source's own joints (#3.1 after \"If she had long lost…\", #5.3 before \"who sketched\"), and the order of clauses is kept throughout (14 of 14 pairs).\n- **Long periods held.** #4 and #5 are carried as single long sentences with relative clauses after the verb, and in #5.3 a relative clause (اور جو …) stands as a sentence of its own.\n- **Article and punctuation.** ایک renders the English article 4 times out of 7 (1.8 per 100 source words). The source's dash in #5.2 is kept (––); its semicolon in #5.1 becomes a comma.\n- **Names and plants.** Names and English plants are kept, by transliteration (فرز، لارچ، بیچ) or by an Urdu equivalent (چبل for the pine). Only the moor is changed, into جنگل, three times.\n- **Register.** A literary Urdu close to the source's level, neither raised nor lowered.\n\nThe effect is that the reader follows Galsworthy's own sequence of observations, with the ironic turn of #5.3 intact, at the cost of a few long Urdu periods.",
+  "tendenciesUr": "ترجمہ ماخذ کی شق بہ شق اور ترتیب وار پیروی کرتا ہے، اور اس کے مشاہدات، اس کے انگریزی نام اور پودے، اور اس کا اختتامی طنز برقرار رکھتا ہے۔\n\n- **جملوں کی ساخت۔** ماخذ کے 6 جملے 11 اردو جملے بن جاتے ہیں، مگر وقفے ماخذ کے اپنے جوڑوں پر آتے ہیں (#3.1 میں \"If she had long lost…\" کے بعد، #5.3 میں \"who sketched\" سے پہلے)، اور شقوں کی ترتیب شروع سے آخر تک برقرار ہے (14 میں سے 14 جوڑے)۔\n- **طویل جملے برقرار۔** #4 اور #5 اکیلے طویل جملوں کی صورت میں لائے گئے ہیں جن میں موصولی شقیں فعل کے بعد آتی ہیں، اور #5.3 میں ایک موصولی شق (اور جو …) الگ جملے کی صورت کھڑی ہے۔\n- **حرفِ تنکیر اور رموزِ اوقاف۔** \"ایک\" انگریزی حرفِ تنکیر کا ترجمہ 7 میں سے 4 بار کرتا ہے (ماخذ کے فی 100 الفاظ 1.8)۔ #5.2 میں ماخذ کا ڈیش برقرار ہے (––)، اور #5.1 کا سیمی کولن کاما بن جاتا ہے۔\n- **نام اور پودے۔** نام اور انگریزی پودے برقرار رکھے گئے ہیں، صوتی املا سے (فرز، لارچ، بیچ) یا اردو متبادل سے (صنوبر کے لیے چبل)۔ صرف بیابان بدلا گیا ہے، تین بار جنگل میں۔\n- **سطحِ کلام۔** ماخذ کی سطح کے قریب ایک ادبی اردو، نہ بلند کی گئی نہ پست۔\n\nنتیجہ یہ ہے کہ قاری گالزورتھی کے اپنے مشاہدات کے سلسلے کی پیروی کرتا ہے، اور #5.3 کا طنزیہ موڑ بھی سلامت رہتا ہے، اس قیمت پر کہ چند اردو جملے طویل ہو جاتے ہیں۔",
   "translatorProfile": "- **Strategy.** The source is followed closely, clause by clause and in order: most of its form is kept (proximity {proximity}), and a little of it is forced against Urdu syntax (structural mimicry {mimicry}). Accuracy codes dominate the few deviations, and the register follows the source.\n- **Deforming tendencies.** Qualitative impoverishment: two images softened (C2: #1, C3: #5.2).\n- **Apparent purpose.** It appears to be a faithful rendering for literary readers who want Galsworthy's text, its English names and plants included.\n- **Level.** Skilled professional. There are no grammar errors, and the sentences are followed through their turns, including the irony of #5.3. The deviations are slips of fact (the age in #3.2, the moor in #1, #4.2, #5.2) rather than misreadings.",
   "translatorProfileUr": "- **حکمتِ عملی۔** ماخذ کی قریب سے، شق بہ شق اور ترتیب وار پیروی کی گئی ہے: اس کی ہیئت کا بیشتر حصہ برقرار ہے (نزدیکی {proximity})، اور اس کا تھوڑا سا حصہ اردو نحو کے خلاف زبردستی رکھا گیا ہے (ہیئتی نقالی {mimicry})۔ چند انحرافات میں صحت کے کوڈ غالب ہیں، اور سطحِ کلام ماخذ کی پیروی کرتی ہے۔\n- **بگاڑ کے رجحانات۔** کیفی افلاس: دو نرم پڑے پیکر (C2: #1، C3: #5.2)۔\n- **ظاہری مقصد۔** بظاہر ان ادبی قارئین کے لیے ایک وفادار ترجمہ جو گالزورتھی کا متن چاہتے ہیں، اس کے انگریزی ناموں اور پودوں سمیت۔\n- **سطح۔** ماہر پیشہ ور۔ قواعد کی کوئی غلطی نہیں، اور جملوں کی ان کے موڑوں سمیت پیروی کی گئی ہے، #5.3 کے طنز سمیت۔ انحرافات حقیقت کی لغزشیں ہیں (#3.2 میں عمر، #1، #4.2، #5.2 میں بیابان)، غلط قرأتیں نہیں۔",
   "decision": "",
