@@ -1109,6 +1109,78 @@ export const STRINGS = {
 "Rhythm and the shape of sentences are described under Stylistic tendencies and count only through the deviations they cause. The translator's apparent purpose and level of skill are the assessor's judgement. They are useful to a publisher deciding whom to commission, but they are not measurements, and the profile grounds them in the segments where they show.",
 "آہنگ اور جملوں کی ساخت اسلوبی رجحانات کے تحت بیان کی جاتی ہے، اور صرف انھی انحرافات کے ذریعے شمار ہوتی ہے جو وہ پیدا کرتی ہے۔ مترجم کا ظاہری مقصد اور اس کی مہارت کی سطح جائزہ نگار کی رائے ہے۔ یہ کسی ناشر کے لیے مفید ہے جو طے کر رہا ہو کہ ترجمہ کس سے کروائے، لیکن یہ پیمائش نہیں، اور خاکہ انھیں ان قطعات پر قائم کرتا ہے جہاں یہ ظاہر ہوتی ہیں۔"
 ],
+"lang.English": [
+"English",
+"انگریزی"
+],
+"lang.Urdu": [
+"Urdu",
+"اردو"
+],
+"lang.French": [
+"French",
+"فرانسیسی"
+],
+"lang.German": [
+"German",
+"جرمن"
+],
+"lang.Russian": [
+"Russian",
+"روسی"
+],
+"lang.Spanish": [
+"Spanish",
+"ہسپانوی"
+],
+"lang.Italian": [
+"Italian",
+"اطالوی"
+],
+"lang.Persian": [
+"Persian",
+"فارسی"
+],
+"lang.Arabic": [
+"Arabic",
+"عربی"
+],
+"lang.Japanese": [
+"Japanese",
+"جاپانی"
+],
+"lang.Chinese": [
+"Chinese",
+"چینی"
+],
+"lang.Portuguese": [
+"Portuguese",
+"پرتگالی"
+],
+"lang.Turkish": [
+"Turkish",
+"ترکی"
+],
+"lang.Greek": [
+"Greek",
+"یونانی"
+],
+"lang.Latin": [
+"Latin",
+"لاطینی"
+],
+"lang.Hindi": [
+"Hindi",
+"ہندی"
+],
+"lang.Punjabi": [
+"Punjabi",
+"پنجابی"
+],
+"lang.Sanskrit": [
+"Sanskrit",
+"سنسکرت"
+],
 "sbs.merged": [
 "(merged into #{n})",
 "(#{n} میں ضم)"

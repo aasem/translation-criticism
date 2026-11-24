@@ -76,11 +76,11 @@ pytest core/tests
 
 To change the method, edit `method.json` (and the schema if the format changes), run `build-js`, then re-run every report under the new method.
 
-## Report format (schema 4)
+## Report format (schema 5)
 
 | Field | Meaning |
 | --- | --- |
-| `schema` | Format version, `4` |
+| `schema` | Format version, `5` (Urdu twins: see Urdu edition) |
 | `id`, `title`, `subtitle`, `date` | Identity and heading; `id` is the file name, `date` is YYYY-MM-DD |
 | `author`, `work`, `originalWork`, `passage`, `tags` | Catalogue details (all searchable); `work` is the title shown on cards, `originalWork` the title in the original language |
 | `source`, `submission` | `{language, label, translator, text}` |
@@ -102,6 +102,10 @@ To change the method, edit `method.json` (and the schema if the format changes),
 | `suggestion` | `{ai, state, human}`. An AI rendering for every segment with a deviation and only for those. The second suggestion column is Asim Bakhshi's; `state` is `Not reviewed`, `Agrees with AI` or `Own suggestion`; the AI text is kept as generated |
 
 Deviation codes A1–A7, B1–B3 and C1–C5 are defined in `core/tc_core/method.json` and explained on the Method page. C4 (Interference) is a pattern reported under Stylistic tendencies and is never recorded on a segment.
+
+## Urdu edition
+
+Every prose and catalogue field has an Urdu twin with the same name plus `Ur` (`lead` and `leadUr`, a deviation's `note` and `noteUr`, …); the list is `urduTwins` in `core/tc_core/method.json`. The Urdu page shows a filled twin and falls back to English where it is empty; the source text, the translation and quoted source phrases are never twinned and stay as they are. In the Urdu interface the editor writes the twins. The validator warns, without blocking, on English fields with no Urdu yet. Language names, author tags and grade names are shown in Urdu too.
 
 ## Comparisons
 

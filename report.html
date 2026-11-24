@@ -44,7 +44,7 @@
 
 <script type="module">
 import { t as tt, tr, label, UR } from './assets/i18n.js';
-import { gridLegend, PROX_KEYS, PROX_MIN, proximity, isMimicry, gridSVG, SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide, normalize, TEXT_TYPES, labels, localize, editPath } from './assets/common.js';
+import { gridLegend, PROX_KEYS, PROX_MIN, proximity, isMimicry, gridSVG, SCORED, FINDING_SEVERITIES, REVIEW, agreement, fnToText, textToFn, CODES, SEVERITIES, DECISIONS, ACK, sevClass, decisionClass, esc, md, urduWrap, tally, worst, loadJSON, REPO, BRANCH, icon, figures, fill, htmlToMd, TOKENS, STAGES, isPublished, WEIGHTS, GRADES, gradeName, gradeClass, ACK_PUBLISHED, scoreRange, DECISION_ANCHOR, anchorText, outcomeMoved, scoreGuide, normalize, TEXT_TYPES, labels, localize, editPath, tagLabel, langName } from './assets/common.js';
 const H2 = (ic, t) => `<h2>${icon(ic)}${t}</h2>`;
 // "Basis." followed by report prose: inline in English; in Urdu the prose gets its own block,
 // so English prose keeps its own direction.
@@ -138,14 +138,14 @@ function header() {
       ${isPublished(r) ? `<span class="dec ${gradeClass(r.grade)}">${icon('scale')}${esc(tt('card.grade', { grade: gradeName(r.grade) }))}</span>`
         : `<span class="dec ${decisionClass(r.decision)}">${icon('gavel')}${esc(label('decision', r.decision))}</span>`}
       <span class="chip">${icon('layers')}${esc(tt('report.typeChip', { type: label('textType', r.textType) }))}</span>
-      <span class="chip">${icon('globe')}${esc(r.source?.language)} → ${esc(r.submission?.language)}</span>
-      ${(r.tags || []).map((t) => `<a class="chip tag" href="./?q=${encodeURIComponent(t)}">${esc(t)}</a>`).join('')}
+      <span class="chip">${icon('globe')}${esc(langName(r.source?.language))} → ${esc(langName(r.submission?.language))}</span>
+      ${(r.tags || []).map((t) => `<a class="chip tag" href="./?q=${encodeURIComponent(t)}">${esc(tagLabel(t, original?.author, r.author))}</a>`).join('')}
       ${CMPS.map((c) => `<a class="chip" href="compare.html?id=${encodeURIComponent(c.id)}">${icon('columns')}${esc(tt('cmp.alsoIn'))}: ${esc(c.passage || c.title)}</a>`).join('')}
     </div>`;
 }
 
 function passages() {
-  const head = (k, name) => `<h3>${name} (${esc(R[k]?.language || '')})${R[k]?.label ? ' - ' + esc(R[k].label) : ''}</h3>`;
+  const head = (k, name) => `<h3>${name} (${esc(langName(R[k]?.language || ''))})${R[k]?.label ? ' - ' + esc(R[k].label) : ''}</h3>`;
   let h = `${H2('doc', tt('h.passages'))}`;
   h += head('source', tt('h.source')) + `<div class="passage" dir="auto">${editing ? T('source.text', { rows: 10 }) : `<p>${urduWrap(esc(R.source.text))}</p>`}</div>`;
   h += head('submission', isPublished(R) ? tt('h.translation') : tt('h.submission')) + `<div class="passage ${editing ? '' : 'ur-block'}" ${editing ? '' : 'lang="ur" dir="rtl"'}>${editing ? T('submission.text', { rows: 12, ur: true }) : esc(R.submission.text)}</div>`;
@@ -210,7 +210,7 @@ function devExtras(d) {
 }
 function devCell(s, i) {
   if (!editing) {
-    const ds = (s.deviations || []).map((d) => `<p dir="auto"><span class="dev-tag">${esc(d.code)} · ${esc(label('sev', d.severity))}.</span> ${md(d.note).replace(/^<p>|<\/p>$/g, '')}</p>${devExtras(d)}`).join('');
+    const ds = (s.deviations || []).map((d) => `<p dir="auto"><span class="dev-tag" dir="auto">${esc(d.code)} · ${esc(label('sev', d.severity))}.</span> ${md(d.note).replace(/^<p>|<\/p>$/g, '')}</p>${devExtras(d)}`).join('');
     return ds || `<p>${tt('sbs.none')}</p>`;
   }
   const ds = (s.deviations || []).map((d, j) => `
@@ -330,6 +330,7 @@ function render() {
   if (!editing) R = localize(R);
   try { renderInner(); } finally { R = saved; }
   scrollTo(0, y);
+  status();
 }
 function renderInner() {
   document.title = tt('report.title', { title: R.title });
@@ -344,7 +345,6 @@ function renderInner() {
   ].join('');
   if (editing) document.querySelectorAll('textarea').forEach(grow);
   $('b-edit').innerHTML = editing ? icon('check') + 'Done' : icon('pen') + 'Edit';
-  status();
 }
 function grow(t) { t.style.height = 'auto'; t.style.height = t.scrollHeight + 4 + 'px'; }
 

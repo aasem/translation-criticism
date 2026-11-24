@@ -77,7 +77,29 @@ export function esc(s) {
 // Wrap runs of Arabic-script text so they get the Urdu font (Amiri) and RTL direction.
 const AR = '؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿';
 const RUN = new RegExp(`[${AR}](?:[${AR}\\s…،؛؟۔.,:!()"'-]*[${AR}؟۔])?`, 'g');
+// Mixed-script text. In English-dominant text each Urdu run is isolated as right-to-left; in
+// Urdu-dominant text (the Urdu twins) each Latin run is isolated as left-to-right instead, so that a
+// dir="auto" container takes its direction from the Urdu (elements with their own dir are skipped).
+const ARABIC = /[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/g;
+const LATIN = /[A-Za-z\u00C0-\u024F]/g;
+const LATIN_RUN = /[A-Za-z\u00C0-\u024F][^<&\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]*/g;
+// Dominant script by words; on the Urdu page a tie counts as Urdu (a short Urdu item with an English gloss).
+export const urduDominant = (text) => {
+  const ws = String(text).split(/\s+/);
+  const ur = ws.filter((w) => /[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/.test(w)).length;
+  const la = ws.filter((w) => /[A-Za-z\u00C0-\u024F]/.test(w)).length;
+  return ur > la || (UR && ur > 0 && ur === la);
+};
 export function urduWrap(html) {
+  const plain = String(html).replace(/<[^>]+>/g, '');
+  if (urduDominant(plain)) {
+    return html.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, text) =>
+      tag ? tag : text.split(/(&[#\w]+;)/).map((part, i) => (i % 2 ? part : part.replace(LATIN_RUN, (r) => {
+        let t = r.replace(/[\s,]+$/, '');
+        // Leave an unbalanced closing bracket outside the isolate, with its opening partner.
+        while (/[)\]]$/.test(t) && (t.match(/[(\[]/g) || []).length < (t.match(/[)\]]/g) || []).length) t = t.slice(0, -1).replace(/[\s,]+$/, '');
+        return `<span dir="ltr">${t}</span>${r.slice(t.length)}`; }))).join(''));
+  }
   // Only touch text outside tags.
   return html.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, text) =>
     tag ? tag : text.replace(RUN, (r) => `<span class="ur" lang="ur" dir="rtl">${r}</span>`)
@@ -461,3 +483,8 @@ export function cmpFigures(cmp, reports) {
   return f;
 }
 export const fillCmp = (text, f) => String(text ?? '').replace(/\{(\w+(?:\.\d+)?)\}/g, (m, k) => (k in f ? String(f[k]) : m));
+
+// Tag chips: on the Urdu page a tag that names the author shows the Urdu name, a language tag its Urdu name.
+export const tagLabel = (tag, enAuthor, author) => (UR && tag === enAuthor && author ? author : UR ? labelLang(tag) : tag);
+const labelLang = (x) => { const k = `lang.${x}`; const v = t(k); return v === k ? x : v; };
+export const langName = (x) => (UR ? labelLang(x) : x ?? '');

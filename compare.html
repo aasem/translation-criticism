@@ -25,7 +25,7 @@
 
 <script type="module">
 import { t as tt, tr, label, UR } from './assets/i18n.js';
-import { analyse, cmpFigures, groups, labels, localize, fillCmp, memberLabel, normalize, normalizeComparison, loadJSON, esc, md, urduWrap, icon, worst, sevClass,
+import { analyse, cmpFigures, groups, labels, localize, tagLabel, langName, fillCmp, memberLabel, normalize, normalizeComparison, loadJSON, esc, md, urduWrap, icon, worst, sevClass,
   gradeClass, decisionClass, gradeName, isPublished, gridSVG, gridLegend, REPO, BRANCH, METHOD } from './assets/common.js';
 
 const $ = (id) => document.getElementById(id);
@@ -43,7 +43,7 @@ const href = (r) => `report.html?id=${encodeURIComponent(r.id)}`;
 function devHtml(s) {
   if (s.mergedInto) return `<p class="muted">${esc(tt('sbs.merged', { n: s.mergedInto }))}</p>`;
   const ds = (s.deviations || []).map((d) => {
-    let x = `<p dir="auto"><span class="dev-tag">${esc(d.code)} · ${esc(label('sev', d.severity))}.</span> ${md(d.note).replace(/^<p>|<\/p>$/g, '')}</p>`;
+    let x = `<p dir="auto"><span class="dev-tag" dir="auto">${esc(d.code)} · ${esc(label('sev', d.severity))}.</span> ${md(d.note).replace(/^<p>|<\/p>$/g, '')}</p>`;
     if ((d.functions || []).length) x += `<div class="fn-head">${tt('fn.head')}</div><ul class="fn-test">${d.functions.map((f) => `<li class="${f.kept ? '' : 'lost'}" dir="auto">${urduWrap(esc(f.fn))}</li>`).join('')}</ul>`;
     if (d.gain?.trim()) x += `<p class="gain" dir="auto"><b>${tt('gain.head')}</b> ${md(d.gain).replace(/^<p>|<\/p>$/g, '')}</p>`;
     if (d.compensatedBy) x += `<p class="gain"><b>${tt('comp.head', { n: d.compensatedBy })}</b></p>`;
@@ -61,7 +61,7 @@ const worstOf = (r, i) => worst(sent(r, i).flatMap((s) => s.deviations || []));
 const lowestText = (seg) => (seg.tie ? `<span class="muted">${tt('cmp.tie')}</span>` : `<strong>${seg.lowest.map((k) => esc(A.members[k].label)).join(' · ')}</strong>`);
 
 function header() {
-  const langs = `${esc(RS[0].source?.language)} → ${esc(RS[0].submission?.language)}`;
+  const langs = `${esc(langName(RS[0].source?.language))} → ${esc(langName(RS[0].submission?.language))}`;
   return `<h1 dir="auto">${esc(C.title)}</h1>
     <p class="subtitle" dir="auto">${esc(C.subtitle)}</p>
     <p class="byline"><span>${icon('calendar')}${esc(C.date)}</span></p>
@@ -70,13 +70,13 @@ function header() {
       <span class="chip">${icon('layers')}${esc(tt('cmp.chip', { n: RS.length }))}</span>
       <span class="chip">${icon('layers')}${esc(tt('report.typeChip', { type: label('textType', RS[0].textType) }))}</span>
       <span class="chip">${icon('globe')}${langs}</span>
-      ${(C.tags || []).map((x) => `<a class="chip tag" href="./?q=${encodeURIComponent(x)}">${esc(x)}</a>`).join('')}
+      ${(C.tags || []).map((x) => `<a class="chip tag" href="./?q=${encodeURIComponent(x)}">${esc(tagLabel(x, C._author, C.author))}</a>`).join('')}
     </div>`;
 }
 
 function passages() {
   let h = H2('doc', tt('h.passages'));
-  h += `<h3>${tt('h.source')} (${esc(RS[0].source?.language || '')})${RS[0].source?.label ? ' - ' + esc(RS[0].source.label) : ''}</h3><div class="passage" dir="auto"><p>${urduWrap(esc(RS[0].source.text))}</p></div>`;
+  h += `<h3>${tt('h.source')} (${esc(langName(RS[0].source?.language || ''))})${RS[0].source?.label ? ' - ' + esc(RS[0].source.label) : ''}</h3><div class="passage" dir="auto"><p>${urduWrap(esc(RS[0].source.text))}</p></div>`;
   RS.forEach((r, k) => {
     h += `<details class="cmp-passage"><summary><h3>${esc(A.members[k].label)}</h3></summary><div class="passage ur-block" lang="ur" dir="rtl">${esc(r.submission.text)}</div></details>`;
   });
@@ -167,7 +167,7 @@ function render() {
 const sq = (s) => String(s || '').replace(/\s+/g, '');
 try {
   if (!id) throw new Error('No comparison id in the address.');
-  C = localize(normalizeComparison(await loadJSON(`comparisons/${id}.json`)), 'comparison');
+  { const raw = normalizeComparison(await loadJSON(`comparisons/${id}.json`)); C = { ...localize(raw, 'comparison'), _author: raw.author }; }
   RS = (await Promise.all(C.members.map((m) => loadJSON(`reports/${m.id}.json`)))).map((r) => localize(normalize(r)));
   const sj = (r) => groups(r).map((g) => sq(g.map((s) => s.source).join('')));
   const bad = RS.find((r) => sj(r).length !== sj(RS[0]).length || sj(r).some((x, i) => x !== sj(RS[0])[i]));

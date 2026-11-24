@@ -162,6 +162,7 @@ def with_urdu():
     from tc_core import normalize_comparison
     r = canonical(load(REPORTS[0]))[0]
     r["leadUr"] = "اردو خلاصہ"
+    r["tendenciesUr"] = ""  # one field left untranslated
     r["segments"][0]["deviations"][0]["noteUr"] = "اردو نوٹ" if r["segments"][0]["deviations"] else ""
     r["proximity"]["sentences"]["noteUr"] = "جملے"
     r["submission"]["translatorUr"] = "مترجم"

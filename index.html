@@ -63,7 +63,7 @@ for (const a of document.querySelectorAll('a.mail')) {
 </script>
 <script type="module">
 import { t, tr, label, UR } from './assets/i18n.js';
-import { proxBar, gridLegend, proximity, gridSVG, loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon, isPublished, GRADES, gradeName, gradeClass, scoreRange, outcomeMoved, scoreGuide, analyse, normalize, normalizeComparison, localize } from './assets/common.js';
+import { proxBar, gridLegend, proximity, gridSVG, loadJSON, esc, urduWrap, tally, decisionClass, DECISIONS, icon, isPublished, GRADES, gradeName, gradeClass, scoreRange, outcomeMoved, scoreGuide, analyse, normalize, normalizeComparison, localize, tagLabel, langName } from './assets/common.js';
 
 const $ = (id) => document.getElementById(id);
 let reports = [], comparisons = [];
@@ -132,9 +132,9 @@ function render() {
       <h2 class="rc-title">${esc(r.passage || r.work)}</h2>
       ${r.passage && r.work ? `<div class="rc-work">${esc(r.work)}</div>` : ''}
       <div class="rc-people">
-        <span class="badge person"><small>${esc(r.source?.language || '')}</small>${esc(r.source?.label || r.source?.translator || T('card.original'))}</span>
+        <span class="badge person"><small>${esc(langName(r.source?.language || ''))}</small>${esc(r.source?.label || r.source?.translator || T('card.original'))}</span>
         <span class="rc-arrow">${icon('arrow')}</span>
-        <span class="badge person tr"><small>${esc(r.submission?.language || '')}</small>${esc(r.submission?.translator || T('card.unnamed'))}</span>
+        <span class="badge person tr"><small>${esc(langName(r.submission?.language || ''))}</small>${esc(r.submission?.translator || T('card.unnamed'))}</span>
       </div>
       <div class="rc-verdict ${tone}">
         <span class="rc-outcome"><span class="rc-outcome-label">${isPublished(r) ? `${icon('scale')}${esc(T('card.grade', { grade: gradeName(r.grade) }))}` : `${icon('gavel')}${esc(label('decision', r.decision))}`}</span>${
@@ -151,7 +151,7 @@ function render() {
       <div class="rc-foot">
         <span>${icon('calendar')}${esc(r.date)}</span>
         ${pub ? `<span>${icon('book')}${esc(pub)}</span>` : ''}
-        ${(r.tags || []).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}
+        ${(r.tags || []).map((x) => `<span class="tag">${esc(tagLabel(x, r._author, r.author))}</span>`).join('')}
       </div>
       ${ex ? (isUrdu(ex) ? `<div class="excerpt ur-block" lang="ur" dir="rtl">${ex}</div>` : `<div class="excerpt">${urduWrap(ex)}</div>`) : ''}
     </a>`;
@@ -176,7 +176,7 @@ function cmpCard(c) {
     ${c.passage && c.work ? `<div class="rc-work">${esc(c.work)}</div>` : ''}
     <div class="rc-work">${esc(T('cmp.card', { n: a.members.length }))}</div>
     <div class="rc-members">${rows}</div>
-    <div class="rc-foot"><span>${icon('calendar')}${esc(c.date)}</span>${(c.tags || []).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}</div>
+    <div class="rc-foot"><span>${icon('calendar')}${esc(c.date)}</span>${(c.tags || []).map((x) => `<span class="tag">${esc(tagLabel(x, c._author, c.author))}</span>`).join('')}</div>
   </a>`;
 }
 
@@ -189,13 +189,13 @@ try {
   const { reports: ids } = await loadJSON('reports/index.json');
   const loaded = await Promise.allSettled(ids.map((id) => loadJSON(`reports/${id}.json`)));
   // On the Urdu page the cards read the Urdu twins; search covers both languages.
-  reports = loaded.filter((x) => x.status === 'fulfilled').map((x) => ({ ...localize(x.value), _hay: haystack(x.value) + '   ' + haystack(localize(x.value)) }));
+  reports = loaded.filter((x) => x.status === 'fulfilled').map((x) => ({ ...localize(x.value), _author: x.value.author, _hay: haystack(x.value) + '   ' + haystack(localize(x.value)) }));
   reports.sort((a, b) => String(b.date).localeCompare(String(a.date)));
   try {
     const byId = Object.fromEntries(reports.map((r) => [r.id, normalize(r)]));
     const { comparisons: cids } = await loadJSON('comparisons/index.json');
     const cs = await Promise.allSettled(cids.map((c) => loadJSON(`comparisons/${c}.json`)));
-    comparisons = cs.filter((x) => x.status === 'fulfilled').map((x) => localize(normalizeComparison(x.value), 'comparison'))
+    comparisons = cs.filter((x) => x.status === 'fulfilled').map((x) => ({ ...localize(normalizeComparison(x.value), 'comparison'), _author: x.value.author }))
       .filter((c) => c.members.every((m) => byId[m.id])).map((c) => {
         const rs = c.members.map((m) => byId[m.id]); const a = analyse(c, rs);
         return { ...c, _cmp: true, _rs: rs, _a: a, _hay: [c.title, c.author, c.work, c.originalWork, c.passage, ...(c.tags || []), ...a.members.map((m) => m.label), c.lead, c.tendencies].filter(Boolean).join('   ').toLowerCase() };
