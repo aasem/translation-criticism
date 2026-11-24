@@ -375,7 +375,7 @@
       "properties": {
         "rule": {
           "type": "string",
-          "default": "sentence-v1"
+          "default": "sentence-v2"
         },
         "exceptions": {
           "type": "string",

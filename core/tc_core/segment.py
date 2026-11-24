@@ -1,4 +1,4 @@
-"""Deterministic segmentation of the source (rule sentence-v1 in method.json).
+"""Deterministic segmentation of the source (the rule named in method.json, now sentence-v2).
 
 One source sentence is one segment, with no length cap unless method.json sets
 maxWords. The same text always gives the same segments, so reports and comparisons
@@ -14,6 +14,20 @@ from .scoring import words
 _END = re.compile(r"([.?!…]+[\"'”’)\]]*)(\s+)")
 _OPENERS = "\"'“‘([«"
 _SPACE = re.compile(r"\s+")
+_CLOSERS = "\"'”’"
+
+
+def _reporting(rest: str) -> bool:
+    """A reporting verb (said, exclaimed, asked …) within the first few words of what follows."""
+    st = _settings()
+    verbs = set(st["reportingVerbs"])
+    for w in rest.split()[: st["reportingWindow"]]:
+        w = w.strip(".,;:!?—–-\"'“”‘’()[]").lower()
+        if w in verbs:
+            return True
+        if w and not w.isalpha():
+            break
+    return False
 
 
 def _settings() -> dict:
@@ -31,6 +45,8 @@ def sentences(text: str) -> list[str]:
             continue
         if not nxt or not (nxt.isupper() or nxt in _OPENERS):
             continue
+        if m.group(1)[-1] in _CLOSERS and _reporting(text[m.end():]):
+            continue  # quoted speech followed by its reporting clause: one sentence
         out.append(text[start:m.end(1)].strip())
         start = m.end()
     tail = (text or "")[start:].strip()

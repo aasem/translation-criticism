@@ -74,7 +74,7 @@ def upgrade(report: dict) -> tuple[dict, list[str]]:
         r["schema"] = 2
         notes.append("schema 1 -> 2")
     if r.get("schema", 1) < 3:
-        r.setdefault("segmentation", {"rule": "sentence-v1", "exceptions": ""})
+        r.setdefault("segmentation", {"rule": "sentence-v2", "exceptions": ""})
         r["schema"] = 3
         notes.append("schema 2 -> 3 (segmentation field)")
     if r.get("schema", 1) < 4:

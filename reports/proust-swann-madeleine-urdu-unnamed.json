@@ -363,7 +363,7 @@
     }
   ],
   "segmentation": {
-    "rule": "sentence-v1",
+    "rule": "sentence-v2",
     "exceptions": ""
   },
   "aiSuggestions": {
