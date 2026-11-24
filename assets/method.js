@@ -254,6 +254,48 @@ export const METHOD = {
     "B.N": "language (B) deviations of translation N",
     "C.N": "style (C) deviations of translation N",
     "wins.N": "segments where translation N has the lowest penalty, alone or shared, short of a full tie"
+  },
+  "segmentation": {
+    "rule": "sentence-v1",
+    "about": "One source sentence is one segment, with no length cap. A sentence ends at . ? ! or … (with any closing quotes or brackets) followed by a space and then a capital letter or an opening quote or bracket, except after a listed abbreviation. The source is segmented once and the segmentation is frozen: a held report's segments are never redrawn.",
+    "maxWords": null,
+    "splitOrder": [
+      ";",
+      ":",
+      "—",
+      "–",
+      ","
+    ],
+    "minWords": 6,
+    "abbreviations": [
+      "mr",
+      "mrs",
+      "ms",
+      "mme",
+      "mlle",
+      "m",
+      "dr",
+      "st",
+      "mt",
+      "messrs",
+      "vol",
+      "pp",
+      "p",
+      "no",
+      "cf",
+      "vs",
+      "etc",
+      "e.g",
+      "i.e",
+      "jr",
+      "sr",
+      "ch",
+      "fig",
+      "eq",
+      "ed",
+      "eds",
+      "al"
+    ]
   }
 };
 
@@ -498,8 +540,8 @@ export const SCHEMA = {
   },
   "properties": {
     "schema": {
-      "const": 2,
-      "default": 2
+      "const": 3,
+      "default": 3
     },
     "id": {
       "type": "string",
@@ -618,6 +660,26 @@ export const SCHEMA = {
         "$ref": "#/$defs/segment"
       },
       "default": []
+    },
+    "segmentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "default": {},
+      "description": "How the source was segmented. rule names the rule in method.json; exceptions says, in a line, where and why the segments depart from it (empty when they follow it).",
+      "properties": {
+        "rule": {
+          "type": "string",
+          "default": "sentence-v1"
+        },
+        "exceptions": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "required": [
+        "rule",
+        "exceptions"
+      ]
     },
     "aiSuggestions": {
       "type": "object",
@@ -816,6 +878,7 @@ export const SCHEMA = {
     "source",
     "submission",
     "segments",
+    "segmentation",
     "aiSuggestions",
     "textNotes",
     "lead",

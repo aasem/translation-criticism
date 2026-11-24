@@ -435,7 +435,9 @@ try {
   original = normalize(await loadJSON(path));
   R = structuredClone(original);
   const d = localStorage.getItem(DRAFT);
-  if (d) { try { R = normalize(JSON.parse(d)); } catch {} }
+  if (d) { try { const x = JSON.parse(d); R = normalize(x);
+    // A draft saved before a format change keeps the repository's newer fields.
+    if ((x.schema ?? 1) < original.schema && !x.segmentation) R.segmentation = structuredClone(original.segmentation); } catch {} }
   $('b-gh').href = `https://github.com/${REPO}/blob/${BRANCH}/${path}`;
   render();
   // Comparisons this report belongs to (shown as links in the header).

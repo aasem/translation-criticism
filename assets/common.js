@@ -374,6 +374,7 @@ export function upgrade(r) {
     }
     delete r._comment; r.schema = 2;
   }
+  if (r.schema < 3) { r.segmentation ??= { rule: 'sentence-v1', exceptions: '' }; r.schema = 3; }
   const other = r.stage === 'Published' ? ['decision', 'decisionBasis', 'publisherNote'] : ['grade', 'gradeBasis', 'readerNote'];
   if (r[other[0]] && !other.slice(1).some((k) => String(r[k] || '').trim())) r[other[0]] = '';
   return r;

@@ -252,5 +252,47 @@
     "B.N": "language (B) deviations of translation N",
     "C.N": "style (C) deviations of translation N",
     "wins.N": "segments where translation N has the lowest penalty, alone or shared, short of a full tie"
+  },
+  "segmentation": {
+    "rule": "sentence-v1",
+    "about": "One source sentence is one segment, with no length cap. A sentence ends at . ? ! or … (with any closing quotes or brackets) followed by a space and then a capital letter or an opening quote or bracket, except after a listed abbreviation. The source is segmented once and the segmentation is frozen: a held report's segments are never redrawn.",
+    "maxWords": null,
+    "splitOrder": [
+      ";",
+      ":",
+      "—",
+      "–",
+      ","
+    ],
+    "minWords": 6,
+    "abbreviations": [
+      "mr",
+      "mrs",
+      "ms",
+      "mme",
+      "mlle",
+      "m",
+      "dr",
+      "st",
+      "mt",
+      "messrs",
+      "vol",
+      "pp",
+      "p",
+      "no",
+      "cf",
+      "vs",
+      "etc",
+      "e.g",
+      "i.e",
+      "jr",
+      "sr",
+      "ch",
+      "fig",
+      "eq",
+      "ed",
+      "eds",
+      "al"
+    ]
   }
 }

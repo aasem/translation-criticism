@@ -147,6 +147,19 @@ def rule_issues(r: dict) -> list[Issue]:
         elif steps:
             W(key, f"{r.get(key)!r} is moved one step from band {band}; the basis must say why")
 
+    # Segmentation: the rule in method.json, or declared exceptions.
+    seg = r.get("segmentation") or {}
+    if segs and seg.get("rule") == M.method()["segmentation"]["rule"]:
+        from .segment import departures, describe
+        dep = departures(r)
+        if (dep["split"] or dep["joined"]) and not (seg.get("exceptions") or "").strip():
+            E("segmentation", f"segments depart from {seg['rule']} ({describe(dep)}); follow the rule "
+                              "(python -m tc_core segment) or state the exceptions")
+        if not (dep["split"] or dep["joined"]) and (seg.get("exceptions") or "").strip():
+            W("segmentation/exceptions", "exceptions are stated but the segments follow the rule")
+    elif segs and seg.get("rule") != M.method()["segmentation"]["rule"]:
+        E("segmentation/rule", f"unknown rule {seg.get('rule')!r}")
+
     if r.get("stage") == "Published" and not any((r.get("publication") or {}).values()):
         W("publication", "published translation with no publication details")
     return out

@@ -239,8 +239,8 @@
   },
   "properties": {
     "schema": {
-      "const": 2,
-      "default": 2
+      "const": 3,
+      "default": 3
     },
     "id": {
       "type": "string",
@@ -359,6 +359,26 @@
         "$ref": "#/$defs/segment"
       },
       "default": []
+    },
+    "segmentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "default": {},
+      "description": "How the source was segmented. rule names the rule in method.json; exceptions says, in a line, where and why the segments depart from it (empty when they follow it).",
+      "properties": {
+        "rule": {
+          "type": "string",
+          "default": "sentence-v1"
+        },
+        "exceptions": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "required": [
+        "rule",
+        "exceptions"
+      ]
     },
     "aiSuggestions": {
       "type": "object",
@@ -557,6 +577,7 @@
     "source",
     "submission",
     "segments",
+    "segmentation",
     "aiSuggestions",
     "textNotes",
     "lead",

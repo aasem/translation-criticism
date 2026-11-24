@@ -3,6 +3,7 @@
     python -m tc_core validate [ROOT]          validate every report (exit 1 on errors)
     python -m tc_core normalize FILE... [--write]
     python -m tc_core score FILE...            print the summary as JSON
+    python -m tc_core segment FILE|-          source segments by the rule, as JSON (a report file, or plain text on stdin)
     python -m tc_core compare ID [ROOT]        print a comparison's analysis as JSON
     python -m tc_core build-js [ROOT]          regenerate assets/method.js from method.json and the schema
 """
@@ -37,6 +38,7 @@ def main(argv=None) -> int:
     v.add_argument("--json", action="store_true")
     n = sub.add_parser("normalize"); n.add_argument("files", nargs="+"); n.add_argument("--write", action="store_true")
     s = sub.add_parser("score"); s.add_argument("files", nargs="+")
+    sg = sub.add_parser("segment"); sg.add_argument("file")
     cp = sub.add_parser("compare"); cp.add_argument("id"); cp.add_argument("root", nargs="?", default=str(REPO))
     b = sub.add_parser("build-js"); b.add_argument("root", nargs="?", default=str(REPO))
     b.add_argument("--check", action="store_true", help="fail if assets/method.js is out of date")
@@ -69,6 +71,19 @@ def main(argv=None) -> int:
     if a.cmd == "score":
         print(json.dumps([summary(canonical(json.loads(Path(f).read_text(encoding="utf-8")))[0]) for f in a.files],
                          indent=2, ensure_ascii=False))
+        return 0
+    if a.cmd == "segment":
+        from .segment import departures, segment
+        raw = sys.stdin.read() if a.file == "-" else Path(a.file).read_text(encoding="utf-8")
+        try:
+            r = json.loads(raw)
+        except ValueError:
+            r = None
+        text = r["source"]["text"] if isinstance(r, dict) else raw
+        out = {"rule": method()["segmentation"]["rule"], "segments": [{"n": i + 1, "source": s} for i, s in enumerate(segment(text))]}
+        if isinstance(r, dict) and r.get("segments"):
+            out["departures"] = departures(r)
+        print(json.dumps(out, indent=2, ensure_ascii=False))
         return 0
     if a.cmd == "compare":
         from .compare import analyse, consistency

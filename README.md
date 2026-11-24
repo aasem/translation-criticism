@@ -69,17 +69,18 @@ pip install -e "core[test]"
 python -m tc_core validate              # every report; exits 1 on errors
 python -m tc_core normalize FILE --write
 python -m tc_core score FILE            # summary as JSON
+python -m tc_core segment FILE          # source segments by the rule (report file, or text on stdin with -)
 python -m tc_core build-js              # after changing method.json or the schema
 pytest core/tests
 ```
 
 To change the method, edit `method.json` (and the schema if the format changes), run `build-js`, then re-run every report under the new method.
 
-## Report format (schema 2)
+## Report format (schema 3)
 
 | Field | Meaning |
 | --- | --- |
-| `schema` | Format version, `2` |
+| `schema` | Format version, `3` |
 | `id`, `title`, `subtitle`, `date` | Identity and heading; `id` is the file name, `date` is YYYY-MM-DD |
 | `author`, `work`, `originalWork`, `passage`, `tags` | Catalogue details (all searchable); `work` is the title shown on cards, `originalWork` the title in the original language |
 | `source`, `submission` | `{language, label, translator, text}` |
@@ -96,6 +97,7 @@ To change the method, edit `method.json` (and the schema if the format changes),
 | `textNotes` | Report-specific notes on the texts only (transcription, misprints, segmentation). Everything general is on the Method page |
 | `aiSuggestions` | `{model, date}` of the AI suggestions |
 | `segments[]` | `{n, source, submission, mergedInto, deviations, suggestion}`. `n` runs 1, 2, 3…; the segment texts joined must equal the passages. `mergedInto` is the earlier segment whose target sentence also renders this source sentence (its `submission` is then empty), otherwise `null` |
+| `segmentation` | `{rule, exceptions}`. `rule` is `sentence-v1`: one source sentence is one segment, with no length cap (defined in `method.json`; `python -m tc_core segment FILE` gives the segments). `exceptions` says in a line where and why the segments depart from the rule; the validator rejects undeclared departures. Reports segmented before the rule keep their segments and state the departures |
 | `deviations[]` | `{code, severity, note, functions, gain, compensatedBy}`. Severity is Critical, Major, Minor or Neutral (weight 0). `functions` is the function test `[{fn, kept}]`; `gain` is what a transposition adds (never scored); `compensatedBy` is the segment that makes good a Neutral loss, otherwise `null` |
 | `suggestion` | `{ai, state, human}`. An AI rendering for every segment with a deviation and only for those. The second suggestion column is Asim Bakhshi's; `state` is `Not reviewed`, `Agrees with AI` or `Own suggestion`; the AI text is kept as generated |
 

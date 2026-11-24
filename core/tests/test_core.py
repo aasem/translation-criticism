@@ -101,7 +101,7 @@ def test_files_are_canonical(p):
 
 def test_upgrade_moves_merge_marker():
     r, notes = canonical({"schema": 1, "segments": [{"n": 2, "submission": "(merged into #1)"}]})
-    assert r["segments"][0]["mergedInto"] == 1 and r["segments"][0]["submission"] == "" and r["schema"] == 2
+    assert r["segments"][0]["mergedInto"] == 1 and r["segments"][0]["submission"] == "" and r["schema"] == 3
 
 
 # ---- the validator catches mistakes ----

@@ -1,5 +1,5 @@
 {
-  "schema": 2,
+  "schema": 3,
   "id": "melville-moby-dick-quarter-deck-urdu-askari",
   "title": "Translation Assessment: Melville's Quarter-Deck Speech from Moby-Dick in Urdu",
   "subtitle": "An editorial assessment report for interested readers and publishers. Segment-level deviation analysis on an error typology adapted from Multidimensional Quality Metrics, the translation industry's standard framework, for an expressive (literary) text, with a descriptive translation-studies profile of the translator.",
@@ -480,6 +480,10 @@
       }
     }
   ],
+  "segmentation": {
+    "rule": "sentence-v1",
+    "exceptions": "Segmented before rule sentence-v1 and kept as held: #9, #11, #13, #15 end inside a sentence."
+  },
   "aiSuggestions": {
     "model": "Claude Opus 5.5",
     "date": "2026-11-22"
