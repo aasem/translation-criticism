@@ -1,0 +1,350 @@
+{
+  "schema": 5,
+  "id": "calvino-baron-trees-countryside-urdu-mufti",
+  "title": "Translation Assessment: Calvino's Sounds of the Countryside in Urdu",
+  "titleUr": "ترجمے کا جائزہ: کالوینو کی دیہات کی آوازیں اردو میں",
+  "subtitle": "An editorial assessment report for interested readers and publishers. Segment-level deviation analysis on an error typology adapted from Multidimensional Quality Metrics, the translation industry's standard framework, for an expressive (literary) text, with a descriptive translation-studies profile of the translator.",
+  "subtitleUr": "دلچسپی رکھنے والے قارئین اور ناشرین کے لیے ایک اداراتی جائزہ رپورٹ۔ قطعہ بہ قطعہ انحرافات کا تجزیہ، غلطیوں کی ایک ایسی درجہ بندی پر جو ترجمے کی صنعت کے معیاری ڈھانچے ملٹی ڈائمینشنل کوالٹی میٹرکس (MQM) سے ماخوذ ہے، ایک اظہاری (ادبی) متن کے لیے، مترجم کے ایک توضیحی خاکے کے ساتھ۔",
+  "date": "2026-11-28",
+  "stage": "Published",
+  "textType": "Expressive",
+  "sampleLocation": "the passage on the sounds of the countryside at night",
+  "sampleLocationUr": "رات کے وقت دیہات کی آوازوں کا بیان",
+  "publication": {
+    "publisher": "City Press Bookshop",
+    "place": "Karachi",
+    "year": "2006",
+    "edition": "",
+    "isbn": "",
+    "pages": ""
+  },
+  "author": "Italo Calvino",
+  "authorUr": "اطالو کالوینو",
+  "work": "The Baron in the Trees",
+  "workUr": "درخت نشین",
+  "originalWork": "Il barone rampante (1957)",
+  "passage": "The sounds of the countryside at night",
+  "passageUr": "رات کے وقت دیہات کی آوازیں",
+  "tags": [
+    "Calvino",
+    "Italian"
+  ],
+  "source": {
+    "language": "English",
+    "label": "Colquhoun",
+    "labelUr": "کولکہون",
+    "translator": "Archibald Colquhoun",
+    "translatorUr": "آرچیبالڈ کولکہون",
+    "text": "There is the moment when the silence of the countryside gathers in the ear and breaks into a myriad of sounds: a croaking and squeaking, a swift rustle in the grass, a plop in the water, a pattering on earth and pebbles, and high above all, the call of the cicada. The sounds follow one another, and the ear eventually discerns more and more of them—just as fingers unwinding a ball of wool feel each fiber interwoven with progressively thinner and less palpable  threads. The frogs continue croaking in the background without changing the flow of sounds, just as light does not vary from the continuous winking of stars. But at every rise or fall of the wind every sound changes and is renewed. All that remains in the inner recess of the ear is a vague murmur: the sea."
+  },
+  "submission": {
+    "language": "Urdu",
+    "label": "Rashid Mufti",
+    "labelUr": "راشد مفتی",
+    "translator": "Rashid Mufti",
+    "translatorUr": "راشد مفتی",
+    "text": "وہ لمحہ بھی آتا ہے جب دیہاتی علاقے کی خاموشی کانوں میں اکٹھی ہوتی ہے اور اَن گنت آوازوں میں ٹوٹتی ہے، جیسے کوئی کائیں کائیں اور چیں چیں، گھاس میں کوئی تیز سرسراہٹ، پانی میں کوئی غڑّاپا، زمین اور سنگریزوں پر کوئی ٹپ ٹپ، اور سب سے بڑھ کر جھینگر کی چلاہٹ۔ آوازیں ایک دوسرے کا تعاقب کرتی ہیں مگر کان، آخرکار، ان میں سے زیادہ تر کو شناخت کر لیتے ہیں، بالکل اسی طرح جیسے اُون کے گولے کو کھولتی ہوئی انگلیاں ہر ریشے کو پتلے اور کم قابلِ حس دھاگوں سے بُنا ہوا محسوس کر لیتی ہیں۔ پس منظر میں، آوازوں کے بہاؤ کو تبدیل کیے بغیر، مینڈک ٹراتے رہتے ہیں، بالکل ویسے ہی جیسے روشنی، ستاروں کی مسلسل ٹمٹماہٹ سے تبدیل نہیں ہوتی۔ لیکن ہوا کے ہر مد یا جزر کے ساتھ ہر آواز بدل جاتی ہے اور پھر سے نئی ہو جاتی ہے۔ اور کانوں کے اندرونی گوشوں میں کچھ رہ جاتا ہے تو ایک مبہم سرسراہٹ -- سمندر کی آواز۔"
+  },
+  "segments": [
+    {
+      "n": 1,
+      "sentence": 1,
+      "source": "There is the moment when the silence of the countryside gathers in the ear and breaks into a myriad of sounds:",
+      "submission": "وہ لمحہ بھی آتا ہے جب دیہاتی علاقے کی خاموشی کانوں میں اکٹھی ہوتی ہے اور اَن گنت آوازوں میں ٹوٹتی ہے،",
+      "mergedInto": null,
+      "deviations": [
+        {
+          "code": "C1",
+          "severity": "Minor",
+          "note": "دیہاتی علاقے کی خاموشی (\"the silence of the rural area\") gives \"the countryside\" the administrative register of a district description, where the source names a landscape.",
+          "noteUr": "دیہاتی علاقے کی خاموشی (\"the silence of the rural area\") ماخذ کے \"the countryside\" کو، جو ایک منظر کا نام ہے، کسی ضلعے کے بیان کا انتظامی لہجہ دے دیتا ہے۔",
+          "functions": [],
+          "gain": "",
+          "gainUr": "",
+          "compensatedBy": null
+        }
+      ],
+      "suggestion": {
+        "ai": "وہ لمحہ بھی آتا ہے جب دیہات کی خاموشی کانوں میں اکٹھی ہوتی ہے اور اَن گنت آوازوں میں ٹوٹتی ہے،",
+        "state": "Not reviewed",
+        "human": ""
+      }
+    },
+    {
+      "n": 2,
+      "sentence": 1,
+      "source": "a croaking and squeaking, a swift rustle in the grass, a plop in the water, a pattering on earth and pebbles, and high above all, the call of the cicada.",
+      "submission": "جیسے کوئی کائیں کائیں اور چیں چیں، گھاس میں کوئی تیز سرسراہٹ، پانی میں کوئی غڑّاپا، زمین اور سنگریزوں پر کوئی ٹپ ٹپ، اور سب سے بڑھ کر جھینگر کی چلاہٹ۔",
+      "mergedInto": null,
+      "deviations": [
+        {
+          "code": "A1",
+          "severity": "Minor",
+          "note": "کائیں کائیں (\"caw caw\", the cry of a crow) for \"a croaking\": the first sound in the list becomes a crow's, where the source's croaking is the frogs', as #3 confirms (\"The frogs continue croaking\"). The link between this sound and the frogs of #3 is broken.",
+          "noteUr": "\"a croaking\" کے لیے کائیں کائیں (\"caw caw\"، کوے کی آواز): فہرست کی پہلی آواز کوے کی ہو جاتی ہے، جب کہ ماخذ کی ٹراہٹ مینڈکوں کی ہے، جیسا کہ #3 سے واضح ہے (\"The frogs continue croaking\")۔ اس آواز اور #3 کے مینڈکوں کا ربط ٹوٹ جاتا ہے۔",
+          "functions": [],
+          "gain": "",
+          "gainUr": "",
+          "compensatedBy": null
+        },
+        {
+          "code": "A1",
+          "severity": "Minor",
+          "note": "سب سے بڑھ کر (\"above all, most of all\") for \"high above all\": the source places the cicada's call overhead, in space, and the Urdu makes it a matter of emphasis.",
+          "noteUr": "\"high above all\" کے لیے سب سے بڑھ کر (\"above all, most of all\"): ماخذ جھینگر کی آواز کو مکانی طور پر اوپر، بلندی پر رکھتا ہے، اور اردو اسے محض زور کا معاملہ بنا دیتی ہے۔",
+          "functions": [],
+          "gain": "",
+          "gainUr": "",
+          "compensatedBy": null
+        },
+        {
+          "code": "C2",
+          "severity": "Minor",
+          "note": "چلاہٹ (\"shrieking, screaming\") for \"the call\": the cicada's call becomes a cry of distress or a din, a harsher connotation than the source's plain word.",
+          "noteUr": "\"the call\" کے لیے چلاہٹ (\"shrieking, screaming\"): جھینگر کی صدا چیخ پکار یا شور بن جاتی ہے، جو ماخذ کے سادہ لفظ سے کہیں سخت مفہوم ہے۔",
+          "functions": [],
+          "gain": "",
+          "gainUr": "",
+          "compensatedBy": null
+        }
+      ],
+      "suggestion": {
+        "ai": "جیسے کوئی ٹرٹر اور چیں چیں، گھاس میں کوئی تیز سرسراہٹ، پانی میں کوئی غڑّاپا، زمین اور سنگریزوں پر کوئی ٹپ ٹپ، اور سب کے اوپر، بلندی سے، جھینگر کی صدا۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
+    },
+    {
+      "n": 3,
+      "sentence": 2,
+      "source": "The sounds follow one another, and the ear eventually discerns more and more of them—",
+      "submission": "آوازیں ایک دوسرے کا تعاقب کرتی ہیں مگر کان، آخرکار، ان میں سے زیادہ تر کو شناخت کر لیتے ہیں،",
+      "mergedInto": null,
+      "deviations": [
+        {
+          "code": "C2",
+          "severity": "Minor",
+          "note": "ایک دوسرے کا تعاقب کرتی ہیں (\"pursue one another\") for \"follow one another\": the succession of sounds becomes a chase.",
+          "noteUr": "\"follow one another\" کے لیے ایک دوسرے کا تعاقب کرتی ہیں (\"pursue one another\"): آوازوں کا یکے بعد دیگرے آنا ایک تعاقب بن جاتا ہے۔",
+          "functions": [],
+          "gain": "",
+          "gainUr": "",
+          "compensatedBy": null
+        },
+        {
+          "code": "A6",
+          "severity": "Minor",
+          "note": "مگر (\"but\") for \"and\": a contrast is set up between the succession of sounds and the ear's discernment, where the source simply adds the one to the other.",
+          "noteUr": "\"and\" کے لیے مگر (\"but\"): آوازوں کے تسلسل اور کان کی شناخت کے درمیان ایک تضاد قائم کر دیا گیا ہے، جب کہ ماخذ ایک بات کو دوسری کے ساتھ محض جوڑتا ہے۔",
+          "functions": [],
+          "gain": "",
+          "gainUr": "",
+          "compensatedBy": null
+        },
+        {
+          "code": "A1",
+          "severity": "Major",
+          "note": "ان میں سے زیادہ تر کو شناخت کر لیتے ہیں (\"identify most of them\") for \"discerns more and more of them\". The source describes a discernment that keeps growing; the Urdu states a finished result, the ear recognising the majority of the sounds. This changes what the sentence says, and with it the gradual unfolding that the simile in #2.2 illustrates.",
+          "noteUr": "\"discerns more and more of them\" کے لیے ان میں سے زیادہ تر کو شناخت کر لیتے ہیں (\"identify most of them\")۔ ماخذ ایک ایسی شناخت بیان کرتا ہے جو بڑھتی ہی جاتی ہے، اردو ایک مکمل نتیجہ بیان کرتی ہے، یعنی کان آوازوں کی اکثریت پہچان لیتے ہیں۔ اس سے جملے کا مدعا بدل جاتا ہے، اور اس کے ساتھ وہ بتدریج کھلنا بھی جسے #2.2 کی تشبیہ واضح کرتی ہے۔",
+          "functions": [],
+          "gain": "",
+          "gainUr": "",
+          "compensatedBy": null
+        }
+      ],
+      "suggestion": {
+        "ai": "آوازیں ایک کے بعد ایک آتی ہیں، اور کان رفتہ رفتہ ان میں سے زیادہ سے زیادہ کو پہچاننے لگتے ہیں،",
+        "state": "Not reviewed",
+        "human": ""
+      }
+    },
+    {
+      "n": 4,
+      "sentence": 2,
+      "source": "just as fingers unwinding a ball of wool feel each fiber interwoven with progressively thinner and less palpable  threads.",
+      "submission": "بالکل اسی طرح جیسے اُون کے گولے کو کھولتی ہوئی انگلیاں ہر ریشے کو پتلے اور کم قابلِ حس دھاگوں سے بُنا ہوا محسوس کر لیتی ہیں۔",
+      "mergedInto": null,
+      "deviations": [
+        {
+          "code": "A3",
+          "severity": "Minor",
+          "note": "\"progressively\" is dropped, and \"thinner\" becomes پتلے (\"thin\"): the threads are no longer felt to grow finer one after another, so the simile loses the gradation that matches the ear's growing discernment.",
+          "noteUr": "\"progressively\" گرا دیا گیا ہے اور \"thinner\" پتلے (\"thin\") بن گیا ہے: دھاگے اب یکے بعد دیگرے باریک تر ہوتے محسوس نہیں ہوتے، چنانچہ تشبیہ وہ درجہ بہ درجہ کیفیت کھو دیتی ہے جو کان کی بڑھتی ہوئی شناخت سے مطابقت رکھتی ہے۔",
+          "functions": [],
+          "gain": "",
+          "gainUr": "",
+          "compensatedBy": null
+        }
+      ],
+      "suggestion": {
+        "ai": "بالکل اسی طرح جیسے اُون کے گولے کو کھولتی ہوئی انگلیاں ہر ریشے کو بتدریج پتلے سے پتلے اور کم سے کم قابلِ حس دھاگوں سے بُنا ہوا محسوس کر لیتی ہیں۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
+    },
+    {
+      "n": 5,
+      "sentence": 3,
+      "source": "The frogs continue croaking in the background without changing the flow of sounds, just as light does not vary from the continuous winking of stars.",
+      "submission": "پس منظر میں، آوازوں کے بہاؤ کو تبدیل کیے بغیر، مینڈک ٹراتے رہتے ہیں، بالکل ویسے ہی جیسے روشنی، ستاروں کی مسلسل ٹمٹماہٹ سے تبدیل نہیں ہوتی۔",
+      "mergedInto": null,
+      "deviations": [],
+      "suggestion": {
+        "ai": "",
+        "state": "Not reviewed",
+        "human": ""
+      }
+    },
+    {
+      "n": 6,
+      "sentence": 4,
+      "source": "But at every rise or fall of the wind every sound changes and is renewed.",
+      "submission": "لیکن ہوا کے ہر مد یا جزر کے ساتھ ہر آواز بدل جاتی ہے اور پھر سے نئی ہو جاتی ہے۔",
+      "mergedInto": null,
+      "deviations": [
+        {
+          "code": "C3",
+          "severity": "Neutral",
+          "note": "ہوا کے ہر مد یا جزر (\"every flow or ebb of the wind\") renders \"rise or fall\" with the terms for the tide. The wind's alternation and its power to change every sound are kept.",
+          "noteUr": "ہوا کے ہر مد یا جزر (\"every flow or ebb of the wind\") \"rise or fall\" کو جوار بھاٹے کی اصطلاحات میں ادا کرتا ہے۔ ہوا کا اتار چڑھاؤ اور ہر آواز کو بدل دینے کی اس کی قوت برقرار ہے۔",
+          "functions": [
+            {
+              "fn": "Alternation of strength, rising and falling",
+              "fnUr": "قوت کا اتار چڑھاؤ",
+              "kept": true
+            },
+            {
+              "fn": "The wind as what changes and renews every sound",
+              "fnUr": "ہوا بطور وہ قوت جو ہر آواز کو بدلتی اور نیا کرتی ہے",
+              "kept": true
+            }
+          ],
+          "gain": "The tidal terms anticipate the sea that closes the passage in #5.",
+          "gainUr": "جوار بھاٹے کی اصطلاحات اس سمندر کی پیش بندی کرتی ہیں جس پر #5 میں اقتباس ختم ہوتا ہے۔",
+          "compensatedBy": null
+        }
+      ],
+      "suggestion": {
+        "ai": "لیکن ہوا کے ہر بار تیز یا دھیمی ہونے پر ہر آواز بدل جاتی ہے اور پھر سے نئی ہو جاتی ہے۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
+    },
+    {
+      "n": 7,
+      "sentence": 5,
+      "source": "All that remains in the inner recess of the ear is a vague murmur: the sea.",
+      "submission": "اور کانوں کے اندرونی گوشوں میں کچھ رہ جاتا ہے تو ایک مبہم سرسراہٹ -- سمندر کی آواز۔",
+      "mergedInto": null,
+      "deviations": [
+        {
+          "code": "A5",
+          "severity": "Minor",
+          "note": "سرسراہٹ (\"rustle\") for \"murmur\": the same word renders \"a swift rustle in the grass\" in #1.2, so two distinct sounds of the source are merged, and the sea is made to rustle like the grass.",
+          "noteUr": "\"murmur\" کے لیے سرسراہٹ (\"rustle\"): یہی لفظ #1.2 میں \"a swift rustle in the grass\" کے لیے آیا ہے، چنانچہ ماخذ کی دو الگ آوازیں ایک ہو جاتی ہیں، اور سمندر گھاس کی طرح سرسرانے لگتا ہے۔",
+          "functions": [],
+          "gain": "",
+          "gainUr": "",
+          "compensatedBy": null
+        },
+        {
+          "code": "A7",
+          "severity": "Minor",
+          "note": "سمندر کی آواز (\"the sound of the sea\") for \"the sea\": the source makes the murmur the sea itself and leaves open whether the sea is heard or the ear's own murmur becomes the sea. The Urdu settles it as a sound coming from the sea.",
+          "noteUr": "\"the sea\" کے لیے سمندر کی آواز (\"the sound of the sea\"): ماخذ اس مبہم آواز کو خود سمندر قرار دیتا ہے اور یہ کھلا چھوڑتا ہے کہ سمندر سنائی دے رہا ہے یا کان کی اپنی گونج سمندر بن گئی ہے۔ اردو اسے سمندر سے آنے والی ایک آواز طے کر دیتی ہے۔",
+          "functions": [],
+          "gain": "",
+          "gainUr": "",
+          "compensatedBy": null
+        }
+      ],
+      "suggestion": {
+        "ai": "کانوں کے اندرونی گوشوں میں جو کچھ رہ جاتا ہے وہ بس ایک مبہم سی گنگناہٹ ہے -- سمندر۔",
+        "state": "Not reviewed",
+        "human": ""
+      }
+    }
+  ],
+  "segmentation": {
+    "rule": "sentence-v2",
+    "exceptions": "",
+    "exceptionsUr": ""
+  },
+  "aiSuggestions": {
+    "model": "claude-opus-5-5",
+    "date": "2026-11-28"
+  },
+  "textNotes": "- Source: Archibald Colquhoun's English translation, as supplied from the Vintage (London) edition. 1957 is the year of the Italian original, Il barone rampante. The Urdu is assessed against the English only.\n- The translation is quoted as supplied, including the double hyphen in #5.\n- The first two sentences are each shown in two rows, at the colon (#1.1–#1.2) and at the dash (#2.1–#2.2).",
+  "textNotesUr": "- ماخذ: آرچیبالڈ کولکہون کا انگریزی ترجمہ، جیسا کہ ونٹیج (لندن) ایڈیشن سے فراہم کیا گیا۔ 1957 اطالوی اصل Il barone rampante کا سالِ اشاعت ہے۔ اردو ترجمے کا جائزہ صرف انگریزی کے مقابل لیا گیا ہے۔\n- ترجمہ جوں کا توں نقل کیا گیا ہے، #5 کے دوہرے خطِ فاصل سمیت۔\n- پہلے دو جملے دو دو سطروں میں دکھائے گئے ہیں، رابطے (colon) پر (#1.1–#1.2) اور ڈیش پر (#2.1–#2.2)۔",
+  "lead": "**Accuracy ({A}).** The order of the sounds and both similes come through, but the passage's central movement, a hearing that opens out by degrees, becomes a finished act: the ear identifies most of the sounds rather than more and more of them, and the threads under the fingers no longer grow finer. Smaller shifts give the first croak to a crow instead of the frogs, move the cicada from overhead to \"above all\", let the sea rustle like the grass, and make the final murmur a sound of the sea rather than the sea itself.\n\n**Language ({B}).** The Urdu is correct throughout.\n\n**Style ({C}).** The sentences follow Calvino's shape and quiet pace closely. A few word choices roughen the tone: the countryside becomes an administrative \"rural area\", the sounds chase one another, and the cicada shrieks.",
+  "leadUr": "**صحت ({A})۔** آوازوں کی ترتیب اور دونوں تشبیہیں منتقل ہو جاتی ہیں، مگر اقتباس کی مرکزی حرکت، یعنی سماعت کا درجہ بہ درجہ کھلنا، ایک مکمل عمل بن جاتی ہے: کان آوازوں کی اکثریت پہچان لیتے ہیں، نہ کہ زیادہ سے زیادہ آوازیں، اور انگلیوں تلے دھاگے باریک تر ہوتے محسوس نہیں ہوتے۔ چھوٹی تبدیلیاں پہلی ٹراہٹ کو مینڈکوں کے بجائے کوے کی آواز بنا دیتی ہیں، جھینگر کو بلندی سے ہٹا کر \"سب سے بڑھ کر\" کر دیتی ہیں، سمندر کو گھاس کی طرح سرسرانے دیتی ہیں، اور آخری گونج کو خود سمندر کے بجائے سمندر کی آواز بنا دیتی ہیں۔\n\n**زبان ({B})۔** اردو شروع سے آخر تک درست ہے۔\n\n**اسلوب ({C})۔** جملے کالوینو کی ساخت اور اس کی دھیمی رفتار کی قریب سے پیروی کرتے ہیں۔ چند لفظی انتخاب لہجے کو کھردرا کر دیتے ہیں: دیہات ایک انتظامی \"دیہاتی علاقہ\" بن جاتا ہے، آوازیں ایک دوسرے کا تعاقب کرتی ہیں، اور جھینگر چلاتا ہے۔",
+  "profileSummary": "{major} major and {minor} minor deviations, with {neutral} neutral; {clean} of {segments} segments ({cleanPct}%) are free of scored deviations. Accuracy codes outnumber style ones ({A} against {C}). They cluster in the two long opening sentences, in the list of sounds (#1.2) and the account of the ear's growing discernment (#2.1), where the one major deviation falls. #3 is clean, and the closing image in #5 carries two minor deviations.",
+  "profileSummaryUr": "{major} بڑا اور {minor} معمولی انحراف، اور {neutral} غیر جانب دار۔ {segments} میں سے {clean} قطعے ({cleanPct}%) شمار شدہ انحرافات سے پاک ہیں۔ صحت کے کوڈ اسلوب کے کوڈوں سے زیادہ ہیں ({A} بمقابلہ {C})۔ یہ ابتدائی دو طویل جملوں میں مرتکز ہیں، آوازوں کی فہرست (#1.2) اور کان کی بڑھتی ہوئی شناخت کے بیان (#2.1) میں، جہاں واحد بڑا انحراف واقع ہے۔ #3 صاف ہے، اور #5 کا اختتامی پیکر دو معمولی انحرافات رکھتا ہے۔",
+  "proximity": {
+    "sentences": {
+      "kept": 5,
+      "total": 5,
+      "forced": 0,
+      "note": "5 source sentences, 5 Urdu: all 5 sentence ends shared.",
+      "noteUr": "ماخذ کے 5 جملے، اردو کے 5: جملوں کے تمام 5 اختتام مشترک۔",
+      "forcedNote": "None: the long sentences of #1 and #2 hold together in Urdu.",
+      "forcedNoteUr": "کوئی نہیں: #1 اور #2 کے طویل جملے اردو میں مربوط رہتے ہیں۔"
+    },
+    "clauses": {
+      "kept": 8,
+      "total": 9,
+      "forced": 0,
+      "note": "Pairs: #1 three, #2 two, #3 two, #4 one, #5 one. Only #3 moves \"without changing the flow of sounds\" before the verb.",
+      "noteUr": "جوڑے: #1 میں تین، #2 میں دو، #3 میں دو، #4 میں ایک، #5 میں ایک۔ صرف #3 میں \"without changing the flow of sounds\" فعل سے پہلے آیا ہے۔",
+      "forcedNote": "None.",
+      "forcedNoteUr": "کوئی نہیں۔"
+    },
+    "grammar": {
+      "kept": 5,
+      "total": 8,
+      "forced": 0,
+      "note": "Articles 5 of 7 overt (کوئی before four list items in #1.2, ایک in #5); \"a myriad\" and \"a ball of wool\" have none. No possessives. The one passive, \"is renewed\" (#4), becomes intransitive.",
+      "noteUr": "حرفِ تنکیر 7 میں سے 5 ظاہر (#1.2 میں فہرست کی چار اشیا سے پہلے کوئی، #5 میں ایک)۔ \"a myriad\" اور \"a ball of wool\" میں کوئی نہیں۔ ضمیرِ ملکی کوئی نہیں۔ واحد مجہول \"is renewed\" (#4) لازم فعل بن جاتا ہے۔",
+      "forcedNote": "None: کوئی before the sounds reads as natural Urdu (\"some rustle, some plop\").",
+      "forcedNoteUr": "کوئی نہیں: آوازوں سے پہلے کوئی فطری اردو کے طور پر پڑھا جاتا ہے۔"
+    },
+    "punctuation": {
+      "kept": 1,
+      "total": 3,
+      "forced": 0,
+      "note": "The colon of #5 is kept as a dash; the colon of #1 and the dash of #2 become commas.",
+      "noteUr": "#5 کا رابطہ ڈیش کی صورت میں برقرار ہے۔ #1 کا رابطہ اور #2 کا ڈیش سکتے بن جاتے ہیں۔",
+      "forcedNote": "None.",
+      "forcedNoteUr": "کوئی نہیں۔"
+    },
+    "culture": {
+      "kept": 0,
+      "total": 0,
+      "forced": 0,
+      "note": "No proper names or culture-specific items in the sample.",
+      "noteUr": "نمونے میں کوئی اسمِ معرفہ یا ثقافتی شے نہیں۔",
+      "forcedNote": "",
+      "forcedNoteUr": ""
+    }
+  },
+  "checks": {
+    "source": "",
+    "sourceUr": "",
+    "paratext": "",
+    "paratextUr": ""
+  },
+  "tendencies": "The translation follows the source sentence by sentence, keeping its order of observations and most of its clause structure.\n\n- **Sentence architecture.** The source's 5 sentences become 5 Urdu sentences, every sentence end shared. Clause order is kept in 8 of 9 adjacent clause pairs; only #3 moves \"without changing the flow of sounds\" before the verb, as Urdu order requires.\n- **Punctuation.** One of the source's three colons and dashes is carried over: the colon of #5, as a dash. The colon of #1 and the dash of #2 become commas.\n- **Sound words.** The list of sounds in #1.2 keeps its five items and their order, rendered with Urdu onomatopoeia and reduplication (کائیں کائیں، چیں چیں، غڑّاپا، ٹپ ٹپ), 4 forms, about 2.9 per 100 source words.\n- **Added particles.** کوئی (\"some\") is added before four items of the list, بھی (\"also\") in #1.1 and اور (\"and\") at the head of #5: 6 additions, about 4.3 per 100 source words.\n- **Register.** Plain Urdu throughout, with three formal compounds (قابلِ حس، مد یا جزر، اندرونی گوشوں), about 2.1 per 100 source words, and one administrative phrase, دیہاتی علاقہ (#1.1).\n- **Repeated words.** \"Sound\" is آواز in all four places. \"Croaking\" is rendered two ways (کائیں کائیں in #1.2, ٹراتے in #3), and \"rustle\" and \"murmur\" share one word, سرسراہٹ (#1.2, #5).\n- **Gradation.** The source's progression (\"more and more\", \"progressively thinner\") is lost in both halves of #2, while \"eventually\" (آخرکار) is kept.\n\nThe reader follows Calvino's order and pace closely, and meets a hearing that has already done its work where the source shows the ear gradually opening.",
+  "tendenciesUr": "ترجمہ ماخذ کی جملہ بہ جملہ پیروی کرتا ہے، مشاہدات کی ترتیب اور شقوں کی ساخت کا بیشتر حصہ برقرار رکھتے ہوئے۔\n\n- **جملوں کی ساخت۔** ماخذ کے 5 جملے 5 اردو جملے بنتے ہیں، اور ہر جملے کا اختتام مشترک ہے۔ ملحقہ شقوں کے 9 میں سے 8 جوڑوں میں ترتیب برقرار ہے۔ صرف #3 میں \"without changing the flow of sounds\" کو، اردو ترتیب کے تقاضے کے مطابق، فعل سے پہلے لایا گیا ہے۔\n- **رموزِ اوقاف۔** ماخذ کے تین رابطوں اور ڈیشوں میں سے ایک منتقل ہوا ہے: #5 کا رابطہ، ڈیش کی صورت میں۔ #1 کا رابطہ اور #2 کا ڈیش سکتے بن جاتے ہیں۔\n- **صوتی الفاظ۔** #1.2 میں آوازوں کی فہرست اپنی پانچوں اشیا اور ان کی ترتیب برقرار رکھتی ہے، اردو کے صوتی اور تکراری الفاظ کے ساتھ (کائیں کائیں، چیں چیں، غڑّاپا، ٹپ ٹپ)، یعنی 4 صورتیں، ماخذ کے فی 100 الفاظ تقریباً 2.9۔\n- **زائد حروف۔** فہرست کی چار اشیا سے پہلے کوئی (\"some\")، #1.1 میں بھی (\"also\") اور #5 کے آغاز میں اور (\"and\") بڑھائے گئے ہیں: 6 اضافے، ماخذ کے فی 100 الفاظ تقریباً 4.3۔\n- **سطحِ کلام۔** شروع سے آخر تک سادہ اردو، تین رسمی مرکبات کے ساتھ (قابلِ حس، مد یا جزر، اندرونی گوشوں)، ماخذ کے فی 100 الفاظ تقریباً 2.1، اور ایک انتظامی ترکیب، دیہاتی علاقہ (#1.1)۔\n- **مکرر الفاظ۔** \"Sound\" چاروں جگہ آواز ہے۔ \"Croaking\" دو طرح ادا ہوا ہے (#1.2 میں کائیں کائیں، #3 میں ٹراتے)، اور \"rustle\" اور \"murmur\" ایک ہی لفظ سرسراہٹ میں شریک ہیں (#1.2، #5)۔\n- **درجہ بہ درجہ کیفیت۔** ماخذ کی تدریج (\"more and more\"، \"progressively thinner\") #2 کے دونوں حصوں میں کھو جاتی ہے، جب کہ \"eventually\" (آخرکار) برقرار ہے۔\n\nقاری کالوینو کی ترتیب اور رفتار کی قریب سے پیروی کرتا ہے، اور اسے ایک ایسی سماعت ملتی ہے جو اپنا کام کر چکی ہے، جب کہ ماخذ کان کو آہستہ آہستہ کھلتا دکھاتا ہے۔",
+  "translatorProfile": "- **Strategy.** A close translation: the source's form is largely kept (proximity {proximity}, structural mimicry {mimicry}) and reads as Urdu. Accuracy codes dominate, and the register stays plain, with one administrative turn.\n- **Deforming tendencies.** Destruction of networks of signification: the croaking of #1.2 is detached from the frogs of #3 (A1: #1.2), and the gradation shared by the ear and the fingers is broken (A1: #2.1, A3: #2.2). Quantitative impoverishment: \"progressively\" dropped, \"rustle\" and \"murmur\" merged (A3: #2.2, A5: #5). Qualitative impoverishment: the countryside, the succession of sounds and the cicada's call coarsened (C1, C2: #1.1, #1.2, #2.1). Rationalization: a contrast added between the sounds and the ear (A6: #2.1). Clarification: the sea made \"the sound of the sea\" (A7: #5).\n- **Apparent purpose.** It appears to be a faithful, readable Urdu Calvino for a general readership, following the novel sentence by sentence.\n- **Level.** Competent. There are no language errors and the Urdu reads naturally, but the major deviation in #2.1 and the crow's caw in #1.2 look like misreadings rather than chosen departures. The tidal image in #4 is the one departure that looks deliberate, and it adds something.",
+  "translatorProfileUr": "- **حکمتِ عملی۔** ایک قریبی ترجمہ: ماخذ کی ہیئت کا بیشتر حصہ برقرار ہے (نزدیکی {proximity}، ہیئتی نقالی {mimicry}) اور اردو کے طور پر پڑھا جاتا ہے۔ صحت کے کوڈ غالب ہیں، اور سطحِ کلام سادہ رہتی ہے، ایک انتظامی موڑ کے ساتھ۔\n- **بگاڑ کے رجحانات۔** معنویت کے جال کی شکست: #1.2 کی ٹراہٹ #3 کے مینڈکوں سے کٹ جاتی ہے (A1: #1.2)، اور کان اور انگلیوں کی مشترک تدریج ٹوٹ جاتی ہے (A1: #2.1، A3: #2.2)۔ کمی افلاس: \"progressively\" گرا دیا گیا، \"rustle\" اور \"murmur\" ایک کر دیے گئے (A3: #2.2، A5: #5)۔ کیفی افلاس: دیہات، آوازوں کا تسلسل اور جھینگر کی صدا کھردرے کر دیے گئے (C1، C2: #1.1، #1.2، #2.1)۔ عقلیت کاری: آوازوں اور کان کے درمیان ایک تضاد کا اضافہ (A6: #2.1)۔ توضیح: سمندر کو \"سمندر کی آواز\" بنا دیا گیا (A7: #5)۔\n- **ظاہری مقصد۔** بظاہر عام قارئین کے لیے ایک وفادار اور رواں اردو کالوینو، جو ناول کی جملہ بہ جملہ پیروی کرتا ہے۔\n- **سطح۔** باصلاحیت۔ زبان کی کوئی غلطی نہیں اور اردو فطری پڑھی جاتی ہے، مگر #2.1 کا بڑا انحراف اور #1.2 میں کوے کی کائیں کائیں سوچے سمجھے انحرافات کے بجائے غلط قراءت معلوم ہوتے ہیں۔ #4 میں جوار بھاٹے کا پیکر واحد انحراف ہے جو ارادی لگتا ہے، اور وہ کچھ اضافہ کرتا ہے۔",
+  "decision": "",
+  "decisionBasis": "",
+  "decisionBasisUr": "",
+  "publisherNote": "",
+  "publisherNoteUr": "",
+  "grade": "C",
+  "gradeBasis": "The score of {score}, in band {band}, sets the grade, at the lower edge of the band, and nothing moves it. Only one deviation is major, but it falls on the sentence that states the passage's theme, the ear's gradual discernment, and the minor ones recur in the list of sounds and the closing image.",
+  "gradeBasisUr": "{score} کا اسکور، درجہ {band} میں، گریڈ طے کرتا ہے، درجے کے نچلے کنارے پر، اور کوئی چیز اسے نہیں ہلاتی۔ صرف ایک انحراف بڑا ہے، مگر وہ اسی جملے پر واقع ہے جو اقتباس کا موضوع بیان کرتا ہے، یعنی کان کی بتدریج شناخت، اور معمولی انحرافات آوازوں کی فہرست اور اختتامی پیکر میں بار بار آتے ہیں۔",
+  "readerNote": "Readers get a close, readable Urdu version that keeps the order and pace of Calvino's sentences, though the gradual awakening of the ear is flattened into a finished act of recognition.",
+  "readerNoteUr": "قارئین کو ایک قریبی اور رواں اردو متن ملتا ہے جو کالوینو کے جملوں کی ترتیب اور رفتار برقرار رکھتا ہے، اگرچہ کان کی بتدریج بیداری شناخت کے ایک مکمل عمل میں ہموار ہو جاتی ہے۔"
+}

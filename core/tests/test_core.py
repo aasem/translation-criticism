@@ -133,7 +133,7 @@ MUTATIONS = {
     "band in brackets": lambda r: r.update(lead=r["lead"] + " {score} ({band})"),
     "unknown field": lambda r: r.update(findings="x"),
     "decision on a published report": lambda r: r.update(decision="Accept"),
-    "grade two steps from band": lambda r: r.update(grade="B") if r["stage"] == "Published" else r.update(decision="Accept with minor revisions"),
+    "grade two steps from band": lambda r: r.update(grade={"A": "C", "B": "D", "C": "A", "D": "B"}[r["grade"]]) if r["stage"] == "Published" else r.update(decision="Accept with minor revisions"),
     "forced exceeds kept": lambda r: r["proximity"]["sentences"].update(kept=1, total=4, forced=3),
     "bad date": lambda r: r.update(date="22 Nov 2026"),
     "merge pointing forward": lambda r: r["segments"][0].update(mergedInto=5, submission=""),
